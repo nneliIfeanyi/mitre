@@ -2,7 +2,7 @@
 
 <div class="row r mb-5 pb-3">
   <div class="col-12">
-    <div class="lead py-2"> <?php flash('success')?></div>
+    
     <div class="text-center shadow border py-3">
       <h2>Ministers Improvement And Training Retreat<span class="text-primary"> (MITRE)</span></h2>
       <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>

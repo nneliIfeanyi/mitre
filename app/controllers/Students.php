@@ -85,7 +85,6 @@
           'num_err' => '',
           's_o_r_err' => ''
         ];
-echo $db_img;
         $imageUploadPath = $uploadPath . $passport;
         $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
 
@@ -104,7 +103,7 @@ echo $db_img;
 
         if ($this->userModel->register($data)) {
           flash('success', 'Registration Successfull');
-          redirect('students/registration');
+          redirect('pages');
         }else{
           die('something went wrong');
         }
