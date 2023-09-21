@@ -47,7 +47,7 @@
 
     // Find USer BY Email
     public function findUserByEmail($email){
-      $this->db->query("SELECT * FROM users WHERE email = :email");
+      $this->db->query("SELECT * FROM users WHERE name = :email");
       $this->db->bind(':email', $email);
 
       $row = $this->db->single();
@@ -62,26 +62,59 @@
 
     // Login / Authenticate User
     public function login($email, $password){
-      $this->db->query("SELECT * FROM users WHERE email = :email");
+      $this->db->query("SELECT * FROM users WHERE name = :email");
       $this->db->bind(':email', $email);
 
       $row = $this->db->single();
       
-      $hashed_password = $row->password;
-      if(password_verify($password, $hashed_password)){
+    
+      if($row->password == $password){
         return $row;
       } else {
         return false;
       }
     }
 
+       // Get All Posts
+       public function allStudents(){
+        $this->db->query("SELECT * FROM mitre_students");
+  
+        $results = $this->db->resultset();
+
+        return $results;
+      }
+
+      public function totals(){
+        $this->db->query("SELECT * FROM mitre_students");
+        $this->db->resultset();
+        $total = $this->db->rowCount();
+
+        return $total;
+      }
+
     // Find User By ID
     public function getUserById($id){
-      $this->db->query("SELECT * FROM users WHERE id = :id");
+      $this->db->query("SELECT * FROM mitre_students WHERE id = :id");
       $this->db->bind(':id', $id);
 
       $row = $this->db->single();
 
       return $row;
+    }
+
+     // Delete Post
+     public function delete_reg($id){
+      // Prepare Query 
+      $this->db->query('DELETE FROM mitre_students WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
     }
   }

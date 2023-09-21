@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
   <div class="bg-light">
-  <div class="lead py-2"> <?php flash('success')?></div>
+  <div class="lead"> <?php flash('success')?></div>
     <div class="px-2 py-5">
       <h1 class="display-3">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
       <p class="lead text-primary">Registration ongoing for March 2024 conclave</p>

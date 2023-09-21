@@ -1,6 +1,6 @@
-<?php require APPROOT . '/views/inc/header.php'; ?>
-
-<div class="row r mb-5 pb-3">
+<?php require APPROOT . '/views/inc/header2.php'; ?>
+<div class="container-fluid">
+<div class="row mb-5 pb-3">
   <div class="col-12">
     
     <div class="text-center shadow border py-3">
@@ -9,7 +9,7 @@
         <div class="h2 text-primary">APPLICATION FORM</div>
       <p>This form should be completed and submitted on or before 31 JAN. 2024</p>
     </div>
-      <form action="<?php echo URLROOT; ?>/students/registration" method="post" enctype="multipart/form-data">
+      <form action="<?php echo URLROOT; ?>/admin/registration" method="post" enctype="multipart/form-data">
 
         <!-- Names Row -->
         <div class="row  shadow border mx-1 pt-2 pb-4">
@@ -330,19 +330,19 @@
         
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="lead fs-6 text-primary">REFEREE'S COLUMN</div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals name</p>
             <input type="text" name="ref_name" class="form-control form-control-lg" value="<?php echo $data['ref_name']; ?>">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals phone number</p>
             <input type="number" name="ref_phone" class="form-control form-control-lg" value="<?php echo $data['ref_phone']; ?>">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals address</p>
             <input type="text" name="ref_address" class="form-control form-control-lg" value="<?php echo $data['ref_address']; ?>">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">How long have you known each other</p>
             <input type="text" name="ref_duration" class="form-control form-control-lg" value="<?php echo $data['ref_duration']; ?>">
           </div>
