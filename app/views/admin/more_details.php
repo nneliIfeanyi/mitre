@@ -4,8 +4,8 @@
 <div class="">
 <form">
         <div class="row">
-            <div class="border col-md-4 offset-md-4 rounded-circle">
-                <img src="<?php echo URLROOT.'/'.$data['student']->passport?>" alt="profile-pic" class="img-fluid">
+            <div class="col-md-4 offset-md-4">
+                <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-circle img-fluid">
             </div>
         </div>
             

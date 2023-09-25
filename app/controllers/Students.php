@@ -237,7 +237,7 @@
 
       }else{      
           // Compress size and upload image 
-        compressImage($imageTemp, $imageUploadPath, 8);
+        compressImage($imageTemp, $imageUploadPath, 9);
         if ($this->userModel->register($data)) {
           flash('success', 'Registration Successfull');
           redirect('pages');
