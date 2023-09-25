@@ -28,7 +28,7 @@
          
          <!-- Age gender & marital status Row -->
         <div class="row border shadow mx-1 py-2">
-          <div class="col-3">
+          <div class="col-4">
             <p class="bg-light badge text-dark">Age</p>
             <input type="number" name="age" class="form-control form-control-lg <?php echo (!empty($data['age_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['age']; ?>">
             <span class="invalid-feedback"><?php echo $data['age_err']; ?></span>
@@ -51,7 +51,7 @@
          <span class="invalid-feedback"><?php echo $data['gen_err']; ?></span>
         </div>
 
-        <div class="col-5">
+        <div class="col-4">
           <p class="bg-light badge text-dark">Marital Status</p>
          <div class="form-check <?php echo (!empty($data['mar_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input"  type="radio" name="m_status" id="Single" value="Single" <?php if (isset($data['m_status']) && $data['m_status']=="Single") echo "checked";?>>
