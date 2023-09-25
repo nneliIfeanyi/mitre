@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<div class="container">
   <h1 class="text-primary h4">About</h1>
   <h5 class="display-3">Built For Administrative Purposes</h5>
   <p>App Version: <?php echo $data['version']; ?> <sup class="badge bg-primary fs-6"><small>Beta</small></sup></p>

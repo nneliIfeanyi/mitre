@@ -31,13 +31,19 @@
         $prior_attended = trim($_POST['prior_mitre']) . ':' . trim($_POST['why_mitre']);
 
         $academics = $_POST['edu_qual'] . ':' . trim($_POST['grad_year']) . ':' . trim($_POST['institution']);
-
+        
         $passport = basename($_FILES["passport"]["name"]);
         $uploadPath = "uploaded/";
         $db_img =  $uploadPath . $passport;
         $ref_dura_info = trim($_POST['ref_duration']) . ':' . trim($_POST['ref_info']);
-
-          $data = [
+        $whatsapp_num2 = ltrim($_POST['whatsapp_num'], '\0');
+        $whatsapp_num = '234' . $whatsapp_num2;
+        $imageUploadPath = $uploadPath . $passport;
+        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+        $allowTypes = array('jpg','png','jpeg','PNG'); 
+        $imageTemp = $_FILES["passport"]["tmp_name"];
+          
+        $data = [
           'set' => '17',
           'fullname' => $fullname,
           'info' => $info,
@@ -49,7 +55,8 @@
           's_o_r' => trim($_POST['s_o_r']),
           'address' => trim($_POST['address']),
           'mobile_num' => trim($_POST['mobile_num']),
-          'whatsapp_num' => trim($_POST['whatsapp_num']),
+          'whatsapp_num' => $whatsapp_num,
+          'whatsapp_num1' => trim($_POST['whatsapp_num']),
           'assembly' => $assembly,
           'church' => trim($_POST['church']),
           'church_role' => trim($_POST['church_role']),
@@ -82,32 +89,162 @@
           
           //error handling
           'name_err' => '',
+          'name_err2' => '',
           'num_err' => '',
+          'age_err' => '',
+          'gen_err' => '',
+          'mar_err' => '',
+          'add_err' => '',
+          'ass_err' => '',
+          'role_err' => '',
+          'BA_err' => '',
+          'HG_err' => '',
+          'prior_err' => '',
+          'occ_err' => '',
+          'lang_err' => '',
+          'lang1_err' => '',
+          'lit_err' => '',
+          'discipler_err' => '',
+          'grad_err' => '',
+          'cert_err' => '',
+          'inst_err' => '',
+          'pass_err' => '',
+          'ref1_err' => '',
+          'ref2_err' => '',
+          'ref3_err' => '',
+          'ref4_err' => '',
           's_o_r_err' => ''
         ];
-        $imageUploadPath = $uploadPath . $passport;
-        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
 
-        // Allow certain file formats 
-        $allowTypes = array('jpg','png','jpeg','PNG'); 
-        if(!in_array($fileType, $allowTypes)) { 
+      if(empty($data['surname'])){
+        $data['name_err'] = 'Please enter your surname';
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['other_names'])){
+          $data['name_err2'] = 'Please enter your other names';
+          $this->view('students/registration', $data);
+      }elseif(empty($data['age'])){
+          $data['age_err'] = 'Age is required..';     
+          $this->view('students/registration', $data);
+
+      }elseif(empty($data['gender'])){
+        $data['gen_err'] = 'Kindly select an option..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['m_status'])){
+        $data['mar_err'] = 'Kindly select an option..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['s_o_r'])){
+        $data['s_o_r_err'] = 'This field is required..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['address'])){
+        $data['add_err'] = 'This field is required..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['mobile_num'])){
+        $data['num_err'] = 'This field is required..';     
+        $this->view('students/registration', $data);
+
+      }elseif(strlen($data['mobile_num']) > 11){
+        $data['num_err'] = 'Phone number must be at least 11 digits..';     
+        $this->view('students/registration', $data);
+
+      }elseif(strlen($data['mobile_num']) < 11){
+        $data['num_err'] = 'Phone number must be at least 11 digits..';     
+        $this->view('students/registration', $data);
+
+      }elseif($this->userModel->findUserByPhone($data['mobile_num'])){
+        $data['num_err'] = "Phone number is already taken.. you cannot register twice";
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['church'])){
+        $data['ass_err'] = 'Let us know the church you attend..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['church_role'])){
+        $data['role_err'] = 'Pls. fill out this field..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['new_birth'])){
+        $data['BA_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['H_baptism'])){
+        $data['HG_err'] = 'Kindly select an option..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['prior_mitre'])){
+        $data['prior_err'] = 'Kindly select an option..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['occupation'])){
+        $data['occ_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['lang_speak'])){
+        $data['lang_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['lang_write'])){
+        $data['lang1_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['litracy'])){
+        $data['lit_err'] = 'Kindly select an option..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['edu_qual'])){
+        $data['cert_err'] = 'Kindly select an option..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['grad_year'])){
+        $data['grad_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['institution'])){
+        $data['inst_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['discipler'])){
+        $data['discipler_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($passport)){
+        $data['pass_err'] = 'Pls. upload your passport photograph..';     
+        $this->view('students/registration', $data);
+        
+      } elseif(!in_array($fileType, $allowTypes)) { 
+        $data['pass_err'] = 'Image format not supported.. allowed formats are jpg, png or jpeg';     
+        $this->view('students/registration', $data);
           
-          flash('image_invalid', 'INVALID IMAGE TYPE', 'alert alert-danger');
-          //redirect('users/register');
-        }else{ 
-          $imageTemp = $_FILES["passport"]["tmp_name"]; 
-            
-          // Compress size and upload image 
-        compressImage($imageTemp, $imageUploadPath, 9);
-        }
+      }elseif(empty($data['ref_name'])){
+        $data['ref1_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
 
+      }elseif(empty($data['ref_phone'])){
+        $data['ref2_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['ref_address'])){
+        $data['ref3_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['ref_duration'])){
+        $data['ref4_err'] = 'This field is required';     
+        $this->view('students/registration', $data);
+
+      }else{      
+          // Compress size and upload image 
+        compressImage($imageTemp, $imageUploadPath, 8);
         if ($this->userModel->register($data)) {
           flash('success', 'Registration Successfull');
           redirect('pages');
         }else{
           die('something went wrong');
         }
-        
+        }
       }else {
         // IF NOT A POST REQUEST
 
@@ -121,7 +258,7 @@
           'mobile_num' => '',
           's_o_r' => '',
           'address' => '',
-          'whatsapp_num' => '',
+          'whatsapp_num1' => '',
           'occupation' => '',
           'lang_write' => '',
           'lang_speak' => '',

@@ -8,11 +8,12 @@
              <tr class="">
                <th>S/N</th>
                <th><b>Full Name</b></th>
-               <th><b>Set</b></th>
                <th><b>Phone</b></th>
-               <th><b>Litracy</b></th>
+               <th><b>WhatsApp_num</b></th>
                <th><b>Region</b></th>
                <th><b>Address</b></th>
+               <th><b>Church</b></th>
+               <th><b>Reg_dateTime</b></th>
                <th><b>Action</b></th>
              </tr>
           </thead>
@@ -22,11 +23,12 @@
             <tr>
                 <td><?php echo $student->id?></td>
                 <td><?php echo $student->fullname?></td>
-                <td><?php echo $student->mitre_set?></td>
                 <td><?php echo $student->mobile_num?></td>
-                <td><?php echo $student->litracy?></td>
+                <td><?php echo $student->whatsApp_num?></td>
                 <td><?php echo $student->s_o_r?></td>
                 <td><?php echo $student->address?></td>
+                <td><?php echo $student->church?></td>
+                <td><?php echo $student->created_at?></td>
                 <td><a class="" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a></td>
 
             </tr>

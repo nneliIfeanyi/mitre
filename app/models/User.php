@@ -45,10 +45,10 @@
       }
     }
 
-    // Find USer BY Email
-    public function findUserByEmail($email){
-      $this->db->query("SELECT * FROM users WHERE name = :email");
-      $this->db->bind(':email', $email);
+    // Find USer BY Phone
+    public function findUserByPhone($phone){
+      $this->db->query("SELECT * FROM mitre_students WHERE mobile_num = :mobile_num");
+      $this->db->bind(':mobile_num', $phone);
 
       $row = $this->db->single();
 

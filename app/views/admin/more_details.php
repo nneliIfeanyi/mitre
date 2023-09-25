@@ -44,7 +44,7 @@
 
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">WhatsApp number</p>
-            <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsapp_num; ?>">
+            <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
           </div> 
     
           <div class="col-md-6 mb-3">
@@ -119,11 +119,11 @@
         </div>
 
         <div class="row my-3">
-          <div class="col-6">
-            <input type="submit" class="btn btn-primary" value="Make changes">
+        <div class="col-md-6 mb-2">
+          <a href="https://wa.me/<?= $data['student']->whatsApp_num;?>" class="btn btn-primary btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send WhatsApp Message</a>
           </div>
 
-          <div class="col-6">
+          <div class="col-6 mb-2">
           <a href="<?php echo URLROOT;?>/admin/all_registered" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
           </div>
         </div> 

@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<div class="container">
   <div class="bg-light">
   <div class="lead"> <?php flash('success')?></div>
     <div class="px-2 py-5">

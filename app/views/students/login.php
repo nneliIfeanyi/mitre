@@ -2,8 +2,7 @@
 <div class="row">
 <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light mt-5">
-  <h2 class="display-3">Not yet available</h2>
-  <p class="fs-6 text-primary">This page is closed until resumption</p>
+  <h2 class="display-3">Not available</h2>
     <!--
     
         <h2>Login</h2>
