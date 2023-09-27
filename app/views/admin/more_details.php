@@ -13,108 +13,108 @@
         <div class="row pt-2 pb-4">
         <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Full Name</p>
-            <input type="text" name="surname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['student']->fullname?>">
+            <input disabled type="text" name="surname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['student']->fullname?>">
             <span class="invalid-feedback"></span> 
         </div>
 
         <div class="col-md-4 mb-3">
             <p class="bg-light badge text-dark">Age : Gender : Marital stutus</p>
-            <input type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->info ;?>"> 
+            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->info ;?>"> 
         </div>
 
         <div class="col-4 mb-3">
             <p class="bg-light badge text-dark">mitre set</p>
-            <input type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->mitre_set ;?>"> 
+            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->mitre_set ;?>"> 
         </div>
 
           <div class="col-8 mb-3">
             <p class="bg-light badge text-dark">State of residence</p>
-            <input type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->s_o_r ;?>">
+            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->s_o_r ;?>">
           </div> 
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Contact Address</p>
-            <input type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->address ;?>">
+            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->address ;?>">
           </div> 
       
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Mobile number</p>
-            <input type="number" required name="mobile_num" class="form-control form-control-lg " value="<?php echo $data['student']->mobile_num; ?>">
+            <input disabled type="number" required name="mobile_num" class="form-control form-control-lg " value="<?php echo $data['student']->mobile_num; ?>">
         
           </div> 
 
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">WhatsApp number</p>
-            <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
+            <input disabled type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
           </div> 
     
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Church / Local Assembly : function in Church</p>
-            <input type="text" name="church" class="form-control form-control-lg" value="<?php echo $data['student']->church ?>">
+            <input disabled type="text" name="church" class="form-control form-control-lg" value="<?php echo $data['student']->church ?>">
           </div>
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">When born again : Holy Ghost Baptism</p>
-            <input type="text" name="new_birth" class="form-control form-control-lg" value="<?php echo $data['student']->spiritual ?>">
+            <input disabled type="text" name="new_birth" class="form-control form-control-lg" value="<?php echo $data['student']->spiritual ?>">
             </div> 
     
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">God's calling</p>
-            <input type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['student']->calling; ?>">
+            <input disabled type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['student']->calling; ?>">
           </div>
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Already into God's calling : when </p>
-            <input type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['student']->into_call; ?>">
+            <input disabled type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['student']->into_call; ?>">
           </div>
 
           <div class="col-md-6 mb-3">
             <p class="badge text-dark bg-light">Attended MITRE before : Reason for MITRE</p>
-           <input type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->prior_attended; ?>">
+           <input disabled type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->prior_attended; ?>">
           </div>
 
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Working experience (ocupation)</p>
-            <input type="text" name="occupation" class="form-control form-control-lg" value="<?php echo $data['student']->occupation; ?>">
+            <input disabled type="text" name="occupation" class="form-control form-control-lg" value="<?php echo $data['student']->occupation; ?>">
           </div>
  
           <div class="col-md-5 mb-3">
             <p class="bg-light badge text-dark">Languages spoken </p>
-            <input type="text" name="lang_speak" class="form-control form-control-lg" value="<?php echo $data['student']->lang_speak; ?>">
+            <input disabled type="text" name="lang_speak" class="form-control form-control-lg" value="<?php echo $data['student']->lang_speak; ?>">
           </div> 
 
           <div class="col-md-5 mb-3">
             <p class="bg-light badge text-dark">Languages written</p>
-            <input type="text" name="lang_write" class="form-control form-control-lg" value="<?php echo $data['student']->lang_write; ?>">
+            <input disabled type="text" name="lang_write" class="form-control form-control-lg" value="<?php echo $data['student']->lang_write; ?>">
           </div>
           <div class="col-md-2 mb-3">
             <p class="bg-light badge text-dark">Litracy</p>
-            <input type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->litracy; ?>">
+            <input disabled type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->litracy; ?>">
           </div>
             <div class="col-md-6 mb-3">
                 <p class="bg-light badge text-dark">Education:when:school</p>
-                <input type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->academics; ?>">
+                <input disabled type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->academics; ?>">
             </div>  
             </div>
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Spiritual oversight</p>
-            <input type="text" name="discipler" class="form-control form-control-lg" value="<?php echo $data['student']->discipler; ?>">
+            <input disabled type="text" name="discipler" class="form-control form-control-lg" value="<?php echo $data['student']->discipler; ?>">
           </div>
         </div>
         
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals name</p>
-            <input type="text" name="ref_name" class="form-control form-control-lg" value="<?php echo $data['student']->refered_by; ?>">
+            <input disabled type="text" name="ref_name" class="form-control form-control-lg" value="<?php echo $data['student']->refered_by; ?>">
           </div>
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals phone number</p>
-            <input type="number" name="ref_phone" class="form-control form-control-lg" value="<?php echo $data['student']->phone; ?>">
+            <input disabled type="number" name="ref_phone" class="form-control form-control-lg" value="<?php echo $data['student']->phone; ?>">
           </div>
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals address</p>
-            <input type="text" name="ref_address" class="form-control form-control-lg" value="<?php echo $data['student']->address_2; ?>">
+            <input disabled type="text" name="ref_address" class="form-control form-control-lg" value="<?php echo $data['student']->address_2; ?>">
           </div>
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Contact duration : specific info</p>
-            <input type="text" name="ref_duration" class="form-control form-control-lg" value="<?php echo $data['student']->relationship; ?>">
+            <input disabled type="text" name="ref_duration" class="form-control form-control-lg" value="<?php echo $data['student']->relationship; ?>">
           </div>
         </div>
 

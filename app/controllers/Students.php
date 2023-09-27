@@ -7,7 +7,7 @@
     }
 
     public function index(){
-      redirect('welcome');
+      redirect('pages');
     }
 
 
