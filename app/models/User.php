@@ -9,8 +9,8 @@
     // Add User / Register
     public function register($data){
       // Prepare Query
-      $this->db->query('INSERT INTO mitre_students (mitre_set,passport,fullname,info,s_o_r,address,mobile_num,whatsapp_num,church,spiritual,calling,into_call,prior_attended,occupation,lang_speak,lang_write,litracy,academics,discipler,refered_by,address_2,phone,relationship) 
-      VALUES (:mitre_set,:passport,:fullname, :info, :s_o_r, :address, :mobile_num, :whatsapp_num, :church, :spiritual, :calling, :into_call, :prior_attended, :occupation, :lang_speak, :lang_write, :litracy, :academics, :discipler, :refered_by, :address_2, :phone, :relationship)');
+      $this->db->query('INSERT INTO mitre_students (mitre_set,passport,fullname,info,s_o_r,address,zone,email,mobile_num,whatsapp_num,church,spiritual,calling,into_call,prior_attended,occupation,lang_speak,lang_write,litracy,academics,discipler,refered_by,address_2,phone,relationship) 
+      VALUES (:mitre_set,:passport,:fullname, :info, :s_o_r, :address, :zone, :email, :mobile_num, :whatsapp_num, :church, :spiritual, :calling, :into_call, :prior_attended, :occupation, :lang_speak, :lang_write, :litracy, :academics, :discipler, :refered_by, :address_2, :phone, :relationship)');
 
       // Bind Values
       $this->db->bind(':mitre_set', $data['set']);
@@ -19,6 +19,8 @@
       $this->db->bind(':info', $data['info']);
       $this->db->bind(':s_o_r', $data['s_o_r']);
       $this->db->bind(':address', $data['address']);
+      $this->db->bind(':zone', $data['zone']);
+      $this->db->bind(':email', $data['email']);
       $this->db->bind(':mobile_num', $data['mobile_num']);
       $this->db->bind(':whatsapp_num', $data['whatsapp_num']);
       $this->db->bind(':church', $data['assembly']);

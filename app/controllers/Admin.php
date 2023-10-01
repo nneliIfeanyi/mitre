@@ -8,9 +8,6 @@
 
     // Load Homepage
     public function index(){
-      // If logged in, redirect to posts
-    
-
       //Set Data
       $data = [
         'title' => '',

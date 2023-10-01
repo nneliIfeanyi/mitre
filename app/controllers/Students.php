@@ -18,6 +18,23 @@
         // Sanitize POST
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+        if(empty($_POST['call_sensed'])){
+          $_POST['call_sensed'] = 'Nill';
+  
+        }elseif(empty($_POST['into_calling'])){
+          $_POST['into_calling'] = 'Nill';
+  
+        }elseif(empty($_POST['c_r_t'])){
+          $_POST['c_r_t'] = 'Nill';
+  
+        } if(empty($_POST['why_mitre'])){
+          $_POST['why_mitre'] = 'Nill';
+  
+        }elseif(empty($_POST['ref_info'])){
+          $_POST['ref_info'] = 'Nill';
+  
+        }
+     
         $fullname = trim($_POST['surname']) . ' ' . trim($_POST['other_names']);
 
         $info = trim($_POST['age']) . ':' . $_POST['gender'] . ':' . $_POST['m_status'];
@@ -26,7 +43,7 @@
 
         $spiritual = trim($_POST['new_birth']) . ':' . trim($_POST['H_baptism']);
 
-        $into_call = trim($_POST['into_calling']) . ':' . trim($_POST['c_r_t']);
+        $into_call = $_POST['into_calling'] . ':' . $_POST['c_r_t'];
 
         $prior_attended = trim($_POST['prior_mitre']) . ':' . trim($_POST['why_mitre']);
 
@@ -51,6 +68,7 @@
           'other_names' => trim($_POST['other_names']),
           'age' => trim($_POST['age']),
           'gender' => $_POST['gender'],
+          'zone' => $_POST['zone'],
           'm_status' => $_POST['m_status'],
           's_o_r' => trim($_POST['s_o_r']),
           'address' => trim($_POST['address']),
@@ -62,6 +80,7 @@
           'church_role' => trim($_POST['church_role']),
           'spiritual' => $spiritual,
           'new_birth' => trim($_POST['new_birth']),
+          'email' => trim($_POST['email']),
           'H_baptism' => $_POST['H_baptism'],
           'call_sensed' => $_POST['call_sensed'],
           'into_call' => $into_call,
@@ -113,9 +132,11 @@
           'ref2_err' => '',
           'ref3_err' => '',
           'ref4_err' => '',
+          'zone_err' => '',
           's_o_r_err' => ''
         ];
-
+       // echo $data['into_calling'];
+       //echo $data['c_r_t'];
       if(empty($data['surname'])){
         $data['name_err'] = 'Please enter your surname';
         $this->view('students/registration', $data);
@@ -137,6 +158,10 @@
 
       }elseif(empty($data['s_o_r'])){
         $data['s_o_r_err'] = 'This field is required..';     
+        $this->view('students/registration', $data);
+
+      }elseif(empty($data['zone'])){
+        $data['zone_err'] = 'This field is required..';     
         $this->view('students/registration', $data);
 
       }elseif(empty($data['address'])){
@@ -257,6 +282,8 @@
           'm_status' => '',
           'mobile_num' => '',
           's_o_r' => '',
+          'zone' => '',
+          'email' => '',
           'address' => '',
           'whatsapp_num1' => '',
           'occupation' => '',

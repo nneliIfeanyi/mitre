@@ -82,6 +82,28 @@
             <input type="text" name="s_o_r" class="form-control form-control-lg <?php echo (!empty($data['s_o_r_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['s_o_r']; ?>">
             <span class="invalid-feedback"><?php echo $data['s_o_r_err']; ?>
           </div> 
+          <div class="col-4">
+          <p class="bg-light badge text-dark">Which zone will you like to attend mitre</p>
+         <div class="form-check <?php echo (!empty($data['zone_err'])) ? 'is-invalid' : ''; ?>">
+           <input class="form-check-input"  type="radio" name="zone" id="Minna" value="Minna" <?php if (isset($data['zone']) && $data['zone']=="Minna") echo "checked";?>>
+           <label class="form-check-label" for="Minna">
+             Minna
+           </label>
+         </div>
+         <div class="form-check">
+           <input class="form-check-input" type="radio" name="zone" id="Kaduna" value="Kaduna" <?php if (isset($data['zone']) && $data['zone']=="Kaduna") echo "checked";?>>
+           <label class="form-check-label" for="Kaduna">
+             kaduna
+           </label>
+         </div>
+         <div class="form-check">
+           <input class="form-check-input" type="radio" name="zone" id="Ufuma" value="Ufuma" <?php if (isset($data['zone']) && $data['zone']=="Ufuma") echo "checked";?>>
+           <label class="form-check-label" for="Ufuma">
+             Ufuma
+           </label>
+         </div>
+         <span class="invalid-feedback"><?php echo $data['zone_err']; ?></span>
+        </div>
           <div class="col-md-6">
             <p class="bg-light badge text-dark">Contact Address</p>
             <input type="text" name="address" class="form-control form-control-lg <?php echo (!empty($data['add_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['address']; ?>">
@@ -100,6 +122,10 @@
           <div class="col-md-6">
             <p class="bg-light badge text-dark">WhatsApp number</p>
             <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['whatsapp_num1']; ?>">
+          </div>
+          <div class="col-md-6">
+            <p class="bg-light badge text-dark">Email</p>
+            <input type="email" name="email" class="form-control form-control-lg" value="<?php echo $data['email']; ?>">
           </div> 
         </div>
 
@@ -235,7 +261,7 @@
             <input type="text" name="lang_write" class="form-control form-control-lg <?php echo (!empty($data['lang1_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lang_write']; ?>">
           <span class="invalid-feedback"><?php echo $data['lang1_err']; ?>
           </div>
-          <small class="text-muted">if more than one language seperate each language with a comma(,) as you type
+          <small class="text-muted">If more than one language seperate each language with a comma(,) as you type</small>
         </div>
 
         <!-- Litracy Row -->
@@ -371,6 +397,7 @@
           <div class="col-md-6">
             <p class="bg-light badge text-dark">Any specific information about the candidate ?</p>
             <input type="text" name="ref_info" class="form-control form-control-lg" value="<?php echo $data['ref_info']; ?>">
+            <small class="text-muted">If none leave empty..</small>
           </div>
         </div>
 
@@ -386,7 +413,7 @@
   </div>
 
   </div>
-  <div class="bg-dark pt-4 pb-1 mt-2 text-center">
+  <div class="text-bg-dark pt-4 pb-1 mt-2 text-center">
   <p class="lead fs-6">Copyright &copy; <?php echo date('Y');?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
     <br>
     <span class=""> All Rights Reserved</span></p>

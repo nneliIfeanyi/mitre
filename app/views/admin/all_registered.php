@@ -1,18 +1,20 @@
 <?php require APPROOT . '/views/inc/header2.php'; ?>
 <div class="container-fluid">
-<div class="card-body"  style="overflow-x: scroll; height:90vh;">
+<div class="card-body"  style="overflow-x: scroll; height:95vh;">
 <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
         <h2 class="text-center">A total of <span class="text-light bg-primary rounded-5 p-1 fw-bold"><?php echo $data['total'] ?></span> Registered</h2>
         <table class="table table-striped table-bordered">
           <thead>
              <tr class="">
                <th>S/N</th>
-               <th><b>Full Name</b></th>
+               <th><b>Name</b></th>
                <th><b>Phone</b></th>
                <th><b>WhatsApp_num</b></th>
                <th><b>Image</b></th>
                <th><b>Region</b></th>
+               <th><b>Zone</b></th>
                <th><b>Address</b></th>
+               <th><b>Email</b></th>
                <th><b>Church</b></th>
                <th><b>B.A:H_baptism</b></th>
                <th><b>Calling</b></th>
@@ -48,7 +50,9 @@
                   </a>
                 </td>
                 <td><?php echo $student->s_o_r?></td>
+                <td><?php echo $student->zone?></td>
                 <td><?php echo $student->address?></td>
+                <td><?php echo $student->email?></td>
                 <td><?php echo $student->church?></td>
 
                 <td><?php echo $student->	spiritual?></td>

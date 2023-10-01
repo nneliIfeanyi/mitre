@@ -117,7 +117,9 @@
 <div class="d-grid"><a href="<?php echo URLROOT; ?>/students/registration" class="btn btn-primary rounded-5">Register Now</a></div>
 </div>
 </div>
-<div class="bg-dark  pt-4 mt-5 text-center">
+
+
+<div class="bg-dark  py-4 mt-5 text-center">
   <p class="lead fs-6 text-light">Copyright &copy; <?php echo date('Y');?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
     <br>
     <span class=""> All Rights Reserved</span></p>
