@@ -82,24 +82,24 @@
             <input type="text" name="s_o_r" class="form-control form-control-lg <?php echo (!empty($data['s_o_r_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['s_o_r']; ?>">
             <span class="invalid-feedback"><?php echo $data['s_o_r_err']; ?>
           </div> 
-          <div class="col-4">
+          <div class="col-lg-6">
           <p class="bg-light badge text-dark">Which zone will you like to attend mitre</p>
          <div class="form-check <?php echo (!empty($data['zone_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input"  type="radio" name="zone" id="Minna" value="Minna" <?php if (isset($data['zone']) && $data['zone']=="Minna") echo "checked";?>>
            <label class="form-check-label" for="Minna">
-             Minna
+             Minna (Niger State)
            </label>
          </div>
          <div class="form-check">
            <input class="form-check-input" type="radio" name="zone" id="Kaduna" value="Kaduna" <?php if (isset($data['zone']) && $data['zone']=="Kaduna") echo "checked";?>>
            <label class="form-check-label" for="Kaduna">
-             kaduna
+             kaduna (Kaduna State)
            </label>
          </div>
          <div class="form-check">
            <input class="form-check-input" type="radio" name="zone" id="Ufuma" value="Ufuma" <?php if (isset($data['zone']) && $data['zone']=="Ufuma") echo "checked";?>>
            <label class="form-check-label" for="Ufuma">
-             Ufuma
+             Ufuma (Anambra State)
            </label>
          </div>
          <span class="invalid-feedback"><?php echo $data['zone_err']; ?></span>
@@ -250,13 +250,13 @@
         </div> 
         <!-- Languages Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
-          <div class="col-6">
+          <div class="col-lg-6">
             <p class="bg-light badge text-dark">Languages you speak </p>
             <input type="text" name="lang_speak" class="form-control form-control-lg <?php echo (!empty($data['lang_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lang_speak']; ?>">
           <span class="invalid-feedback"><?php echo $data['lang_err']; ?>
           </div> 
 
-          <div class="col-6">
+          <div class="col-lg-6">
             <p class="bg-light badge text-dark">Languages you write</p>
             <input type="text" name="lang_write" class="form-control form-control-lg <?php echo (!empty($data['lang1_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lang_write']; ?>">
           <span class="invalid-feedback"><?php echo $data['lang1_err']; ?>
