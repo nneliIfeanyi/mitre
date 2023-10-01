@@ -119,7 +119,7 @@
             <span class="invalid-feedback"><?php echo $data['num_err']; ?></span>
           </div> 
 
-          <div class="col-md-6">
+          <div class="col-md-6 mb-2">
             <p class="bg-light badge text-dark">WhatsApp number</p>
             <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['whatsapp_num1']; ?>">
           </div>
