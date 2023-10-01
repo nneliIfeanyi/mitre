@@ -82,7 +82,7 @@
             <input type="text" name="s_o_r" class="form-control form-control-lg <?php echo (!empty($data['s_o_r_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['s_o_r']; ?>">
             <span class="invalid-feedback"><?php echo $data['s_o_r_err']; ?>
           </div> 
-          <div class="col-lg-6">
+          <div class="col-lg-6 mb-3">
           <p class="bg-light badge text-dark">Which zone will you like to attend mitre</p>
          <div class="form-check <?php echo (!empty($data['zone_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input"  type="radio" name="zone" id="Minna" value="Minna" <?php if (isset($data['zone']) && $data['zone']=="Minna") echo "checked";?>>
