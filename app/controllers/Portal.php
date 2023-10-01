@@ -1,24 +1,20 @@
 <?php
-  class Pages extends Controller{
+  class Portal extends Controller{
     public function __construct(){
      
     }
 
     // Load Homepage
     public function index(){
-      // If logged in, redirect to posts
-      if(isset($_SESSION['user_id'])){
-        redirect('pages');
-      }
 
       //Set Data
       $data = [
         'title' => '',
-        'description' => 'Administrative Portal'
+        'description' => ''
       ];
 
       // Load homepage/index view
-      $this->view('pages/index', $data);
+      $this->view('portal/index', $data);
     }
 
     public function about(){
@@ -28,6 +24,6 @@
       ];
 
       // Load about view
-      $this->view('pages/about', $data);
+      $this->view('portal/about', $data);
     }
   }

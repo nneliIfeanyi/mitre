@@ -7,7 +7,7 @@
     }
 
     public function index(){
-      redirect('pages');
+      redirect('portal');
     }
 
 
@@ -265,7 +265,7 @@
         compressImage($imageTemp, $imageUploadPath, 9);
         if ($this->userModel->register($data)) {
           flash('success', 'Registration Successfull');
-          redirect('pages');
+          redirect('portal');
         }else{
           die('something went wrong');
         }
