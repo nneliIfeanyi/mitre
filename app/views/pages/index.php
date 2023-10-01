@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="container">
-  <div class="bg-light shadow">
+  <div class="bg-light border">
     <div class="lead"> <?php flash('success')?></div>
     <div class="px-2 py-5">
       <h1 class="display-3">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
@@ -9,7 +9,7 @@
   </div>
 
 <h2 class="fw-bold h3 pt-4">Criteria for <span class="text-primary">MITRE</span> Admission</h2>
-<p class="text-muted lead">Please before applying for admission into <span class="text-primary">MITRE</span> carefully read the following conditions</p>
+<p class="text-muted lead py-3">Please before applying for admission into <span class="text-primary">MITRE</span> carefully read the following conditions</p>
 <div class="row">
           <div class="col-md-6 mb-4">
             <div class="d-flex gap-3">
