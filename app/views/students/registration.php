@@ -417,7 +417,7 @@
 
 <div class="row">
 
-<div class="col-md-6">
+<div class="col-md-6 shadow">
     <h2 class="h4 text-light">Inquiries</h2>
     <ul class="list-unstyled text-light footer-link-list">
         <li>

@@ -123,7 +123,7 @@
 
 <div class="row">
 
-<div class="col-md-6">
+<div class="col-md-6 shadow">
     <h2 class="h4 text-light">Inquiries</h2>
     <ul class="list-unstyled text-light footer-link-list">
         <li>
@@ -133,7 +133,7 @@
     </ul>
 </div>
 
-<div class="col-md-6 pt-3 border-top">
+<div class="col-md-6 pt-3">
   <div class="text-center">
   <p class="lead fs-6 text-light">Copyright &copy; <?php echo date('Y');?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
     <br>
