@@ -181,7 +181,7 @@
 
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-md-6">
-            <p class="bg-light badge text-dark">What did you sence is God's calling upon your life ?</p>
+            <p class="bg-light badge text-dark">What did you sense is God's calling upon your life ?</p>
             <input type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['call_sensed']; ?>">
           </div>
         </div> 
@@ -413,10 +413,29 @@
   </div>
 
   </div>
-  <div class="text-bg-dark pt-4 pb-1 mt-2 text-center">
-  <p class="lead fs-6">Copyright &copy; <?php echo date('Y');?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
+  <div class="bg-dark  px-2 py-3 mt-5">
+
+<div class="row">
+
+<div class="col-md-6">
+    <h2 class="h4 text-light">Inquiries</h2>
+    <ul class="list-unstyled text-light footer-link-list">
+        <li>
+        <i class="fa fa-envelope fa-fw"></i>
+        <a style="text-decoration:none;color:antiquewhite;" href="mailto:mitreaffairs@gmail.com">mitreaffairs@gmail.com</a>
+        </li>
+    </ul>
+</div>
+
+<div class="col-md-6 pt-3 ">
+  <div class="text-center">
+  <p class="lead fs-6 text-light">Copyright &copy; <?php echo date('Y');?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
     <br>
     <span class=""> All Rights Reserved</span></p>
+  </div>
+  
+  </div>
+  </div>
   </div>
   
 <?php require APPROOT . '/views/inc/footer.php'; ?>
