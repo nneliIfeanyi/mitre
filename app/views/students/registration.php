@@ -367,8 +367,9 @@
 
         <div class="row shadow border mx-1 pt-2 pb-4">
             <div class="mb-2"><i class="fas fa-user fa-3x"></i></div>
-            <p class="">Passport photograph</p>
-            <input type="file" name="passport" class="form-control form-control-lg <?php echo (!empty($data['pass_err'])) ? 'is-invalid' : ''; ?>">
+            <p class="">Passport photograph <span class="text-muted fs-6">(Image must not be more than 1MB..)</span></p>
+            <input type="file" name="passport" id="file-upload" class="form-control form-control-lg <?php echo (!empty($data['pass_err'])) ? 'is-invalid' : ''; ?>">
+
             <span class="invalid-feedback"><?php echo $data['pass_err']; ?>
         </div>
         
@@ -403,7 +404,7 @@
 
         <div class="row mt-3">
           <div class=" d-grid col-md-6 offset-md-3">
-            <button type="submit" class="btn btn-primary rounded-5 fw-bold"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i> Submit</button>
+            <button type="submit" onclick="return VerifyUploadSizeIsOk()" class="btn btn-primary rounded-5 fw-bold"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i> Submit</button>
           </div> 
         </div>
 

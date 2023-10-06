@@ -2,7 +2,7 @@
 <div class="container-fluid">
 <div class="card-body"  style="overflow-x: scroll; height:95vh;">
 <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
-        <h2 class="text-center">A total of <span class="text-light bg-primary rounded-5 p-1 fw-bold"><?php echo $data['total'] ?></span> Registered</h2>
+        <p class="text-center">A total of <span class="text-light bg-primary rounded-5 p-1 fw-bold"><?php echo $data['total'] ?></span> Registered</p>
         <table class="table table-striped table-bordered">
           <thead>
              <tr class="">
