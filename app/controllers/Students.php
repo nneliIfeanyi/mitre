@@ -135,15 +135,10 @@
           'zone_err' => '',
           's_o_r_err' => ''
         ];
-       // echo $data['into_calling'];
-       //echo $data['c_r_t'];
-      if(empty($data['surname'])){
-        $data['name_err'] = 'Please enter your surname';
-        $this->view('students/registration', $data);
-
-      }elseif(empty($data['other_names'])){
-          $data['name_err2'] = 'Please enter your other names';
-          $this->view('students/registration', $data);
+       
+      if(empty($data['surname']) || empty($data['other_names'])){
+        flash('err', 'All feilds marked asterisk (*) are required..', 'alert alert-danger');
+        redirect('students/registration');
       }elseif(empty($data['age'])){
           $data['age_err'] = 'Age is required..';     
           $this->view('students/registration', $data);

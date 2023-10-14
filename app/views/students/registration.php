@@ -10,17 +10,18 @@
       <p>This form should be completed and submitted on or before 31 JAN. 2024</p>
     </div>
       <form action="<?php echo URLROOT; ?>/students/registration" method="post" enctype="multipart/form-data">
-
+      
         <!-- Names Row -->
         <div class="row  shadow border mx-1 pt-2 pb-4">
+        <?php flash('err')?>
         <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">SurName</p>
+            <p class="bg-light badge text-dark">SurName</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input ty name="surname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['surname']; ?>">
             <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
         </div> 
 
         <div class="col-md-6">
-            <p class="bg-light badge text-dark">Other Names</p>
+            <p class="bg-light badge text-dark">Other Names</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input ty name="other_names" class="form-control form-control-lg <?php echo (!empty($data['name_err2'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['other_names']; ?>">
             <span class="invalid-feedback"><?php echo $data['name_err2']; ?></span>
         </div> 
@@ -28,14 +29,14 @@
          
          <!-- Age gender & marital status Row -->
         <div class="row border shadow mx-1 py-2">
-          <div class="col-4">
-            <p class="bg-light badge text-dark">Age</p>
-            <input type="number" name="age" class="form-control form-control-lg <?php echo (!empty($data['age_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['age']; ?>">
+          <div class="col-6 col-md-4 mb-3">
+            <p class="bg-light badge text-dark">Age</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
+            <input type="number" name="age" class="form-control form-control-lg <?php echo (!empty($data['age_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['age']; ?>" style="width: 70%;">
             <span class="invalid-feedback"><?php echo $data['age_err']; ?></span>
           </div>
 
-        <div class="col-4">
-          <p class="bg-light badge text-dark">Gender</p>
+        <div class="col-6 col-md-4 mb-3">
+          <p class="bg-light badge text-dark">Gender</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
          <div class="form-check <?php echo (!empty($data['gen_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input" type="radio"  name="gender" id="male" value="male" <?php if (isset($data['gender']) && $data['gender']=="male") echo "checked";?>>
            <label class="form-check-label" for="male">
@@ -51,8 +52,8 @@
          <span class="invalid-feedback"><?php echo $data['gen_err']; ?></span>
         </div>
 
-        <div class="col-4">
-          <p class="bg-light badge text-dark">Marital Status</p>
+        <div class="col-12 col-md-4">
+          <p class="bg-light badge text-dark">Marital Status</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
          <div class="form-check <?php echo (!empty($data['mar_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input"  type="radio" name="m_status" id="Single" value="Single" <?php if (isset($data['m_status']) && $data['m_status']=="Single") echo "checked";?>>
            <label class="form-check-label" for="Single">
@@ -78,12 +79,12 @@
         <!-- Physical Address Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-6 mb-3">
-            <p class="bg-light badge text-dark">State of residence</p>
+            <p class="bg-light badge text-dark">State of residence</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="s_o_r" class="form-control form-control-lg <?php echo (!empty($data['s_o_r_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['s_o_r']; ?>">
             <span class="invalid-feedback"><?php echo $data['s_o_r_err']; ?>
           </div> 
           <div class="col-lg-6 mb-3">
-          <p class="bg-light badge text-dark">Which zone will you like to attend mitre</p>
+          <p class="bg-light badge text-dark">Which zone will you like to attend mitre</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
          <div class="form-check <?php echo (!empty($data['zone_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input"  type="radio" name="zone" id="Minna" value="Minna" <?php if (isset($data['zone']) && $data['zone']=="Minna") echo "checked";?>>
            <label class="form-check-label" for="Minna">
@@ -105,7 +106,7 @@
          <span class="invalid-feedback"><?php echo $data['zone_err']; ?></span>
         </div>
           <div class="col-md-6">
-            <p class="bg-light badge text-dark">Contact Address</p>
+            <p class="bg-light badge text-dark">Contact Address</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="address" class="form-control form-control-lg <?php echo (!empty($data['add_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['address']; ?>">
             <span class="invalid-feedback"><?php echo $data['add_err']; ?>
           </div> 
@@ -114,7 +115,7 @@
         <!-- Phone Numbers Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Mobile number</p>
+            <p class="bg-light badge text-dark">Mobile number</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="number" name="mobile_num" class="form-control form-control-lg <?php echo (!empty($data['num_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['mobile_num']; ?>">
             <span class="invalid-feedback"><?php echo $data['num_err']; ?></span>
           </div> 
@@ -132,7 +133,7 @@
         <!-- church Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-12">
-            <p class="bg-light badge text-dark">Church / Local Assembly</p>
+            <p class="bg-light badge text-dark">Church / Local Assembly</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="church" class="form-control form-control-lg <?php echo (!empty($data['ass_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['church']; ?>">
             <span class="invalid-feedback"><?php echo $data['ass_err']; ?>
           </div> 
@@ -141,7 +142,7 @@
         <!-- function Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-12">
-            <p class="bg-light badge text-dark">Your function or post in Church</p>
+            <p class="bg-light badge text-dark">Your function or post in Church</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="church_role" class="form-control form-control-lg <?php echo (!empty($data['role_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['church_role']; ?>">
             <span class="invalid-feedback"><?php echo $data['role_err']; ?>
           </div> 
@@ -150,13 +151,13 @@
         <!-- Born again Row -->
         <div class="row border shadow mx-1 py-2"> <?php echo (!empty($data['role_err'])) ? 'is-invalid' : ''; ?>
           <div class="col-md-4 mb-2">
-            <p class="bg-light badge text-dark">When were you born again</p>
+            <p class="bg-light badge text-dark">When were you born again</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="number" name="new_birth" class="form-control form-control-lg <?php echo (!empty($data['BA_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['new_birth']; ?>">
             <span class="invalid-feedback"><?php echo $data['BA_err']; ?>
           </div>
 
         <div class="col-md-4 mb-2">
-          <p class="bg-light badge text-dark">Have you been Baptised into The Holy Ghost</p>
+          <p class="bg-light badge text-dark">Have you been Baptised into The Holy Ghost</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
          <div class="form-check <?php echo (!empty($data['HG_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input" type="radio" name="H_baptism" id="Yes" value="yes" <?php if (isset($data['H_baptism']) && $data['H_baptism']=="yes") echo "checked";?>>
            <label class="form-check-label" for="Yes">
@@ -210,7 +211,7 @@
           </div>
 
           <div class="col-md-4">
-            <p class="fs-6">When can you say you enterd into it ?</p>
+            <p class="bg-light badge text-dark">When can you say you enterd into it ?</p>
             <input type="text" name="c_r_t" class="form-control form-control-lg" value="<?php echo $data['c_r_t']; ?>">
           </div>
         </div>
@@ -218,7 +219,7 @@
         <!-- Work experience Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-md-6 mb-2">
-            <p class="fs-6">Have you attended MITRE before ? </p>
+            <p class="bg-light badge text-dark">Have you attended MITRE before ? </p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <div class="form-check <?php echo (!empty($data['prior_err'])) ? 'is-invalid' : ''; ?>">
            <input class="form-check-input" type="radio" name="prior_mitre" id="Yes, but did not graduate" value="Yes, but did not graduate" <?php if (isset($data['prior_mitre']) && $data['prior_mitre']=="Yes, but did not graduate") echo "checked";?>>
            <label class="form-check-label" for="Yes, but did not graduate">
@@ -235,7 +236,7 @@
           </div>
 
           <div class="col-md-6 mb-2">
-            <p class="fs-6">Why do you want to attend MITRE ? (optional) </p>
+            <p class="bg-light badge text-dark">Why do you want to attend MITRE ? (optional) </p>
            <input type="text" name="why_mitre" class="form-control form-control-lg" value="<?php echo $data['why_mitre']; ?>">
           </div>
         </div>
@@ -243,7 +244,7 @@
 
         <div class="row shadow border mx-1 pt-2 pb-4">
         <div class="col-md-6">
-            <p class="bg-light badge text-dark">Working experience (ocupation)</p>
+            <p class="bg-light badge text-dark">Working experience (ocupation)</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="occupation" class="form-control form-control-lg <?php echo (!empty($data['occ_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['occupation']; ?>">
             <span class="invalid-feedback"><?php echo $data['occ_err']; ?>
           </div> 
@@ -251,23 +252,23 @@
         <!-- Languages Row -->
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-lg-6">
-            <p class="bg-light badge text-dark">Languages you speak </p>
+            <p class="bg-light badge text-dark">Languages you speak </p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="lang_speak" class="form-control form-control-lg <?php echo (!empty($data['lang_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lang_speak']; ?>">
           <span class="invalid-feedback"><?php echo $data['lang_err']; ?>
           </div> 
 
           <div class="col-lg-6">
-            <p class="bg-light badge text-dark">Languages you write</p>
+            <p class="bg-light badge text-dark">Languages you write</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="lang_write" class="form-control form-control-lg <?php echo (!empty($data['lang1_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lang_write']; ?>">
           <span class="invalid-feedback"><?php echo $data['lang1_err']; ?>
           </div>
-          <small class="text-muted">If more than one language seperate each language with a comma(,) as you type</small>
+          <small class="text-muted" style="font-size: 11px;">If more than one language seperate each language with a comma(,) as you type</small>
         </div>
 
         <!-- Litracy Row -->
         <div class="row border shadow mx-1 py-2">
           <div class="col-12">
-            <p class="">In <span class="text-primary">MITRE</span> you are expected to do all assignments, sit down through the meetings, etc. Can you read and write in English Language effectively?</p>
+            <p class="">In <span class="text-primary">MITRE</span> you are expected to do all assignments, sit down through the meetings, etc. Can you read and write in English Language effectively? <span style="color: red;font-weight:bold;"><sup>*</sup></span></p>
             <div class="form-check <?php echo (!empty($data['lit_err'])) ? 'is-invalid' : ''; ?>">
               <input class="form-check-input" type="radio" name="litracy" value="yes" id="Yes" <?php if (isset($data['litracy']) && $data['litracy']=="yes") echo "checked";?>>
               <label class="form-check-label" for="Yes">
@@ -287,7 +288,7 @@
         <!-- Certificate Row -->
         <div class="row border shadow mx-1 py-2">
           <div class="col-12">
-            <p class="badge text-dark bg-light">Highest Certificate obtained</p>
+            <p class="badge text-dark bg-light">Highest Certificate obtained</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <div class="row mx-1">
               <div class="form-check col-4">
                 <input class="form-check-input" type="radio" name="edu_qual" id="FSLC" value="FSLC" <?php if (isset($data['edu_qual']) && $data['edu_qual']=="FSLC") echo "checked";?>>
@@ -343,13 +344,13 @@
 
               <div class="row mx-1 pt-2 pb-4">
                 <div class="col-md-6">
-                  <p class="">What year did you obtain it</p>
+                  <p class="bg-light badge text-dark">What year did you obtain it</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
                   <input type="number" name="grad_year" class="form-control form-control-lg <?php echo (!empty($data['grad_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['grad_year']; ?>">
                 <span class="invalid-feedback"><?php echo $data['grad_err']; ?>
                 </div> 
 
                 <div class="col-md-6">
-                  <p class="">Under Which school / institution</p>
+                  <p class="bg-light badge text-dark">Under Which school / institution</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
                   <input type="text" name="institution" class="form-control form-control-lg <?php echo (!empty($data['inst_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['institution']; ?>">
                 <span class="invalid-feedback"><?php echo $data['inst_err']; ?>
                 </div> 
@@ -359,46 +360,49 @@
 
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-md-6">
-            <p class="bg-light badge text-dark">Who has / had spiritual oversight / influence over you</p>
+            <p class="bg-light badge text-dark">Who has / had spiritual oversight / influence over you</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="discipler" class="form-control form-control-lg <?php echo (!empty($data['discipler_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['discipler']; ?>">
             <span class="invalid-feedback"><?php echo $data['discipler_err']; ?>
           </div>
         </div>
 
         <div class="row shadow border mx-1 pt-2 pb-4">
-            <div class="mb-2"><i class="fas fa-user fa-3x"></i></div>
-            <p class="">Passport photograph <span class="text-muted fs-6">(Image must not be more than 1MB..)</span></p>
+            
+          <p class="">
+            <i class="fas fa-user fa-2x"></i> Passport photograph<span style="color: red;font-weight:bold;"><sup>*</sup></span><br>
+            <span style="font-size: 11px;" class="text-muted">(Image must not be more than 1MB..)</span>
+          </p>
             <input type="file" name="passport" id="file-upload" class="form-control form-control-lg <?php echo (!empty($data['pass_err'])) ? 'is-invalid' : ''; ?>">
-
+            
             <span class="invalid-feedback"><?php echo $data['pass_err']; ?>
         </div>
         
         <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="lead fs-6 text-primary">REFEREE'S COLUMN</div>
           <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Referals name</p>
+            <p class="bg-light badge text-dark">Referals name</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="ref_name" class="form-control form-control-lg <?php echo (!empty($data['ref1_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['ref_name']; ?>">
           <span class="invalid-feedback"><?php echo $data['ref1_err']; ?>
           </div>
           <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Referals phone number</p>
+            <p class="bg-light badge text-dark">Referals phone number</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="number" name="ref_phone" class="form-control form-control-lg <?php echo (!empty($data['ref2_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['ref_phone']; ?>">
           <span class="invalid-feedback"><?php echo $data['ref2_err']; ?>
           </div>
           <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Referals address</p>
+            <p class="bg-light badge text-dark">Referals address</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="ref_address" class="form-control form-control-lg <?php echo (!empty($data['ref3_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['ref_address']; ?>">
           <span class="invalid-feedback"><?php echo $data['ref3_err']; ?>
           </div>
           <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">How long have you known each other</p>
+            <p class="bg-light badge text-dark">How long have you known each other</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input type="text" name="ref_duration" class="form-control form-control-lg <?php echo (!empty($data['ref4_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['ref_duration']; ?>">
          <span class="invalid-feedback"><?php echo $data['ref4_err']; ?>
           </div>
           <div class="col-md-6">
             <p class="bg-light badge text-dark">Any specific information about the candidate ?</p>
             <input type="text" name="ref_info" class="form-control form-control-lg" value="<?php echo $data['ref_info']; ?>">
-            <small class="text-muted">If none leave empty..</small>
+            <small class="text-muted" style="font-size: 11px;">If none leave empty..</small>
           </div>
         </div>
 
