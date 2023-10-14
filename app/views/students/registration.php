@@ -1,4 +1,9 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<style>
+  p{
+    margin-bottom: 0;
+  }
+</style>
 <div class="container">
 <div class="row r mb-5 pb-3">
   <div class="col-12">
