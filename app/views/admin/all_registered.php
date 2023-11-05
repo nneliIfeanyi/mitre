@@ -143,7 +143,8 @@ transform: translateX(-100%);
     scrollY: '60vh',
     scrollCollapse: true,
     ordering: false,
-    searching: false
+    searching: false,
+    info: false
   });
 </script>
 
