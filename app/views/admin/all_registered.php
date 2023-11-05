@@ -30,9 +30,9 @@ transform: translateX(-100%);
 <h1 style="text-transform: uppercase;font-style: italic;font-weight:bold;">A total of <span class="text-light bg-primary rounded-5 p-1 fw-bold"><?php echo $data['total'] ?></span> Registered</h1>
 </div>
 <div class="container-fluid">
-<div class="card-body"  style="overflow-x: scroll; height:81.5vh;">
+<!-- <div class="card-body"  style="overflow-x: scroll; height:81.5vh;"> -->
 <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered" id="eg" style="width:95%;">
           <thead>
              <tr class="">
                <th>S/N</th>
@@ -137,6 +137,14 @@ transform: translateX(-100%);
          </table>
          </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
+<script type="text/javascript">
+  new DataTable('#eg', {
+    scrollX: true,
+    scrollY: '90vh',
+    scrollCollapse: true,
+    ordering: false
+  });
+</script>
 
 
     

@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/font-awesome.css" />
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/bootstrap.css" />
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/styles.css" />
+  <link rel="stylesheet" href="<?= URLROOT ;?>/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="<?= URLROOT ;?>/css/dataTables.bootstrap5.min.css" />
 
   <title><?php echo SITENAME; ?></title>
 </head>
