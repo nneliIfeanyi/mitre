@@ -104,7 +104,7 @@ transform: translateX(-100%);
             </tr>
             <?php $numbering++; endforeach; ?>
            </tbody>
-           <tfoot>
+           <!-- <tfoot>
              <tr class="">
                <th>S/N</th>
                <th><b>Name</b></th>
@@ -133,7 +133,7 @@ transform: translateX(-100%);
                <th><b>Reg_dateTime</b></th>
                <th><b>Action</b></th>
              </tr>
-          </tfoot>
+          </tfoot> -->
          </table>
          </div>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
