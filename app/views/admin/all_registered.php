@@ -32,7 +32,7 @@ transform: translateX(-100%);
 <div class="container-fluid">
 <!-- <div class="card-body"  style="overflow-x: scroll; height:81.5vh;"> -->
 <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
-        <table class="table table-striped table-bordered" id="eg" style="width:95%;">
+        <table class="table table-striped" id="eg" style="width:95%;">
           <thead>
              <tr class="">
                <th>S/N</th>
@@ -144,7 +144,7 @@ transform: translateX(-100%);
     scrollCollapse: true,
     ordering: false,
     searching: false,
-    info: false
+    info: false,
   });
 </script>
 

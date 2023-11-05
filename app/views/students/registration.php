@@ -26,9 +26,23 @@
         </div> 
 
         <div class="col-md-6">
-            <p class="bg-light badge text-dark">Other Names</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
+            <p class="bg-light badge text-dark">Other Name</p><span style="color: red;font-weight:bold;"><sup>*</sup></span>
             <input ty name="other_names" class="form-control form-control-lg <?php echo (!empty($data['name_err2'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['other_names']; ?>">
+            <small class="text-muted" style="font-size: 11px;">Only one name required (your surname and one other name.)</small>
             <span class="invalid-feedback"><?php echo $data['name_err2']; ?></span>
+
+            <div class="modal fade" id="info">
+              <div class="modal-dailog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5">
+                      modal title
+                    </h1>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div> 
         </div>
          
