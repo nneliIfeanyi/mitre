@@ -140,7 +140,7 @@ transform: translateX(-100%);
 <script type="text/javascript">
   new DataTable('#eg', {
     scrollX: true,
-    scrollY: '90vh',
+    scrollY: '60vh',
     scrollCollapse: true,
     ordering: false
   });
