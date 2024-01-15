@@ -231,13 +231,9 @@
         $data['discipler_err'] = 'This field is required';     
         $this->view('students/registration', $data);
 
-      }elseif(empty($passport)){
-        $data['pass_err'] = 'Pls. upload your passport photograph..';     
-        $this->view('students/registration', $data);
-        
-      } elseif(!in_array($fileType, $allowTypes)) { 
-        $data['pass_err'] = 'Image format not supported.. allowed formats are jpg, png or jpeg';     
-        $this->view('students/registration', $data);
+      // } elseif(!in_array($fileType, $allowTypes)) { 
+      //   $data['pass_err'] = 'Image format not supported.. allowed formats are jpg, png or jpeg';     
+      //   $this->view('students/registration', $data);
           
       }elseif(empty($data['ref_name'])){
         $data['ref1_err'] = 'This field is required';     
@@ -257,12 +253,21 @@
 
       }else{      
           // Compress size and upload image 
-        compressImage($imageTemp, $imageUploadPath, 9);
+        if(empty($passport)){
+          if ($this->userModel->register($data)) {
+            flash('success', 'Registration Successfull');
+            redirect('portal');
+          }else{
+            die('something went wrong');
+          }
+        }else{
+          compressImage($imageTemp, $imageUploadPath, 9);
         if ($this->userModel->register($data)) {
           flash('success', 'Registration Successfull');
           redirect('portal');
         }else{
           die('something went wrong');
+        }
         }
         }
       }else {

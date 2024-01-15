@@ -31,7 +31,7 @@
             <small class="text-muted" style="font-size: 11px;">Only one name required (your surname and one other name.)</small>
             <span class="invalid-feedback"><?php echo $data['name_err2']; ?></span>
 
-            <div class="modal fade" id="info">
+            <!-- <div class="modal fade" id="info">
               <div class="modal-dailog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -42,7 +42,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
         </div> 
         </div>
          
@@ -387,9 +387,8 @@
 
         <div class="row shadow border mx-1 pt-2 pb-4">
             
-          <p class="">
-            <i class="fas fa-user fa-2x"></i> Passport photograph<span style="color: red;font-weight:bold;"><sup>*</sup></span><br>
-            <span style="font-size: 11px;" class="text-muted">(Image must not be more than 1MB..)</span>
+          <p class="py-1">
+            <i class="fas fa-user fa-2x"></i> Passport photograph <span style="font-size: 11px;" class="text-muted">(Optional..)</span>
           </p>
             <input type="file" name="passport" id="file-upload" class="form-control form-control-lg <?php echo (!empty($data['pass_err'])) ? 'is-invalid' : ''; ?>">
             
