@@ -92,7 +92,7 @@
       }
     }
 
-       // Get All Posts
+       // Get All Students
        public function allStudents(){
         $this->db->query("SELECT * FROM mitre_students");
   
@@ -101,8 +101,68 @@
         return $results;
       }
 
+
+       //Get All Kaduna Students
+      public function allKaduna(){
+        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
+        $this->db->bind(':zone', 'Kaduna');
+        $results = $this->db->resultset();
+
+        return $results;
+      }
+
+       //Get All Ufuma Students
+      public function allUfuma(){
+        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
+        $this->db->bind(':zone', 'Ufuma');
+        $results = $this->db->resultset();
+
+        return $results;
+      }
+
+       //Get All Minna Students
+      public function allMinna(){
+        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
+        $this->db->bind(':zone', 'Minna');
+        $results = $this->db->resultset();
+
+        return $results;
+      }
+
+
+      //Get All Students rowCount
       public function totals(){
         $this->db->query("SELECT * FROM mitre_students");
+        $this->db->resultset();
+        $total = $this->db->rowCount();
+
+        return $total;
+      }
+
+       //Get All Ufuma Students rowCount
+      public function totalUfuma(){
+        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
+        $this->db->bind(':zone', 'Ufuma');
+        $this->db->resultset();
+        $total = $this->db->rowCount();
+
+        return $total;
+      }
+
+       //Get All Kaduna Students rowCount
+      public function totalKaduna(){
+        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
+        $this->db->bind(':zone', 'Kaduna');
+        $this->db->resultset();
+        $total = $this->db->rowCount();
+
+        return $total;
+      }
+
+       //Get All Minna Students rowCount
+      public function totalMinna(){
+        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
+        $this->db->bind(':zone', 'Minna');
         $this->db->resultset();
         $total = $this->db->rowCount();
 

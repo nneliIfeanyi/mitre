@@ -7,7 +7,9 @@
       <h1 class="display-3">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
       <p class="lead text-primary">Administrative Portal</p>
       <?php if(!isset($_SESSION['user_id'])) : ?>
-      <div class="d-grid"><a href="<?php echo URLROOT; ?>/admin/login" class="btn btn-primary rounded-5">Login</a></div>
+      <div class="d-grid"><a href="<?php echo URLROOT; ?>/admin/login" class="btn btn-primary rounded-4">Login To Continue <i class="fa fa-sign-in"></i></a></div>
+      <?php else:?>
+        <div class="d-grid"><a href="<?php echo URLROOT; ?>/admin/all_registered" class="btn btn-primary rounded-4">Go to dashboard <i class="fa fa-sign-in"></i></a></div>
       <?php endif; ?>
     </div>
   </div>

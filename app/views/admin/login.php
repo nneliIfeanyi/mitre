@@ -1,10 +1,10 @@
 <?php require APPROOT . '/views/inc/header2.php'; ?>
 <div class="container-lg">
 <div class="row">
-<div class="col-md-6 mx-auto">
+<div class="col-md-8 mx-auto">
       <div class="card card-body bg-light mt-5">
-    
-        <h2 class="text-primary">Admin Login</h2>
+        <p class="text-center" data-bs-toggle="tooltip" data-bs-title="Restricted Access, only admin can login"><i class="fa fa-lock fa-5x"></i></p><hr>
+        <h1 class="text-primary">Admin Login</h1>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo URLROOT; ?>/admin/login" method="post">
           <div class="form-group mb-3">

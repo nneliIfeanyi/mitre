@@ -1,9 +1,10 @@
 <?php
   class Admin extends Controller{
     private $userModel;
-
+    private $alumniModel;
     public function __construct(){
       $this->userModel = $this->model('User');
+      $this->alumniModel = $this->model('Alumnus');
     }
 
     // Load Homepage
@@ -18,24 +19,93 @@
       $this->view('admin/index', $data);
     }
 
-    public function progress(){
-   
+     // Load Dashoard
+    public function dashboard(){
+      //resultSets
+      $students = $this->userModel->allStudents();
+      //rowCounts
+      $total = $this->userModel->totals();
+      
       //Set Data
       $data = [
-      
+       'total' => $total,  
+       'students' => $students
       ];
 
-      // Load homepage/index view
-      $this->view('admin/progress', $data);
+      // Load homepage/dashboard view
+      $this->view('admin/dashboard', $data);
     }
 
+    //Load All Kaduna Students
+    public function all_kaduna(){
+    $all_kaduna = $this->userModel->totalKaduna();
+    $kaduna_students = $this->userModel->allKaduna();
+      //Set Data
+      $data = [
+        'students' => $kaduna_students,
+        'rowCount' => $all_kaduna
+      ];
+
+      // Load homepage/all_kaduna view
+      $this->view('admin/all_kaduna', $data);
+    }
+
+    public function all_minna(){
+    $all_minna = $this->userModel->totalMinna();
+    $minna_students = $this->userModel->allMinna();
+      //Set Data
+      $data = [
+        'students' => $minna_students,
+        'rowCount' => $all_minna
+      ];
+
+      // Load homepage/all_kaduna view
+      $this->view('admin/all_minna', $data);
+    }
+
+    //Load All Ufuma Students
+    public function all_ufuma(){
+    $all_ufuma = $this->userModel->totalufuma();
+    $ufuma_students = $this->userModel->allufuma();
+      //Set Data
+      $data = [
+        'students' => $ufuma_students,
+        'rowCount' => $all_ufuma
+      ];
+
+      // Load homepage/all_ufuma view
+      $this->view('admin/all_ufuma', $data);
+    }
+
+    //Load All Alumni
+    public function alumni_2024(){
+    $total_alumni = $this->alumniModel->total_alumni();
+    $alumni_total = $this->alumniModel->alumni_total();
+      //Set Data
+      $data = [
+        'students' => $alumni_total,
+        'rowCount' => $total_alumni
+      ];
+
+      // Load homepage/all_ufuma view
+      $this->view('admin/alumni_2024', $data);
+    }
+
+   
+
     public function all_registered(){
-        $total = $this->userModel->totals();
-        $students = $this->userModel->allStudents();
+      $all_ufuma = $this->userModel->totalUfuma();
+      $all_kaduna = $this->userModel->totalKaduna();
+      $all_minna = $this->userModel->totalMinna();
+      $total = $this->userModel->totals();
+      $students = $this->userModel->allStudents();
         //Set Data
         $data = [
-          'total' => $total,  
-          'students' => $students
+          'rowCount' => $total,  
+          'students' => $students,
+          'all_minna' => $all_minna,
+          'all_kaduna' => $all_kaduna,
+          'all_ufuma' => $all_ufuma,
         ];
   
         // Load homepage/index view
