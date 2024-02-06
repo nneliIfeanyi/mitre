@@ -38,7 +38,7 @@
         // Check if POST
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
           $year = date('Y');
-          $fullname = trim($_POST['surname'])." ".trim($_POST['surname']);
+          $fullname = trim($_POST['surname'])." ".trim($_POST['other_names']);
           $data = [
             'name' => $fullname,
             'email' => trim($_POST['email']),
@@ -71,12 +71,12 @@
                     <div class="alert alert-success">
                       Registration Successfull, Redirecting...  <span class="spinner-border spinner-border-sm"> </span>
                     </div>
-                    <meta http-equiv="refresh" content="7; <?=$redirect?>">
+                    <meta http-equiv="refresh" content="4; <?=$redirect?>">
                   ';
             
           }else{
             echo '
-                  <div class="alert alert-success">
+                  <div class="alert alert-danger">
                     Something went wrong... Try again later
                   </div>
                   
