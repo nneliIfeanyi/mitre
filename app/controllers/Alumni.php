@@ -59,7 +59,7 @@
           
            echo '
                   <div class="alert alert-danger">
-                    Someone already registered with same phone number..
+                    Phone number already exist you cannot register twice..
                   </div>
                 ';
           }else{
@@ -69,7 +69,7 @@
               $redirect = URLROOT.'/alumni';
               echo '
                     <div class="alert alert-success">
-                      Registration Successfull, Redirecting...  <span class="spinner-border spinner-border-sm"> </span>
+                      Registration Successfull...  <span class="spinner-border spinner-border-sm"> </span>
                     </div>
                     <meta http-equiv="refresh" content="4; <?=$redirect?>">
                   ';
