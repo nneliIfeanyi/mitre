@@ -113,13 +113,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="<?php echo URLROOT;?>/admin/progress" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Set <?= SENIOR?></p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="<?php echo URLROOT;?>/admin/progress" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Set <?= JUNIOR?></p>
                 </a>
