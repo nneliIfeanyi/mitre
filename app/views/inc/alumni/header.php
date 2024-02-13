@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/styles.css" />
 
   <title><?php echo SITENAME; ?></title>
-</head>
-<style type="text/css">
+
+  <style type="text/css">
 
 input.parsley-error,
 select.parsley-error,
@@ -55,6 +55,9 @@ textarea.parsley-success:focus {
     color: #D43F3A;
     opacity: 1;
 }
+
 </style>
+</head>
+
 <body>
   <?php require APPROOT . '/views/inc/alumni/navbar.php'; ?>

@@ -6,6 +6,16 @@
       $this->db = new Database;
     }
 
+    // Get states
+    public function getStates(){
+      $this->db->query("SELECT * FROM states");
+      
+      $results = $this->db->resultset();
+
+      return $results;
+    }
+
+
     // Add User / Register
     public function register($data){
       // Prepare Query
@@ -47,6 +57,39 @@
       }
     }
 
+
+     // REGISTRATION 
+    public function register_by_admin($data){
+      // Prepare Query
+      $this->db->query('INSERT INTO mitre_students (mitre_set, fullname, info, zone, address, mobile_num, whatsapp_num, email, calling, occupation, church) 
+      VALUES (:mitre_set, :name, :gender, :zone, :address, :phone, :whatsapp, :email, :ministry, :occupation, :assembly)');
+
+      // Bind Values
+      $this->db->bind(':mitre_set', $data['set']);
+      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':gender', $data['gender']);
+      $this->db->bind(':zone', $data['zone']);
+      $this->db->bind(':address', $data['address']);
+      //$this->db->bind(':state', $data['state']);
+      $this->db->bind(':phone', $data['phone']);
+      $this->db->bind(':whatsapp', $data['whatsapp']);
+      //$this->db->bind(':telegram', $data['telegram']);
+      $this->db->bind(':email', $data['email']);
+      $this->db->bind(':ministry', $data['ministry']);
+      $this->db->bind(':occupation', $data['occupation']);
+      $this->db->bind(':assembly', $data['assembly']);
+      //$this->db->bind(':year', $data['year']);
+      
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
     // Find USer BY Phone
     public function findUserByPhone($phone){
       $this->db->query("SELECT * FROM mitre_students WHERE mobile_num = :mobile_num");
@@ -77,6 +120,37 @@
       }
     }
 
+     // Find USer BY Email
+     public function findAdmin($user_name){
+      $this->db->query("SELECT * FROM admin WHERE name = :user_name");
+      $this->db->bind(':user_name', $user_name);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Login / Authenticate User
+    public function adminLogin($user_name, $password){
+      $this->db->query("SELECT * FROM admin WHERE name = :user_name");
+      $this->db->bind(':user_name', $user_name);
+
+      $row = $this->db->single();
+      
+    
+      if($row->password == $password){
+        return $row;
+      } else {
+        return false;
+      }
+    }
+
+
     // Login / Authenticate User
     public function login($email, $password){
       $this->db->query("SELECT * FROM users WHERE name = :email");
@@ -92,84 +166,7 @@
       }
     }
 
-       // Get All Students
-       public function allStudents(){
-        $this->db->query("SELECT * FROM mitre_students");
-  
-        $results = $this->db->resultset();
-
-        return $results;
-      }
-
-
-       //Get All Kaduna Students
-      public function allKaduna(){
-        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
-        $this->db->bind(':zone', 'Kaduna');
-        $results = $this->db->resultset();
-
-        return $results;
-      }
-
-       //Get All Ufuma Students
-      public function allUfuma(){
-        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
-        $this->db->bind(':zone', 'Ufuma');
-        $results = $this->db->resultset();
-
-        return $results;
-      }
-
-       //Get All Minna Students
-      public function allMinna(){
-        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
-        $this->db->bind(':zone', 'Minna');
-        $results = $this->db->resultset();
-
-        return $results;
-      }
-
-
-      //Get All Students rowCount
-      public function totals(){
-        $this->db->query("SELECT * FROM mitre_students");
-        $this->db->resultset();
-        $total = $this->db->rowCount();
-
-        return $total;
-      }
-
-       //Get All Ufuma Students rowCount
-      public function totalUfuma(){
-        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
-        $this->db->bind(':zone', 'Ufuma');
-        $this->db->resultset();
-        $total = $this->db->rowCount();
-
-        return $total;
-      }
-
-       //Get All Kaduna Students rowCount
-      public function totalKaduna(){
-        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
-        $this->db->bind(':zone', 'Kaduna');
-        $this->db->resultset();
-        $total = $this->db->rowCount();
-
-        return $total;
-      }
-
-       //Get All Minna Students rowCount
-      public function totalMinna(){
-        $this->db->query("SELECT * FROM mitre_students WHERE zone = :zone");
-        $this->db->bind(':zone', 'Minna');
-        $this->db->resultset();
-        $total = $this->db->rowCount();
-
-        return $total;
-      }
-
-    // Find User By ID
+           // Find User By ID
     public function getUserById($id){
       $this->db->query("SELECT * FROM mitre_students WHERE id = :id");
       $this->db->bind(':id', $id);

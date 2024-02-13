@@ -6,9 +6,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active">
+        <!-- <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT; ?>/portal">Home</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/portal/about">About</a>
         </li>
@@ -19,9 +19,9 @@
           <a class="nav-link" href="<?php echo URLROOT; ?>/students/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </li>
       <?php else : ?>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/students/registration">Register</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/students/login">Login</a>
         </li>

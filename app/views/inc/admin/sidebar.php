@@ -15,67 +15,65 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <!-- <li class="nav-item">
-            <a href="<?= URLROOT?>/admin/dashboard" class="nav-link">
+          <li class="nav-item">
+            <a href="<?= URLROOT?>/admin/dashboard" 
+               <?php if (basename($_SERVER['SCRIPT_NAME']) == 'dashboard'): ?>
+                 class="active nav-link" 
+                <?php else:?>
+                  class="nav-link"
+               <?php endif ?>>
               <i class="nav-icon fas fa-tachometer-alt"></i>
-            <i class="nav-icon far fa-circle text-info"></i>
               <p>Dashboard</p>
             </a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
-                Database
+                Students
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/all_registered" class="nav-link">
+                <a href="<?= URLROOT ;?>/admin/students/<?php echo JUNIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set17 Comprehensive</p>
+                  <p>Set 17</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/all_kaduna" class="nav-link">
+                <a href="<?= URLROOT ;?>/admin/students/<?php echo SENIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set17 Kaduna Zone</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/all_ufuma" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Set17 Ufuma Zone</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/all_minna" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Set17 Minna Zone</p>
+                  <p>Set 16</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?= URLROOT ;?>/admin/alumni_2024" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>March 2024 Alumni</p>
+                  <p>Alumni</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-pen"></i>
+              <i class="nav-icon fas fa-plus"></i>
               <p>
-                Registration
+                Add Student
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= URLROOT ;?>/students/registration" class="nav-link">
+                <a href="<?= URLROOT ;?>/admin/add/<?php echo JUNIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Mitre Registration</p>
+                  <p>Set 17</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= URLROOT ;?>/admin/add/<?php echo SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Set 16</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -86,8 +84,8 @@
               </li>
             </ul>
           </li>
-          <!-- <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Attendance
@@ -96,27 +94,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="<?php echo URLROOT;?>/attendance/<?php echo JUNIOR;?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Day One</p>
+                  <p>Set 17</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="<?php echo URLROOT;?>/attendance/<?php echo SENIOR;?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Day Two</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Day Three</p>
+                  <p>Set 16</p>
                 </a>
               </li>
             </ul>
           </li>
 
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -153,7 +145,7 @@
             </a>
           </li> -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= URLROOT?>/portal/logout" class="nav-link">
               &nbsp; &nbsp;<i class="left fas fa-angle-left"></i>
               <i class="left fas fa-angle-left"></i>
               <p>Logout</p>

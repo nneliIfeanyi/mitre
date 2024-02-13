@@ -2,9 +2,14 @@
   class Admin extends Controller{
     private $userModel;
     private $alumniModel;
+    public $databaseModel;
     public function __construct(){
       $this->userModel = $this->model('User');
       $this->alumniModel = $this->model('Alumnus');
+      $this->databaseModel = $this->model('Databaze');
+      if (!isset($_SESSION['admin_id'])) {
+        redirect('portal/login');
+      }
     }
 
     // Load Homepage
@@ -19,62 +24,81 @@
       $this->view('admin/index', $data);
     }
 
-     // Load Dashoard
-    public function dashboard(){
-      //resultSets
-      $students = $this->userModel->allStudents();
-      //rowCounts
-      $total = $this->userModel->totals();
-      
+     
+   
+
+
+  
+   // Load Dashoard
+  public function dashboard(){
+    // $students = $this->databaseModel->allStudents();
+    // $total = $this->databaseModel->totals();
+    
+    //Set Data
+    $data = [
+     // 'total' => $total,  
+     // 'students' => $students
+    ];
+
+    // Load homepage/dashboard view
+    $this->view('admin/dashboard', $data);
+  }
+
+  //Load All Students
+    public function students($set){
+    $total = $this->databaseModel->totals($set);
+    $all = $this->databaseModel->allStudents($set);
       //Set Data
       $data = [
-       'total' => $total,  
-       'students' => $students
-      ];
-
-      // Load homepage/dashboard view
-      $this->view('admin/dashboard', $data);
-    }
-
-    //Load All Kaduna Students
-    public function all_kaduna(){
-    $all_kaduna = $this->userModel->totalKaduna();
-    $kaduna_students = $this->userModel->allKaduna();
-      //Set Data
-      $data = [
-        'students' => $kaduna_students,
-        'rowCount' => $all_kaduna
-      ];
-
-      // Load homepage/all_kaduna view
-      $this->view('admin/all_kaduna', $data);
-    }
-
-    public function all_minna(){
-    $all_minna = $this->userModel->totalMinna();
-    $minna_students = $this->userModel->allMinna();
-      //Set Data
-      $data = [
-        'students' => $minna_students,
-        'rowCount' => $all_minna
+        'set' => $set,
+        'students' => $all,
+        'rowCount' => $total
       ];
 
       // Load homepage/all_kaduna view
-      $this->view('admin/all_minna', $data);
+      $this->view('admin/students', $data);
     }
 
-    //Load All Ufuma Students
-    public function all_ufuma(){
-    $all_ufuma = $this->userModel->totalufuma();
-    $ufuma_students = $this->userModel->allufuma();
+    public function minna($set){
+    $total = $this->databaseModel->totalMinna($set);
+    $all = $this->databaseModel->allMinna($set);
       //Set Data
       $data = [
-        'students' => $ufuma_students,
-        'rowCount' => $all_ufuma
+        'set' => $set,
+        'students' => $all,
+        'rowCount' => $total
       ];
 
-      // Load homepage/all_ufuma view
-      $this->view('admin/all_ufuma', $data);
+      // Load homepage/all_kaduna view
+      $this->view('admin/minna', $data);
+    }
+
+    public function kaduna($set){
+    $total = $this->databaseModel->totalKaduna($set);
+    $all = $this->databaseModel->allKaduna($set);
+      //Set Data
+      $data = [
+        'set' => $set,
+        'students' => $all,
+        'rowCount' => $total
+      ];
+
+      // Load homepage/all_kaduna view
+      $this->view('admin/kaduna', $data);
+    }
+
+    public function ufuma($set){
+    $total = $this->databaseModel->totalUfuma($set);
+    $all = $this->databaseModel->allUfuma($set);
+      //Set Data
+      $data = [
+        'set' => $set,
+        'students' => $all,
+        'rowCount' => $total
+      ];
+
+      // Load homepage/all_kaduna view
+      $this->view('admin/ufuma', $data);
     }
 
     //Load All Alumni
@@ -91,26 +115,7 @@
       $this->view('admin/alumni_2024', $data);
     }
 
-   
 
-    public function all_registered(){
-      $all_ufuma = $this->userModel->totalUfuma();
-      $all_kaduna = $this->userModel->totalKaduna();
-      $all_minna = $this->userModel->totalMinna();
-      $total = $this->userModel->totals();
-      $students = $this->userModel->allStudents();
-        //Set Data
-        $data = [
-          'rowCount' => $total,  
-          'students' => $students,
-          'all_minna' => $all_minna,
-          'all_kaduna' => $all_kaduna,
-          'all_ufuma' => $all_ufuma,
-        ];
-  
-        // Load homepage/index view
-        $this->view('admin/all_registered', $data);
-      }
 
       public function more_details($id){
         $student = $this->userModel->getUserById($id);
@@ -123,6 +128,74 @@
         $this->view('admin/more_details', $data);
       }
 
+      public function add($set){
+  
+        // Check if POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+          $fullname = trim($_POST['surname'])." ".trim($_POST['other_names']);
+          $data = [
+            'name' => $fullname,
+            'set' => $_POST['set'],
+            'surname' => trim($_POST['surname']),
+            'other_names' => trim($_POST['other_names']),
+            'email' => trim($_POST['email']),
+            'phone' => trim($_POST['phone']),
+            'gender' => trim($_POST['gender']),
+            'zone' => trim($_POST['zone']),
+            'address' => trim($_POST['address']).' '.trim($_POST['state']),
+            //'telegram' => trim($_POST['telegram']),
+            'whatsapp' => trim($_POST['whatsapp']),
+            'ministry' => trim($_POST['ministry']),
+            'occupation' => trim($_POST['occupation']),
+            'assembly' => trim($_POST['assembly']),
+            'error' => ''
+          ];
+          //validate Username..
+          if ($this->userModel->findUserByPhone($data['phone'])) {
+            $data['error'] = 'Phone number already exist you cannot register twice..';
+            $this->view('admin/add', $data);
+          }else{
+            //All validation passed...
+            $success = $this->userModel->register_by_admin($data);
+            if ($success) {
+              flash('msg', 'Registration Successfull..');
+              redirect('admin/add/'.$set);
+            
+            }else{
+              die('Something went wrong..');
+            }
+          }
+  
+      } else {
+          // If NOT a POST
+      $states = $this->userModel->getStates();
+          // Init data
+          $data = [
+            'set' => $set,
+            'states' => $states,
+            'email' => '',
+            'surname' => '',
+            'other_names' => '',
+            'gender' => '',
+            'zone' => '',
+            'address' => '',
+            'state' => '',
+            'phone' => '',
+            'whatsapp' => '',
+            'telegram' => '',
+            'ministry' => '',
+            'occupation' => '',
+            'assembly' => '',
+            'error' => ''
+          ];
+  
+          // Load View
+          $this->view('admin/add', $data);
+        }
+      }
+
+
     public function about(){
       //Set Data
       $data = [
@@ -133,104 +206,7 @@
       $this->view('admin/about', $data);
     }
 
-    public function login(){
-        // Check if logged in
-        if($this->isLoggedIn()){
-          redirect('admin');
-        }
-  
-        // Check if POST
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-          // Sanitize POST
-          $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-          
-          $data = [       
-            'email' => trim($_POST['email']),
-            'password' => trim($_POST['password']),        
-            'email_err' => '',
-            'password_err' => '',       
-          ];
-  
-          // Check for email
-          if(empty($data['email'])){
-            $data['email_err'] = 'Please enter email.';
-          }
-  
-          // Check for name
-          if(empty($data['name'])){
-            $data['name_err'] = 'Please enter name.';
-          }
-  
-          // Check for user
-          if($this->userModel->findUserByEmail($data['email'])){
-            // User Found
-          } else {
-            // No User
-            $data['email_err'] = 'This user is not registered.';
-          }
-  
-          // Make sure errors are empty
-          if(empty($data['email_err']) && empty($data['password_err'])){
-  
-            // Check and set logged in user
-            $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-  
-            if($loggedInUser){
-              // User Authenticated!
-              $this->createUserSession($loggedInUser);
-              flash('login','Login Successfull...');
-            } else {
-              $data['password_err'] = 'Password incorrect.';
-              // Load View
-              $this->view('admin/login', $data);
-            }
-             
-          } else {
-            // Load View
-            $this->view('admin/login', $data);
-          }
-  
-        } else {
-          // If NOT a POST
-  
-          // Init data
-          $data = [
-            'email' => '',
-            'password' => '',
-            'email_err' => '',
-            'password_err' => '',
-          ];
-  
-          // Load View
-          $this->view('admin/login', $data);
-        }
-      }
-  
-      // Create Session With User Info
-      public function createUserSession($user){
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['user_email'] = $user->email; 
-        $_SESSION['user_name'] = $user->name;
-        redirect('admin');
-      }
-  
-      // Logout & Destroy Session
-      public function logout(){
-        unset($_SESSION['user_id']);
-        unset($_SESSION['user_email']);
-        unset($_SESSION['user_name']);
-        session_destroy();
-        redirect('admin/login');
-      }
-  
-      // Check Logged In
-      public function isLoggedIn(){
-        if(isset($_SESSION['user_id'])){
-          return true;
-        } else {
-          return false;
-        }
-      }
+    
 
       // Delete Post
     public function delete($id){

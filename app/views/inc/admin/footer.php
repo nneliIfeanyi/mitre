@@ -1,9 +1,9 @@
 
   <footer class="main-footer">
-    <strong>Copyright &copy; <?php echo date('Y') ?> <a href="#">Threshers Team</a>.</strong>
+    <strong>Copyright &copy; <?php echo date('Y') ?> <a href="<?= URLROOT?>/admin">Threshers Team</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-      <b>Demo version</b> 1.2.0
+      <b>Version</b> 1.2.0
     </div>
   </footer>
 
@@ -21,8 +21,13 @@
 <script src="<?= URLROOT ;?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-  $.widget.bridge('uibutton', $.ui.button)
+  //$.widget.bridge('uibutton', $.ui.button);
+
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
+<script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= URLROOT ;?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 

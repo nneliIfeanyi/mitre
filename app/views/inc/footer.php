@@ -16,6 +16,7 @@
 <script src="<?= URLROOT ;?>/js/jquery.js"></script>
 <script src="<?= URLROOT ;?>/js/jquery.dataTables.min.js"></script>
 <script src="<?= URLROOT ;?>/js/dataTables.bootstrap5.min.js"></script>
+<script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
 <script>
   // document.addEventListener('DOMContentLoaded', userScroll);
     const tooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -26,3 +27,8 @@
 </script>
 </body>
 </html>
+
+
+
+
+

@@ -311,6 +311,89 @@
       }
     }
 
+
+    public function register(){
+  
+        // Check if POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+          $fullname = trim($_POST['surname'])." ".trim($_POST['other_names']);
+          $data = [
+            'name' => $fullname,
+            'set' => $_POST['set'],
+            'email' => trim($_POST['email']),
+            'phone' => trim($_POST['phone']),
+            'gender' => trim($_POST['gender']),
+            'zone' => trim($_POST['zone']),
+            'address' => trim($_POST['address']).' '.trim($_POST['state']),
+            //'telegram' => trim($_POST['telegram']),
+            'whatsapp' => trim($_POST['whatsapp']),
+            'ministry' => trim($_POST['ministry']),
+            'occupation' => trim($_POST['occupation']),
+            'assembly' => trim($_POST['assembly']),
+          ];
+          //validate Username..
+          if ($this->userModel->findUserByPhone($data['phone'])) {
+          
+           echo "
+                  <div class='alert alert-danger'>
+                    Phone number already exist you cannot register twice..
+                  </div>
+                ";
+          }else{
+            //All validation passed...
+            $success = $this->userModel->register_by_admin($data);
+            if ($success) {
+              flash('msg', 'Registration Successfull..');
+              $redirect = URLROOT.'/students/register';
+              echo "
+                    <div class='alert fw-bold alert-success'>
+                      REGISTRATION SUCCESSFULL, THANKS..  <span class='spinner-border spinner-border-sm'> </span>
+                    </div>
+                    <meta http-equiv='refresh' content='3; $redirect'>
+                  ";
+            
+          }else{
+            echo "
+                  <div class='alert alert-danger'>
+                    Something went wrong... Try again later
+                  </div>
+                  
+                ";
+          }
+
+        }
+  
+      } else {
+          // If NOT a POST
+      $states = $this->userModel->getStates();
+          // Init data
+          $data = [
+            'states' => $states,
+            'email' => '',
+            'surname' => '',
+            'other_names' => '',
+            'gender' => '',
+            'zone' => '',
+            'address' => '',
+            'state' => '',
+            'phone' => '',
+            'whatsapp' => '',
+            'telegram' => '',
+            'ministry' => '',
+            'occupation' => '',
+            'assembly' => '',
+          ];
+  
+          // Load View
+          $this->view('students/register', $data);
+        }
+      }
+
+
+
+
+
     public function login(){
       // Check if logged in
       if($this->isLoggedIn()){

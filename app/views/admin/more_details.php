@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
 <div class="">
-<form">
+<form>
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-circle" style="height: 350px;width:100%;">

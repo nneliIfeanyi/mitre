@@ -67,20 +67,20 @@
             $success = $this->alumniModel->register($data);
             if ($success) {
               $redirect = URLROOT.'/alumni';
-              echo '
-                    <div class="alert alert-success">
-                      Registration Successfull...  <span class="spinner-border spinner-border-sm"> </span>
+              echo "
+                    <div class='alert alert-success'>
+                      Registration Successfull...  <span class='spinner-border spinner-border-sm'> </span>
                     </div>
-                    <meta http-equiv="refresh" content="4; <?=$redirect?>">
-                  ';
+                    <meta http-equiv='refresh' content='3; $redirect'>
+                  ";
             
           }else{
-            echo '
-                  <div class="alert alert-danger">
+            echo "
+                  <div class='alert alert-danger'>
                     Something went wrong... Try again later
                   </div>
                   
-                ';
+                ";
           }
 
         }
