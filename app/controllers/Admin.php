@@ -206,6 +206,16 @@
       $this->view('admin/about', $data);
     }
 
+    public function progress(){
+      //Set Data
+      $data = [
+        'version' => '1.0.0'
+      ];
+
+      // Load about view
+      $this->view('admin/progress', $data);
+    }
+
     
 
       // Delete Post

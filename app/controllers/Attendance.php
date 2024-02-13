@@ -5,6 +5,7 @@
     public function __construct(){
       $this->attendanceModel = $this->model('Attendanze');
       $this->databaseModel = $this->model('Databaze');
+      redirect('admin/progress');
     }
 
  /***
