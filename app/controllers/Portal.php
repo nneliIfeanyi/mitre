@@ -99,13 +99,15 @@
   
       // Create Session With User Info
       public function createUserSession($user){
-        $_SESSION['admin_id'] = $user->id; 
-        $_SESSION['user_name'] = $user->name;
-        redirect('admin');
+        setcookie('id', $user->id, time()+(86400*1), '/');
+        setcookie('name', $user->name, time()+(86400*1), '/');
+        redirect('admin');   
       }
   
       // Logout & Destroy Session
       public function logout(){
+        setcookie('id', $user->id, time()-(86400*1), '/');
+        setcookie('name', $user->name, time()-(86400*1), '/');
         unset($_SESSION['admin_id']);
         unset($_SESSION['user_name']);
         session_destroy();

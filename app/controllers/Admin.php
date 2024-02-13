@@ -7,9 +7,14 @@
       $this->userModel = $this->model('User');
       $this->alumniModel = $this->model('Alumnus');
       $this->databaseModel = $this->model('Databaze');
-      if (!isset($_SESSION['admin_id'])) {
+
+      if (!isset($_COOKIE['id']) AND !isset($_COOKIE['name']) ) {
         redirect('portal/login');
+      }else{
+        $_SESSION['admin_id'] = $_COOKIE['id'];
+        $_SESSION['user_name'] = $_COOKIE['name'];
       }
+
     }
 
     // Load Homepage
