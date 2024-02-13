@@ -16,12 +16,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="<?= URLROOT?>/admin/dashboard" 
-               <?php if (basename($_SERVER['SCRIPT_NAME']) == 'dashboard'): ?>
-                 class="active nav-link" 
-                <?php else:?>
-                  class="nav-link"
-               <?php endif ?>>
+            <a href="<?= URLROOT?>/admin/dashboard" class="nav-link">    
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -38,13 +33,13 @@
               <li class="nav-item">
                 <a href="<?= URLROOT ;?>/admin/students/<?php echo JUNIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set 17</p>
+                  <p>Set <?php echo JUNIOR;?></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?= URLROOT ;?>/admin/students/<?php echo SENIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set 16</p>
+                  <p>Set <?php echo SENIOR;?></p>
                 </a>
               </li>
               <li class="nav-item">
@@ -67,13 +62,13 @@
               <li class="nav-item">
                 <a href="<?= URLROOT ;?>/admin/add/<?php echo JUNIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set 17</p>
+                  <p>Set <?php echo JUNIOR;?></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?= URLROOT ;?>/admin/add/<?php echo SENIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set 16</p>
+                  <p>Set <?php echo SENIOR;?></p>
                 </a>
               </li>
               <li class="nav-item">
@@ -96,19 +91,19 @@
               <li class="nav-item">
                 <a href="<?php echo URLROOT;?>/attendance/<?php echo JUNIOR;?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set 17</p>
+                  <p>Set <?php echo JUNIOR;?></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo URLROOT;?>/attendance/<?php echo SENIOR;?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set 16</p>
+                  <p>Set <?php echo SENIOR;?></p>
                 </a>
               </li>
             </ul>
           </li>
 
-          <!--<li class="nav-item">
+          <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -120,25 +115,19 @@
               <li class="nav-item">
                 <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Short Paper</p>
+                  <p>Set <?= SENIOR?></p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Long Paper</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Term Paper</p>
+                  <p>Set <?= JUNIOR?></p>
                 </a>
               </li>
             </ul>
           </li>
           
-          <li class="nav-item">
+         <!-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-camera text-info"></i>
               <p>Media</p>
@@ -146,9 +135,10 @@
           </li> -->
           <li class="nav-item">
             <a href="<?= URLROOT?>/portal/logout" class="nav-link">
-              &nbsp; &nbsp;<i class="left fas fa-angle-left"></i>
-              <i class="left fas fa-angle-left"></i>
-              <p>Logout</p>
+            <i class="nav-icon fas fa-backward"></i>
+              <p>
+                Logout
+              </p>
             </a>
           </li>
         </ul>
