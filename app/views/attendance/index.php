@@ -88,7 +88,7 @@ $full_day3 = FULLDAY3;
                         <td><?php echo $numbering;?></td>
                         <td><?php echo $student->fullname?></td>
                         <td>
-                          <?php if(!$this->attendanceModel->check_attendance($student->id, $first_day, $set, $conclave,)):?>
+                          <?php if(!$this->attendanceModel->check_attendance($student->id, $first_day, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
                           <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                             <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -120,7 +120,7 @@ $full_day3 = FULLDAY3;
                         <?php endif;?>
                         </td>
                         <td>
-                          <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave,)):?>
+                          <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
                           <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                             <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -152,7 +152,7 @@ $full_day3 = FULLDAY3;
                         <?php endif;?>
                         </td>
                         <td>
-                         <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave,)):?>
+                         <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
                           <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                             <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -184,7 +184,7 @@ $full_day3 = FULLDAY3;
                         <?php endif;?>
                         </td>
                         <td>
-                          <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave,)):?>
+                          <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
                           <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                             <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -319,7 +319,7 @@ $full_day3 = FULLDAY3;
                             <td><?php echo $numbering;?></td>
                             <td><?php echo $student->fullname?></td>
                             <td>
-                              <?php if(!$this->attendanceModel->check_attendance($student->id, $first_day, $set, $conclave,)):?>
+                              <?php if(!$this->attendanceModel->check_attendance($student->id, $first_day, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
                               <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -351,7 +351,7 @@ $full_day3 = FULLDAY3;
                             <?php endif;?>
                             </td>
                             <td>
-                              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave,)):?>
+                              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
                               <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -383,7 +383,7 @@ $full_day3 = FULLDAY3;
                             <?php endif;?>
                             </td>
                             <td>
-                             <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave,)):?>
+                             <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
                               <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -415,7 +415,7 @@ $full_day3 = FULLDAY3;
                             <?php endif;?>
                             </td>
                             <td>
-                              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave,)):?>
+                              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
                               <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
                                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
