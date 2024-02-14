@@ -3,7 +3,7 @@
 <div class="container-lg mb-5">
   <div class="bg-light">
   <h3 class="text-primary"><?php flash('login'); ?></h3>
-  <div class="h3"> <?php flash('success')?></div>
+  <div class="h3"> <?php flash('msg')?></div>
     <div class="px-2 pt-4 pb-2">
       <h1 class="display-3">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
       <p class="lead text-primary">Alumni Registration</p>

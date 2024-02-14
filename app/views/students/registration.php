@@ -12,7 +12,7 @@
       <h2>Ministers Improvement And Training Retreat<span class="text-primary"> (MITRE)</span></h2>
       <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
         <div class="h2 text-primary">APPLICATION FORM</div>
-      <p>This form should be completed and submitted on or before 27 FEB. 2024</p>
+      <p>This form should be completed and submitted on or before 29 FEB. 2024</p>
     </div>
       <form action="<?php echo URLROOT; ?>/students/registration" method="post" enctype="multipart/form-data">
       

@@ -66,6 +66,7 @@
             //All validation passed...
             $success = $this->alumniModel->register($data);
             if ($success) {
+              flash('msg', 'You have registered Successfully..');
               $redirect = URLROOT.'/alumni';
               echo "
                     <div class='alert alert-success'>
