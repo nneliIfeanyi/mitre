@@ -25,6 +25,11 @@
   <link rel="stylesheet" href="<?= URLROOT ;?>/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= URLROOT ;?>/plugins/summernote/summernote-bs4.min.css">
+  <!--Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT ;?>/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT ;?>/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT ;?>/img/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
 <style type="text/css">
     .error{

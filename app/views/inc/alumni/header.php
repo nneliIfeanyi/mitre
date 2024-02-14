@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/font-awesome.css" />
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/bootstrap.css" />
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/styles.css" />
-
+  <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT ;?>/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT ;?>/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT ;?>/img/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <title><?php echo SITENAME; ?></title>
 
   <style type="text/css">
