@@ -67,6 +67,7 @@
   
     <div class="card">
       <div class="card-body">
+        <div class="table-responsive">
         <table class="table table-striped table-bordered" id="score-table">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
           <thead>
@@ -143,6 +144,7 @@
           <?php $numbering++; endforeach; ?>
           </tbody>
         </table>
+      </div>
       </div>
     </div>     
   </div><!-- /.container-fluid -->

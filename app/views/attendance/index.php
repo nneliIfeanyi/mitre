@@ -67,8 +67,8 @@ $full_day3 = FULLDAY3;
     /// SELECTING ALL COLLECTIVE STUDENTS ///
     /// MARK ATTENDANCE FOR ALL COLLECTIVE STUDENTS /// --->
           <div class="tab-pane fade show active" id="collective" role="tabpanel" aria-labelledby="nav-collective-tab">
-            <div class="card">
-             <div class="card-body">
+            <div class="card card-body">
+             <div class="table-responsive">
                 <table class="table table-striped" id="collective-table">
                   <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
                   <thead>
@@ -298,8 +298,8 @@ $full_day3 = FULLDAY3;
         /// SELECTING ALL COLLECTIVE STUDENTS ///
         /// MARK ATTENDANCE FOR ALL COLLECTIVE STUDENTS /// --->
               <div class="tab-pane fade show active" id="collective" role="tabpanel" aria-labelledby="nav-collective-tab">
-                <div class="card">
-                 <div class="card-body">
+                <div class="card card-body">
+                 <div class="table-responsive">
                     <table class="table table-striped" id="collective-table">
                       <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
                       <thead>

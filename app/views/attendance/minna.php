@@ -34,8 +34,8 @@ $full_day3 = FULLDAY3;
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-    <div class="card">
-      <div class="card-body">
+    <div class="card card-body">
+      <div class="table-responsive">
         <table class="table table-striped" id="minna-table">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
           <thead>
@@ -235,8 +235,8 @@ $full_day3 = FULLDAY3;
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-    <div class="card">
-      <div class="card-body">
+    <div class="card card-body">
+      <div class="table-responsive">
         <table class="table table-striped" id="minna-table">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
           <thead>
