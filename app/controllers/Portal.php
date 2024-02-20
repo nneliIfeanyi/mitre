@@ -1,8 +1,12 @@
 <?php
   class Portal extends Controller{
     private $userModel;
+    private $databaseModel;
+    private $attendanceModel;
     public function __construct(){
       $this->userModel = $this->model('User');
+      $this->databaseModel = $this->model('Databaze');
+      $this->attendanceModel = $this->model('Attendanze');
     }
 
     // Load Homepage
@@ -106,8 +110,10 @@
   
       // Logout & Destroy Session
       public function logout(){
-        setcookie('id', $user->id, time()-(86400*1), '/');
-        setcookie('name', $user->name, time()-(86400*1), '/');
+        $user_name = $_SESSION['user_name'];
+        $user_id = $_SESSION['admin_id'];
+        setcookie('id', $user_id, time()-(86400*1), '/');
+        setcookie('name', $user_name, time()-(86400*1), '/');
         unset($_SESSION['admin_id']);
         unset($_SESSION['user_name']);
         session_destroy();
@@ -122,5 +128,113 @@
           return false;
         }
       }
+
+
+      public function add_mark(){
+        
+        if(isset($_POST['submit_result'])){
+          $name = $_POST['fullname'];
+          $score = $_POST['score'];
+          $set = $_POST['mitre_set'];
+          $std_id = $_POST['std_id'];
+          $conclave = $_POST['conclave'];
+          $paper = $_POST['paper'];
+          $zone = $_POST['zone'];
+          
+           foreach($name as $index=>$details ){
+            $data = [
+              'name' => $name[$index],
+              'score' => $score[$index],
+              'std_id' => $std_id[$index],
+              'conclave' => $conclave[$index],
+              'paper' => $paper[$index],
+              'mitre_set' => $set[$index],
+              'zone' => $zone[$index]
+            ];
+             
+            
+             $this->attendanceModel->recordPaper($data);
+             flash('msg', 'Added scores is successfull..');
+             redirect('portal/add_mark');
+         
+           }//end foreach loop
+        
+      }elseif(isset($_POST['submit_update'])){ 
+        // echo "Tis an update string";
+        $name = $_POST['fullname'];
+          $score = $_POST['score'];
+          $set = $_POST['mitre_set'];
+          $std_id = $_POST['std_id'];
+          $conclave = $_POST['conclave'];
+          $paper = $_POST['paper'];
+          $zone = $_POST['zone'];
+          
+           foreach($name as $index=>$details ){
+            $data = [
+              'name' => $name[$index],
+              'score' => $score[$index],
+              'std_id' => $std_id[$index],
+              'conclave' => $conclave[$index],
+              'paper' => $paper[$index],
+              'mitre_set' => $set[$index],
+              'zone' => $zone[$index]
+            ];
+             
+            
+             $this->attendanceModel->updatePaper($data);
+             flash('msg', 'Updated scores is successfull..');
+             redirect('portal/add_mark');
+         
+           }//end foreach loop
+      }//post submit ends
+        else{
+           $data = '';
+          // Load about view
+          $this->view('portal/add_mark', $data);
+
+        }
+    }
+
+    public function settings(){
+      // Check if POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+          
+          $data = [
+            'senior' => $_POST['senior_set'],
+            'junior' => $_POST['junior_set'],
+            's_conclave' => $_POST['s_conclave'],
+            'j_conclave' => $_POST['j_conclave']
+            
+          ];
+          $success = $this->databaseModel->updateSettings($data);
+          if ($success) {
+              //flash('msg', 'Success..');
+              $redirect = URLROOT.'/portal/settings';
+              echo "
+                    <div class='alert alert-success'>
+                      Successfull...  <span class='spinner-border spinner-border-sm'> </span>
+                    </div>
+                    <meta http-equiv='refresh' content='1; $redirect'>
+                  ";
+            
+          }else{
+            echo "
+                  <div class='alert alert-danger'>
+                    Something went wrong... Try again later
+                  </div>
+                  
+                ";
+          }
+  
+      }else{ 
+      //Set Data
+      $data = [
+        'version' => '1.0.0'
+      ];
+
+      // Load about view
+      $this->view('admin/settings', $data);
+    }
+  }
 
   }

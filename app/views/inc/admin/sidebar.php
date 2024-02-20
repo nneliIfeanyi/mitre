@@ -25,7 +25,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
-                Students
+                Database
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -113,26 +113,28 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/admin/progress" class="nav-link">
+                <a href="<?php echo URLROOT;?>/portal/add_mark" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set <?= SENIOR?></p>
+                  <p>Add Mark</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/admin/progress" class="nav-link">
+                <a href="<?php echo URLROOT;?>/admin/culmulative" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set <?= JUNIOR?></p>
+                  <p>Culmulative</p>
                 </a>
               </li>
             </ul>
           </li>
           
-         <!-- <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-camera text-info"></i>
-              <p>Media</p>
+         <li class="nav-item">
+            <a href="<?= URLROOT?>/portal/settings" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+              <p>
+                General Settings
+              </p>
             </a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a href="<?= URLROOT?>/portal/logout" class="nav-link">
             <i class="nav-icon fas fa-backward"></i>

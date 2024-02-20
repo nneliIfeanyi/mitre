@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="<?= URLROOT ;?>/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= URLROOT ;?>/plugins/summernote/summernote-bs4.min.css">
+
+  <link rel="stylesheet" href="<?= URLROOT; ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!--Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT ;?>/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT ;?>/img/favicon-32x32.png">

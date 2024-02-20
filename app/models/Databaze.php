@@ -96,6 +96,26 @@
         return $total;
     }
 
+     // Update settings
+    public function updateSettings($data){
+      // Prepare Query
+      $this->db->query('UPDATE settings SET senior = :senior, junior = :junior, s_conclave = :s_conclave, j_conclave = :j_conclave');
+
+      // Bind Values
+      $this->db->bind(':senior', $data['senior']);
+      $this->db->bind(':junior', $data['junior']);
+      $this->db->bind(':s_conclave', $data['s_conclave']);
+      $this->db->bind(':j_conclave', $data['j_conclave']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
 
 
 }

@@ -3,10 +3,12 @@
     private $userModel;
     private $alumniModel;
     public $databaseModel;
+    public $attendanceModel;
     public function __construct(){
       $this->userModel = $this->model('User');
       $this->alumniModel = $this->model('Alumnus');
       $this->databaseModel = $this->model('Databaze');
+      $this->attendanceModel = $this->model('Attendanze');
 
       if (!isset($_COOKIE['id']) AND !isset($_COOKIE['name']) ) {
         redirect('portal/login');
@@ -199,6 +201,38 @@
           $this->view('admin/add', $data);
         }
       }
+
+    
+    public function culmulative(){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $mitre_set = trim($_POST['set']);
+        $conclave = trim($_POST['conclave']);       
+        $zone = $_POST['zone'];
+
+        $added = $this->attendanceModel->check_scores($mitre_set,$conclave,$zone);
+        $data = [
+          'scores' => $added,
+          'set' => $mitre_set,
+          'conclave' => $conclave,
+          'zone' => $zone,
+          'paper1' => 'short_paper',
+          'paper2' => 'long_paper',
+          'paper3' => 'term_paper',
+          'paper4' => 'Summary'
+        ];
+        $this->view('admin/view_scores', $data);
+      }else{
+
+        //Set Data
+      $data = [
+        'version' => '1.0.0'
+      ];
+
+      // Load about view
+      $this->view('admin/culmulative', $data);
+
+      }
+    }
 
 
     public function about(){
