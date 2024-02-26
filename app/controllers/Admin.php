@@ -10,11 +10,11 @@
       $this->databaseModel = $this->model('Databaze');
       $this->attendanceModel = $this->model('Attendanze');
 
-      if (!isset($_COOKIE['id']) AND !isset($_COOKIE['name']) ) {
+      if (!isset($_COOKIE['admin-id']) AND !isset($_COOKIE['admin-name']) ) {
         redirect('portal/login');
       }else{
-        $_SESSION['admin_id'] = $_COOKIE['id'];
-        $_SESSION['user_name'] = $_COOKIE['name'];
+        $_SESSION['admin_id'] = $_COOKIE['admin-id'];
+        $_SESSION['user_name'] = $_COOKIE['admin-name'];
       }
 
     }
@@ -208,12 +208,14 @@
         $mitre_set = trim($_POST['set']);
         $conclave = trim($_POST['conclave']);       
         $zone = $_POST['zone'];
+        $conclaves = $this->userModel->getConclaves();
 
         $added = $this->attendanceModel->check_scores($mitre_set,$conclave,$zone);
         $data = [
           'scores' => $added,
           'set' => $mitre_set,
           'conclave' => $conclave,
+          'conclaves' => $conclaves,
           'zone' => $zone,
           'paper1' => 'short_paper',
           'paper2' => 'long_paper',
@@ -222,15 +224,52 @@
         ];
         $this->view('admin/view_scores', $data);
       }else{
-
+      $conclaves = $this->userModel->getConclaves();
         //Set Data
       $data = [
-        'version' => '1.0.0'
+        'conclaves' => $conclaves
       ];
 
       // Load about view
       $this->view('admin/culmulative', $data);
 
+      }
+    }
+
+    public function reg_no($set){
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (strlen($_POST['std_id']) == 1) {
+          $reg = $set.'00'.$_POST['std_id'];
+
+        }elseif (strlen($_POST['std_id']) == 2) {
+          $reg = $set.'0'.$_POST['std_id'];
+        }else{
+          $reg = $set.$_POST['std_id'];
+        }
+        
+        $data = [
+          'std_id' => $_POST['std_id'],
+        ];
+
+        $output = $this->userModel->regNo($reg, $data['std_id']);
+        if ($output) {
+          flash('msg', 'Successfull..');
+          redirect('admin/reg_no/'.$set);
+        }else{
+          die('Something went wrong');
+        }
+      
+      }else{
+        $total = $this->databaseModel->totals($set);
+        $all = $this->databaseModel->allStudents($set);
+        //Set Data
+        $data = [
+          'students' => $all,
+          'rowCount' => $total
+        ];
+
+        // Load about view
+        $this->view('admin/reg_no', $data);
       }
     }
 

@@ -6,15 +6,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- <li class="nav-item active">
+        <li class="nav-item active">
           <a class="nav-link" href="<?php echo URLROOT; ?>/portal">Home</a>
-        </li> -->
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/portal/about">About</a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto">
-      <?php if(isset($_SESSION['user_id'])) : ?>
+      <?php if(isset($_SESSION['student_id'])) : ?>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/students/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </li>

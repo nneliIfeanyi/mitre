@@ -26,26 +26,18 @@
 <?php //EVERYTHING GOES HERE, Start coding from here.?>
 
 <div class="card card-body">
+  
   <div class="row">
-    <div class="col-12">
-      
-      <!-- <div class="text-center border py-3">
-        <h2>Ministers Improvement And Training Retreat<span class="text-primary"> (MITRE)</span></h2>
-        <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
-          <div class="h2 text-primary">SET 16 REGISTRATION</div>
-        <!-- <p>This form should be completed and submitted on or before 13 FEB. 2024</p> --
-        
-      </div> -->
-      <form action="" method="POST" id="mark-add">
-
-        <div class="col-lg-6">
-          <?= flash('msg')?>
-        </div>
-          </div>
+    <div class="col-lg-6">
+    <?= flash('msg')?>
+    </div>
+  </div>
+    <form action="" method="POST" id="mark-add">
+      <div class="row">
           <div class="col-lg-4">
             <div class="form-group shadow p-1">
               <label>Set:</label>
-              <select name="set" id="set" required class="form-control">
+              <select name="set" required class="form-control">
                 <option value="">Select set</option>
                 <option value="<?= SENIOR?>"><?= SENIOR?></option>
                 <option value="<?= JUNIOR?>"><?= JUNIOR?></option> 
@@ -55,8 +47,11 @@
           <div class="col-lg-4">
             <div class="form-group shadow p-1">
               <label>Conclave:</label>
-              <select name="conclave" id="conclave" class="form-control">
+              <select name="conclave" required class="form-control">
                 <option value="">---</option>
+                <?php foreach ($data['conclaves'] as $conclave):?>
+                  <option value="<?php echo $conclave->conclave;?>"><?php echo $conclave->conclave;?></option>
+                 <?php endforeach;?>
               </select>
             </div>
           </div>
@@ -71,27 +66,13 @@
               </select>
             </div>
           </div>
-          <!-- <div class="col-lg-3">
-            <div class="form-group shadow p-1">
-              <label>Paper:</label>
-              <select name="paper" required class="form-control">
-                <option value="">Select paper</option>
-                  <option value="long_paper">Long Paper</option>
-                  <option value="short_paper">Short Paper</option>
-                  <option value="term_paper">Term Paper</option>
-            </select>
-            </div>
-          </div> -->
-          <div class=" d-grid col-md-6 offset-md-3 my-3">
+          <div class=" d-grid col-md-4 offset-md-4 my-1">
             <input type="submit" id="mark" class="btn btn-primary btn-block rounded-5 fw-bold" value="Submit">
           </div>
-          
         </div>
       </form>
-    </div>
-    <!-- <div class="mt-3 col-12" id="msg"></div> -->
+
   </div>
-</div>
 </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
@@ -100,19 +81,20 @@
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script>
 $(function(){
- 
-    $('#set').on('change', function(){
-        var set = $(this).val();
-        var senior = <?php echo SENIOR ?>;
-        var junior = <?php echo JUNIOR ?>;
-        if(set == junior){
-           $('#conclave').html('<option value="<?php echo J_CONCLAVE ?>"><?php echo J_CONCLAVE ?></option>'); 
-        }else if(set == senior){
-            $('#conclave').html('<option value="<?php echo S_CONCLAVE ?>"><?php echo S_CONCLAVE ?></option>');
-        }else{
-          $('#conclave').html('<option value="">Choose..</option>');
-        }
-    })
+
+    $('#mark-add').parsley();
+    // $('#set').on('change', function(){
+    //     var set = $(this).val();
+    //     var senior = <?php echo SENIOR ?>;
+    //     var junior = <?php echo JUNIOR ?>;
+    //     if(set == junior){
+    //        $('#conclave').html('<option value="<?php echo J_CONCLAVE ?>"><?php echo J_CONCLAVE ?></option>'); 
+    //     }else if(set == senior){
+    //         $('#conclave').html('<option value="<?php echo S_CONCLAVE ?>"><?php echo S_CONCLAVE ?></option>');
+    //     }else{
+    //       $('#conclave').html('<option value="">Choose..</option>');
+    //     }
+    // })
 
 
 })

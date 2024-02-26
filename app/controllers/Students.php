@@ -1,14 +1,63 @@
 <?php
   class Students extends Controller{
-    private $userModel;
+    public $userModel;
 
     public function __construct(){
       $this->userModel = $this->model('User');
     }
 
     public function index(){
+      // Check if logged in
+      if($this->isLoggedIn()){
+        redirect('portal');
+      }
+
       redirect('portal');
     }
+
+     // Load Homepage
+    public function scores(){
+       // Check if POST
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // Sanitize POST
+        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        $mitre_set = trim($_POST['set']);
+        $conclave = trim($_POST['conclave']);
+
+        $added = $this->userModel->getScores($conclave);
+        $punctual = $this->userModel->getPunctual($conclave);
+        if ($punctual == 3) {
+           $mark = 45;
+        }elseif ($punctual == 2) {
+           $mark = 30;
+        }elseif ($punctual == 1) {
+           $mark = 15;
+        }else{
+          $mark = 0;
+        }
+        $data = [
+          'scores' => $added,
+          'attendance' => $mark,
+          'set' => $mitre_set,
+          'conclave' => $conclave,
+          'paper1' => 'short_paper',
+          'paper2' => 'long_paper',
+          'paper3' => 'term_paper',
+          'paper4' => 'Summary'
+        ];
+        $this->view('students/view_scores', $data);
+      }else{ 
+        $conclaves = $this->userModel->getConclaves();
+        $user_data = $this->userModel->getUserById($_SESSION['student_id']);
+        //Set Data
+        $data = [
+          'details' => $user_data,
+          'conclaves' => $conclaves
+        ];
+        $this->view('students/scores', $data);
+      }
+    }
+
 
 
     public function registration(){
@@ -397,7 +446,7 @@
     public function login(){
       // Check if logged in
       if($this->isLoggedIn()){
-        redirect('posts');
+        redirect('students');
       }
 
       // Check if POST
@@ -417,11 +466,6 @@
           $data['email_err'] = 'Please enter email.';
         }
 
-        // Check for name
-        if(empty($data['name'])){
-          $data['name_err'] = 'Please enter name.';
-        }
-
         // Check for user
         if($this->userModel->findUserByEmail($data['email'])){
           // User Found
@@ -434,7 +478,7 @@
         if(empty($data['email_err']) && empty($data['password_err'])){
 
           // Check and set logged in user
-          $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+          $loggedInUser = $this->userModel->login($data['password']);
 
           if($loggedInUser){
             // User Authenticated!
@@ -467,29 +511,108 @@
       }
     }
 
-    // Create Session With User Info
-    public function createUserSession($user){
-      $_SESSION['user_id'] = $user->id;
-      $_SESSION['user_email'] = $user->email; 
-      $_SESSION['user_name'] = $user->name;
-      redirect('posts');
+
+    public function auth(){
+      // Check if logged in
+      if($this->isLoggedIn()){
+        redirect('students');
+      }
+
+     if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        // Sanitize POST
+        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        
+        $data = [       
+          'name' => trim($_POST['name']),
+          'password' => trim($_POST['password']),        
+          'name_err' => '',
+          'password_err' => '',       
+        ];
+
+        // Check for email
+        if(empty($data['name'])){
+          $data['name_err'] = 'Please enter your name.';
+        }
+
+        // Check for user
+        if($this->userModel->findUserByFullname($data['name'])){
+          // User Found
+        } else {
+          // No User
+          $data['name_err'] = 'This name is not registered.';
+        }
+
+        // Make sure errors are empty
+        if(empty($data['name_err']) && empty($data['password_err'])){
+
+          // Check and set logged in user
+          $loggedInUser = $this->userModel->login($data['password']);
+
+          if($loggedInUser){
+            // User Authenticated!
+            $this->createUserSession($loggedInUser);
+           
+          } else {
+            $data['password_err'] = 'Password incorrect.';
+            // Load View
+            $this->view('students/auth', $data);
+          }
+           
+        } else {
+          // Load View
+          $this->view('students/auth', $data);
+        }
+
+      }else{
+ // If NOT a POST
+
+        // Init data
+        $data = [
+          'name' => '',
+          'password' => '',
+          'name_err' => '',
+          'password_err' => '',
+          'body' => '',
+          'body_err' => ''
+        ];
+
+      // Load auth view
+      $this->view('students/auth', $data);
+      }
     }
 
-    // Logout & Destroy Session
-    public function logout(){
-      unset($_SESSION['user_id']);
-      unset($_SESSION['user_email']);
-      unset($_SESSION['user_name']);
-      session_destroy();
-      redirect('users/login');
-    }
+     // Create Session With User Info
+      public function createUserSession($student){
+        setcookie('mitre-id', $student->id, time()+(86400*2), '/');
+        setcookie('mitre-name', $student->fullname, time()+(86400*2), '/');
+        setcookie('mitre-zone', $student->zone, time()+(86400*2), '/');
+        flash('msg', 'Login Successfull..');
+        redirect('students/index'); 
+      }
+  
+      // Logout & Destroy Session
+      public function logout(){
+        $user_name = $_SESSION['student_name'];
+        $user_id = $_SESSION['student_id'];
+        setcookie('mitre-id', $user_id, time()-(86400*1), '/');
+        setcookie('mitre-name', $user_name, time()-(86400*1), '/');
+        setcookie('mitre-zone', $student->zone, time()-(86400*2), '/');
+        unset($_SESSION['student_id']);
+        unset($_SESSION['student_name']);
+        unset($_SESSION['student_zone']);
+        session_destroy();
+        redirect('students/login');
+      }
 
     // Check Logged In
     public function isLoggedIn(){
-      if(isset($_SESSION['user_id'])){
-        return true;
-      } else {
+      if (!isset($_COOKIE['mitre-id']) AND !isset($_COOKIE['mitre-name']) ) {
         return false;
-      }
+        }else{
+          $_SESSION['student_id'] = $_COOKIE['mitre-id'];
+          $_SESSION['student_name'] = $_COOKIE['mitre-name'];
+          $_SESSION['student_zone'] = $_COOKIE['mitre-zone'];
+          return true;
+        }
     }
   }

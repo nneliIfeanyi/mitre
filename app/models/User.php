@@ -15,6 +15,35 @@
       return $results;
     }
 
+    // Get Conclaves
+    public function getConclaves(){
+      $this->db->query("SELECT * FROM conclaves");
+      
+      $results = $this->db->resultset();
+
+      return $results;
+    }
+
+    public function getScores($conclave){
+      $this->db->query("SELECT * FROM marks WHERE std_id = :id AND conclave = :conclave");
+      $this->db->bind(':id', $_SESSION['student_id']);
+      $this->db->bind(':conclave', $conclave);
+      $results = $this->db->resultset();
+       //Check Rows
+      return $results;
+    }
+
+    public function getPunctual($conclave){
+      $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND conclave = :conclave AND day != :arrival");
+      $this->db->bind(':id', $_SESSION['student_id']);
+      $this->db->bind(':conclave', $conclave);
+      $this->db->bind(':arrival', 'Arrival');
+      $this->db->resultset();
+      $row = $this->db->rowCount();
+
+      return $row;
+    }
+
 
     // Add User / Register
     public function register($data){
@@ -105,10 +134,37 @@
       }
     }
 
+     public function regNo($reg,$id){
+      $this->db->query("UPDATE mitre_students SET admsn_no = :reg_no WHERE id = :id");
+      $this->db->bind(':reg_no', $reg);
+      $this->db->bind(':id', $id);
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
      // Find USer BY Email
      public function findUserByEmail($email){
-      $this->db->query("SELECT * FROM users WHERE name = :email");
+      $this->db->query("SELECT * FROM mitre_students WHERE email = :email");
       $this->db->bind(':email', $email);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Find USer BY Email
+     public function findUserByFullname($name){
+      $this->db->query("SELECT * FROM mitre_students WHERE fullname = :name");
+      $this->db->bind(':name', $name);
 
       $row = $this->db->single();
 
@@ -152,14 +208,14 @@
 
 
     // Login / Authenticate User
-    public function login($email, $password){
-      $this->db->query("SELECT * FROM users WHERE name = :email");
-      $this->db->bind(':email', $email);
+    public function login($password){
+      $this->db->query("SELECT * FROM mitre_students WHERE mobile_num = :phone");
+      $this->db->bind(':phone', $password);
 
       $row = $this->db->single();
       
     
-      if($row->password == $password){
+      if($this->db->rowCount() > 0){
         return $row;
       } else {
         return false;

@@ -32,7 +32,7 @@
           <div class="col-lg-4">
             <div class="form-group shadow p-1">
               <label>Set:</label>
-              <select name="set" id="set" required class="form-control">
+              <select name="set" required class="form-control">
                 <option value="">Select set</option>
                 <option value="<?= SENIOR?>"><?= SENIOR?></option>
                 <option value="<?= JUNIOR?>"><?= JUNIOR?></option> 
@@ -42,8 +42,11 @@
           <div class="col-lg-4">
             <div class="form-group shadow p-1">
               <label>Conclave:</label>
-              <select name="conclave" id="conclave" class="form-control">
+              <select name="conclave" required class="form-control">
                 <option value="">---</option>
+                <?php foreach ($data['conclaves'] as $conclave):?>
+                  <option value="<?php echo $conclave->conclave;?>"><?php echo $conclave->conclave;?></option>
+                 <?php endforeach;?>
               </select>
             </div>
           </div>
@@ -156,19 +159,19 @@
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script>
 $(function(){
- 
-    $('#set').on('change', function(){
-        var set = $(this).val();
-        var senior = <?php echo SENIOR ?>;
-        var junior = <?php echo JUNIOR ?>;
-        if(set == junior){
-           $('#conclave').html('<option value="<?php echo J_CONCLAVE ?>"><?php echo J_CONCLAVE ?></option>'); 
-        }else if(set == senior){
-            $('#conclave').html('<option value="<?php echo S_CONCLAVE ?>"><?php echo S_CONCLAVE ?></option>');
-        }else{
-          $('#conclave').html('<option value="">Choose..</option>');
-        }
-    })
+    $('#mark-add').parsley();
+    // $('#set').on('change', function(){
+    //     var set = $(this).val();
+    //     var senior = <?php echo SENIOR ?>;
+    //     var junior = <?php echo JUNIOR ?>;
+    //     if(set == junior){
+    //        $('#conclave').html('<option value="<?php echo J_CONCLAVE ?>"><?php echo J_CONCLAVE ?></option>'); 
+    //     }else if(set == senior){
+    //         $('#conclave').html('<option value="<?php echo S_CONCLAVE ?>"><?php echo S_CONCLAVE ?></option>');
+    //     }else{
+    //       $('#conclave').html('<option value="">Choose..</option>');
+    //     }
+    // })
 
 
 })

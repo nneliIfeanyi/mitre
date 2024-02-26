@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">General Settings </h1>
+                         <h1 class="m-0">General Settings </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -66,7 +66,12 @@
                                         </label>
 
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" required name="s_conclave" value="<?php echo S_CONCLAVE; ?>" data-parsley-trigger ='keyup'>
+                                            <select name="s_conclave" class="form-control">
+                                            <option value="<?php echo S_CONCLAVE;?>"><?php echo S_CONCLAVE;?></option>
+                                            <?php foreach ($data['conclaves'] as $conclave):?>
+                                              <option value="<?php echo $conclave->conclave;?>"><?php echo $conclave->conclave;?></option>
+                                             <?php endforeach;?>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -78,7 +83,12 @@
                                         </label>
 
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" required name="j_conclave" value="<?php echo J_CONCLAVE; ?>" data-parsley-trigger ='keyup'>
+                                            <select name="j_conclave" class="form-control">
+                                            <option value="<?php echo J_CONCLAVE;?>"><?php echo J_CONCLAVE;?></option>
+                                            <?php foreach ($data['conclaves'] as $conclave):?>
+                                              <option value="<?php echo $conclave->conclave;?>"><?php echo $conclave->conclave;?></option>
+                                             <?php endforeach;?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class=" d-grid col-md-6 offset-md-3 my-3">
@@ -87,6 +97,20 @@
 
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card card-body">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title font-weight-bold">Reg-No Auto Generate</h3>
+                            </div>
+                            <div class="row">
+                                <p class="col-6"><a class="btn btn-outline-info" href="<?php echo URLROOT?>/admin/reg_no/<?php echo JUNIOR?>">Set <?= JUNIOR;?> Registration numbers</a></p>
+                                <p class="col-6"><a class="btn btn-success" href="<?php echo URLROOT?>/admin/reg_no/<?php echo SENIOR?>">Set <?= SENIOR;?> Registration numbers</a></p>
+                            </div>
+                            <div class="card-footer my-3">
+                                <p class="fs-5">A 5 digit number, being a combination of the student's set and serial number, click above buttons to generate.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
