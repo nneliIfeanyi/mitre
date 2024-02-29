@@ -20,9 +20,9 @@
             <div class="col">
               <input type="submit" class="btn btn-primary rounded-3" value="Login">
             </div>
-            <div class="col mt-5">
+            <!-- <div class="col mt-5">
               <a data-bs-toggle="modal" data-bs-target="#contact-admin" class="btn btn-outline-secondary">Having problem logging in? <i class="fa fa-arrow-right"></i></a>
-            </div>
+            </div> -->
           </div>
         </form>
       </div>
