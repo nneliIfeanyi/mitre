@@ -61,6 +61,7 @@
 
 
     public function registration(){
+      redirect('portal');
 
       // Check if POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -583,9 +584,11 @@
 
      // Create Session With User Info
       public function createUserSession($student){
-        setcookie('mitre-id', $student->id, time()+(86400*2), '/');
-        setcookie('mitre-name', $student->fullname, time()+(86400*2), '/');
-        setcookie('mitre-zone', $student->zone, time()+(86400*2), '/');
+        setcookie('mitre-id', $student->id, time()+(86400), '/');
+        setcookie('mitre-name', $student->fullname, time()+(86400), '/');
+        setcookie('mitre-zone', $student->zone, time()+(86400), '/');
+        setcookie('mitre-reg_no', $student->admsn_no, time()+(86400), '/');
+        setcookie('mitre-passport', $student->passport, time()+(86400), '/');
         flash('msg', 'Login Successfull..');
         redirect('students/index'); 
       }
@@ -594,12 +597,19 @@
       public function logout(){
         $user_name = $_SESSION['student_name'];
         $user_id = $_SESSION['student_id'];
+        $user_zone = $_SESSION['student_zone'];
+        $user_reg_no = $_SESSION['student_reg_no'];
+        $user_passport = $_SESSION['student_passport'];
         setcookie('mitre-id', $user_id, time()-(86400*1), '/');
         setcookie('mitre-name', $user_name, time()-(86400*1), '/');
-        setcookie('mitre-zone', $student->zone, time()-(86400*2), '/');
+        setcookie('mitre-zone', $user_zone, time()-(86400*2), '/');
+        setcookie('mitre-reg_no', $user_reg_no, time()-(86400*2), '/');
+        setcookie('mitre-passport', $user_passport, time()-(86400*2), '/');
         unset($_SESSION['student_id']);
         unset($_SESSION['student_name']);
         unset($_SESSION['student_zone']);
+        unset($_SESSION['student_reg_no']);
+        unset($_SESSION['student_passport']);
         session_destroy();
         redirect('students/login');
       }
@@ -612,6 +622,8 @@
           $_SESSION['student_id'] = $_COOKIE['mitre-id'];
           $_SESSION['student_name'] = $_COOKIE['mitre-name'];
           $_SESSION['student_zone'] = $_COOKIE['mitre-zone'];
+          $_SESSION['student_reg_no'] = $_COOKIE['mitre-reg_no'];
+          $_SESSION['student_passport'] = $_COOKIE['mitre-passport'];
           return true;
         }
     }

@@ -5,7 +5,12 @@
     public function __construct(){
       $this->attendanceModel = $this->model('Attendanze');
       $this->databaseModel = $this->model('Databaze');
-      //redirect('admin/progress');
+      if (!isset($_COOKIE['admin-id']) AND !isset($_COOKIE['admin-name']) ) {
+        redirect('portal/login');
+      }else{
+        $_SESSION['admin_id'] = $_COOKIE['admin-id'];
+        $_SESSION['user_name'] = $_COOKIE['admin-name'];
+      }
     }
 
  /***

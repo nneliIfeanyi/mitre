@@ -73,7 +73,7 @@
             if($loggedInUser){
               // User Authenticated!
               $this->createUserSession($loggedInUser);
-              flash('login','Login Successfull...');
+              flash('msg','Login Successfull...');
             } else {
               $data['password_err'] = 'Password incorrect.';
               // Load View
@@ -161,7 +161,7 @@
         
       }elseif(isset($_POST['submit_update'])){ 
         // echo "Tis an update string";
-        $name = $_POST['fullname'];
+          $name = $_POST['fullname'];
           $score = $_POST['score'];
           $set = $_POST['mitre_set'];
           $std_id = $_POST['std_id'];
@@ -186,6 +186,28 @@
              redirect('portal/add_mark');
          
            }//end foreach loop
+      }elseif(isset($_POST['method2'])){ 
+          $data = [ 
+          'name' => $_POST['fullname'],
+          'score' => $_POST['score'],
+          'mitre_set' => $_POST['mitre_set'],
+          'std_id' => $_POST['std_id'],
+          'conclave'=> $_POST['conclave'],
+          'paper' => $_POST['paper'],
+          'zone' => $_POST['zone']
+        ];
+          $input = $this->attendanceModel->recordPaper($data);
+          if ($input) {
+            flash('msg', 'Added scores is successfull..');
+            //$redirect = URLROOT.'/admin/add_scores';
+              echo "
+                    <div class='alert alert-success'>
+                      Registration Successfull...  <span class='spinner-border spinner-border-sm'> </span>
+                    </div>
+                    <meta http-equiv='refresh' content='3; URLROOT/mitre/admin/add_scores?mitre_set=16&conclave=2&zone=Kaduna&paper=term_paper'>
+                  ";
+          }
+           
       }//post submit ends
         else{
            $data = '';

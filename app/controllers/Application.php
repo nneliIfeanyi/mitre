@@ -314,7 +314,7 @@
             echo $output;
             }//zone check if ends
 
-        }//post request method endd
+        }//post request method end
 
     }//addmark method ends
 

@@ -76,7 +76,7 @@
 
        //Get All 
       public function alumni_total(){
-        $this->db->query("SELECT * FROM alumni");
+        $this->db->query("SELECT * FROM alumni ORDER BY name ASC");
         
         $results = $this->db->resultset();
 

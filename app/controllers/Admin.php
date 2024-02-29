@@ -238,6 +238,7 @@
 
     public function reg_no($set){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
         if (strlen($_POST['std_id']) == 1) {
           $reg = $set.'00'.$_POST['std_id'];
 
@@ -273,6 +274,48 @@
       }
     }
 
+      public function add_mark(){
+
+          $conclaves = $this->userModel->getConclaves();
+          //Set Data
+          $data = [
+            'conclaves' => $conclaves
+          ];
+         $this->view('admin/add_mark', $data);
+       
+      }
+
+      public function add_scores(){
+
+        if ($_GET['mitre_set'] AND $_GET['conclave'] AND $_GET['zone'] AND $_GET['paper']) {
+
+            $mitre_set = $_GET['mitre_set'];
+            $conclave = $_GET['conclave'];       
+            $zone = $_GET['zone'];
+            $paper = $_GET['paper'];
+
+           $all = $this->databaseModel->allKaduna($mitre_set);
+           $added = $this->attendanceModel->check_mark($mitre_set,$conclave,$paper,$zone);
+           $data = [      
+            'students' => $all,
+            'added' => $added,       
+            'zone' => $zone,
+            'paper' => $paper,
+            'conclave' => $conclave,
+            'mitre_set' => $mitre_set
+          ];
+          
+          $this->view('admin/add_scores', $data);
+        }else{
+          $conclaves = $this->userModel->getConclaves();
+          //Set Data
+          $data = [
+            'conclaves' => $conclaves
+          ];
+         $this->view('admin/add_mark', $data);
+        }
+       
+      }
 
     public function about(){
       //Set Data
