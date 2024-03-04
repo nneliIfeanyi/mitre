@@ -325,7 +325,7 @@
     scrollX: true,
     //scrollY: '60vh',
     scrollCollapse: true,
-    ordering: false,
+    paging: false,
     searching: true,
     info: true,
   });
