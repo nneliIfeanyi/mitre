@@ -24,7 +24,8 @@
           'name' => $_POST['fullname'],
           'day' => $_POST['day'],
           'mitre_set' => $_POST['mitre_set'],
-          'conclave' => $_POST['conclave']
+          'conclave' => $_POST['conclave'],
+          'zone' => $_POST['zone']
         ];
 
         $mark = $this->attendanceModel->recordAttendance($data);
@@ -67,7 +68,8 @@
           'name' => $_POST['fullname'],
           'day' => $_POST['day'],
           'mitre_set' => $_POST['mitre_set'],
-          'conclave' => $_POST['conclave']
+          'conclave' => $_POST['conclave'],
+          'zone' => 'Kaduna'
         ];
 
         $mark = $this->attendanceModel->recordAttendance($data);
@@ -110,7 +112,8 @@ public function ufuma($set){
       'name' => $_POST['fullname'],
       'day' => $_POST['day'],
       'mitre_set' => $_POST['mitre_set'],
-      'conclave' => $_POST['conclave']
+      'conclave' => $_POST['conclave'],
+      'zone' => 'Ufuma'
     ];
 
     $mark = $this->attendanceModel->recordAttendance($data);
@@ -152,7 +155,8 @@ public function minna($set){
       'name' => $_POST['fullname'],
       'day' => $_POST['day'],
       'mitre_set' => $_POST['mitre_set'],
-      'conclave' => $_POST['conclave']
+      'conclave' => $_POST['conclave'],
+      'zone' => 'Minna'
     ];
 
     $mark = $this->attendanceModel->recordAttendance($data);

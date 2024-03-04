@@ -96,6 +96,7 @@ $full_day3 = FULLDAY3;
                             <input type="hidden" name="day" value="<?php echo $first_day;?>">
                             <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                             <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
+                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                             
                             <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                           </form>
@@ -128,7 +129,7 @@ $full_day3 = FULLDAY3;
                             <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                             <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                             <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            
+                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                             <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                           </form>
                         <?php else:?>
@@ -160,7 +161,7 @@ $full_day3 = FULLDAY3;
                             <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                             <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                             <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            
+                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                             <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                           </form>
                         <?php else:?>
@@ -192,7 +193,7 @@ $full_day3 = FULLDAY3;
                             <input type="hidden" name="day" value="<?php echo $full_day3;?>">
                             <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                             <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            
+                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                             <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                           </form>
                         <?php else:?>
@@ -327,7 +328,7 @@ $full_day3 = FULLDAY3;
                                 <input type="hidden" name="day" value="<?php echo $first_day;?>">
                                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                
+                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                                 <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                               </form>
                             <?php else:?>
@@ -359,7 +360,7 @@ $full_day3 = FULLDAY3;
                                 <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                
+                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                                 <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                               </form>
                             <?php else:?>
@@ -391,7 +392,7 @@ $full_day3 = FULLDAY3;
                                 <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                
+                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                                 <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                               </form>
                             <?php else:?>
@@ -423,7 +424,7 @@ $full_day3 = FULLDAY3;
                                 <input type="hidden" name="day" value="<?php echo $full_day3;?>">
                                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                
+                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
                                 <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
                               </form>
                             <?php else:?>

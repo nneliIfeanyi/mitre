@@ -11,7 +11,7 @@
      /////////
      //
      public function recordAttendance($data){
-       $this->db->query('INSERT INTO attendance (std_id, name, day, mitre_set, conclave ) VALUES (:std_id, :name, :day, :mitre_set, :conclave)');
+       $this->db->query('INSERT INTO attendance (std_id, name, day, mitre_set, conclave, zone ) VALUES (:std_id, :name, :day, :mitre_set, :conclave,:zone)');
 
       // Bind Values
       $this->db->bind(':std_id', $data['std_id']);
@@ -19,6 +19,7 @@
       $this->db->bind(':day', $data['day']);
       $this->db->bind(':mitre_set', $data['mitre_set']);
       $this->db->bind(':conclave', $data['conclave']);
+      $this->db->bind(':zone', $data['zone']);
       
       //Execute
       if($this->db->execute()){
@@ -180,7 +181,18 @@
       return $row;
     }
 
-
+     
+     public function get_attendance($day,$set,$conclave){
+      $this->db->query("SELECT * FROM attendance WHERE day = :day AND conclave = :conclave AND mitre_set = :mitre_set");
+      $this->db->bind(':day', $day);
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
+      //$this->db->bind(':zone', $zone);
+      
+      $results = $this->db->resultset();
+       //Check Rows
+      return $results;
+    }
 
 
 
