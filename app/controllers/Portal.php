@@ -256,7 +256,7 @@
       ];
 
       // Load about view
-      $this->view('admin/settings', $data);
+      $this->view('portal/settings', $data);
     }
   }
 

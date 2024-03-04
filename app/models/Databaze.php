@@ -115,6 +115,22 @@
       }
     }
 
+    // Update settings
+    public function update_password($data){
+      // Prepare Query
+      $this->db->query('UPDATE admin SET password = :password');
+
+      // Bind Values
+      $this->db->bind(':password', $data['password']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
 
 
 

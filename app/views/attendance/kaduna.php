@@ -400,9 +400,9 @@ $full_day3 = FULLDAY3;
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script type="text/javascript">
    new DataTable('#kaduna-table', {
-    //ordering: false,
+    ordering: true,
     searching: true,
-    info: true,
+    paging: false,
   });
 </script>
     

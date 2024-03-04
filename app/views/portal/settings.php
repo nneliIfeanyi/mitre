@@ -24,6 +24,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <div class="row"><h3 class="col-lg-6"><?php flash('msg');?></h3></div>
                 <div class="row">
                     <div id="msg"></div>
                     <div class="col-lg-6">
@@ -113,6 +114,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-lg-6">
+                        
+                        <div class="card card-danger">
+                            <div class="card-header mb-3">
+                                <h3 class="card-title font-weight-bold">Change Admin Password</h3>
+                            </div>
+                            <form class="p-2 mb-3" action="<?php echo URLROOT?>/admin/password" method="POST" id="password">
+                                <input type="password" name="new-password" required class="form-control mb-3" placeholder="New Password">
+                                <div class="mb-3">
+                                    <label>Security Question:</label>
+                                    <input type="text" placeholder="Your answer" required name="answer" class="form-control">
+                                </div>
+                                <input type="submit" name="change-password" value="Update" class="btn btn-success">
+                            </form>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -145,4 +164,9 @@
         }
 
     })
+</script>
+
+
+<script>
+    $('#password').parsley();
 </script>

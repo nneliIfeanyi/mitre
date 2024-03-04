@@ -90,6 +90,26 @@
       }
     }
 
+    public function password(){
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $data = [
+          'password' => $_POST['new-password'],
+          'answer' => $_POST['answer']
+        ];
+        //Execute
+        if($data['answer'] !== 'Principal'){
+          flash('msg', 'Access Denied.. incorrect answer.','alert alert-danger');
+          redirect('portal/settings');
+        }elseif($this->databaseModel->update_password($data)){
+          flash('msg', 'Password Changed Successfully..');
+          redirect('portal/settings');
+        }else {
+            die('Something went wrong');
+        }
+      } else {
+        redirect('portal/settings');
+      }
+    }
 
      // Load Homepage
     public function del_media($id){

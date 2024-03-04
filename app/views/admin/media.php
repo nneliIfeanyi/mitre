@@ -24,7 +24,7 @@
 <section class="content">
 <div class="container-fluid">
 <div class="">
-  <form action="<?= URLROOT;?>/admin/media" method="POST" enctype="multipart/form-data">
+  <form action="<?= URLROOT;?>/admin/media" method="POST" enctype="multipart/form-data" id="media">
     <h3><?php flash('msg');?></h3>
       <div class="row">
           <div class="col-lg-3">
@@ -157,7 +157,7 @@
 <!-- /.content-wrapper -->
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script>
-    $('#mark-add').parsley();
+    $('#media').parsley();
 </script>
 
 <script type="text/javascript">

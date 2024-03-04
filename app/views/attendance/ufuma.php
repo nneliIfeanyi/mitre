@@ -405,7 +405,7 @@ $full_day3 = FULLDAY3;
    new DataTable('#ufuma-table', {
     //ordering: false,
     searching: true,
-    info: true,
+    paging: false,
   });
 </script>
     
