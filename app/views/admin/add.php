@@ -31,15 +31,7 @@ $set = $data['set'];
 <div class="card card-body">
   <div class="row">
     <div class="col-12">
-      
-      <!-- <div class="text-center border py-3">
-        <h2>Ministers Improvement And Training Retreat<span class="text-primary"> (MITRE)</span></h2>
-        <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
-          <div class="h2 text-primary">SET 16 REGISTRATION</div>
-        <!-- <p>This form should be completed and submitted on or before 13 FEB. 2024</p> --
-        
-      </div> -->
-      <p class="lead"><?php flash('msg')?></p>
+      <div class="row"><p class="lead col-lg-6"><?php flash('msg')?></p></div>
       <form action="" method="post" id="register_form">
 
         <div class="row border p-2">
@@ -190,15 +182,7 @@ $set = $data['set'];
 <div class="">
   <div class="row">
     <div class="col-12">
-      
-      <!-- <div class="text-center border py-3">
-        <h2>Ministers Improvement And Training Retreat<span class="text-primary"> (MITRE)</span></h2>
-        <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
-          <div class="h2 text-primary">SET 16 REGISTRATION</div>
-        <!-- <p>This form should be completed and submitted on or before 13 FEB. 2024</p> --
-        <p class="lead"><?php flash('msg')?></p>
-      </div> -->
-    <p class="lead"><?php flash('msg')?></p>
+    <div class="row"><p class="lead"><?php flash('msg')?></p></div>
       <form action="" method="post" id="register_form">
 
         <div class="row border p-2">
