@@ -270,7 +270,6 @@
             //$data['error'] = 'Phone number already exist you cannot register twice..';
             //$this->view('admin/add', $data);
             $success = $this->userModel->register_by_admin($data);
-            if ($success) {
               flash('msg', 'Registration Successfull..');
               redirect('admin/add/'.$set);
           }else{
