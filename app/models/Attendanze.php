@@ -182,12 +182,12 @@
     }
 
      
-     public function get_attendance($day,$set,$conclave){
-      $this->db->query("SELECT * FROM attendance WHERE day = :day AND conclave = :conclave AND mitre_set = :mitre_set");
+     public function get_attendance($day,$set,$conclave,$zone){
+      $this->db->query("SELECT * FROM attendance WHERE day = :day AND conclave = :conclave AND mitre_set = :mitre_set AND zone = :zone");
       $this->db->bind(':day', $day);
       $this->db->bind(':mitre_set', $set);
       $this->db->bind(':conclave', $conclave);
-      //$this->db->bind(':zone', $zone);
+      $this->db->bind(':zone', $zone);
       
       $results = $this->db->resultset();
        //Check Rows

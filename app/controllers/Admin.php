@@ -231,15 +231,35 @@
         $this->view('admin/more_details', $data);
       }
 
-      public function compare($set){
-        $student = $this->attendanceModel->get_join($set);
-        //Set Data
-        $data = [  
-          'student' => $student
-        ];
-  
-        // Load homepage/index view
-        $this->view('admin/compare', $data);
+      public function sorting(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $mitre_set = trim($_POST['set']);
+          $conclave = trim($_POST['conclave']);       
+          $zone = $_POST['zone'];
+          $day = $_POST['day'];
+          //$conclaves = $this->userModel->getConclaves();
+
+          $added = $this->attendanceModel->get_attendance($day,$mitre_set,$conclave,$zone);
+          $data = [
+            'scores' => $added,
+            'set' => $mitre_set,
+            'conclave' => $conclave,
+           // 'conclaves' => $conclaves,
+            'zone' => $zone,
+            'day' => $day
+          ];
+          $this->view('admin/view_attendance', $data);
+      }else{
+          $conclaves = $this->userModel->getConclaves();
+            //Set Data
+          $data = [
+            'conclaves' => $conclaves
+          ];
+
+          // Load about view
+          $this->view('admin/sorting', $data);
+
+        }
       }
 
       public function add($set){

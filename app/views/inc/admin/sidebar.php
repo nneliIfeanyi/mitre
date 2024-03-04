@@ -100,6 +100,12 @@
                   <p>Set <?php echo SENIOR;?></p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/admin/sorting" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sort Attendance</p>
+                </a>
+              </li>
             </ul>
           </li>
 
