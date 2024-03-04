@@ -232,10 +232,70 @@
       return $row;
     }
 
+    public function trac_upload($data){
+      // Prepare Query
+      $this->db->query('INSERT INTO media (mitre_set, conclave, slot, file_name) 
+      VALUES (:mitre_set, :conclave, :slot, :trac_path)');
+
+      // Bind Values
+      $this->db->bind(':mitre_set', $data['mitre_set']);
+      $this->db->bind(':conclave', $data['conclave']);
+      $this->db->bind(':slot', $data['slot']);
+      //$this->db->bind(':img', $data['image']);
+      $this->db->bind(':trac_path', $data['media']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+     // Login / Authenticate User
+    public function check_media($data){
+      $this->db->query("SELECT * FROM media WHERE mitre_set = :mitre_set AND conclave = :conclave AND slot = :slot");
+      $this->db->bind(':mitre_set', $data['mitre_set']);
+      $this->db->bind(':conclave', $data['conclave']);
+      $this->db->bind(':slot', $data['slot']);
+
+      $this->db->resultset();
+      
+    
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function all_media(){
+      $this->db->query("SELECT * FROM media");
+      $row = $this->db->resultset();
+      return $row;
+    }
+
+
      // Delete Post
      public function delete_reg($id){
       // Prepare Query 
       $this->db->query('DELETE FROM mitre_students WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Delete 2
+     public function delete_media($id){
+      // Prepare Query 
+      $this->db->query('DELETE FROM media WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $id);

@@ -126,6 +126,15 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item">
+            <a href="<?= URLROOT?>/admin/media" class="nav-link">
+            <i class="nav-icon fas fa-camera"></i>
+              <p>
+                Media
+              </p>
+            </a>
+          </li>
           
          <li class="nav-item">
             <a href="<?= URLROOT?>/portal/settings" class="nav-link">

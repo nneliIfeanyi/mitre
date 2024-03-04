@@ -21,35 +21,37 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Database
+                Profile
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/students/<?php echo JUNIOR?>" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set <?php echo JUNIOR;?></p>
+                  <p>Veiw Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/students/<?php echo SENIOR?>" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Set <?php echo SENIOR;?></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?= URLROOT ;?>/admin/alumni_2024" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Alumni</p>
+                  <p>Update Profile</p>
                 </a>
               </li>
             </ul>
-          </li> -->
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book-open"></i>
+              <p>
+                Outlines
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item">
             <a href="<?= URLROOT ;?>/students/scores" class="nav-link">
@@ -63,21 +65,13 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
+            <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Assignments
               </p>
             </a>
           </li>
           
-         <li class="nav-item">
-            <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cog"></i>
-              <p>
-                General Settings
-              </p>
-            </a>
-          </li>
           <li class="nav-item">
             <a href="<?= URLROOT?>/students/logout" class="nav-link">
             <i class="nav-icon fas fa-backward"></i>

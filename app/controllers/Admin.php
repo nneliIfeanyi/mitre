@@ -31,7 +31,83 @@
       $this->view('admin/index', $data);
     }
 
-     
+    // Load Homepage
+    public function media(){
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $uploadPath = "uploaded/";
+        $trac = basename($_FILES["media"]["name"]);
+        $db_media =  $uploadPath . $trac;   
+        $media_path = $uploadPath . $trac; 
+        $file_ext = pathinfo($media_path, PATHINFO_EXTENSION);  
+        $data = [
+          'mitre_set' => $_POST['mitre_set'],
+          'conclave' => $_POST['conclave'],
+          'slot' => $_POST['slot'],
+          'media' => $db_media
+        ]; 
+        // Allow certain file formats 
+        $allowed_ext = array('mp3', 'WAV'); 
+        if(!in_array($file_ext, $allowed_ext) ){ 
+          flash('msg', 'File format not supported, MP3 files allowed..', 'alert alert-danger');
+          redirect('admin/media');
+        }elseif($this->userModel->check_media($data)){ 
+          flash('msg', 'File already exist..', 'alert alert-danger');
+          redirect('admin/media');
+        }else{
+          $tracTemp = $_FILES["media"]["tmp_name"];
+          $data = [
+          'mitre_set' => $_POST['mitre_set'],
+          'conclave' => $_POST['conclave'],
+          'slot' => $_POST['slot'],
+          'media' => $db_media,
+          move_uploaded_file($tracTemp, $media_path)
+        ];
+
+          //Execute
+          if($this->userModel->trac_upload($data)){
+    
+            flash('msg', $data['slot'].' Slot Uploaded Successfully For Set '.$data['mitre_set'].' Conclave '.$data['conclave']);
+            redirect('admin/media');
+          } else {
+            die('Something went wrong');
+          }
+
+        }
+        
+        
+      }else{ 
+        $conclaves = $this->userModel->getConclaves();
+        $media = $this->userModel->all_media();
+          //Set Data
+        $data = [
+          'conclaves' => $conclaves,
+          'media' => $media
+        ];
+
+        // Load media view
+        $this->view('admin/media', $data);
+      }
+    }
+
+
+     // Load Homepage
+    public function del_media($id){
+      if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //Execute
+        if($this->userModel->delete_media($id)){
+          flash('msg', 'Media Deleted','alert alert-danger');
+          redirect('admin/media');
+          } else {
+            die('Something went wrong');
+          }
+      } else {
+        redirect('admin/media');
+      }
+
+      // Load homepage/index view
+      $this->view('admin/del_media', $data);
+    }
    
 
 
@@ -305,7 +381,7 @@
             'mitre_set' => $mitre_set
           ];
           
-          $this->view('admin/add_scores', $data);
+        $this->view('admin/add_scores', $data);
         }else{
           $conclaves = $this->userModel->getConclaves();
           //Set Data

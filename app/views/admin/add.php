@@ -58,7 +58,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Gender:</label>
-              <select name="gender" required data-parsley-trigger="change" class="form-select">
+              <select name="gender" required data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option> 
@@ -68,7 +68,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Set:</label>
-              <select name="set" class="form-select">
+              <select name="set" class="form-control">
                 <option value="<?= $set?>"><?= $set?></option>
               </select>
             </div>
@@ -76,7 +76,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Zone:</label>
-              <select name="zone" required data-parsley-trigger="change" class="form-select">
+              <select name="zone" required data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="Ufuma">East</option>
                 <option value="Minna">Niger</option>
@@ -93,7 +93,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>State of Residence:</label>
-              <select name="state" class="form-select">
+              <select name="state" class="form-control">
                 <option value="">----</option>
                  <?php foreach ($data['states'] as $states):?>
                   <option value="<?php echo $states->state;?>"><?php echo $states->state;?></option>
@@ -187,7 +187,7 @@ $set = $data['set'];
 <section class="content">
 <div class="container-fluid">
 <?php //EVERYTHING GOES HERE, Start coding from here.?>
-<div class="card card-body">
+<div class="">
   <div class="row">
     <div class="col-12">
       
@@ -217,7 +217,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Gender:</label>
-              <select name="gender" required data-parsley-trigger="change" class="form-select">
+              <select name="gender" required data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option> 
@@ -227,7 +227,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Set:</label>
-              <select name="set" class="form-select">
+              <select name="set" class="form-control">
                 <option value="<?= $set?>"><?= $set?></option>
               </select>
             </div>
@@ -235,7 +235,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Zone:</label>
-              <select name="zone" required data-parsley-trigger="change" class="form-select">
+              <select name="zone" required data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="Ufuma">East</option>
                 <option value="Minna">Niger</option>
@@ -252,7 +252,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>State of Residence:</label>
-              <select name="state" class="form-select">
+              <select name="state" class="form-control">
                 <option value="">----</option>
                  <?php foreach ($data['states'] as $states):?>
                   <option value="<?php echo $states->state;?>"><?php echo $states->state;?></option>
