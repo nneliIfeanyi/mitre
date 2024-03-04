@@ -231,6 +231,17 @@
         $this->view('admin/more_details', $data);
       }
 
+      public function compare($set){
+        $student = $this->attendanceModel->get_join($set);
+        //Set Data
+        $data = [  
+          'student' => $student
+        ];
+  
+        // Load homepage/index view
+        $this->view('admin/compare', $data);
+      }
+
       public function add($set){
   
         // Check if POST
@@ -256,8 +267,12 @@
           ];
           //validate Username..
           if ($this->userModel->findUserByPhone($data['phone'])) {
-            $data['error'] = 'Phone number already exist you cannot register twice..';
-            $this->view('admin/add', $data);
+            //$data['error'] = 'Phone number already exist you cannot register twice..';
+            //$this->view('admin/add', $data);
+            $success = $this->userModel->register_by_admin($data);
+            if ($success) {
+              flash('msg', 'Registration Successfull..');
+              redirect('admin/add/'.$set);
           }else{
             //All validation passed...
             $success = $this->userModel->register_by_admin($data);

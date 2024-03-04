@@ -50,7 +50,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Gender:</label>
-              <select name="gender" required data-parsley-trigger="change" class="form-control">
+              <select name="gender" data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option> 
@@ -68,7 +68,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Zone:</label>
-              <select name="zone" required data-parsley-trigger="change" class="form-control">
+              <select name="zone" data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="Ufuma">East</option>
                 <option value="Minna">Niger</option>
@@ -79,7 +79,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Residence|Office Address</label>
-              <input type="text" name="address" required data-parsley-pattern="^[a-zA-Z',0-9. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
+              <input type="text" name="address" data-parsley-pattern="^[a-zA-Z',0-9. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
             </div>
           </div>
           <div class="col-lg-6">
@@ -96,7 +96,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Mobile Phone:</label>
-              <input type="number" name="phone" required data-parsley-length="[10, 11]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['phone']; ?>">
+              <input type="number" name="phone" data-parsley-length="[10, 11]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['phone']; ?>">
               <span class="error"><?= $data['error'] ?></span>
             </div>
           </div>
@@ -127,13 +127,13 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Occupation:</label>
-              <input type="text" name="occupation" required data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['occupation']; ?>">
+              <input type="text" name="occupation" data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['occupation']; ?>">
             </div>
           </div>
           <div class="col-12">
             <div class="form-group mb-3 shadow p-3">
               <label>Local Assembly:</label>
-              <input type="text" name="assembly" required data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['assembly']; ?>">
+              <input type="text" name="assembly" data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['assembly']; ?>">
             </div>
           </div>
 
@@ -201,7 +201,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Gender:</label>
-              <select name="gender" required data-parsley-trigger="change" class="form-control">
+              <select name="gender" data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option> 
@@ -219,7 +219,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Zone:</label>
-              <select name="zone" required data-parsley-trigger="change" class="form-control">
+              <select name="zone" data-parsley-trigger="change" class="form-control">
                 <option value="">----</option>
                 <option value="Ufuma">East</option>
                 <option value="Minna">Niger</option>
@@ -230,7 +230,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Residence|Office Address</label>
-              <input type="text" name="address" required data-parsley-pattern="^[a-zA-Z',0-9. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
+              <input type="text" name="address" data-parsley-pattern="^[a-zA-Z',0-9. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['address']; ?>">
             </div>
           </div>
           <div class="col-lg-6">
@@ -247,7 +247,7 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Mobile Phone:</label>
-              <input type="number" name="phone" required data-parsley-length="[10, 11]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['phone']; ?>">
+              <input type="number" name="phone" data-parsley-length="[10, 11]" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['phone']; ?>">
               <span class="error"><?= $data['error'] ?></span>
             </div>
           </div>
@@ -278,13 +278,13 @@ $set = $data['set'];
           <div class="col-lg-6">
             <div class="form-group mb-3 shadow p-3">
               <label>Occupation:</label>
-              <input type="text" name="occupation" required data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['occupation']; ?>">
+              <input type="text" name="occupation"  data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['occupation']; ?>">
             </div>
           </div>
           <div class="col-12">
             <div class="form-group mb-3 shadow p-3">
               <label>Local Assembly:</label>
-              <input type="text" name="assembly" required data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['assembly']; ?>">
+              <input type="text" name="assembly"  data-parsley-pattern="^[a-zA-Z',. ]+$" data-parsley-trigger="keyup" class="form-control form-control-lg" value="<?php echo $data['assembly']; ?>">
             </div>
           </div>
 
