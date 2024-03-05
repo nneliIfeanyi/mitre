@@ -198,7 +198,7 @@
         ];
           $input = $this->attendanceModel->recordPaper($data);
           if ($input) {
-            flash('msg', 'Added scores is successfull..');
+            flash('msg', 'Added score is successfull..');
             redirect('papers/'.$data['paper'].'_'.$data['zone'].'/'.$data['mitre_set']);
           }
            

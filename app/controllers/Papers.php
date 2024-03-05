@@ -130,9 +130,102 @@
     }
 
 
+    /////////
+    ////////
+    //////
+
+    public function summary_kaduna($set){
+    
+        $all = $this->databaseModel->allKaduna($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/summary_kaduna', $data);
+    
+    }
+
+
+    public function summary_minna($set){
+    
+        $all = $this->databaseModel->allMinna($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/summary_minna', $data);
+    
+    }
+
+
+    public function summary_ufuma($set){
+    
+        $all = $this->databaseModel->allUfuma($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/summary_ufuma', $data);
+    
+    } 
+
+    ////
+        ////
+            ////
+
+public function term_paper_ufuma($set){
+    
+        $all = $this->databaseModel->allUfuma($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/term_paper_ufuma', $data);
+    
+    } 
 
 
 
+    public function term_paper_minna($set){
+    
+        $all = $this->databaseModel->allMinna($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/term_paper_minna', $data);
+    
+    }
+
+
+    public function term_paper_kaduna($set){
+    
+        $all = $this->databaseModel->allKaduna($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/term_paper_kaduna', $data);
+    
+    }
 
 
 

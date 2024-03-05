@@ -374,9 +374,9 @@
           if ($_POST['zone'] == 'Kaduna') {
             $reg = $set.'00'.$_POST['std_id'].'K';
           }elseif ($_POST['zone'] == 'Ufuma') {
-            $reg = $set.'00'.$_POST['std_id'].'U';
+            $reg = $set.'00'.$_POST['std_id'].'E';
           }else{
-            $reg = $set.'00'.$_POST['std_id'].'M';
+            $reg = $set.'00'.$_POST['std_id'].'N';
           }
           
 
@@ -384,17 +384,17 @@
           if ($_POST['zone'] == 'Kaduna') {
             $reg = $set.'0'.$_POST['std_id'].'K';
           }elseif ($_POST['zone'] == 'Ufuma') {
-            $reg = $set.'0'.$_POST['std_id'].'U';
+            $reg = $set.'0'.$_POST['std_id'].'E';
           }else{
-            $reg = $set.'0'.$_POST['std_id'].'M';
+            $reg = $set.'0'.$_POST['std_id'].'N';
           }
         }else{
            if ($_POST['zone'] == 'Kaduna') {
             $reg = $set.$_POST['std_id'].'K';
           }elseif ($_POST['zone'] == 'Ufuma') {
-            $reg = $set.$_POST['std_id'].'U';
+            $reg = $set.$_POST['std_id'].'E';
           }else{
-            $reg = $set.$_POST['std_id'].'M';
+            $reg = $set.$_POST['std_id'].'N';
           }
         }
         

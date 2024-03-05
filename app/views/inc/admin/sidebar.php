@@ -109,29 +109,7 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Culmulative
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <!-- <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/portal/add_mark" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Mark</p>
-                </a>
-              </li> -->
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/admin/culmulative" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Culmulative</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
 
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
@@ -228,6 +206,128 @@
                 </a>
               </li>
                
+            </ul>
+          </li>
+
+           <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Scoring (Term Paper)
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/term_paper_kaduna/<?= SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kaduna Set <?= SENIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/term_paper_ufuma/<?= SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ufuma Set <?= SENIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/term_paper_minna/<?= SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Minna Set <?= SENIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/term_paper_kaduna/<?= JUNIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kaduna Set <?= JUNIOR?></p>
+                   </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/term_paper_Ufuma/<?= JUNIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ufuma Set <?= JUNIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/term_paper_minna/<?= JUNIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Minna Set <?= JUNIOR?></p>
+                </a>
+              </li>
+               
+            </ul>
+          </li>
+
+           <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Scoring (Summary)
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/summary_kaduna/<?= SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kaduna Set <?= SENIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/summary_ufuma/<?= SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ufuma Set <?= SENIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/summary_minna/<?= SENIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Minna Set <?= SENIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/summary_kaduna/<?= JUNIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kaduna Set <?= JUNIOR?></p>
+                   </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/summary_Ufuma/<?= JUNIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ufuma Set <?= JUNIOR?></p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/papers/summary_minna/<?= JUNIOR?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Minna Set <?= JUNIOR?></p>
+                </a>
+              </li>
+               
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="pages/widgets.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Culmulative
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <!-- <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/portal/add_mark" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Mark</p>
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="<?php echo URLROOT;?>/admin/culmulative" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Culmulative</p>
+                </a>
+              </li>
             </ul>
           </li>
 
