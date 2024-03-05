@@ -509,14 +509,16 @@
 
     
 
-      // Delete Post
+      // Delete 
     public function delete($id){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $set = $_POST['mitre_set'];
+        $zone = $_POST['zone'];
         //Execute
         if($this->userModel->delete_reg($id)){
           // Redirect to login
-          flash('del_msg', 'Candidate Removed','alert alert-danger');
-          redirect('admin/all_registered');
+          flash('msg', 'Candidate Removed..','alert alert-danger');
+          redirect('admin/'.$zone.'/'.$set);
           } else {
             die('Something went wrong');
           }

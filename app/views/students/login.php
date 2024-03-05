@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="row">
+<div class="row" style="height: 69vh;">
 <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light mt-5 mx-1">
   <!-- <h2 class="display-3">Not available</h2> -->
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <div class="bg-dark  px-2 py-3 mt-3 fixed-bottom">
+<div class="bg-dark  px-2 py-3 mt-3">
 
 <div class="row">
 

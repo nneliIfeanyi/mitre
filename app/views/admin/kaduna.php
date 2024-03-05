@@ -28,6 +28,7 @@
 <?php //EVERYTHING GOES HERE, Start coding from here.?>
 
 <div class="card card-body">
+  <div class="row"><div class="col-md-6 h3"><?php flash('msg')?></div></div>
   <nav>
     <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style="font-weight: bold;">
       <a href="<?php echo URLROOT?>/admin/kaduna/<?php echo $data['set']?>" class="active nav-link" 
@@ -130,6 +131,7 @@
           <?php //EVERYTHING GOES HERE, Start coding from here.?>
 
   <div class="card card-body">
+    <div class="row"><div class="col-md-6 h3"><?php flash('msg')?></div></div>
     <nav>
       <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style="font-weight: bold;">
         <a href="<?php echo URLROOT?>/admin/kaduna/<?php echo $data['set']?>" class="active nav-link" 

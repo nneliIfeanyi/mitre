@@ -101,17 +101,45 @@
           </div>
         </div> 
       </form>
-      <hr class="shadow">
-      <div class="row my-2">
-        <div class="col-md-6 border shadow border-primary">
-        <p class="h5 pt-1 fw-bold">Danger Zone</p>
-            <form class="col-12" action="<?php echo URLROOT; ?>/admin/delete/<?php echo $data['student']->id; ?>" method="post">
-                <input type="submit" class="btn btn-danger" value="Delete this candidate">
-            </form>
-        <p class="fs-6">This action cannot be reversed...</p>
+      <hr>
+      <div class="row mt-5">
+        <div class="col-md-6 border border-light">
+          <p class="h5 py-2 fw-bold">Danger Zone</p>
+              <button class="btn btn-danger" 
+                data-toggle="modal" data-target="#deleteModal">
+                <i class="fas fa-trash"></i> 
+                Delete this candidate
+              </button>
+          <p class="fs-6">This action cannot be reversed...</p>
         </div>
       
         </div>
+
+        <!--Delete post Modal -->
+<div class="modal fade" id="deleteModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash text-danger"></i> This Action cannot be reveresed..</h5>
+       <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        This Action cannot be reveresed..
+        <p class="lead">Do you wish to Continue?</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-around">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+        <form action="<?php echo URLROOT; ?>/admin/delete/<?php echo $data['student']->id; ?>" method="post">
+          <input type="hidden" name="zone" value="<?php echo $data['student']->zone; ?>">
+          <input type="hidden" name="mitre_set" value="<?php echo $data['student']->mitre_set; ?>">
+          <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </section>
