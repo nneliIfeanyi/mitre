@@ -31,11 +31,11 @@
   <div class="row"><div class="col-md-6 h3"><?php flash('msg')?></div></div>
   <nav>
     <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style="font-weight: bold;">
-      <a href="<?php echo URLROOT?>/admin/kaduna/<?php echo $data['set']?>" class="active nav-link" 
+      <a href="<?php echo URLROOT?>/admin/kaduna/<?php echo $data['set']?>" class="nav-link" 
           id="nav-kaduna-tab" 
           type="button" role="tab" >Kaduna Zone
       </a>
-      <a href="<?php echo URLROOT?>/admin/ufuma/<?php echo $data['set']?>" class="nav-link" 
+      <a href="<?php echo URLROOT?>/admin/ufuma/<?php echo $data['set']?>" class="active nav-link" 
           id="nav-ufuma-tab" 
           type="button" role="tab" >Ufuma Zone
       </a>
@@ -134,11 +134,11 @@
     <div class="row"><div class="col-md-6 h3"><?php flash('msg')?></div></div>
     <nav>
       <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist" style="font-weight: bold;">
-        <a href="<?php echo URLROOT?>/admin/kaduna/<?php echo $data['set']?>" class="active nav-link" 
+        <a href="<?php echo URLROOT?>/admin/kaduna/<?php echo $data['set']?>" class="nav-link" 
             id="nav-kaduna-tab" 
             type="button" role="tab" >Kaduna Zone
         </a>
-        <a href="<?php echo URLROOT?>/admin/ufuma/<?php echo $data['set']?>" class="nav-link" 
+        <a href="<?php echo URLROOT?>/admin/ufuma/<?php echo $data['set']?>" class="active nav-link" 
             id="nav-ufuma-tab" 
             type="button" role="tab" >Ufuma Zone
         </a>
