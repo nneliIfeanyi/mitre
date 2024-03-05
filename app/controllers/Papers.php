@@ -37,6 +37,10 @@
       }
     }
 
+    ////////////
+    //////////
+    ////////
+
     public function long_paper_kaduna($set){
     
         $all = $this->databaseModel->allKaduna($set);
@@ -80,6 +84,50 @@
     }
 
 
+    // End Long Paper // 
+
+   public function short_paper_ufuma($set){
+    
+        $all = $this->databaseModel->allUfuma($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/short_paper_ufuma', $data);
+    
+    } 
+
+    public function short_paper_minna($set){
+    
+        $all = $this->databaseModel->allMinna($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/short_paper_minna', $data);
+    
+    }
+
+
+    public function short_paper_kaduna($set){
+    
+        $all = $this->databaseModel->allKaduna($set);
+        
+        //Set Data
+        $data = [
+          'set' => $set,
+          'students' => $all
+      
+        ];
+        $this->view('papers/short_paper_kaduna', $data);
+    
+    }
 
 
 
