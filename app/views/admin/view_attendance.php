@@ -14,7 +14,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
-            <li class="breadcrumb-item active">Culmulative</li>
+            <li class="breadcrumb-item active">Attendance Sorting</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -30,13 +30,13 @@
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-        <table class="table table-striped table-bordered" id="score-table">
+        <table class="table table-striped table-bordered" id="eg">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
           <thead>
             <tr class="text-primary">
               <th>#</th>
-              <th><b>Name</b></th>
-              <th><b><?php echo $data['day']?></b></th>
+              <th>Name</th>
+              <th><?php echo $data['day']?></th>
             </tr>
           </thead>
 
@@ -61,11 +61,23 @@
     <!-- /.content-wrapper -->
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 
-<script type="text/javascript">
-   new DataTable('#score-table', {
-    //ordering: false,
-    searching: true,
-    info: true,
-  });
+<script>
+  new DataTable('#eg', {
+    caption:"Recorded Attendance for <?php echo $data['zone']?> Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>",
+    paging:false,
+    layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel',
+              { extend:'pdf',
+                messageTop:'Recorded Attendance for <?php echo $data['zone']?> zone Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>',
+                messageBottom:null
+              },
+              { extend:'print',
+                messageTop:'Recorded Attendance for <?php echo $data['zone']?> zone Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>',
+                messageBottom:null
+              }]
+        }
+    }
+});
 </script>
     

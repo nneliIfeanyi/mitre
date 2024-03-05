@@ -16,8 +16,35 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?= URLROOT ;?>/plugins/jquery/jquery.min.js"></script>
+<!-- <script src="<?= URLROOT ;?>/plugins/jquery/jquery.min.js"></script> -->
 <!-- jQuery UI 1.11.4 -->
+<!-- <script src="<?= URLROOT ;?>/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip 
+<script>
+  //$.widget.bridge('uibutton', $.ui.button);
+
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
+<!-- Bootstrap 4 
+<script src="<?= URLROOT ;?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
+<!-- DataTables -->
+<!-- <script src="<?= URLROOT ;?>/js/jquery.dataTables.min.js"></script>
+<script src="<?= URLROOT ;?>/js/dataTables.bootstrap5.min.js"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.0/js/dataTables.buttons.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.dataTables.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.print.min.js"></script>
+<!--      -->
 <script src="<?= URLROOT ;?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -30,33 +57,9 @@
 <script src="<?= URLROOT ;?>/js/parsley.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?= URLROOT ;?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- DataTables -->
-<script src="<?= URLROOT ;?>/js/jquery.dataTables.min.js"></script>
-<script src="<?= URLROOT ;?>/js/dataTables.bootstrap5.min.js"></script>
-<!-- ChartJS -->
-<script src="<?= URLROOT ;?>/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="<?= URLROOT ;?>/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="<?= URLROOT ;?>/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="<?= URLROOT ;?>/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?= URLROOT ;?>/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="<?= URLROOT ;?>/plugins/moment/moment.min.js"></script>
-<script src="<?= URLROOT ;?>/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= URLROOT ;?>/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="<?= URLROOT ;?>/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="<?= URLROOT ;?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?php echo URLROOT; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= URLROOT ;?>/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?= URLROOT ;?>/dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?= URLROOT ;?>/dist/js/pages/dashboard.js"></script>
+<!--  -->
 </body>
 </html>

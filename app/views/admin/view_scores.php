@@ -160,28 +160,25 @@
 <script>
 $(function(){
     $('#mark-add').parsley();
-    // $('#set').on('change', function(){
-    //     var set = $(this).val();
-    //     var senior = <?php echo SENIOR ?>;
-    //     var junior = <?php echo JUNIOR ?>;
-    //     if(set == junior){
-    //        $('#conclave').html('<option value="<?php echo J_CONCLAVE ?>"><?php echo J_CONCLAVE ?></option>'); 
-    //     }else if(set == senior){
-    //         $('#conclave').html('<option value="<?php echo S_CONCLAVE ?>"><?php echo S_CONCLAVE ?></option>');
-    //     }else{
-    //       $('#conclave').html('<option value="">Choose..</option>');
-    //     }
-    // })
-
-
 })
-
 </script>
-<script type="text/javascript">
-   new DataTable('#score-table', {
-    //ordering: false,
-    searching: true,
-    info: true,
-  });
+<script>
+  new DataTable('#score-table', {
+    caption:"Culmulative Records for <?php echo $data['zone']?> zone Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>",
+    paging:false,
+    layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel',
+              { extend:'pdf',
+                messageTop:'Culmulative Records for <?php echo $data['zone']?> zone Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>',
+                messageBottom:null
+              },
+              { extend:'print',
+                messageTop:'Culmulative Records for <?php echo $data['zone']?> zone Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>',
+                messageBottom:null
+              }]
+        }
+    }
+});
 </script>
     

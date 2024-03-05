@@ -125,7 +125,7 @@
                                 <input type="password" name="new-password" required class="form-control mb-3" placeholder="New Password">
                                 <div class="mb-3">
                                     <label>Security Question:</label>
-                                    <input type="text" placeholder="Your answer" required name="answer" class="form-control">
+                                    <input type="password" placeholder="Your answer" required name="answer" class="form-control">
                                 </div>
                                 <input type="submit" name="change-password" value="Update" class="btn btn-success">
                             </form>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mitre Admin Portal</title>
+  <title>Mitre Administrative Portal</title>
 
   <!-- Google Font: Source Sans Pro -->
   <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
@@ -26,7 +26,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?= URLROOT ;?>/plugins/summernote/summernote-bs4.min.css">
 
-  <link rel="stylesheet" href="<?= URLROOT; ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href="<?= URLROOT; ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css">
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <!--Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT ;?>/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT ;?>/img/favicon-32x32.png">
