@@ -44,6 +44,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.colVis.min.js"></script>
 <!--      -->
 <script src="<?= URLROOT ;?>/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

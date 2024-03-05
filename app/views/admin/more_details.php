@@ -1,105 +1,75 @@
-<?php require APPROOT . '/views/inc/header2.php'; ?>
-<div class="container-fluid">
+<?php require APPROOT . '/views/inc/admin/header.php'; ?>
+<?php require APPROOT . '/views/inc/admin/top.php'; ?>
+<?php require APPROOT . '/views/inc/admin/sidebar.php'; ?>
+ <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Edit details for <span class="text-muted"><?php echo $data['student']->fullname?></span></h1>
+            <p></p>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
+              <li class="breadcrumb-item active">Edit</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
 
-<div class="">
-<form>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row"><h4 class="col-md-6"><?= flash('msg') ?></h4></div>
+    <div class="card card-body">
+    <form action="" method="POST" id="details">
         <div class="row">
-            <div class="col-md-4 offset-md-4">
+            <!-- <div class="col-12">
                 <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-circle" style="height: 350px;width:100%;">
+            </div> -->
+       
+          
+            <div class="col-md-6 mb-3 shadow p-2">
+                <p class="bg-light badge text-dark">Full Name</p>
+                <input type="text" name="fullname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['student']->fullname?>">
+                <span class="invalid-feedback"></span> 
             </div>
-        </div>
-            
-        <!-- Names Row -->
-        <div class="row pt-2 pb-4">
-        <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Full Name</p>
-            <input disabled type="text" name="surname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['student']->fullname?>">
-            <span class="invalid-feedback"></span> 
-        </div>
 
-        <div class="col-md-4 mb-3">
-            <p class="bg-light badge text-dark">Age : Gender : Marital stutus</p>
-            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->info ;?>"> 
-        </div>
-
-        <div class="col-4 mb-3">
-            <p class="bg-light badge text-dark">mitre set</p>
-            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->mitre_set ;?>"> 
-        </div>
-
-          <div class="col-8 mb-3">
-            <p class="bg-light badge text-dark">State of residence</p>
-            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->s_o_r ;?>">
-          </div> 
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Contact Address</p>
-            <input disabled type="text" name="surname" class="form-control form-control-lg" value="<?php echo $data['student']->address ;?>">
-          </div> 
+            <div class="col-md-3 mb-3 shadow p-2">
+                <p class="bg-light badge text-dark">mitre set</p>
+                <input disabled type="text" name="mitre_set" class="form-control form-control-lg" value="<?php echo $data['student']->mitre_set ;?>"> 
+            </div>
+            <div class="col-md-3 mb-3 shadow p-2">
+                <p class="bg-light badge text-dark">mitre zone</p>
+                <input disabled type="text" name="zone" class="form-control form-control-lg" value="<?php echo $data['student']->zone ;?>"> 
+            </div>
+          
       
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-3 shadow p-2">
             <p class="bg-light badge text-dark">Mobile number</p>
-            <input disabled type="number" required name="mobile_num" class="form-control form-control-lg " value="<?php echo $data['student']->mobile_num; ?>">
+            <input type="number"  name="mobile_num" class="form-control form-control-lg " value="<?php echo $data['student']->mobile_num; ?>">
         
           </div> 
 
-          <div class="col-md-6 mb-3">
+          <div class="col-md-6 mb-3 shadow p-2">
             <p class="bg-light badge text-dark">WhatsApp number</p>
-            <input disabled type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
+            <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
           </div> 
     
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Church / Local Assembly : function in Church</p>
-            <input disabled type="text" name="church" class="form-control form-control-lg" value="<?php echo $data['student']->church ?>">
-          </div>
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">When born again : Holy Ghost Baptism</p>
-            <input disabled type="text" name="new_birth" class="form-control form-control-lg" value="<?php echo $data['student']->spiritual ?>">
-            </div> 
-    
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">God's calling</p>
-            <input disabled type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['student']->calling; ?>">
-          </div>
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Already into God's calling : when </p>
-            <input disabled type="text" name="call_sensed" class="form-control form-control-lg" value="<?php echo $data['student']->into_call; ?>">
-          </div>
 
-          <div class="col-md-6 mb-3">
-            <p class="badge text-dark bg-light">Attended MITRE before : Reason for MITRE</p>
-           <input disabled type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->prior_attended; ?>">
-          </div>
-
-          <div class="col-md-6 mb-3">
+          <div class="col-md-5 mb-3 shadow p-2">
             <p class="bg-light badge text-dark">Working experience (ocupation)</p>
-            <input disabled type="text" name="occupation" class="form-control form-control-lg" value="<?php echo $data['student']->occupation; ?>">
+            <input  type="text" name="occupation" class="form-control form-control-lg" value="<?php echo $data['student']->occupation; ?>">
           </div>
- 
-          <div class="col-md-5 mb-3">
-            <p class="bg-light badge text-dark">Languages spoken </p>
-            <input disabled type="text" name="lang_speak" class="form-control form-control-lg" value="<?php echo $data['student']->lang_speak; ?>">
+          <div class="col-md-7 mb-3 shadow p-2">
+            <p class="bg-light badge text-dark">Contact Address</p>
+            <input type="text" name="address" class="form-control form-control-lg" value="<?php echo $data['student']->address ;?>">
           </div> 
-
-          <div class="col-md-5 mb-3">
-            <p class="bg-light badge text-dark">Languages written</p>
-            <input disabled type="text" name="lang_write" class="form-control form-control-lg" value="<?php echo $data['student']->lang_write; ?>">
-          </div>
-          <div class="col-md-2 mb-3">
-            <p class="bg-light badge text-dark">Litracy</p>
-            <input disabled type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->litracy; ?>">
-          </div>
-            <div class="col-md-6 mb-3">
-                <p class="bg-light badge text-dark">Education:when:school</p>
-                <input disabled type="text" name="" class="form-control form-control-lg" value="<?php echo $data['student']->academics; ?>">
-            </div>  
-            </div>
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Spiritual oversight</p>
-            <input disabled type="text" name="discipler" class="form-control form-control-lg" value="<?php echo $data['student']->discipler; ?>">
-          </div>
-        </div>
         
-        <div class="row shadow border mx-1 pt-2 pb-4">
+       <!--  <div class="row shadow border mx-1 pt-2 pb-4">
           <div class="col-md-6 mb-3">
             <p class="bg-light badge text-dark">Referals name</p>
             <input disabled type="text" name="ref_name" class="form-control form-control-lg" value="<?php echo $data['student']->refered_by; ?>">
@@ -116,18 +86,22 @@
             <p class="bg-light badge text-dark">Contact duration : specific info</p>
             <input disabled type="text" name="ref_duration" class="form-control form-control-lg" value="<?php echo $data['student']->relationship; ?>">
           </div>
-        </div>
-
+        </div> -->
+      </div>
         <div class="row my-3">
-        <div class="col-md-6 mb-2">
-          <a href="https://wa.me/<?= $data['student']->whatsApp_num;?>" class="btn btn-primary btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send WhatsApp Message</a>
+          <div class="col-md-4 mb-2">
+          <input type="submit" name="submit" class="btn btn-primary" value="Update Details">
+          </div>
+        <div class="col-md-4 mb-2">
+          <a href="https://wa.me/<?= $data['student']->whatsApp_num;?>" class="btn btn-success btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send WhatsApp Message</a>
           </div>
 
-          <div class="col-6 mb-2">
-          <a href="<?php echo URLROOT;?>/admin/all_registered" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+          <div class="col-4 mb-2">
+          <a href="<?php echo URLROOT;?>/admin/<?= $data['student']->zone;?>/<?= $data['student']->mitre_set;?>" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
           </div>
         </div> 
       </form>
+      <hr class="shadow">
       <div class="row my-2">
         <div class="col-md-6 border shadow border-primary">
         <p class="h5 pt-1 fw-bold">Danger Zone</p>
@@ -138,7 +112,8 @@
         </div>
       
         </div>
+      </div>
+    </div>
+  </section>
 </div>
-</div> 
-
-<?php require APPROOT . '/views/inc/footer.php'; ?>
+<?php require APPROOT . '/views/inc/admin/footer.php'; ?>

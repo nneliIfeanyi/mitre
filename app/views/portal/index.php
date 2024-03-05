@@ -39,12 +39,12 @@ require APPROOT . '/views/inc/student/sidebar.php';
     <div class="lead"> <?php flash('success');?></div>
     <div class="px-2 py-5">
       <h1 class="display-3">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
-      <p class="lead text-primary fs-3">Registration is closed.</p> 
+      <!-- <p class="lead text-primary fs-3">Registration is closed.</p>  -->
       <div class="row">
           <div class="col-md-6">
             <a href="<?php echo URLROOT; ?>/students/login" 
               class="lead fw-bold btn btn-primary rounded-5">
-              Login instead 
+              Click here to login 
               <i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>
             </a>
           </div>
@@ -158,10 +158,10 @@ require APPROOT . '/views/inc/student/sidebar.php';
           <p class="lead"><span class="fw-bold">Note:</span>
           <span class="text-primary">MITRE</span> runs for 6 conclaves of one week each in March and in September. Therefore, the complete course of <span class="text-primary">MITRE</span> takes 3 years.</p>
           <div class="row">
-          <div class="col-md-6 offset-md-3">
+          <div class="col-md-6">
             <a href="<?php echo URLROOT; ?>/students/login" 
               class="lead fw-bold btn btn-primary rounded-5">
-              Registeration is closed, Login instead 
+              Click here to Login
               <i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>
             </a>
           </div>

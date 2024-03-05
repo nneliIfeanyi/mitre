@@ -232,6 +232,27 @@
       return $row;
     }
 
+//Edit Student
+    public function edit_profile($data){
+      // Prepare Query
+      $this->db->query('UPDATE mitre_students SET fullname = :fullname, mobile_num = :phone, address = :address, whatsApp_num = :whatsapp, occupation = :occupation WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':fullname', $data['fullname']);
+      $this->db->bind(':phone', $data['phone']);
+      $this->db->bind(':address', $data['address']);
+      $this->db->bind(':whatsapp', $data['whatsapp']);
+      $this->db->bind(':occupation', $data['occupation']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     public function trac_upload($data){
       // Prepare Query
       $this->db->query('INSERT INTO media (mitre_set, conclave, slot, file_name) 

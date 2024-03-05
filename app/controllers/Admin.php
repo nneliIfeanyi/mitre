@@ -221,14 +221,34 @@
 
 
       public function more_details($id){
-        $student = $this->userModel->getUserById($id);
-        //Set Data
-        $data = [  
-          'student' => $student
-        ];
-  
-        // Load homepage/index view
-        $this->view('admin/more_details', $data);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $data = [
+            'fullname' => trim($_POST['fullname']),
+            'id' => $id,
+            'phone' => trim($_POST['mobile_num']),
+            'address' => trim($_POST['address']),
+            'whatsapp' => trim($_POST['whatsapp_num']),
+            'occupation' => trim($_POST['occupation']),
+            'error' => ''
+          ];
+          $edit = $this->userModel->edit_profile($data);
+          if ($edit) {
+            flash('msg', 'Changes Saved Successfully..');
+            redirect('admin/more_details/'.$id);
+          }else{
+            die('Something went wrong..');
+          }
+        }else{
+
+          $student = $this->userModel->getUserById($id);
+          //Set Data
+          $data = [  
+            'student' => $student
+          ];
+    
+          // Load homepage/index view
+          $this->view('admin/more_details', $data);
+        }
       }
 
       public function sorting(){

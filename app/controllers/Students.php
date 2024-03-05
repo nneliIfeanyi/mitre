@@ -456,27 +456,14 @@
         $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
         $data = [       
-          'email' => trim($_POST['email']),
+          //'email' => trim($_POST['email']),
           'password' => trim($_POST['password']),        
-          'email_err' => '',
+          //'email_err' => '',
           'password_err' => '',       
         ];
 
-        // Check for email
-        if(empty($data['email'])){
-          $data['email_err'] = 'Please enter email.';
-        }
-
-        // Check for user
-        if($this->userModel->findUserByEmail($data['email'])){
-          // User Found
-        } else {
-          // No User
-          $data['email_err'] = 'This email is not registered.';
-        }
-
         // Make sure errors are empty
-        if(empty($data['email_err']) && empty($data['password_err'])){
+        if(empty($data['password_err'])){
 
           // Check and set logged in user
           $loggedInUser = $this->userModel->login($data['password']);
@@ -501,9 +488,9 @@
 
         // Init data
         $data = [
-          'email' => '',
+         // 'email' => '',
           'password' => '',
-          'email_err' => '',
+         // 'email_err' => '',
           'password_err' => '',
         ];
 

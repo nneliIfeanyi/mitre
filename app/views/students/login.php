@@ -6,25 +6,25 @@
     
         <!-- <h2 class="fw-bold">Student Login</h2> -->
         <p class="lead fs-2">Please fill in your credentials to login.</p>
-        <p class="text-muted" style="font-size:12.8px;margin-top: -4px;">Your phone number is your password..</p>
+        <p class="text-muted" style="font-size:15.8px;margin-top: -4px;">Your phone number is your password..</p>
         <form action="<?php echo URLROOT; ?>/students/login" method="post">
-          <div class="form-group mb-3">
+         <!--  <div class="form-group mb-3">
               <label>Email:</label>
               <input type="text" name="email" class="form-control form-control-lg <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['email']; ?>">
               <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
-          </div>    
+          </div>  -->   
           <div class="form-group mb-3">
               <label>Password:</label><br>
-              <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
+              <input type="password" name="password" class="form-control <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
               <span class="invalid-feedback"><?php echo $data['password_err']; ?></span>
           </div>
           <div class="form-row mt-3">
             <div class="col">
               <input type="submit" class="btn btn-primary rounded-3" value="Login">
             </div>
-            <div class="col mt-5">
+            <!-- <div class="col mt-5">
               <a href="<?= URLROOT?>/students/auth" class="btn btn-outline-secondary">Forgot Email? <i class="fa fa-arrow-right"></i></a>
-            </div>
+            </div> -->
           </div>
         </form>
       </div>
