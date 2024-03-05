@@ -55,6 +55,7 @@
                          <?php if(empty($student->admsn_no)):?>
                           <form method="post" action="">
                             <input type="hidden" name="std_id" value="<?= $student->id?>">
+                            <input type="hidden" name="zone" value="<?= $student->zone?>">
                             <input type="submit" name="submit" value="Generate" class="btn btn-sm btn-success">
                           </form>
                          <?php else:?>

@@ -370,12 +370,32 @@
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (strlen($_POST['std_id']) == 1) {
-          $reg = $set.'00'.$_POST['std_id'];
+
+          if ($_POST['zone'] == 'Kaduna') {
+            $reg = $set.'00'.$_POST['std_id'].'K';
+          }elseif ($_POST['zone'] == 'Ufuma') {
+            $reg = $set.'00'.$_POST['std_id'].'U';
+          }else{
+            $reg = $set.'00'.$_POST['std_id'].'M';
+          }
+          
 
         }elseif (strlen($_POST['std_id']) == 2) {
-          $reg = $set.'0'.$_POST['std_id'];
+          if ($_POST['zone'] == 'Kaduna') {
+            $reg = $set.'0'.$_POST['std_id'].'K';
+          }elseif ($_POST['zone'] == 'Ufuma') {
+            $reg = $set.'0'.$_POST['std_id'].'U';
+          }else{
+            $reg = $set.'0'.$_POST['std_id'].'M';
+          }
         }else{
-          $reg = $set.$_POST['std_id'];
+           if ($_POST['zone'] == 'Kaduna') {
+            $reg = $set.$_POST['std_id'].'K';
+          }elseif ($_POST['zone'] == 'Ufuma') {
+            $reg = $set.$_POST['std_id'].'U';
+          }else{
+            $reg = $set.$_POST['std_id'].'M';
+          }
         }
         
         $data = [
