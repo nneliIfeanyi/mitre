@@ -15,7 +15,7 @@ $paper = 'long_paper';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h3">Add Scores</h1>
+            <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Minna Zone</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -108,7 +108,7 @@ $paper = 'long_paper';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h3">Add Scores</h1>
+            <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Minna Zone</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
