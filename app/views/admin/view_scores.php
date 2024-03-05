@@ -111,7 +111,7 @@
             <td>
               <?php 
                 if (!$summary->score) {
-                  echo 'Not added';
+                  echo '--';
                 }else{
                 echo $summary->score;
               }?>
@@ -120,7 +120,7 @@
             <td>
               <?php 
                 if (!$resolve1->score) {
-                  echo 'Not added';
+                  echo '--';
                 }else{
                 echo $resolve1->score;
               }?>
@@ -129,7 +129,7 @@
             <td>
               <?php 
                 if (!$resolve2->score) {
-                  echo 'Not added';
+                  echo '--';
                 }else{
                 echo $resolve2->score;
               }?>
@@ -137,7 +137,7 @@
             <td>
               <?php 
                 if (!$resolve3->score) {
-                  echo 'Not added';
+                  echo '--';
                 }else{
                 echo $resolve3->score;
               }?>
