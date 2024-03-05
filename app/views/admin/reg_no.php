@@ -88,7 +88,7 @@
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script type="text/javascript">
   new DataTable('#eg', {
-    //scrollX: true,
+    scrollX: true,
     //scrollY: '60vh',
     //scrollCollapse: true,
     ordering: false,
