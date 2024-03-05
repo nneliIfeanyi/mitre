@@ -92,7 +92,7 @@
     //scrollY: '60vh',
     //scrollCollapse: true,
     ordering: false,
-    searching: false,
+    searching: true,
     info: false,
     paging:false,
   });
