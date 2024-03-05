@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="row" style="height: 69vh;">
+<div class="row" style="height: 87vh;">
 <div class="col-md-6 mx-auto">
       <div class="card card-body bg-light mt-5 mx-1">
   <!-- <h2 class="display-3">Not available</h2> -->
