@@ -30,7 +30,6 @@
   
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.0.0/css/buttons.dataTables.css">
-  <link rel="stylesheet" href="<?php echo URLROOT; ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <!--Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT ;?>/img/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT ;?>/img/favicon-32x32.png">

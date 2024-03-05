@@ -103,20 +103,31 @@
       
     }
 
-    public function check_mark($set,$conclave,$paper,$zone){
-      $this->db->query("SELECT * FROM marks WHERE conclave = :conclave AND mitre_set = :mitre_set AND paper = :paper AND zone = :zone ");
+    public function check_mark($set,$conclave,$paper,$id){
+      $this->db->query("SELECT * FROM marks WHERE conclave = :conclave AND mitre_set = :mitre_set AND paper = :paper AND std_id = :id ");
 
       $this->db->bind(':mitre_set', $set);
       $this->db->bind(':conclave', $conclave);
       $this->db->bind(':paper', $paper);
-      $this->db->bind(':zone', $zone);
-      
-      $results = $this->db->resultset();
+      $this->db->bind(':id', $id);
+      $row = $this->db->single();
        //Check Rows
-      return $results;
+      return $row;
      
       
     }
+
+
+    public function select_mark($id){
+      $this->db->query("SELECT * FROM marks WHERE id = :id ");
+
+      $this->db->bind(':id', $id);
+      $row = $this->db->single();
+       //Check Rows
+      return $row;
+    }
+
+
 
     // Update score
     public function updatePaper($data){
@@ -130,6 +141,23 @@
       $this->db->bind(':mitre_set', $data['mitre_set']);
       $this->db->bind(':conclave', $data['conclave']);
       $this->db->bind(':paper', $data['paper']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    // Update score
+    public function updatePaper2($data){
+      // Prepare Query
+      $this->db->query('UPDATE marks SET score = :score WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $data['id']);
+      $this->db->bind(':score', $data['score']);
       
       //Execute
       if($this->db->execute()){

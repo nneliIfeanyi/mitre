@@ -199,13 +199,7 @@
           $input = $this->attendanceModel->recordPaper($data);
           if ($input) {
             flash('msg', 'Added scores is successfull..');
-            //$redirect = URLROOT.'/admin/add_scores';
-              echo "
-                    <div class='alert alert-success'>
-                      Registration Successfull...  <span class='spinner-border spinner-border-sm'> </span>
-                    </div>
-                    <meta http-equiv='refresh' content='3; URLROOT/mitre/admin/add_scores?mitre_set=16&conclave=2&zone=Kaduna&paper=term_paper'>
-                  ";
+            redirect('papers/'.$data['paper'].'_'.$data['zone'].'/'.$data['mitre_set']);
           }
            
       }//post submit ends
