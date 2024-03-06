@@ -26,7 +26,7 @@
 
     public function getScores($conclave){
       $this->db->query("SELECT * FROM marks WHERE std_id = :id AND conclave = :conclave");
-      $this->db->bind(':id', $_SESSION['student_id']);
+      $this->db->bind(':id', $_COOKIE['student-id']);
       $this->db->bind(':conclave', $conclave);
       $results = $this->db->resultset();
        //Check Rows
@@ -35,7 +35,7 @@
 
     public function getPunctual($conclave){
       $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND conclave = :conclave AND day != :arrival");
-      $this->db->bind(':id', $_SESSION['student_id']);
+      $this->db->bind(':id', $_COOKIE['student-id']);
       $this->db->bind(':conclave', $conclave);
       $this->db->bind(':arrival', 'Arrival');
       $this->db->resultset();

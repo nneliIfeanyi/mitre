@@ -48,7 +48,7 @@
         $this->view('students/view_scores', $data);
       }else{ 
         $conclaves = $this->userModel->getConclaves();
-        $user_data = $this->userModel->getUserById($_SESSION['student_id']);
+        $user_data = $this->userModel->getUserById($_COOKIE['student-id']);
         //Set Data
         $data = [
           'details' => $user_data,
@@ -463,24 +463,28 @@
         ];
 
         // Make sure errors are empty
-        if(empty($data['password_err'])){
+        if(empty($data['password'])){
 
+          $data['password_err'] = 'Please enter your phone number.';
+          $this->view('students/login', $data);
+           
+        }else{
+          
           // Check and set logged in user
           $loggedInUser = $this->userModel->login($data['password']);
 
           if($loggedInUser){
-            // User Authenticated!
+            // echo $_COOKIE['student-id'];
+            // echo $_COOKIE['student-name'];
+            // echo $_COOKIE['student-reg_no'];
             $this->createUserSession($loggedInUser);
-           
+            flash('msg','Login Successfull..');
+            redirect('students');
           } else {
             $data['password_err'] = 'Password incorrect.';
             // Load View
             $this->view('students/login', $data);
           }
-           
-        } else {
-          // Load View
-          $this->view('students/login', $data);
         }
 
       } else {
@@ -499,15 +503,14 @@
       }
     }
 
-     // Create Session With User Info
-      public function createUserSession($student){
-        $student->id = $_SESSION['student_name'];
-        $student->fullname = $_SESSION['student_id'];
-        $student->zone = $_SESSION['student_zone'];
-        $student->admsn_no = $_SESSION['student_reg_no'];
-        $student->passport = $_SESSION['student_passport'];
-        flash('msg', 'Login Successfull..');
-        redirect('students/index'); 
+      // Create Session With User Info
+      public function createUserSession($user){
+        setcookie('student-id', $user->id, time()+(86400), '/');
+        setcookie('student-name', $user->fullname, time()+(86400), '/');
+        setcookie('student-set', $user->mitre_set, time()+(86400), '/');
+        setcookie('student-passport', $user->passport, time()+(86400), '/');
+        setcookie('student-zone', $user->zone, time()+(86400), '/');
+        setcookie('student-reg_no', $user->admsn_no, time()+(86400), '/'); 
       }
   
       // Logout & Destroy Session

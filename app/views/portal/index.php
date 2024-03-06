@@ -1,5 +1,5 @@
 <?php 
-if (isset($_SESSION['student_id'])) {
+if (isset($_COOKIE['student-id'])) {
 
 require APPROOT . '/views/inc/student/header.php';
 require APPROOT . '/views/inc/student/top.php';
@@ -11,7 +11,8 @@ require APPROOT . '/views/inc/student/sidebar.php';
         <div class="row"><div class="col-md-6 h3"><?php flash('msg')?></div></div>
       <div class="card card-body px-2 py-5">
         <h1 class="display-2 d-none d-lg-block">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
-        <h1 class="d-lg-none" style="font-size:50px;">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1><span><?= $_SESSION['student_zone']?> Zone</span><hr>
+        <h1 class="d-lg-none" style="font-size:50px;">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1><span><?= $_COOKIE['student-zone']?> Zone</span>
+        <span class="font-weight-bold">Your Reg_no is <span class="text-primary"><?= $_COOKIE['student-reg_no']?></span></span><hr>
         
         <p class="m-0 lead text-primary">Current Conclave Set 16 : <span style='color: green; font-weight: bold; font-size: 18px; text-transform: uppercase;'>
               <?php echo S_CONCLAVE?>
@@ -32,8 +33,10 @@ require APPROOT . '/views/inc/student/sidebar.php';
 <?php 
   require APPROOT . '/views/inc/student/footer.php';
   
-  }else{
+}else{
+
   require APPROOT . '/views/inc/header.php'; ?>
+
 <div class="container">
   <div class="bg-light border">
     <div class="lead"> <?php flash('success');?></div>

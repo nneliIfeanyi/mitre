@@ -39,7 +39,7 @@
 
       <li class="nav-item">
         <a class="nav-link" href="#" role="button">
-          <span class="font-weight-bold"> <?php echo $_SESSION['student_name'];?></span>
+          <span class="font-weight-bold"> <?php echo $_COOKIE['student-name'];?></span>
         </a>
       </li>
       

@@ -1,9 +1,10 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a class="brand-link">
-      <img src="<?= URLROOT.'/'.$_SESSION['student_passport'];?>" alt="studentLogo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a class="brand-link p-3">
       <span class="brand-text font-weight-light">MITRE</span>
+      <span class="font-weight-bold"><?= $_COOKIE['student-reg_no'];?></span>
+      
     </a>
 
     <!-- Sidebar -->
