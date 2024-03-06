@@ -27,17 +27,16 @@
       <div class="container-fluid">
        <div class="card card-body">
           <div class="row"><div class="col-lg-6"><p><?php flash('msg') ?></p></div></div>
+          <div class="table-responsive">
               <table class="table table-striped" id="eg">
                 <thead>
                    <tr class="">
-                     <th>#</th>
-                     <th><b>Name</b></th>
-                     <th><b>Set</b></th>
-                     <th><b>Zone</b></th>
-                     <th><b>Reg-no</b></th>
-                     
-                     <th><b>Status</b></th>
-                     
+                     <th>S/N</th>
+                     <th>Name</th>
+                     <th>Set</th>
+                     <th>Zone</th>
+                     <th>Reg-no</th>
+                     <th>Status</th>
                    </tr>
                 </thead>
 
@@ -73,12 +72,11 @@
                      <th><b>Set</b></th>
                      <th><b>Zone</b></th>
                      <th><b>Reg-no</b></th>
-                     
                      <th><b>Status</b></th>
-                     
                    </tr>
                 </tfoot>
                </table>
+             </div>
        </div>
   </div><!-- /.container-fluid -->
 </section>
@@ -88,13 +86,13 @@
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script type="text/javascript">
   new DataTable('#eg', {
-    scrollX: true,
-    //scrollY: '60vh',
-    //scrollCollapse: true,
-    ordering: false,
-    searching: true,
-    info: false,
-    paging:false,
+    // scrollX: true,
+    // //scrollY: '60vh',
+    // scrollCollapse: true,
+    // ordering: true,
+    // searching: true,
+    // info: true,
+    // paging:false,
   });
 </script>
 

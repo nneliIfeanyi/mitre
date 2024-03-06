@@ -9,9 +9,13 @@ require APPROOT . '/views/inc/student/sidebar.php';
   <section class="content py-3">
       <div class="container-fluid">
         <div class="row"><div class="col-md-6 h3"><?php flash('msg')?></div></div>
-      <div class="card card-body px-2 py-5">
-        <h1 class="display-2 d-none d-lg-block">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
-        <h1 class="d-lg-none" style="font-size:50px;">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1><span><?= $_COOKIE['student-zone']?> Zone</span>
+      <div class="card card-body px-2 pb-5">
+        <h1 class="display-2 d-none d-lg-block">
+          Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span>
+        </h1>
+        <h1 class="d-lg-none" style="font-size:50px;">
+            Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span>
+        </h1><span><?= $_COOKIE['student-zone']?> Zone</span>
         <span class="font-weight-bold">Your Reg_no is <span class="text-primary"><?= $_COOKIE['student-reg_no']?></span></span><hr>
         
         <p class="m-0 lead text-primary">Current Conclave Set 16 : <span style='color: green; font-weight: bold; font-size: 18px; text-transform: uppercase;'>
