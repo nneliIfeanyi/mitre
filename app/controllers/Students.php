@@ -499,99 +499,19 @@
       }
     }
 
-
-    public function auth(){
-      // Check if logged in
-      if($this->isLoggedIn()){
-        redirect('students');
-      }
-
-     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Sanitize POST
-        $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-        
-        $data = [       
-          'name' => trim($_POST['name']),
-          'password' => trim($_POST['password']),        
-          'name_err' => '',
-          'password_err' => '',       
-        ];
-
-        // Check for email
-        if(empty($data['name'])){
-          $data['name_err'] = 'Please enter your name.';
-        }
-
-        // Check for user
-        if($this->userModel->findUserByFullname($data['name'])){
-          // User Found
-        } else {
-          // No User
-          $data['name_err'] = 'This name is not registered.';
-        }
-
-        // Make sure errors are empty
-        if(empty($data['name_err']) && empty($data['password_err'])){
-
-          // Check and set logged in user
-          $loggedInUser = $this->userModel->login($data['password']);
-
-          if($loggedInUser){
-            // User Authenticated!
-            $this->createUserSession($loggedInUser);
-           
-          } else {
-            $data['password_err'] = 'Password incorrect.';
-            // Load View
-            $this->view('students/auth', $data);
-          }
-           
-        } else {
-          // Load View
-          $this->view('students/auth', $data);
-        }
-
-      }else{
- // If NOT a POST
-
-        // Init data
-        $data = [
-          'name' => '',
-          'password' => '',
-          'name_err' => '',
-          'password_err' => '',
-          'body' => '',
-          'body_err' => ''
-        ];
-
-      // Load auth view
-      $this->view('students/auth', $data);
-      }
-    }
-
      // Create Session With User Info
       public function createUserSession($student){
-        setcookie('mitre-id', $student->id, time()+(86400), '/');
-        setcookie('mitre-name', $student->fullname, time()+(86400), '/');
-        setcookie('mitre-zone', $student->zone, time()+(86400), '/');
-        setcookie('mitre-reg_no', $student->admsn_no, time()+(86400), '/');
-        setcookie('mitre-passport', $student->passport, time()+(86400), '/');
+        $student->id = $_SESSION['student_name'];
+        $student->fullname = $_SESSION['student_id'];
+        $student->zone = $_SESSION['student_zone'];
+        $student->admsn_no = $_SESSION['student_reg_no'];
+        $student->passport = $_SESSION['student_passport'];
         flash('msg', 'Login Successfull..');
         redirect('students/index'); 
       }
   
       // Logout & Destroy Session
       public function logout(){
-        $user_name = $_SESSION['student_name'];
-        $user_id = $_SESSION['student_id'];
-        $user_zone = $_SESSION['student_zone'];
-        $user_reg_no = $_SESSION['student_reg_no'];
-        $user_passport = $_SESSION['student_passport'];
-        setcookie('mitre-id', $user_id, time()-(86400*1), '/');
-        setcookie('mitre-name', $user_name, time()-(86400*1), '/');
-        setcookie('mitre-zone', $user_zone, time()-(86400*2), '/');
-        setcookie('mitre-reg_no', $user_reg_no, time()-(86400*2), '/');
-        setcookie('mitre-passport', $user_passport, time()-(86400*2), '/');
         unset($_SESSION['student_id']);
         unset($_SESSION['student_name']);
         unset($_SESSION['student_zone']);
@@ -603,15 +523,14 @@
 
     // Check Logged In
     public function isLoggedIn(){
-      if (!isset($_COOKIE['mitre-id']) AND !isset($_COOKIE['mitre-name']) ) {
+      if(isset($_SESSION['student_id'])){
+        return true;
+      } else {
         return false;
-        }else{
-          $_SESSION['student_id'] = $_COOKIE['mitre-id'];
-          $_SESSION['student_name'] = $_COOKIE['mitre-name'];
-          $_SESSION['student_zone'] = $_COOKIE['mitre-zone'];
-          $_SESSION['student_reg_no'] = $_COOKIE['mitre-reg_no'];
-          $_SESSION['student_passport'] = $_COOKIE['mitre-passport'];
-          return true;
-        }
+      }
     }
+
+
+
+    
   }

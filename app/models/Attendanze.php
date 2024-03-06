@@ -117,6 +117,17 @@
       
     }
 
+    public function count_added($set,$conclave,$paper){
+      $this->db->query("SELECT * FROM marks WHERE conclave = :conclave AND mitre_set = :mitre_set AND paper = :paper AND score != '' ");
+
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
+      $this->db->bind(':paper', $paper);
+      $this->db->resultset();
+       //Check Rows
+      return $this->db->rowCount(); 
+    }
+
 
     public function select_mark($id){
       $this->db->query("SELECT * FROM marks WHERE id = :id ");

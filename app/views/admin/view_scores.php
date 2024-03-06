@@ -75,7 +75,7 @@
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
           <thead>
             <tr class="text-primary">
-              <th>#</th>
+              <th>S|N</th>
               <th><b>Name</b></th>
               <th><b>Attendance</b></th>
               <th><b>Summary</b></th>
@@ -105,44 +105,87 @@
             }
           ?>
           <tr>
-            <td><?php echo $numbering;?></td>
-            <td class="font-weight-bold"><?php echo $names->name?></td>
-            <td><?php echo $mark?></td>
+            <td class="text-center"><?php echo $numbering;?></td>
+
+            <td class="font-weight-bold">
+              <p><?php echo $names->name?></p>
+            </td>
+
             <td>
+              <p class="text-center"><?php echo $mark?></p> 
+            </td>
+
+            <td class="text-center">
               <?php 
                 if (!$summary->score) {
-                  echo '--';
+                  ?>
+                    <p class=""><?php echo '--';?></p>
+                  <?php
                 }else{
-                echo $summary->score;
+                  if (strlen($summary->score) == 1) {
+                    ?>
+                    <p class=""><?php echo '0'.$summary->score;?></p>
+                    <?php
+                  }else{
+                     ?>
+                    <p class=""><?php echo $summary->score;?></p>
+                    <?php
+                  }
+                
               }?>
               
             </td>
-            <td>
+
+            <td class="text-center">
               <?php 
                 if (!$resolve1->score) {
                   echo '--';
                 }else{
-                echo $resolve1->score;
+                 if (strlen($resolve1->score) == 1) {
+                    ?>
+                    <p class=""><?php echo '0'.$resolve1->score;?></p>
+                    <?php
+                  }else{
+                     ?>
+                    <p class=""><?php echo $resolve1->score;?></p>
+                    <?php
+                  }
               }?>
               
             </td>
-            <td>
+            <td class="text-center">
               <?php 
                 if (!$resolve2->score) {
                   echo '--';
                 }else{
-                echo $resolve2->score;
+                 if (strlen($resolve2->score) == 1) {
+                    ?>
+                    <p class=""><?php echo '0'.$resolve2->score;?></p>
+                    <?php
+                  }else{
+                     ?>
+                    <p class=""><?php echo $resolve2->score;?></p>
+                    <?php
+                  }
               }?>
             </td>
-            <td>
+            <td class="text-center">
               <?php 
                 if (!$resolve3->score) {
                   echo '--';
                 }else{
-                echo $resolve3->score;
+                 if (strlen($resolve3->score) == 1) {
+                    ?>
+                    <p class=""><?php echo '0'.$resolve3->score;?></p>
+                    <?php
+                  }else{
+                     ?>
+                    <p class=""><?php echo $resolve3->score;?></p>
+                    <?php
+                  }
               }?>
             </td>
-            <td class="font-weight-bold"><?php echo $mark + $resolve1->score + $resolve2->score + $resolve3->score?></td>
+            <td class="font-weight-bold text-center"><?php echo $mark + $resolve1->score + $resolve2->score + $resolve3->score?></td>
           </tr>
           <?php $numbering++; endforeach; ?>
           </tbody>

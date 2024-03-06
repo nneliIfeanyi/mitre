@@ -320,7 +320,7 @@
 
 <?php endif ?>
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   new DataTable('#eg', {
     scrollX: true,
     //scrollY: '60vh',
@@ -329,4 +329,43 @@
     searching: true,
     info: true,
   });
+</script> -->
+
+<script>
+  new DataTable('#eg', {
+    scrollX: true,
+    layout: {
+        topStart: {
+            buttons: [
+                {
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    messageTop:'All Minna Students Set <?= $data['set']?>',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                {
+                    extend: 'print',
+                    messageTop:'All Minna Students Set <?= $data['set']?>',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                'colvis'
+            ]
+        }
+    }
+});
 </script>
