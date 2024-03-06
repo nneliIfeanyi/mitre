@@ -17,7 +17,7 @@ $added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Kaduna Zone</h1>
-            <h5>A total of <span class="font-weight-bold"><?= $added_count;?></span> added scores</h5>
+            <p class="lead text-primary">A total of <span class="font-weight-bold text-dark"><?= $added_count;?></span> added scores</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -112,7 +112,7 @@ $added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Kaduna Zone</h1>
-            <h5>A total of <span class="font-weight-bold"><?= $added_count;?></span> added scores</h5>
+            <p class="lead text-primary">A total of <span class="font-weight-bold text-dark"><?= $added_count;?></span> added scores</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

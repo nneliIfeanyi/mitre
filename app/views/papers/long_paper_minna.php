@@ -4,6 +4,7 @@
 $conclave = J_CONCLAVE;
 $set = JUNIOR;
 $paper = 'long_paper';
+$added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
 ?>
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
 <?php require APPROOT . '/views/inc/admin/top.php'; ?>
@@ -16,6 +17,7 @@ $paper = 'long_paper';
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Minna Zone</h1>
+            <p class="lead text-primary">A total of <span class="font-weight-bold text-dark"><?= $added_count;?></span> added scores</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -96,6 +98,7 @@ $paper = 'long_paper';
 $conclave = S_CONCLAVE;
 $set = SENIOR;
 $paper = 'long_paper';
+$added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
 ?>
 
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
@@ -109,6 +112,7 @@ $paper = 'long_paper';
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Minna Zone</h1>
+            <p class="lead text-primary">A total of <span class="font-weight-bold text-dark"><?= $added_count;?></span> added scores</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

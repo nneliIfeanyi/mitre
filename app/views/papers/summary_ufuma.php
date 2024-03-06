@@ -4,6 +4,7 @@
 $conclave = J_CONCLAVE;
 $set = JUNIOR;
 $paper = 'Summary';
+$added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
 ?>
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
 <?php require APPROOT . '/views/inc/admin/top.php'; ?>
@@ -16,10 +17,7 @@ $paper = 'Summary';
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Ufuma Zone</h1>
-            <div class="callout callout-danger" style="margin-top: 30px;">
-                <p><span class="fw-bold">Note:</span>
-                <span class="text-primary">Enter scores in 2 digits, when score between 0-9. Eg "02" not "2".</span></p>
-            </div>
+            <p class="lead text-primary">A total of <span class="font-weight-bold text-dark"><?= $added_count;?></span> added scores</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -100,6 +98,7 @@ $paper = 'Summary';
 $conclave = S_CONCLAVE;
 $set = SENIOR;
 $paper = 'Summary';
+$added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
 ?>
 
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
@@ -113,10 +112,7 @@ $paper = 'Summary';
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 h3">Add <?= $paper?> Scores For Set <?= $set?> Ufuma Zone</h1>
-            <div class="callout callout-danger" style="margin-top: 30px;">
-                <p><span class="fw-bold">Note:</span>
-                <span class="text-primary">Enter scores in 2 digits, when score between 0-9. Eg "02" not "2".</span></p>
-            </div>
+            <p class="lead text-primary">A total of <span class="font-weight-bold text-dark"><?= $added_count;?></span> added scores</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
