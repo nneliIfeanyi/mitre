@@ -172,40 +172,17 @@
               <li class="nav-item">
                 <a href="<?php echo URLROOT;?>/papers/term_paper_kaduna/<?= SENIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kaduna Set <?= SENIOR?></p>
+                  <p>Set <?= SENIOR?></p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/term_paper_ufuma/<?= SENIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ufuma Set <?= SENIOR?></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/term_paper_minna/<?= SENIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Minna Set <?= SENIOR?></p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="<?php echo URLROOT;?>/papers/term_paper_kaduna/<?= JUNIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kaduna Set <?= JUNIOR?></p>
+                  <p>Set <?= JUNIOR?></p>
                    </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/term_paper_Ufuma/<?= JUNIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ufuma Set <?= JUNIOR?></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/term_paper_minna/<?= JUNIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Minna Set <?= JUNIOR?></p>
-                </a>
-              </li>
-               
+             
             </ul>
           </li>
 
@@ -221,40 +198,16 @@
               <li class="nav-item">
                 <a href="<?php echo URLROOT;?>/papers/summary_kaduna/<?= SENIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kaduna Set <?= SENIOR?></p>
+                  <p>Set <?= SENIOR?></p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/summary_ufuma/<?= SENIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ufuma Set <?= SENIOR?></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/summary_minna/<?= SENIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Minna Set <?= SENIOR?></p>
-                </a>
-              </li>
+             
               <li class="nav-item">
                 <a href="<?php echo URLROOT;?>/papers/summary_kaduna/<?= JUNIOR?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Kaduna Set <?= JUNIOR?></p>
+                  <p>Set <?= JUNIOR?></p>
                    </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/summary_Ufuma/<?= JUNIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ufuma Set <?= JUNIOR?></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo URLROOT;?>/papers/summary_minna/<?= JUNIOR?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Minna Set <?= JUNIOR?></p>
-                </a>
-              </li>
-               
             </ul>
           </li>
 

@@ -34,6 +34,22 @@ $added_count = $this->attendanceModel->count_added($set,$conclave,$paper,$zone);
 <section class="content">
 <div class="container-fluid">
 <div class="card card-body">
+  <nav>
+      <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+        <a href="<?php echo URLROOT?>/papers/term_paper_kaduna/<?php echo $set?>" class="nav-link" 
+            id="nav-kaduna-tab" 
+            type="button" role="tab" >Kaduna Zone
+        </a>
+        <a href="<?php echo URLROOT?>/papers/term_paper_ufuma/<?php echo $set?>" class="nav-link" 
+            id="nav-ufuma-tab" 
+            type="button" role="tab" >Ufuma Zone
+        </a>
+        <a href="<?php echo URLROOT?>/papers/term_paper_minna/<?php echo $set?>" class="active nav-link" 
+            id="nav-minna-tab" 
+            type="button" role="tab" >Minna Zone
+        </a>
+      </div>
+    </nav>
   <div class="col-lg-6">
     <?= flash('msg')?>
   </div>
@@ -130,6 +146,22 @@ $added_count = $this->attendanceModel->count_added($set,$conclave,$paper,$zone);
 <section class="content">
 <div class="container-fluid">
 <div class="card card-body">
+  <nav>
+      <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+        <a href="<?php echo URLROOT?>/papers/term_paper_kaduna/<?php echo $set?>" class="nav-link" 
+            id="nav-kaduna-tab" 
+            type="button" role="tab" >Kaduna Zone
+        </a>
+        <a href="<?php echo URLROOT?>/papers/term_paper_ufuma/<?php echo $set?>" class="nav-link" 
+            id="nav-ufuma-tab" 
+            type="button" role="tab" >Ufuma Zone
+        </a>
+        <a href="<?php echo URLROOT?>/papers/term_paper_minna/<?php echo $set?>" class="active nav-link" 
+            id="nav-minna-tab" 
+            type="button" role="tab" >Minna Zone
+        </a>
+      </div>
+    </nav>
   <div class="col-lg-6">
     <h5><?= flash('msg') ?></h5>
   </div>
