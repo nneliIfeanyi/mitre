@@ -184,12 +184,13 @@
       
     }
 
-    public function count_added($set,$conclave,$paper){
-      $this->db->query("SELECT * FROM marks WHERE conclave = :conclave AND mitre_set = :mitre_set AND paper = :paper AND score != '' ");
+    public function count_added($set,$conclave,$paper,$zone){
+      $this->db->query("SELECT * FROM marks WHERE conclave = :conclave AND mitre_set = :mitre_set AND paper = :paper AND zone = :zone AND score != '' ");
 
       $this->db->bind(':mitre_set', $set);
       $this->db->bind(':conclave', $conclave);
       $this->db->bind(':paper', $paper);
+      $this->db->bind(':zone', $zone);
       $this->db->resultset();
        //Check Rows
       return $this->db->rowCount(); 

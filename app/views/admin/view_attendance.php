@@ -68,7 +68,7 @@
       </form>
     <div class="card">
       <div class="card-body">
-        <p>A total of <span class="font-weight-bold"><?= $data['count'];?></span> students attended this conclave.</p>
+        <p class="h4 p-2 shadow-sm">A total of <span class="font-weight-bold"><?= $data['count'];?></span> students attended this conclave.</p>
         <div class="table-responsive">
         <table class="table table-striped table-bordered" id="eg">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>

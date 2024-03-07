@@ -4,7 +4,8 @@
 $conclave = J_CONCLAVE;
 $set = JUNIOR;
 $paper = 'short_paper';
-$added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
+$zone = 'Minna';
+$added_count = $this->attendanceModel->count_added($set,$conclave,$paper,$zone);
 ?>
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
 <?php require APPROOT . '/views/inc/admin/top.php'; ?>
@@ -98,7 +99,8 @@ $added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
 $conclave = S_CONCLAVE;
 $set = SENIOR;
 $paper = 'short_paper';
-$added_count = $this->attendanceModel->count_added($set,$conclave,$paper);
+$zone = 'Minna';
+$added_count = $this->attendanceModel->count_added($set,$conclave,$paper,$zone);
 ?>
 
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
