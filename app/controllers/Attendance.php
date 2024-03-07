@@ -61,7 +61,7 @@
     Attendance kaduna veiw
  ***/
     public function kaduna($set){
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if(isset($_POST['morning'])) {
 
         $data = [
           'std_id' => $_POST['std_id'],
@@ -72,7 +72,28 @@
           'zone' => 'Kaduna'
         ];
 
-        $mark = $this->attendanceModel->recordAttendance($data);
+        $mark = $this->attendanceModel->recordAttendance1($data);
+        if ($mark) {
+          flash('msg', $data['name'].' Attendance marked Successfully..');
+          redirect('attendance/kaduna/'.$set);
+        }else{
+
+          flash('msg', 'Something went wrong');
+          redirect('attendance/kaduna/'.$set);
+        }
+        
+      }elseif(isset($_POST['evening'])) {
+
+        $data = [
+          'std_id' => $_POST['std_id'],
+          'name' => $_POST['fullname'],
+          'day' => $_POST['day'],
+          'mitre_set' => $_POST['mitre_set'],
+          'conclave' => $_POST['conclave'],
+          'zone' => 'Kaduna'
+        ];
+
+        $mark = $this->attendanceModel->recordAttendance2($data);
         if ($mark) {
           flash('msg', $data['name'].' Attendance marked Successfully..');
           redirect('attendance/kaduna/'.$set);

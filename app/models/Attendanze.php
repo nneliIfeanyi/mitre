@@ -7,9 +7,6 @@
     }
 
 
-     // 
-     /////////
-     //
      public function recordAttendance($data){
        $this->db->query('INSERT INTO attendance (std_id, name, day, mitre_set, conclave, zone ) VALUES (:std_id, :name, :day, :mitre_set, :conclave,:zone)');
 
@@ -29,9 +26,78 @@
       }
     }
 
+
+     // 
+     /////////
+     //
+     public function recordAttendance1($data){
+       $this->db->query('INSERT INTO attendance (std_id, name, day, mitre_set, conclave, zone, count ) VALUES (:std_id, :name, :day, :mitre_set, :conclave,:zone, :count)');
+
+      // Bind Values
+      $this->db->bind(':std_id', $data['std_id']);
+      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':day', $data['day']);
+      $this->db->bind(':mitre_set', $data['mitre_set']);
+      $this->db->bind(':conclave', $data['conclave']);
+      $this->db->bind(':zone', $data['zone']);
+      $this->db->bind(':count', 'morning');
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function recordAttendance2($data){
+       $this->db->query('INSERT INTO attendance (std_id, name, day, mitre_set, conclave, zone, count ) VALUES (:std_id, :name, :day, :mitre_set, :conclave,:zone, :count)');
+
+      // Bind Values
+      $this->db->bind(':std_id', $data['std_id']);
+      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':day', $data['day']);
+      $this->db->bind(':mitre_set', $data['mitre_set']);
+      $this->db->bind(':conclave', $data['conclave']);
+      $this->db->bind(':zone', $data['zone']);
+      $this->db->bind(':count', 'evening');
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
      //
      //////
      //
+    public function check_attendance1($id, $day, $set, $conclave){
+      $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND day = :day AND conclave = :conclave AND mitre_set = :mitre_set AND count = :count");
+
+      $this->db->bind(':id', $id);
+      $this->db->bind(':day', $day);
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
+      $this->db->bind(':count', 'morning');
+      $row = $this->db->single();
+
+      return $row;
+    }
+    public function check_attendance2($id, $day, $set, $conclave){
+      $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND day = :day AND conclave = :conclave AND mitre_set = :mitre_set AND count = :count");
+
+      $this->db->bind(':id', $id);
+      $this->db->bind(':day', $day);
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
+      $this->db->bind(':count', 'evening');
+      $row = $this->db->single();
+
+      return $row;
+    }
+
     public function check_attendance($id, $day, $set, $conclave){
       $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND day = :day AND conclave = :conclave AND mitre_set = :mitre_set");
 
@@ -43,6 +109,20 @@
 
       return $row;
     }
+
+
+    public function check_count($id, $day, $set, $conclave){
+      $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND day = :day AND conclave = :conclave AND mitre_set = :mitre_set AND count = '' ");
+
+      $this->db->bind(':id', $id);
+      $this->db->bind(':day', $day);
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
+      $row = $this->db->single();
+
+      return $row;
+    }
+
 
      //
      //////

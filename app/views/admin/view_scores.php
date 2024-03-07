@@ -94,14 +94,20 @@
           $summary = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper4']);
           $names = $this->attendanceModel->getNames($student->std_id);
           $punctual = $this->attendanceModel->getAttendance($student->std_id, $data['set'], $data['conclave']);
-            if ($punctual == 3) {
+            if ($punctual == 6) {
               $mark = 45;
-            }elseif ($punctual == 2) {
+            }elseif ($punctual == 5) {
+              $mark = 37.5;
+            }elseif ($punctual == 4) {
               $mark = 30;
-            }elseif ($punctual == 1) {
+            }elseif ($punctual == 3) {
+              $mark = 22.5;
+            }elseif ($punctual == 2) {
               $mark = 15;
+            }elseif ($punctual == 1) {
+              $mark = 7.5;
             }else{
-              $mark = 0;
+              $mark = '--';
             }
           ?>
           <tr>
