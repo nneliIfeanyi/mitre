@@ -146,6 +146,21 @@
       }
     }
 
+
+    public function check_reg_no($reg){
+      $this->db->query("SELECT * FROM mitre_students WHERE admsn_no = :reg");
+      $this->db->bind(':reg', $reg);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
      // Find USer BY Email
      public function findUserByEmail($email){
       $this->db->query("SELECT * FROM mitre_students WHERE email = :email");

@@ -52,7 +52,7 @@
                       <td><input name="reg_no" style="width:70px;"></td>
                       <td>
                         <input type="hidden" name="std_id" value="<?= $student->id?>">
-                        <input type="hidden" name="zone" value="<?= $student->zone?>">
+                        <input type="hidden" name="fullname" value="<?= $student->fullname?>">
                         <input type="submit" name="submit" value="Generate" class="btn btn-sm btn-success">
                       </td>
                     </form>

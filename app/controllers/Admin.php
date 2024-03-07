@@ -423,9 +423,14 @@
           'reg_no' => $_POST['reg_no']
         ];
 
+        if ($this->userModel->check_reg_no($data['reg_no'])) {
+           flash('msg', 'Failed... reg_no already in use by another student..', 'alert alert-danger');
+          redirect('admin/reg_no/'.$set);
+        }
+
         $output = $this->userModel->regNo($data['reg_no'], $data['std_id']);
         if ($output) {
-          flash('msg', 'Successfull..');
+          flash('msg', 'You have successfully generated for '.$_POST['fullname']);
           redirect('admin/reg_no/'.$set);
         }else{
           die('Something went wrong');
