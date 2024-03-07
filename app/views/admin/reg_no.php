@@ -36,6 +36,7 @@
                      <th>Name</th>
                      <th>Set</th>
                      <th>Zone</th>
+                     <th>Reg_no</th>
                      <th>Status</th>
                    </tr>
                 </thead>
@@ -47,18 +48,14 @@
                       <td><?php echo $student->fullname?></td>
                       <td><?php echo $student->mitre_set?></td>
                       <td><?php echo $student->zone?></td>
+                      <form method="post" action="">
+                      <td><input name="reg_no" style="width:70px;"></td>
                       <td>
-                         <?php if(empty($student->admsn_no)):?>
-                          <form method="post" action="">
-                            <input type="hidden" name="std_id" value="<?= $student->id?>">
-                            <input type="hidden" name="zone" value="<?= $student->zone?>">
-                            <input type="submit" name="submit" value="Generate" class="btn btn-sm btn-success">
-                          </form>
-                         <?php else:?>
-                          <p>in use</p>
-                         <?php endif;?>
+                        <input type="hidden" name="std_id" value="<?= $student->id?>">
+                        <input type="hidden" name="zone" value="<?= $student->zone?>">
+                        <input type="submit" name="submit" value="Generate" class="btn btn-sm btn-success">
                       </td>
-
+                    </form>
                   </tr>
                   <?php $numbering++; endforeach; ?>
                  </tbody>

@@ -389,40 +389,41 @@
     public function reg_no($set){
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        if (strlen($_POST['std_id']) == 1) {
+        // if (strlen($_POST['std_id']) == 1) {
 
-          if ($_POST['zone'] == 'Kaduna') {
-            $reg = $set.'00'.$_POST['std_id'].'K';
-          }elseif ($_POST['zone'] == 'Ufuma') {
-            $reg = $set.'00'.$_POST['std_id'].'E';
-          }else{
-            $reg = $set.'00'.$_POST['std_id'].'N';
-          }
+        //   if ($_POST['zone'] == 'Kaduna') {
+        //     $reg = $set.'00'.$_POST['std_id'].'K';
+        //   }elseif ($_POST['zone'] == 'Ufuma') {
+        //     $reg = $set.'00'.$_POST['std_id'].'E';
+        //   }else{
+        //     $reg = $set.'00'.$_POST['std_id'].'N';
+        //   }
           
 
-        }elseif (strlen($_POST['std_id']) == 2) {
-          if ($_POST['zone'] == 'Kaduna') {
-            $reg = $set.'0'.$_POST['std_id'].'K';
-          }elseif ($_POST['zone'] == 'Ufuma') {
-            $reg = $set.'0'.$_POST['std_id'].'E';
-          }else{
-            $reg = $set.'0'.$_POST['std_id'].'N';
-          }
-        }else{
-           if ($_POST['zone'] == 'Kaduna') {
-            $reg = $set.$_POST['std_id'].'K';
-          }elseif ($_POST['zone'] == 'Ufuma') {
-            $reg = $set.$_POST['std_id'].'E';
-          }else{
-            $reg = $set.$_POST['std_id'].'N';
-          }
-        }
+        // }elseif (strlen($_POST['std_id']) == 2) {
+        //   if ($_POST['zone'] == 'Kaduna') {
+        //     $reg = $set.'0'.$_POST['std_id'].'K';
+        //   }elseif ($_POST['zone'] == 'Ufuma') {
+        //     $reg = $set.'0'.$_POST['std_id'].'E';
+        //   }else{
+        //     $reg = $set.'0'.$_POST['std_id'].'N';
+        //   }
+        // }else{
+        //    if ($_POST['zone'] == 'Kaduna') {
+        //     $reg = $set.$_POST['std_id'].'K';
+        //   }elseif ($_POST['zone'] == 'Ufuma') {
+        //     $reg = $set.$_POST['std_id'].'E';
+        //   }else{
+        //     $reg = $set.$_POST['std_id'].'N';
+        //   }
+        // }
         
         $data = [
           'std_id' => $_POST['std_id'],
+          'reg_no' => $_POST['reg_no']
         ];
 
-        $output = $this->userModel->regNo($reg, $data['std_id']);
+        $output = $this->userModel->regNo($data['reg_no'], $data['std_id']);
         if ($output) {
           flash('msg', 'Successfull..');
           redirect('admin/reg_no/'.$set);
