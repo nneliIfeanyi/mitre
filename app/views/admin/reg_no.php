@@ -130,8 +130,7 @@
 <script type="text/javascript">
   new DataTable('#eg', {
     paging:false,
-    info:false,
-    searching:false
+    info:false
   });
 
    new DataTable('#eg2', {
