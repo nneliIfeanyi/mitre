@@ -16,6 +16,38 @@
         return $results;
     }
 
+    public function no_reg($set){
+        $this->db->query("SELECT * FROM mitre_students WHERE mitre_set = :mitre_set AND admsn_no = '' ORDER BY fullname");
+        $this->db->bind(':mitre_set', $set);
+        $results = $this->db->resultset();
+
+        return $results;
+    }
+
+    public function yes_reg($set){
+        $this->db->query("SELECT * FROM mitre_students WHERE mitre_set = :mitre_set AND admsn_no != '' ORDER BY fullname");
+        $this->db->bind(':mitre_set', $set);
+        $results = $this->db->resultset();
+
+        return $results;
+    }
+
+    public function yes_reg_count($set){
+        $this->db->query("SELECT * FROM mitre_students WHERE mitre_set = :mitre_set AND admsn_no != '' ORDER BY fullname");
+        $this->db->bind(':mitre_set', $set);
+        $this->db->resultset();
+
+        return $this->db->rowCount();
+    }
+
+    public function no_reg_count($set){
+        $this->db->query("SELECT * FROM mitre_students WHERE mitre_set = :mitre_set AND admsn_no = '' ORDER BY fullname");
+        $this->db->bind(':mitre_set', $set);
+        $this->db->resultset();
+
+        return $this->db->rowCount();
+    }
+
 
 //
 // Get All Kaduna Students

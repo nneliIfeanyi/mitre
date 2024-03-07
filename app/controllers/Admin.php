@@ -431,12 +431,16 @@
         }
       
       }else{
-        $total = $this->databaseModel->totals($set);
-        $all = $this->databaseModel->allStudents($set);
+        $yes_reg = $this->databaseModel->yes_reg($set);
+        $no_reg = $this->databaseModel->no_reg($set);
+        $yes_reg_count = $this->databaseModel->yes_reg_count($set);
+        $no_reg_count = $this->databaseModel->no_reg_count($set);
         //Set Data
         $data = [
-          'students' => $all,
-          'rowCount' => $total
+          'students' => $no_reg,
+          'yes_reg' => $yes_reg,
+          'yes_reg_count' => $yes_reg_count,
+          'no_reg_count' => $no_reg_count
         ];
 
         // Load about view

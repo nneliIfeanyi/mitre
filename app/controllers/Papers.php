@@ -7,6 +7,9 @@
       $this->userModel = $this->model('User');
       $this->databaseModel = $this->model('Databaze');
       $this->attendanceModel = $this->model('Attendanze');
+      if (!isset($_COOKIE['admin-id']) AND !isset($_COOKIE['admin-name']) ) {
+        redirect('portal/login');
+      }
     }
 
     // Load Homepage
