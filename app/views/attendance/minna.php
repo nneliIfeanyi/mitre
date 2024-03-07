@@ -57,7 +57,7 @@ $full_day3 = FULLDAY3;
 
             <!-- MONDAY FIRST FULLDAY ATTENDANCE-->
             <td class="">
-              <?php if(!$this->attendanceModel->check_attendance1($student->id, $full_day1, $set, $conclave)):?>
+              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave)):?>
               <!-- CANDIDATE IS ABSENT -->
               <form action="<?php echo URLROOT?>/attendance/kaduna/<?= $set?>" method="post" id="">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -97,7 +97,7 @@ $full_day3 = FULLDAY3;
 
             <!-- TUESDAY SECOND FULLDAY ATTENDANCE-->
             <td>
-            <?php if(!$this->attendanceModel->check_attendance1($student->id, $full_day2, $set, $conclave)):?>
+            <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave)):?>
               <!-- CANDIDATE IS ABSENT -->
               <form action="<?php echo URLROOT?>/attendance/kaduna/<?= $set?>" method="post" id="">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -137,7 +137,7 @@ $full_day3 = FULLDAY3;
 
             <!-- WEDNESDAY THIRD FULLDAY ATTENDANCE-->
             <td>
-            <?php if(!$this->attendanceModel->check_attendance1($student->id, $full_day3, $set, $conclave)):?>
+            <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave)):?>
               <!-- CANDIDATE IS ABSENT -->
               <form action="<?php echo URLROOT?>/attendance/kaduna/<?= $set?>" method="post" id="">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -245,7 +245,7 @@ $full_day3 = FULLDAY3;
 
             <!-- MONDAY FIRST FULLDAY ATTENDANCE-->
             <td class="">
-              <?php if(!$this->attendanceModel->check_attendance1($student->id, $full_day1, $set, $conclave)):?>
+              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave)):?>
               <!-- CANDIDATE IS ABSENT -->
               <form action="<?php echo URLROOT?>/attendance/kaduna/<?= $set?>" method="post" id="">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -285,7 +285,7 @@ $full_day3 = FULLDAY3;
 
             <!-- TUESDAY SECOND FULLDAY ATTENDANCE-->
             <td>
-            <?php if(!$this->attendanceModel->check_attendance1($student->id, $full_day2, $set, $conclave)):?>
+            <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave)):?>
               <!-- CANDIDATE IS ABSENT -->
               <form action="<?php echo URLROOT?>/attendance/kaduna/<?= $set?>" method="post" id="">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -325,7 +325,7 @@ $full_day3 = FULLDAY3;
 
             <!-- WEDNESDAY THIRD FULLDAY ATTENDANCE-->
             <td>
-            <?php if(!$this->attendanceModel->check_attendance1($student->id, $full_day3, $set, $conclave)):?>
+            <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave)):?>
               <!-- CANDIDATE IS ABSENT -->
               <form action="<?php echo URLROOT?>/attendance/kaduna/<?= $set?>" method="post" id="">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
