@@ -26,9 +26,49 @@
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-  <a href="<?php echo URLROOT;?>/admin/sorting" class="mb-2 btn btn-primary"><i class="fas fa-backward"></i> Go Back</a>
+ <form action="<?php echo URLROOT;?>/admin/sorting" method="POST" id="mark-add">
+          <div class="row">
+          <div class="col-md-4">
+            <div class="form-group shadow p-1">
+              <label>Set:</label>
+              <select name="set" required class="form-control">
+                <option value="">Select set</option>
+                <option value="<?= SENIOR?>"><?= SENIOR?></option>
+                <option value="<?= JUNIOR?>"><?= JUNIOR?></option> 
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group shadow p-1">
+              <label>Conclave:</label>
+              <select name="conclave" required class="form-control">
+                <option value="">---</option>
+                <?php foreach ($data['conclaves'] as $conclave):?>
+                  <option value="<?php echo $conclave->conclave;?>"><?php echo $conclave->conclave;?></option>
+                 <?php endforeach;?>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group shadow p-1">
+              <label>Zone:</label>
+              <select name="zone" required class="form-control">
+                <option value="">Select zone</option>
+                <option value="Ufuma">East</option>
+                <option value="Minna">Niger</option>
+                <option value="Kaduna">Kaduna</option>
+              </select>
+            </div>
+          </div>
+         
+          <div class=" d-grid col-md-4 offset-md-4 my-3">
+            <input type="submit" id="mark" class="btn btn-primary btn-block rounded-5 fw-bold" value="Submit">
+          </div>
+        </div>
+      </form>
     <div class="card">
       <div class="card-body">
+        <p>A total of <span class="font-weight-bold"><?= $data['count'];?></span> students attended this conclave.</p>
         <div class="table-responsive">
         <table class="table table-striped table-bordered" id="eg">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>

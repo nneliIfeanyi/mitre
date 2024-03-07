@@ -256,17 +256,18 @@
           $mitre_set = trim($_POST['set']);
           $conclave = trim($_POST['conclave']);       
           $zone = $_POST['zone'];
-          $day = $_POST['day'];
-          //$conclaves = $this->userModel->getConclaves();
-
-          $added = $this->attendanceModel->get_attendance($day,$mitre_set,$conclave,$zone);
+          //$day = $_POST['day'];
+          $conclaves = $this->userModel->getConclaves();
+          $get_count = $this->attendanceModel->get_count($mitre_set,$conclave,$zone);
+          $added = $this->attendanceModel->get_attendance($mitre_set,$conclave,$zone);
+          
           $data = [
             'scores' => $added,
             'set' => $mitre_set,
             'conclave' => $conclave,
-           // 'conclaves' => $conclaves,
+            'count' => $get_count,
             'zone' => $zone,
-            'day' => $day
+            'conclaves' => $conclaves
           ];
           $this->view('admin/view_attendance', $data);
       }else{

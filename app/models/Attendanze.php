@@ -111,19 +111,6 @@
     }
 
 
-    public function check_count($id, $day, $set, $conclave){
-      $this->db->query("SELECT * FROM attendance WHERE std_id = :id AND day = :day AND conclave = :conclave AND mitre_set = :mitre_set AND count = '' ");
-
-      $this->db->bind(':id', $id);
-      $this->db->bind(':day', $day);
-      $this->db->bind(':mitre_set', $set);
-      $this->db->bind(':conclave', $conclave);
-      $row = $this->db->single();
-
-      return $row;
-    }
-
-
      //
      //////
      //
@@ -301,9 +288,8 @@
     }
 
      
-     public function get_attendance($day,$set,$conclave,$zone){
-      $this->db->query("SELECT * FROM attendance WHERE day = :day AND conclave = :conclave AND mitre_set = :mitre_set AND zone = :zone");
-      $this->db->bind(':day', $day);
+     public function get_attendance($set,$conclave,$zone){
+      $this->db->query("SELECT DISTINCT name FROM attendance WHERE conclave = :conclave AND mitre_set = :mitre_set AND zone = :zone");
       $this->db->bind(':mitre_set', $set);
       $this->db->bind(':conclave', $conclave);
       $this->db->bind(':zone', $zone);
@@ -311,6 +297,17 @@
       $results = $this->db->resultset();
        //Check Rows
       return $results;
+    }
+
+    public function get_count($set,$conclave,$zone){
+      $this->db->query("SELECT DISTINCT name FROM attendance WHERE conclave = :conclave AND mitre_set = :mitre_set AND zone = :zone");
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
+      $this->db->bind(':zone', $zone);
+      
+      $this->db->resultset();
+       //Check Rows
+      return $this->db->rowCount();
     }
 
 

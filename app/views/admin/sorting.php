@@ -29,7 +29,7 @@
     <div class="card card-body">
         <form action="" method="POST" id="mark-add">
           <div class="row">
-          <div class="col-lg-3">
+          <div class="col-md-4">
             <div class="form-group shadow p-1">
               <label>Set:</label>
               <select name="set" required class="form-control">
@@ -39,7 +39,7 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-md-4">
             <div class="form-group shadow p-1">
               <label>Conclave:</label>
               <select name="conclave" required class="form-control">
@@ -50,7 +50,7 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-md-4">
             <div class="form-group shadow p-1">
               <label>Zone:</label>
               <select name="zone" required class="form-control">
@@ -61,17 +61,7 @@
               </select>
             </div>
           </div>
-          <div class="col-lg-3">
-            <div class="form-group shadow p-1">
-              <label>Day:</label>
-              <select name="day" required class="form-control">
-                <option value="">Select Day</option>
-                <option value="Monday">First Full Day</option>
-                <option value="Tuesday">Second Full Day</option>
-                <option value="Wednesday">Third Full Day</option>
-              </select>
-            </div>
-          </div>
+         
           <div class=" d-grid col-md-4 offset-md-4 my-3">
             <input type="submit" id="mark" class="btn btn-primary btn-block rounded-5 fw-bold" value="Submit">
           </div>
