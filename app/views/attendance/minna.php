@@ -22,7 +22,7 @@ $full_day3 = FULLDAY3;
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
-            <li class="breadcrumb-item active">Mark Attendance</li>
+            <li class="breadcrumb-item active">Attendance</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -35,6 +35,26 @@ $full_day3 = FULLDAY3;
 <section class="content">
   <div class="container-fluid">
     <div class="card card-body">
+      <nav>
+        <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+          <a href="<?php echo URLROOT?>/attendance/kaduna/<?php echo $set?>" class="nav-link" 
+              id="nav-kaduna-tab" 
+              type="button" role="tab" >Kaduna Zone
+          </a>
+          <a href="<?php echo URLROOT?>/attendance/ufuma/<?php echo $set?>" class="nav-link" 
+              id="nav-ufuma-tab" 
+              type="button" role="tab" >Ufuma Zone
+          </a>
+          <a href="<?php echo URLROOT?>/attendance/minna/<?php echo $set?>" class="active nav-link" 
+              id="nav-minna-tab" 
+              type="button" role="tab" >Minna Zone
+          </a>
+          <a href="<?php echo URLROOT?>/attendance/<?php echo $set?>" class="nav-link" 
+            id="nav-minna-tab" 
+            type="button" role="tab" >Reverse Attendance
+          </a>
+        </div>
+      </nav>
       <div class="table-responsive">
         <table class="table table-striped" id="kaduna-table">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
@@ -65,7 +85,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="morning" id="" value="Absent">
               </form>
             <?php else:?>
@@ -82,7 +102,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="evening" id="" value="Absent">
               </form>
             <?php else:?>
@@ -105,7 +125,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="morning" id="" value="Absent">
               </form>
             <?php else:?>
@@ -122,7 +142,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="evening" id="" value="Absent">
               </form>
             <?php else:?>
@@ -145,7 +165,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day3;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="morning"  id="" value="Absent">
               </form>
             <?php else:?>
@@ -162,7 +182,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day3;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="evening" id="" value="Absent">
               </form>
             <?php else:?>
@@ -210,7 +230,7 @@ $full_day3 = FULLDAY3;
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
-            <li class="breadcrumb-item active">Mark Attendance</li>
+            <li class="breadcrumb-item active">Attendance</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -223,6 +243,26 @@ $full_day3 = FULLDAY3;
 <section class="content">
   <div class="container-fluid">
     <div class="card card-body">
+      <nav>
+        <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+          <a href="<?php echo URLROOT?>/attendance/kaduna/<?php echo $set?>" class="nav-link" 
+              id="nav-kaduna-tab" 
+              type="button" role="tab" >Kaduna Zone
+          </a>
+          <a href="<?php echo URLROOT?>/attendance/ufuma/<?php echo $set?>" class="nav-link" 
+              id="nav-ufuma-tab" 
+              type="button" role="tab" >Ufuma Zone
+          </a>
+          <a href="<?php echo URLROOT?>/attendance/minna/<?php echo $set?>" class="active nav-link" 
+              id="nav-minna-tab" 
+              type="button" role="tab" >Minna Zone
+          </a>
+          <a href="<?php echo URLROOT?>/attendance/<?php echo $set?>" class="nav-link" 
+            id="nav-minna-tab" 
+            type="button" role="tab" >Reverse Attendance
+          </a>
+        </div>
+      </nav>
       <div class="table-responsive">
         <table class="table table-striped" id="kaduna-table">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
@@ -253,7 +293,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="morning" id="" value="Absent">
               </form>
             <?php else:?>
@@ -270,7 +310,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="evening" id="" value="Absent">
               </form>
             <?php else:?>
@@ -293,7 +333,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="morning" id="" value="Absent">
               </form>
             <?php else:?>
@@ -310,7 +350,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="evening" id="" value="Absent">
               </form>
             <?php else:?>
@@ -333,7 +373,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day3;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="morning"  id="" value="Absent">
               </form>
             <?php else:?>
@@ -350,7 +390,7 @@ $full_day3 = FULLDAY3;
                 <input type="hidden" name="day" value="<?php echo $full_day3;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                
+                <input type="hidden" name="zone" value="<?php echo $student->zone?>">
                 <input type="submit" class="btn btn-danger btn-sm" name="evening" id="" value="Absent">
               </form>
             <?php else:?>
@@ -376,9 +416,7 @@ $full_day3 = FULLDAY3;
     <!-- /.content-wrapper -->
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
 <script type="text/javascript">
-   new DataTable('#minna-table', {
-    //ordering: false,
-    searching: true,
+   new DataTable('#kaduna-table', {
     paging: false,
   });
 </script>

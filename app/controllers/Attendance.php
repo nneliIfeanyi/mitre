@@ -69,17 +69,17 @@
           'day' => $_POST['day'],
           'mitre_set' => $_POST['mitre_set'],
           'conclave' => $_POST['conclave'],
-          'zone' => 'Kaduna'
+          'zone' => $_POST['zone']
         ];
 
         $mark = $this->attendanceModel->recordAttendance1($data);
         if ($mark) {
           flash('msg', $data['name'].' Attendance marked Successfully..');
-          redirect('attendance/kaduna/'.$set);
+          redirect('attendance/'.$data['zone'].'/'.$set);
         }else{
 
           flash('msg', 'Something went wrong');
-          redirect('attendance/kaduna/'.$set);
+          redirect('attendance/'.$data['zone'].'/'.$set);
         }
         
       }elseif(isset($_POST['evening'])) {
@@ -90,17 +90,17 @@
           'day' => $_POST['day'],
           'mitre_set' => $_POST['mitre_set'],
           'conclave' => $_POST['conclave'],
-          'zone' => 'Kaduna'
+          'zone' => $_POST['zone']
         ];
 
         $mark = $this->attendanceModel->recordAttendance2($data);
         if ($mark) {
           flash('msg', $data['name'].' Attendance marked Successfully..');
-          redirect('attendance/kaduna/'.$set);
+          redirect('attendance/'.$data['zone'].'/'.$set);
         }else{
 
           flash('msg', 'Something went wrong');
-          redirect('attendance/kaduna/'.$set);
+          redirect('attendance/'.$data['zone'].'/'.$set);
         }
         
       }else{

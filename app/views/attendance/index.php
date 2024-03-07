@@ -17,12 +17,12 @@ $full_day3 = FULLDAY3;
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><i class="fab fa-mark"></i> Mark Attendance <span class="badge bg-primary"><?php echo $data['set']?></span></h1>
+            <h1 class="m-0"><i class="fab fa-mark"></i> Reverse Attendance <span class="badge bg-primary"><?php echo $data['set']?></span></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
-              <li class="breadcrumb-item active">Mark Attendance</li>
+              <li class="breadcrumb-item active">Attendance</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -35,7 +35,10 @@ $full_day3 = FULLDAY3;
   <section class="content">
     <div class="container-fluid">
      <div class="card-body">
-        
+        <div class="callout callout-success" style="margin-top: 30px;">
+          <p><span class="font-weight-bold">Note:</span>
+          <span class="lead">Use the search bar right below to search for the student you want to reverse his/her attendance.</span></p>
+        </div>
         <nav>
           <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
             <a href="<?php echo URLROOT?>/attendance/kaduna/<?php echo $set?>" class="nav-link" 
@@ -50,14 +53,10 @@ $full_day3 = FULLDAY3;
                 id="nav-minna-tab" 
                 type="button" role="tab" >Minna Zone
             </a>
-            <button class="nav-link active" 
-                    id="nav-collective-tab" 
-                    data-toggle="tab" 
-                    data-target="#collective" 
-                    type="button" role="tab" 
-                    aria-controls="nav-collective" 
-                    aria-selected="false">Collective
-            </button>
+            <a href="<?php echo URLROOT?>/attendance/<?php echo $set?>" class="active nav-link" 
+                id="nav-minna-tab" 
+                type="button" role="tab" >Reverse Attendance
+            </a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -75,7 +74,6 @@ $full_day3 = FULLDAY3;
                      <tr class="">
                        <th>#</th>
                        <th><b>Name</b></th>
-                       <th><b>Arrival</b></th>
                        <th><b>Monday</b></th> 
                        <th><b>Tuesday</b></th> 
                        <th><b>Wednesday</b></th>    
@@ -87,51 +85,11 @@ $full_day3 = FULLDAY3;
                     <tr>
                         <td><?php echo $numbering;?></td>
                         <td><?php echo $student->fullname?></td>
-                        <td>
-                          <?php if(!$this->attendanceModel->check_attendance($student->id, $first_day, $set, $conclave)):?>
-                          <!-- CANDIDATE IS ABSENT -->
-                          <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                            <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                            <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                            <input type="hidden" name="day" value="<?php echo $first_day;?>">
-                            <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                            <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                            
-                            <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                          </form>
-                        <?php else:?>
-                          <div class="d-flex">
-
-                            <!-- ATTENDANCE ALREADY MARKED-->
-                            <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
-
-                            <!-- REVERSE  ATTENDANCE-->
-                            <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
-                              data-toggle="tooltip" data-placement="right"
-                              title="Click to reverse or unmark attendance">
-                              <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                              <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                              <input type="hidden" name="day" value="<?php echo $first_day?>">
-                              <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                              <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                              <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
-                            </form>
-                          </div>
-                        <?php endif;?>
-                        </td>
+                       
                         <td>
                           <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
-                          <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                            <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                            <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                            <input type="hidden" name="day" value="<?php echo $full_day1;?>">
-                            <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                            <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                            <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                          </form>
+                          <button class="btn btn-danger btn-sm">Absent</button>
                         <?php else:?>
                           <div class="d-flex">
 
@@ -155,20 +113,12 @@ $full_day3 = FULLDAY3;
                         <td>
                          <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
-                          <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                            <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                            <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                            <input type="hidden" name="day" value="<?php echo $full_day2;?>">
-                            <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                            <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                            <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                          </form>
+                          <button class="btn btn-danger btn-sm">Absent</button>
                         <?php else:?>
                           <div class="d-flex">
 
                             <!-- ATTENDANCE ALREADY MARKED-->
-                            <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
+                            <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                             <!-- REVERSE  ATTENDANCE-->
                             <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
@@ -179,7 +129,7 @@ $full_day3 = FULLDAY3;
                               <input type="hidden" name="day" value="<?php echo $full_day2?>">
                               <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                               <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                              <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                              <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i> Reverse</button>
                             </form>
                           </div>
                         <?php endif;?>
@@ -187,20 +137,12 @@ $full_day3 = FULLDAY3;
                         <td>
                           <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave)):?>
                           <!-- CANDIDATE IS ABSENT -->
-                          <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                            <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                            <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                            <input type="hidden" name="day" value="<?php echo $full_day3;?>">
-                            <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                            <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                            <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                            <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                          </form>
+                          <button class="btn btn-danger btn-sm">Absent</button>
                         <?php else:?>
                           <div class="d-flex">
 
                             <!-- ATTENDANCE ALREADY MARKED-->
-                            <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
+                            <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                             <!-- REVERSE  ATTENDANCE-->
                             <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
@@ -211,7 +153,7 @@ $full_day3 = FULLDAY3;
                               <input type="hidden" name="day" value="<?php echo $full_day3?>">
                               <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                               <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                              <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                              <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i>Reverse</button>
                             </form>
                           </div>
                         <?php endif;?>
@@ -251,12 +193,12 @@ $full_day3 = FULLDAY3;
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0"><i class="fab fa-mark"></i> Mark Attendance <span class="badge bg-primary"><?php echo $data['set']?></span></h1>
+              <h1 class="m-0"><i class="fab fa-mark"></i> Reverse Attendance <span class="badge bg-primary"><?php echo $data['set']?></span></h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
-                <li class="breadcrumb-item active">Mark Attendance</li>
+                <li class="breadcrumb-item active">Attendance</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -268,6 +210,10 @@ $full_day3 = FULLDAY3;
   <section class="content">
     <div class="container-fluid">
      <div class="card-body">
+      <div class="callout callout-success" style="margin-top: 30px;">
+          <p><span class="font-weight-bold">Note:</span>
+          <span class="lead">Use the search bar right below to search for the student you want to reverse his/her attendance.</span></p>
+        </div>
             <nav>
               <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
                 <a href="<?php echo URLROOT?>/attendance/kaduna/<?php echo $set?>" class="nav-link" 
@@ -282,14 +228,10 @@ $full_day3 = FULLDAY3;
                     id="nav-minna-tab" 
                     type="button" role="tab" >Minna Zone
                 </a>
-                <button class="nav-link active" 
-                        id="nav-collective-tab" 
-                        data-toggle="tab" 
-                        data-target="#collective" 
-                        type="button" role="tab" 
-                        aria-controls="nav-collective" 
-                        aria-selected="false">Collective
-                </button>
+                <a href="<?php echo URLROOT?>/attendance/<?php echo $set?>" class="active nav-link" 
+                  id="nav-minna-tab" 
+                  type="button" role="tab" >Reverse Attendance
+                </a>
               </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -307,7 +249,6 @@ $full_day3 = FULLDAY3;
                          <tr class="">
                            <th>#</th>
                            <th><b>Name</b></th>
-                           <th><b>Arrival</b></th>
                            <th><b>Monday</b></th> 
                            <th><b>Tuesday</b></th> 
                            <th><b>Wednesday</b></th>    
@@ -319,55 +260,16 @@ $full_day3 = FULLDAY3;
                         <tr>
                             <td><?php echo $numbering;?></td>
                             <td><?php echo $student->fullname?></td>
-                            <td>
-                              <?php if(!$this->attendanceModel->check_attendance($student->id, $first_day, $set, $conclave)):?>
-                              <!-- CANDIDATE IS ABSENT -->
-                              <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                                <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                                <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                                <input type="hidden" name="day" value="<?php echo $first_day;?>">
-                                <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                                <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                                <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                              </form>
-                            <?php else:?>
-                              <div class="d-flex">
-
-                                <!-- ATTENDANCE ALREADY MARKED-->
-                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
-
-                                <!-- REVERSE  ATTENDANCE-->
-                                <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
-                                  data-toggle="tooltip" data-placement="right"
-                                  title="Click to reverse or unmark attendance">
-                                  <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                                  <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                                  <input type="hidden" name="day" value="<?php echo $first_day?>">
-                                  <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                                  <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
-                                </form>
-                              </div>
-                            <?php endif;?>
-                            </td>
+                            
                             <td>
                               <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day1, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
-                              <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                                <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                                <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                                <input type="hidden" name="day" value="<?php echo $full_day1;?>">
-                                <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                                <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                                <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                              </form>
+                              <button class="btn btn-danger btn-sm">Absent</button>
                             <?php else:?>
                               <div class="d-flex">
 
                                 <!-- ATTENDANCE ALREADY MARKED-->
-                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
+                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                                 <!-- REVERSE  ATTENDANCE-->
                                 <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
@@ -378,7 +280,7 @@ $full_day3 = FULLDAY3;
                                   <input type="hidden" name="day" value="<?php echo $full_day1?>">
                                   <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                   <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i> Reverse</button>
                                 </form>
                               </div>
                             <?php endif;?>
@@ -386,20 +288,12 @@ $full_day3 = FULLDAY3;
                             <td>
                              <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day2, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
-                              <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                                <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                                <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                                <input type="hidden" name="day" value="<?php echo $full_day2;?>">
-                                <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                                <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                                <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                              </form>
+                             <button class="btn btn-danger btn-sm">Absent</button>
                             <?php else:?>
                               <div class="d-flex">
 
                                 <!-- ATTENDANCE ALREADY MARKED-->
-                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
+                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                                 <!-- REVERSE  ATTENDANCE-->
                                 <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
@@ -410,7 +304,7 @@ $full_day3 = FULLDAY3;
                                   <input type="hidden" name="day" value="<?php echo $full_day2?>">
                                   <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                   <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i> Reverse</button>
                                 </form>
                               </div>
                             <?php endif;?>
@@ -418,20 +312,12 @@ $full_day3 = FULLDAY3;
                             <td>
                               <?php if(!$this->attendanceModel->check_attendance($student->id, $full_day3, $set, $conclave)):?>
                               <!-- CANDIDATE IS ABSENT -->
-                              <form action="<?php echo URLROOT?>/attendance/<?= $set?>" method="post" id="">
-                                <input type="hidden" name="std_id" value="<?php echo $student->id?>">
-                                <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
-                                <input type="hidden" name="mitre_set" value="<?php echo $set?>">
-                                <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
-                                <input type="hidden" name="zone" value="<?php echo $student->zone;?>">
-                                <input type="submit" class="btn btn-danger btn-sm" id="" value="Absent">
-                              </form>
+                             <button class="btn btn-danger btn-sm">Absent</button>
                             <?php else:?>
                               <div class="d-flex">
 
                                 <!-- ATTENDANCE ALREADY MARKED-->
-                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
+                                <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                                 <!-- REVERSE  ATTENDANCE-->
                                 <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
@@ -442,7 +328,7 @@ $full_day3 = FULLDAY3;
                                   <input type="hidden" name="day" value="<?php echo $full_day3?>">
                                   <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                                   <input type="hidden" name="conclave" value="<?php echo $conclave?>">
-                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i></button>
+                                  <button class="btn btn-sm btn-danger"><i class="fas fa-times"></i> Reverse</button>
                                 </form>
                               </div>
                             <?php endif;?>
