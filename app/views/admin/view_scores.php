@@ -191,7 +191,7 @@
                   }
               }?>
             </td>
-            <td class="font-weight-bold text-center"><?php echo $mark + $summary->score; + $resolve1->score + $resolve2->score + $resolve3->score?></td>
+            <td class="font-weight-bold text-center"><?php echo $mark + $summary->score + $resolve1->score + $resolve2->score + $resolve3->score?></td>
           </tr>
           <?php $numbering++; endforeach; ?>
           </tbody>
