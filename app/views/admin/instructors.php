@@ -15,13 +15,31 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
-              <li class="breadcrumb-item active">All Registered</li>
+              <li class="breadcrumb-item active">Instructors</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+    <style type="text/css">
+        .zoom{
+            transition: transform .3s;
+            border-radius: 50%;
+        }
+
+        .zoom:hover{
+            transform: scale(2.7);
+            border-radius: 0%;
+        }
+    </style>
+
+
+
+
+
+
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -56,7 +74,9 @@
                       <td><?php echo $student->name?></td>
                       <td>
                         <div class="">
-                          <img src="<?php echo URLROOT.'/'.$student->photo?>" class="rounded-circle" style="width: 100%;">
+                            <a href="<?php echo URLROOT.'/'.$student->photo?>">
+                          <img src="<?php echo URLROOT.'/'.$student->photo?>" class="zoom" style="width: 100%;">
+                            </a>
                         </div> 
                       </td>
                       <td><?php echo $student->gender?></td>

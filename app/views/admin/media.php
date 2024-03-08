@@ -74,7 +74,7 @@
           </div>
           <div class="col-lg-3">
             <div class="form-group shadow p-2">
-              <label>Audio:</label>
+              <label>Outline:</label>
               <input type="file" name="media" required class="">
             </div>
           </div>
