@@ -524,12 +524,12 @@
   
       // Logout & Destroy Session
       public function logout(){
-        unset($_SESSION['student_id']);
-        unset($_SESSION['student_name']);
-        unset($_SESSION['student_zone']);
-        unset($_SESSION['student_reg_no']);
-        unset($_SESSION['student_passport']);
-        session_destroy();
+        setcookie('student-id', $user->id, time()-(86400), '/');
+        setcookie('student-name', $user->fullname, time()-(86400), '/');
+        setcookie('student-set', $user->mitre_set, time()-(86400), '/');
+        setcookie('student-passport', $user->passport, time()-(86400), '/');
+        setcookie('student-zone', $user->zone, time()-(86400), '/');
+        setcookie('student-reg_no', $user->admsn_no, time()-(86400), '/'); 
         redirect('students/login');
       }
 
