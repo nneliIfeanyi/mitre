@@ -94,7 +94,7 @@
           $summary = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper4']);
           $names = $this->attendanceModel->getNames($student->std_id);
           $punctual = $this->attendanceModel->getAttendance($student->std_id, $data['set'], $data['conclave']);
-            if ($punctual == 6) {
+            if ($punctual >= 6) {
               $mark = 45;
             }elseif ($punctual == 5) {
               $mark = 37.5;

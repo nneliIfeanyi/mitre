@@ -29,7 +29,7 @@
 
         $added = $this->userModel->getScores($conclave);
         $punctual = $this->userModel->getPunctual($conclave);
-        if ($punctual == 6) {
+        if ($punctual >= 6) {
            $mark = 45;
         }elseif ($punctual == 5) {
            $mark = 37.5;
