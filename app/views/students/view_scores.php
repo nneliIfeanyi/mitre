@@ -29,7 +29,7 @@
   
     <div class="card">
       <div class="card-body">
-        
+
         <table class="table table-striped table-bordered" id="eg">
           <!-- <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div> -->
           <thead>
@@ -95,6 +95,7 @@
   new DataTable('#eg', {
     paging:false,
     searching: false,
+    info:false,
 
     layout: {
         topStart: {
