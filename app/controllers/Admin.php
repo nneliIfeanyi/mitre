@@ -1,4 +1,4 @@
-<?php
+  <?php
   class Admin extends Controller{
     private $userModel;
     private $alumniModel;
@@ -218,7 +218,19 @@
       $this->view('admin/alumni_2024', $data);
     }
 
+     //Load All Alumni
+    public function instructors(){
+    $total_alumni = $this->alumniModel->total_instructors();
+    $alumni_total = $this->alumniModel->instructors_total();
+      //Set Data
+      $data = [
+        'students' => $alumni_total,
+        'rowCount' => $total_alumni
+      ];
 
+      // Load homepage/all_ufuma view
+      $this->view('admin/instructors', $data);
+    }
 
       public function more_details($id){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

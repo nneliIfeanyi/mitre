@@ -140,6 +140,35 @@
       }
     }
 
+     //Get All rowCount
+      public function total_instructors(){
+        $this->db->query("SELECT * FROM instructors");
+   
+        $this->db->resultset();
+        $total = $this->db->rowCount();
+
+        return $total;
+      }
+
+
+       //Get All 
+      public function instructors_total(){
+        $this->db->query("SELECT * FROM instructors ORDER BY name ASC");
+        
+        $results = $this->db->resultset();
+
+        return $results;
+      }
+
+      public function getUserById($id){
+      $this->db->query("SELECT * FROM instructors WHERE id = :id");
+      $this->db->bind(':id', $id);
+
+      $row = $this->db->single();
+
+      return $row;
+    }
+
 
 
   }

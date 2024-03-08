@@ -2,11 +2,11 @@
   class Instructors extends Controller{
     private $userModel;
     private $databaseModel;
-    public $attendanceModel;
+    public $alumniModel;
 
      public function __construct(){
       $this->userModel = $this->model('User');
-      $this->attendanceModel = $this->model('Attendanze');
+      $this->alumniModel = $this->model('Alumnus');
       $this->databaseModel = $this->model('Databaze');
 
       }
@@ -18,5 +18,16 @@
     }
 
 
+
+
+     public function edit($id){
+      $student = $this->alumniModel->getUserById($id);
+      //Set Data
+      $data = [  
+        'student' => $student
+      ];
+
+      $this->view('instructors/edit', $data);
+    }
 
   }

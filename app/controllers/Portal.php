@@ -53,8 +53,8 @@
             }else{
               $success = $this->alumniModel->reg_instructor($data);
               if ($success) {
-                setcookie('instructor-name', $data['name'], time()+(300), '/');
-                flash('msg', 'Registration is Successfull..');
+                setcookie('instructor-name', $data['name'], time()+(900), '/');
+                flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
                 redirect('portal/instructors');
               }else{
                 die('Something went wrong..');
@@ -101,7 +101,7 @@
 
             if(!in_array($fileType, $allowTypes)){ 
               //echo $fileName;
-             flash('msg', 'INVALID IMAGE TYPE');
+             flash('msg', 'Invalid image format.. Please choose an image file.', 'alert alert-danger');
              redirect('portal/instructors');
             }else{ 
                 $imageTemp = $_FILES["photo"]["tmp_name"];
@@ -113,7 +113,7 @@
               $upload = $this->alumniModel->edit_pic($data);
                 if ($upload) {
                   
-                  flash('msg', 'Your Profile Photo is Updated.. Registration Completed.');
+                  flash('msg', 'Your Photo is Uploaded And Registration Completed.. Remain Blessed..');
                   setcookie('instructor-name', $data['name'], time()-(300), '/');
                   redirect('portal/instructors');
                 }else{
@@ -123,8 +123,8 @@
             }
 
           }elseif(isset($_POST['later'])){
-                flash('msg', 'You registered successfully without profile photo..');
-                setcookie('instructor-name', $data['name'], time()-(300), '/');
+                flash('msg', 'Pls.. spare some time, its compulsory you upload your photo..', 'alert alert-warning');
+                //setcookie('instructor-name', $data['name'], time()-(300), '/');
                 redirect('portal/instructors');
           }else{ 
             redirect('portal/instructors');

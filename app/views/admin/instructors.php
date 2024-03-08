@@ -1,0 +1,146 @@
+<?php require APPROOT . '/views/inc/admin/header.php'; ?>
+<?php require APPROOT . '/views/inc/admin/top.php'; ?>
+<?php require APPROOT . '/views/inc/admin/sidebar.php'; ?>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Mitre Instructors Database</h1>
+            <p>A Total of <span class="text-primary"><?php echo $data['rowCount'] ;?></span> Registered</p>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="<?= URLROOT ;?>/admin">Home</a></li>
+              <li class="breadcrumb-item active">All Registered</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+      <div class="container-fluid">
+       <div class="card card-body">
+            <table class="table table-striped" id="example">
+                <thead>
+                   <tr class="">
+                     <th>#</th>
+                     <th>Name</th>
+                     <th>Photo</th>
+                     <th>Gender</th>
+                     <th>Zone</th>
+                     <th>Address</th>
+                     <th>Phone</th>
+                     <th>Whatsapp</th>
+                     <th>Telegram</th>
+                     <th>Email</th>
+                     <th>Ministry</th>
+                     <th>Occupation</th>
+                     <th>Assembly</th>
+                     <th>Action</th>
+                     
+                   </tr>
+                </thead>
+
+                 <tbody>
+                 <?php $numbering = 1; foreach($data['students'] as $student) : ?>
+                  <tr>
+                      <td><?php echo $numbering;?></td>
+                      <td><?php echo $student->name?></td>
+                      <td>
+                        <div class="">
+                          <img src="<?php echo URLROOT.'/'.$student->photo?>" class="rounded-circle" style="width: 100%;">
+                        </div> 
+                      </td>
+                      <td><?php echo $student->gender?></td>
+                      <td><?php echo $student->zone?></td>
+                      <td><?php echo $student->address?></td>
+                      <td><?php echo $student->phone?></td>
+                      <td><a href="https://wa.me/<?= $student->whatsapp;?>" class="btn btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> <?php echo $student->whatsapp?></a></td>
+                      <td><?php echo $student->telegram?></td>
+                      <td><?php echo $student->email?></td>
+                
+
+                      <td><?php echo $student->ministry?></td>
+                      <td><?php echo $student->occupation?></td>
+                      <td><?php echo $student->assembly?></td>
+                      <td><a href="<?php echo URLROOT?>/instructors/edit/<?= $student->id;?>" class="btn btn-sm btn-success">More</a></td>
+                  </tr>
+                  <?php $numbering++; endforeach; ?>
+                 </tbody>
+                  <tfoot>
+                   <tr class="">
+                     <th>#</th>
+                     <th>Name</th>
+                     <th>Photo</th>
+                     <th>Gender</th>
+                     <th>Zone</th>
+                     <th>Address</th>
+                     <th>Phone</th>
+                     <th>Whatsapp</th>
+                     <th>Telegram</th>
+                     <th>Email</th>
+                     <th>Ministry</th>
+                     <th>Occupation</th>
+                     <th>Assembly</th>
+                     <th>Action</th>
+                   </tr>
+                </tfoot>
+               </table>
+       </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+<?php require APPROOT . '/views/inc/admin/footer.php'; ?>
+
+<script>
+  new DataTable('#example', {
+    scrollX:true,
+    layout: {
+        topStart: {
+            buttons: [
+                {
+                    extend: 'copyHtml5',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    messageTop:'message',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                {
+                    extend: 'print',
+                    messageTop:'message',
+                    exportOptions: {
+                        columns: [0, ':visible']
+                    }
+                },
+                'colvis'
+            ]
+        }
+    }
+});
+</script>
+
+
+    
+  
