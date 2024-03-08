@@ -3,10 +3,12 @@
     private $userModel;
     private $databaseModel;
     private $attendanceModel;
+    private $alumniModel;
     public function __construct(){
       $this->userModel = $this->model('User');
       $this->databaseModel = $this->model('Databaze');
       $this->attendanceModel = $this->model('Attendanze');
+      $this->alumniModel = $this->model('Alumnus');
     }
 
     // Load Homepage
@@ -21,6 +23,130 @@
       // Load homepage/index view
       $this->view('portal/index', $data);
     }
+
+    
+
+
+
+    public function instructors(){
+  
+        // Check if POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+          //$year = date('Y');
+          $data = [
+            'name' => trim($_POST['fullname']),
+            'email' => trim($_POST['email']),
+            'phone' => trim($_POST['phone']),
+            'gender' => trim($_POST['gender']),
+            'zone' => trim($_POST['zone']),
+            'address' => trim($_POST['address']),
+            'telegram' => trim($_POST['telegram']),
+            'whatsapp' => trim($_POST['whatsapp']),
+            'ministry' => trim($_POST['ministry']),
+            'occupation' => trim($_POST['occupation']),
+            'assembly' => trim($_POST['assembly'])
+          ];
+           
+            if ($this->alumniModel->findUserByPhone2($data['phone'])) {
+                flash('msg', 'The phone number provided already exist, it means you are registered..','alert alert-danger');
+                redirect('portal/instructors');
+            }else{
+              $success = $this->alumniModel->reg_instructor($data);
+              if ($success) {
+                setcookie('instructor-name', $data['name'], time()+(300), '/');
+                flash('msg', 'Registration is Successfull..');
+                redirect('portal/instructors');
+              }else{
+                die('Something went wrong..');
+              }
+            }
+  
+      } else {
+          // If NOT a POST
+          // Init data
+          $data = [
+            'email' => '',
+            'fullname' => '',
+            'gender' => '',
+            'zone' => '',
+            'address' => '',
+            'phone' => '',
+            'whatsapp' => '',
+            'telegram' => '',
+            'ministry' => '',
+            'occupation' => '',
+            'assembly' => '',
+            'error' => ''
+          ];
+  
+          // Load View
+          $this->view('portal/instructors', $data);
+        }
+      }
+
+
+
+
+      public function profile_pic(){
+
+        if(isset($_POST['upload'])) {
+          $uploadPath = "pics/";
+          $fileName = basename($_FILES["photo"]["name"]); 
+          $db_image_file =  $uploadPath . $fileName; 
+          $imageUploadPath = $uploadPath . $fileName; 
+          $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
+             
+          // Allow certain file formats 
+          $allowTypes = array('jpg','png','jpeg'); 
+
+            if(!in_array($fileType, $allowTypes)){ 
+              //echo $fileName;
+             flash('msg', 'INVALID IMAGE TYPE');
+             redirect('portal/instructors');
+            }else{ 
+                $imageTemp = $_FILES["photo"]["tmp_name"];
+                $data = [
+                  'name' => $_COOKIE['instructor-name'],
+                  'image' => $db_image_file,
+                  move_uploaded_file($imageTemp, $imageUploadPath)
+                ];
+              $upload = $this->alumniModel->edit_pic($data);
+                if ($upload) {
+                  
+                  flash('msg', 'Your Profile Photo is Updated.. Registration Completed.');
+                  setcookie('instructor-name', $data['name'], time()-(300), '/');
+                  redirect('portal/instructors');
+                }else{
+                  die('Something went wrong..');
+                }
+                
+            }
+
+          }elseif(isset($_POST['later'])){
+                flash('msg', 'You registered successfully without profile photo..');
+                setcookie('instructor-name', $data['name'], time()-(300), '/');
+                redirect('portal/instructors');
+          }else{ 
+            redirect('portal/instructors');
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function about(){
       //Set Data

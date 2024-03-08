@@ -4,7 +4,7 @@
       <div class="card card-body bg-light mt-5 mx-1">
   <!-- <h2 class="display-3">Not available</h2> -->
     
-        <h2 class="fw-bold">Student Login</h2>
+        <h2 class="fw-bold text-primary">Student Login</h2>
         <p class="lead fs-2">Please fill in your credentials to login.</p>
         <p class="text-muted" style="font-size:15.8px;margin-top: -4px;">Your phone number is your password..</p>
         <form action="<?php echo URLROOT; ?>/students/login" method="post">

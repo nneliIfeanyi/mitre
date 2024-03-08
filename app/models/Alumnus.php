@@ -83,5 +83,63 @@
         return $results;
       }
 
+      public function reg_instructor($data){
+      // Prepare Query
+      $this->db->query('INSERT INTO instructors (name, gender, zone, address, phone, whatsapp, telegram, email, ministry, occupation, assembly) 
+      VALUES (:name, :gender, :zone, :address, :phone, :whatsapp, :telegram, :email, :ministry, :occupation, :assembly)');
+
+      // Bind Values
+      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':gender', $data['gender']);
+      $this->db->bind(':zone', $data['zone']);
+      $this->db->bind(':address', $data['address']);
+      $this->db->bind(':phone', $data['phone']);
+      $this->db->bind(':whatsapp', $data['whatsapp']);
+      $this->db->bind(':telegram', $data['telegram']);
+      $this->db->bind(':email', $data['email']);
+      $this->db->bind(':ministry', $data['ministry']);
+      $this->db->bind(':occupation', $data['occupation']);
+      $this->db->bind(':assembly', $data['assembly']);
+      
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+     public function findUserByPhone2($phone){
+      $this->db->query("SELECT * FROM instructors WHERE phone = :phone");
+      $this->db->bind(':phone', $phone);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($this->db->rowCount() > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function edit_pic($data){
+      // Prepare Query
+      $this->db->query('UPDATE instructors SET photo = :img WHERE name = :name');
+
+      // Bind Values
+      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':img', $data['image']);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
 
   }
