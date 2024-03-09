@@ -125,6 +125,7 @@
 <script>
   new DataTable('#example', {
     scrollX:true,
+    paging:false,
     layout: {
         topStart: {
             buttons: [
