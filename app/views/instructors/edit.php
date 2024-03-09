@@ -103,7 +103,7 @@
             <div class="mb-3">
             <input type="submit" id="submit" class="btn btn-primary btn-block rounded-5 fw-bold" value="Register"></div>
             <div class="col-4 mb-2">
-              <a href="<?php echo URLROOT;?>/admin/<?= $data['student']->zone;?>/<?= $data['student']->mitre_set;?>" class="btn btn-outline-dark"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+              <a href="<?php echo URLROOT;?>/admin/instructors" class="btn btn-outline-dark"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
               </div>
           </div>
         </div>
