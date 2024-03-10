@@ -47,13 +47,18 @@
             'assembly' => trim($_POST['assembly'])
           ];
            
-            if ($this->alumniModel->findUserByPhone2($data['phone'])) {
-                flash('msg', 'The phone number provided already exist, it means you are registered..','alert alert-danger');
+            if ($this->alumniModel->findUserByPhone3($data['phone'])) {
+               setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+                flash('msg', 'You previously registered without a photo, kindly upload your photo..');
+                redirect('portal/instructors');
+               
+            }elseif ($this->alumniModel->findUserByPhone2($data['phone'])) {
+                 flash('msg', 'The phone number provided already exist, it means you have registered earlier before now and cannot register twice.','alert alert-danger');
                 redirect('portal/instructors');
             }else{
               $success = $this->alumniModel->reg_instructor($data);
               if ($success) {
-                setcookie('instructor-name', $data['name'], time()+(900), '/');
+                setcookie('instructor-phone', $data['phone'], time()+(900), '/');
                 flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
                 redirect('portal/instructors');
               }else{
@@ -106,7 +111,7 @@
             }else{ 
                 $imageTemp = $_FILES["photo"]["tmp_name"];
                 $data = [
-                  'name' => $_COOKIE['instructor-name'],
+                  'phone' => $_COOKIE['instructor-phone'],
                   'image' => $db_image_file,
                   move_uploaded_file($imageTemp, $imageUploadPath)
                 ];
@@ -114,7 +119,7 @@
                 if ($upload) {
                   
                   flash('msg', 'Your Photo is Uploaded And Registration Completed.. Remain Blessed..');
-                  setcookie('instructor-name', $data['name'], time()-(300), '/');
+                  setcookie('instructor-phone', $data['phone'], time()-(900), '/');
                   redirect('portal/instructors');
                 }else{
                   die('Something went wrong..');
@@ -124,7 +129,6 @@
 
           }elseif(isset($_POST['later'])){
                 flash('msg', 'Pls.. spare some time, its compulsory you upload your photo..', 'alert alert-warning');
-                //setcookie('instructor-name', $data['name'], time()-(300), '/');
                 redirect('portal/instructors');
           }else{ 
             redirect('portal/instructors');

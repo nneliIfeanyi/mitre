@@ -124,12 +124,26 @@
       }
     }
 
+    public function findUserByPhone3($phone){
+      $this->db->query("SELECT * FROM instructors WHERE phone = :phone");
+      $this->db->bind(':phone', $phone);
+
+      $row = $this->db->single();
+
+      //Check Rows
+      if($this->db->rowCount() > 0 && $row->photo == ''){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     public function edit_pic($data){
       // Prepare Query
-      $this->db->query('UPDATE instructors SET photo = :img WHERE name = :name');
+      $this->db->query('UPDATE instructors SET photo = :img WHERE phone = :phone');
 
       // Bind Values
-      $this->db->bind(':name', $data['name']);
+      $this->db->bind(':phone', $data['phone']);
       $this->db->bind(':img', $data['image']);
       
       //Execute

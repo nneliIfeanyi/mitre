@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
-<?php if(!isset($_COOKIE['instructor-name'])):?>
+<?php if(!isset($_COOKIE['instructor-phone'])):?>
 <div class="container-lg">
   <div class="card">
      <div class="card-header">
