@@ -47,24 +47,35 @@
             'assembly' => trim($_POST['assembly'])
           ];
            
-            if ($this->alumniModel->findUserByPhone3($data['phone'])) {
-               setcookie('instructor-phone', $data['phone'], time()+(900), '/');
-                flash('msg', 'You previously registered without a photo, kindly upload your photo..');
-                redirect('portal/instructors');
+            // if ($this->alumniModel->findUserByPhone3($data['phone'])) {
+            //    setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+            //     flash('msg', 'You previously registered without a photo, kindly upload your photo..');
+            //     redirect('portal/instructors');
                
-            }elseif ($this->alumniModel->findUserByPhone2($data['phone'])) {
-                 flash('msg', 'The phone number provided already exist, it means you have registered earlier before now and cannot register twice.','alert alert-danger');
-                redirect('portal/instructors');
+            // }elseif ($this->alumniModel->findUserByPhone2($data['phone'])) {
+            //      flash('msg', 'The phone number provided already exist, it means you have registered earlier before now and cannot register twice.','alert alert-danger');
+            //     redirect('portal/instructors');
+            // }else{
+            //   $success = $this->alumniModel->reg_instructor($data);
+            //   if ($success) {
+            //     setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+            //     flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
+            //     redirect('portal/instructors');
+            //   }else{
+            //     die('Something went wrong..');
+            //   }
+            // }
+
+            $success = $this->alumniModel->reg_instructor($data);
+            if ($success) {
+            setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+            flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
+            redirect('portal/instructors');
             }else{
-              $success = $this->alumniModel->reg_instructor($data);
-              if ($success) {
-                setcookie('instructor-phone', $data['phone'], time()+(900), '/');
-                flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
-                redirect('portal/instructors');
-              }else{
-                die('Something went wrong..');
-              }
+            die('Something went wrong..');
             }
+
+            
   
       } else {
           // If NOT a POST
