@@ -46,6 +46,7 @@
 
       <div class="container-fluid">
        <div class="card card-body">
+        <?php echo flash('msg');?>
             <table class="table table-striped" id="example">
                 <thead>
                    <tr class="">

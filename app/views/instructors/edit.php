@@ -140,9 +140,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-around">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
-        <form action="<?php echo URLROOT; ?>/admin/delete/<?php echo $data['student']->id; ?>" method="post">
-          <input type="hidden" name="zone" value="<?php echo $data['student']->zone; ?>">
-          <input type="hidden" name="mitre_set" value="<?php echo $data['student']->mitre_set; ?>">
+        <form action="<?php echo URLROOT; ?>/instructors/delete/<?php echo $data['student']->id; ?>" method="post">
           <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
         </form>
       </div>
