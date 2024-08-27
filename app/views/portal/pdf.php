@@ -62,7 +62,7 @@ $html = '<h4 align="center">Instructors Database</h4>
 	</tr>';
 $count = 1;
 foreach ($data['all'] as $all) {
-    $path = URLROOT . $all->photo;
+    $path = URLROOT . '/' . $all->photo;
     $html .= '<tr style="text-align:center;">
         <td>' . $count . '</td>
         <td>' . $all->name . '</td>
