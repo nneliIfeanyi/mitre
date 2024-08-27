@@ -51,7 +51,7 @@ $pdf->AddPage();
 // create some HTML content
 
 $html = '<h4 align="center">Instructors Database</h4>
-<table border="1" cellpadding="1" cellspacing="1" style="text-align:left;" >
+<table border="1" cellpadding="6" cellspacing="3" style="text-align:left;" >
 	<tr  style="font-weight:bold;text-align:center;">
 		<th width="41">S/N</th>
 		<th width="260">NAMES</th>
@@ -62,7 +62,7 @@ $html = '<h4 align="center">Instructors Database</h4>
 	</tr>';
 $count = 1;
 foreach ($data['all'] as $all) {
-    $path = URLROOT . '/img/favicon-16x16.png';
+    $path = URLROOT . $all->photo;
     $html .= '<tr style="text-align:center;">
         <td>' . $count . '</td>
         <td>' . $all->name . '</td>
