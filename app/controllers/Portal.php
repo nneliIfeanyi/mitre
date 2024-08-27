@@ -66,6 +66,7 @@ class Portal extends Controller
         'assembly' => trim($_POST['assembly'])
       ];
 
+<<<<<<< HEAD
       if ($this->alumniModel->findUserByPhone3($data['phone'])) {
         setcookie('instructor-phone', $data['phone'], time() + (900), '/');
         flash('msg', 'You previously registered without a photo, kindly upload your photo..');
@@ -73,6 +74,65 @@ class Portal extends Controller
       } elseif ($this->alumniModel->findUserByPhone2($data['phone'])) {
         flash('msg', 'The phone number provided already exist, it means you have registered earlier before now and cannot register twice.', 'alert alert-danger');
         redirect('portal/instructors');
+=======
+      // Load homepage/index view
+      $this->view('portal/index', $data);
+    }
+
+    
+
+
+
+    public function instructors(){
+  
+        // Check if POST
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+          //$year = date('Y');
+          $data = [
+            'name' => trim($_POST['fullname']),
+            'email' => trim($_POST['email']),
+            'phone' => trim($_POST['phone']),
+            'gender' => trim($_POST['gender']),
+            'zone' => trim($_POST['zone']),
+            'address' => trim($_POST['address']),
+            'telegram' => trim($_POST['telegram']),
+            'whatsapp' => trim($_POST['whatsapp']),
+            'ministry' => trim($_POST['ministry']),
+            'occupation' => trim($_POST['occupation']),
+            'assembly' => trim($_POST['assembly'])
+          ];
+           
+            // if ($this->alumniModel->findUserByPhone3($data['phone'])) {
+            //    setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+            //     flash('msg', 'You previously registered without a photo, kindly upload your photo..');
+            //     redirect('portal/instructors');
+               
+            // }elseif ($this->alumniModel->findUserByPhone2($data['phone'])) {
+            //      flash('msg', 'The phone number provided already exist, it means you have registered earlier before now and cannot register twice.','alert alert-danger');
+            //     redirect('portal/instructors');
+            // }else{
+            //   $success = $this->alumniModel->reg_instructor($data);
+            //   if ($success) {
+            //     setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+            //     flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
+            //     redirect('portal/instructors');
+            //   }else{
+            //     die('Something went wrong..');
+            //   }
+            // }
+
+            $success = $this->alumniModel->reg_instructor($data);
+            if ($success) {
+            setcookie('instructor-phone', $data['phone'], time()+(900), '/');
+            flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
+            redirect('portal/instructors');
+            }else{
+            die('Something went wrong..');
+            }
+
+            
+  
+>>>>>>> 9153b4698b519aef918de06e8716d4958797025d
       } else {
         $success = $this->alumniModel->reg_instructor($data);
         if ($success) {

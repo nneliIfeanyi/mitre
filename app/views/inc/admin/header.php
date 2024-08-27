@@ -37,6 +37,26 @@
   <link rel="manifest" href="/site.webmanifest">
 
 <style type="text/css">
+.flash-msg{
+      position: fixed;
+      top: 12vh;
+      right: 1vw;
+      z-index: 5;
+      width: 200px;
+      animation-name: fade;
+      animation-duration: 3s;
+      animation-delay: 6s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fade{
+      from{opacity: 1;}
+      to{opacity: 0;}
+    }
+
+
+
     .error{
     color: #D43F3A;
      padding-left: 0;

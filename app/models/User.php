@@ -343,4 +343,22 @@
         return false;
       }
     }
+
+    public function delete_instructor($id){
+      // Prepare Query 
+      $this->db->query('DELETE FROM instructors WHERE id = :id');
+
+      // Bind Values
+      $this->db->bind(':id', $id);
+      
+      //Execute
+      if($this->db->execute()){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
   }

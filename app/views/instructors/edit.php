@@ -101,7 +101,7 @@
 
           <div class=" d-grid col-md-6 offset-md-3 my-3">
             <div class="mb-3">
-            <input type="submit" id="submit" class="btn btn-primary btn-block rounded-5 fw-bold" value="Register"></div>
+            <!-- <input type="submit" id="submit" class="btn btn-primary btn-block rounded-5 fw-bold" value="Register"></div> -->
             <div class="col-4 mb-2">
               <a href="<?php echo URLROOT;?>/admin/instructors" class="btn btn-outline-dark"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
               </div>
@@ -140,9 +140,7 @@
       </div>
       <div class="modal-footer d-flex justify-content-around">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
-        <form action="<?php echo URLROOT; ?>/admin/delete/<?php echo $data['student']->id; ?>" method="post">
-          <input type="hidden" name="zone" value="<?php echo $data['student']->zone; ?>">
-          <input type="hidden" name="mitre_set" value="<?php echo $data['student']->mitre_set; ?>">
+        <form action="<?php echo URLROOT; ?>/instructors/delete/<?php echo $data['student']->id; ?>" method="post">
           <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Yes, Continue</button>
         </form>
       </div>
