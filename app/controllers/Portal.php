@@ -38,7 +38,7 @@ class Portal extends Controller
   // Load Homepage
   public function pdf()
   {
-    $instructors_db = $this->alumniModel->instructors_total();
+    $instructors_db = $this->alumniModel->instructors_total2();
     //Set Data
     $data = [
       'all' => $instructors_db,

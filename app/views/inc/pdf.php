@@ -1,6 +1,4 @@
 <?php
-session_start();
-//error_reporting(0);
 require_once APPROOT . '/views/TCPDF-main/tcpdf.php';
 
 // create new PDF document
