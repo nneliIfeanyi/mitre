@@ -39,8 +39,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <style type="text/css">
         .flash-msg {
+            margin: 0;
             position: fixed;
-            top: 12vh;
+            bottom: 0;
             right: 1vw;
             z-index: 5;
             width: 200px;

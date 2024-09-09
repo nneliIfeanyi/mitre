@@ -46,80 +46,80 @@
           <div class="col-lg-6">
             <?= flash('msg') ?>
           </div>
-          <table class="table table-striped" id="eg">
-            <thead>
-              <tr class="">
-                <th>#</th>
-                <th><b>Name</b></th>
-                <th><b><?= $paper ?></b></th>
-                <th><b>Action</b></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <?php $numbering = 1;
-              foreach ($data['students'] as $student) :
-                $added = $this->attendanceModel->check_mark($set, $conclave, $paper, $student->id);
-              ?>
-
-                <tr>
-                  <td><?php echo $numbering; ?></td>
-                  <td><?php echo $student->fullname ?></td>
-                  <?php if ($added) : ?>
-                    <td><?= $added->score ?></td>
-                    <td><a href="<?php echo URLROOT ?>/papers/edit/<?php echo $added->id; ?>" class="btn btn-sm btn-success"> Edit</a></td>
-                  <?php else : ?>
-                    <form id="termPaper<?= $student->id; ?>">
-                      <td><input type="" class="" required placeholder="Enter score" name="score"></td>
-                      <td>
-                        <input type="hidden" name="std_id" value="<?= $student->id; ?>">
-                        <input type="hidden" name="zone" value="<?= $student->zone; ?>">
-                        <input type="hidden" name="fullname" value="<?= $student->fullname; ?>">
-                        <input type="hidden" name="mitre_set" value="<?= $student->mitre_set; ?>">
-                        <input type="hidden" name="conclave" value="<?= $conclave; ?>">
-                        <input type="hidden" name="paper" value="<?= $paper; ?>">
-                        <input type='submit' id="submit<?= $student->id; ?>" value='Mark' class='btn btn-dark'>
-                      </td>
-                    </form>
-                  <?php endif; ?>
+          <div class="table-responsive">
+            <table class="table table-striped" id="eg">
+              <thead>
+                <tr class="">
+                  <th>#</th>
+                  <th><b>Name</b></th>
+                  <th><b><?= $paper ?></b></th>
+                  <th><b>Action</b></th>
                 </tr>
-                <script>
-                  $('#termPaper<?= $student->id; ?>').on('submit', function(event) {
-                    event.preventDefault();
-                    let formData = $(this).serialize();
-                    $.ajax({
-                      url: "<?= URLROOT; ?>/portal/add_mark",
-                      method: "POST",
-                      data: formData,
+              </thead>
 
-                      beforeSend: function() {
-                        $('#submit<?= $student->id; ?>').attr('disabled', 'disabled');
-                        $('#submit<?= $student->id; ?>').val('Pls wait..');
+              <tbody>
+                <?php $numbering = 1;
+                foreach ($data['students'] as $student) :
+                  $added = $this->attendanceModel->check_mark($set, $conclave, $paper, $student->id);
+                ?>
 
-                      },
-                      success: function(response) {
-                        $('#submit<?= $student->id; ?>').val('Marked..');
-                        $('#submit<?= $student->id; ?>').removeClass('btn-dark');
-                        $('#submit<?= $student->id; ?>').addClass('btn-success');
-                        $('#msg').append(response);
-                      }
+                  <tr>
+                    <td><?php echo $numbering; ?></td>
+                    <td><?php echo $student->fullname ?></td>
+                    <?php if ($added) : ?>
+                      <td><?= $added->score ?></td>
+                      <td><a href="<?php echo URLROOT ?>/papers/edit/<?php echo $added->id; ?>" class="btn btn-sm btn-success"> Edit</a></td>
+                    <?php else : ?>
+                      <form id="termPaper<?= $student->id; ?>">
+                        <td><input type="" class="" required placeholder="Enter score" name="score"></td>
+                        <td>
+                          <input type="hidden" name="std_id" value="<?= $student->id; ?>">
+                          <input type="hidden" name="zone" value="<?= $student->zone; ?>">
+                          <input type="hidden" name="fullname" value="<?= $student->fullname; ?>">
+                          <input type="hidden" name="mitre_set" value="<?= $student->mitre_set; ?>">
+                          <input type="hidden" name="conclave" value="<?= $conclave; ?>">
+                          <input type="hidden" name="paper" value="<?= $paper; ?>">
+                          <input type='submit' id="submit<?= $student->id; ?>" value='Mark' class='btn btn-dark'>
+                        </td>
+                      </form>
+                    <?php endif; ?>
+                  </tr>
+                  <script>
+                    $('#termPaper<?= $student->id; ?>').on('submit', function(event) {
+                      event.preventDefault();
+                      let formData = $(this).serialize();
+                      $.ajax({
+                        url: "<?= URLROOT; ?>/portal/add_mark",
+                        method: "POST",
+                        data: formData,
+
+                        beforeSend: function() {
+                          $('#submit<?= $student->id; ?>').attr('disabled', 'disabled');
+                          $('#submit<?= $student->id; ?>').val('Pls wait..');
+
+                        },
+                        success: function(response) {
+                          $('#submit<?= $student->id; ?>').val('Marked..');
+                          $('#submit<?= $student->id; ?>').removeClass('btn-dark');
+                          $('#submit<?= $student->id; ?>').addClass('btn-success');
+                          $('#msg').append(response);
+                        }
+                      });
                     });
-                  });
-                </script>
-              <?php $numbering++;
-              endforeach; ?>
-            </tbody>
-            <tfoot>
-              <tr class="">
-                <th>#</th>
-                <th><b>Name</b></th>
-                <th><b><?= $paper ?></b></th>
-                <th><b>Action</b></th>
-              </tr>
-            </tfoot>
-          </table>
-
-
+                  </script>
+                <?php $numbering++;
+                endforeach; ?>
+              </tbody>
+              <tfoot>
+                <tr class="">
+                  <th>#</th>
+                  <th><b>Name</b></th>
+                  <th><b><?= $paper ?></b></th>
+                  <th><b>Action</b></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -176,80 +176,81 @@
           <div class="col-lg-6">
             <h5><?= flash('msg') ?></h5>
           </div>
-          <table class="table table-striped" id="eg">
-            <thead>
-              <tr class="">
-                <th>#</th>
-                <th><b>Name</b></th>
-                <th><b><?= $paper ?></b></th>
-                <th><b>Action</b></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <?php $numbering = 1;
-
-              foreach ($data['students'] as $student) :
-                $added = $this->attendanceModel->check_mark($set, $conclave, $paper, $student->id);
-              ?>
-
-                <tr>
-                  <td><?php echo $numbering; ?></td>
-                  <td><?php echo $student->fullname ?></td>
-                  <?php if ($added) : ?>
-                    <td><?= $added->score ?></td>
-                    <td><a href="<?php echo URLROOT ?>/papers/edit/<?php echo $added->id; ?>" class="btn btn-sm btn-success"> Edit</a></td>
-                  <?php else : ?>
-                    <form id="termPaper<?= $student->id; ?>">
-                      <td><input type="" class="" required placeholder="Enter score" name="score"></td>
-                      <td>
-                        <input type="hidden" name="std_id" value="<?= $student->id; ?>">
-                        <input type="hidden" name="zone" value="<?= $student->zone; ?>">
-                        <input type="hidden" name="fullname" value="<?= $student->fullname; ?>">
-                        <input type="hidden" name="mitre_set" value="<?= $student->mitre_set; ?>">
-                        <input type="hidden" name="conclave" value="<?= $conclave; ?>">
-                        <input type="hidden" name="paper" value="<?= $paper; ?>">
-                        <input type='submit' id="submit<?= $student->id; ?>" value='Mark' class='btn btn-dark'>
-                      </td>
-                    </form>
-                  <?php endif; ?>
+          <div class="table-responsive">
+            <table class="table table-striped" id="eg">
+              <thead>
+                <tr class="">
+                  <th>#</th>
+                  <th><b>Name</b></th>
+                  <th><b><?= $paper ?></b></th>
+                  <th><b>Action</b></th>
                 </tr>
-                <script>
-                  $('#termPaper<?= $student->id; ?>').on('submit', function(event) {
-                    event.preventDefault();
-                    let formData = $(this).serialize();
-                    $.ajax({
-                      url: "<?= URLROOT; ?>/portal/add_mark",
-                      method: "POST",
-                      data: formData,
+              </thead>
 
-                      beforeSend: function() {
-                        $('#submit<?= $student->id; ?>').attr('disabled', 'disabled');
-                        $('#submit<?= $student->id; ?>').val('Pls wait..');
+              <tbody>
+                <?php $numbering = 1;
 
-                      },
-                      success: function(response) {
-                        $('#submit<?= $student->id; ?>').val('Marked..');
-                        $('#submit<?= $student->id; ?>').removeClass('btn-dark');
-                        $('#submit<?= $student->id; ?>').addClass('btn-success');
-                        $('#msg').append(response);
-                      }
+                foreach ($data['students'] as $student) :
+                  $added = $this->attendanceModel->check_mark($set, $conclave, $paper, $student->id);
+                ?>
+
+                  <tr>
+                    <td><?php echo $numbering; ?></td>
+                    <td><?php echo $student->fullname ?></td>
+                    <?php if ($added) : ?>
+                      <td><?= $added->score ?></td>
+                      <td><a href="<?php echo URLROOT ?>/papers/edit/<?php echo $added->id; ?>" class="btn btn-sm btn-success"> Edit</a></td>
+                    <?php else : ?>
+                      <form id="termPaper<?= $student->id; ?>">
+                        <td><input type="" class="" required placeholder="Enter score" name="score"></td>
+                        <td>
+                          <input type="hidden" name="std_id" value="<?= $student->id; ?>">
+                          <input type="hidden" name="zone" value="<?= $student->zone; ?>">
+                          <input type="hidden" name="fullname" value="<?= $student->fullname; ?>">
+                          <input type="hidden" name="mitre_set" value="<?= $student->mitre_set; ?>">
+                          <input type="hidden" name="conclave" value="<?= $conclave; ?>">
+                          <input type="hidden" name="paper" value="<?= $paper; ?>">
+                          <input type='submit' id="submit<?= $student->id; ?>" value='Mark' class='btn btn-dark'>
+                        </td>
+                      </form>
+                    <?php endif; ?>
+                  </tr>
+                  <script>
+                    $('#termPaper<?= $student->id; ?>').on('submit', function(event) {
+                      event.preventDefault();
+                      let formData = $(this).serialize();
+                      $.ajax({
+                        url: "<?= URLROOT; ?>/portal/add_mark",
+                        method: "POST",
+                        data: formData,
+
+                        beforeSend: function() {
+                          $('#submit<?= $student->id; ?>').attr('disabled', 'disabled');
+                          $('#submit<?= $student->id; ?>').val('Pls wait..');
+
+                        },
+                        success: function(response) {
+                          $('#submit<?= $student->id; ?>').val('Marked..');
+                          $('#submit<?= $student->id; ?>').removeClass('btn-dark');
+                          $('#submit<?= $student->id; ?>').addClass('btn-success');
+                          $('#msg').append(response);
+                        }
+                      });
                     });
-                  });
-                </script>
-              <?php $numbering++;
-              endforeach; ?>
-            </tbody>
-            <tfoot>
-              <tr class="">
-                <th>#</th>
-                <th><b>Name</b></th>
-                <th><b><?= $paper ?></b></th>
-                <th><b>Action</b></th>
-              </tr>
-            </tfoot>
-          </table>
-
+                  </script>
+                <?php $numbering++;
+                endforeach; ?>
+              </tbody>
+              <tfoot>
+                <tr class="">
+                  <th>#</th>
+                  <th><b>Name</b></th>
+                  <th><b><?= $paper ?></b></th>
+                  <th><b>Action</b></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
 
         </div>
       </div><!-- /.container-fluid -->
