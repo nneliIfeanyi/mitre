@@ -27,8 +27,8 @@
                   <img src="<?= URLROOT; ?>/pics/user.jpg" style="height: 80px;width: 100px;" class="img-fluid" alt="profile_photo">
                 </div>
               <?php else : ?>
-                <div class="" style="height: 200px;">
-                  <img src="<?= URLROOT; ?>/<?= $data['student']->photo; ?>" alt="profile_photo">
+                <div class="p-3">
+                  <img src="<?= URLROOT; ?>/<?= $data['student']->photo; ?>" style="height: 80px;width: 100px;" alt="profile_photo">
                 </div>
               <?php endif; ?>
             </div>
