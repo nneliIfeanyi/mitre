@@ -190,7 +190,7 @@ class Alumnus
   //Get first 5 
   public function instructors_total2()
   {
-    $this->db->query("SELECT * FROM instructors ORDER BY name ASC LIMIT 10 OFFSET 10");
+    $this->db->query("SELECT * FROM instructors ORDER BY name ASC");
 
     $results = $this->db->resultset();
 
