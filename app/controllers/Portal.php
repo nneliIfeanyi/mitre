@@ -17,6 +17,13 @@ class Portal extends Controller
   public function index()
   {
 
+    redirect('portal/welcome');
+  }
+
+  // Load Homepage
+  public function welcome()
+  {
+
     //Set Data
     $data = [
       'title' => '',
@@ -24,7 +31,7 @@ class Portal extends Controller
     ];
 
     // Load homepage/index view
-    $this->view('portal/index', $data);
+    $this->view('portal/welcome', $data);
   }
 
 
@@ -182,8 +189,8 @@ class Portal extends Controller
   public function login()
   {
     // Check if logged in
-    if ($this->isLoggedIn()) {
-      redirect('admin');
+    if (isset($_COOKIE['admin-id'])) {
+      redirect('admin/dashboard');
     }
 
     // Check if POST
@@ -334,7 +341,7 @@ class Portal extends Controller
         flash('msg', 'Updated scores is successfull..');
         redirect('portal/add_mark');
       } //end foreach loop
-    } elseif (isset($_POST['method2'])) {
+    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $data = [
         'name' => $_POST['fullname'],
         'score' => $_POST['score'],
@@ -346,15 +353,26 @@ class Portal extends Controller
       ];
       $input = $this->attendanceModel->recordPaper($data);
       if ($input) {
-        flash('msg', 'Added score is successfull..');
-        redirect('papers/' . $data['paper'] . '_' . $data['zone'] . '/' . $data['mitre_set']);
+        echo "
+                  <div class='flash-msg alert alert-success'>
+                    Attendance Marked Successfully.. </span>
+                </div>
+                
+            ";
+      } else {
+        echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Something went wrong.. </span>
+                </div>
+
+            ";
       }
     } //post submit ends
-    else {
-      $data = '';
-      // Load about view
-      $this->view('portal/add_mark', $data);
-    }
+    // else {
+    //   $data = '';
+    //   // Load about view
+    //   $this->view('portal/add_mark', $data);
+    // }
   }
 
   public function settings()
