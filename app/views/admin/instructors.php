@@ -82,7 +82,7 @@
                       <?php if (empty($student->photo)) : ?>
                         <img src="<?php echo URLROOT ?>/img/default.png" class="" style="width: 100%;">
                       <?php else : ?>
-                        <a href="<?php echo URLROOT . '/' . $student->photo ?>" download="<?php echo $student->name ?>">
+                        <a href="<?php echo URLROOT . '/' . $student->photo ?>">
                           <img src="<?php echo URLROOT . '/' . $student->photo ?>" class="zoom" style="width: 100%;">
                         </a>
                       <?php endif; ?>
