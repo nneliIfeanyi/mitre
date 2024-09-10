@@ -384,6 +384,24 @@ class User
     }
   }
 
+  // Instructors Update Image
+  public function edit_pic2($data)
+  {
+    // Prepare Query
+    $this->db->query('UPDATE instructors SET photo = :img WHERE id = :id');
+
+    // Bind Values
+    $this->db->bind(':id', $data['id']);
+    $this->db->bind(':img', $data['image']);
+
+    //Execute
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public function delete_instructor($id)
   {
     // Prepare Query 

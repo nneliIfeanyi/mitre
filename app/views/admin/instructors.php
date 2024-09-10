@@ -1,7 +1,7 @@
 <?php require APPROOT . '/views/inc/admin/header.php'; ?>
 <?php require APPROOT . '/views/inc/admin/top.php'; ?>
 <?php require APPROOT . '/views/inc/admin/sidebar.php'; ?>
-
+<?php flash('msg'); ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -51,7 +51,7 @@
               <tr class="">
                 <th>#</th>
                 <th>Name</th>
-                <!-- <th>Photo</th> -->
+                <th>Photo</th>
                 <!-- <th>Gender</th> -->
                 <th>Zone</th>
                 <th>Address</th>
@@ -72,18 +72,22 @@
               foreach ($data['students'] as $student) : ?>
                 <tr>
                   <td><?php echo $numbering; ?></td>
-                  <td><?php echo $student->name ?></td>
-                  <!-- <td>
+                  <td>
+                    <a href="<?= URLROOT; ?>/instructors/update_photo/<?= $student->id ?>">
+                      <?php echo $student->name ?>
+                    </a>
+                  </td>
+                  <td>
                     <div class="">
                       <?php if (empty($student->photo)) : ?>
                         <img src="<?php echo URLROOT ?>/img/default.png" class="" style="width: 100%;">
                       <?php else : ?>
-                        <a href="<?php echo URLROOT . '/' . $student->photo ?>">
+                        <a href="<?php echo URLROOT . '/' . $student->photo ?>" download="<?php echo $student->name ?>">
                           <img src="<?php echo URLROOT . '/' . $student->photo ?>" class="zoom" style="width: 100%;">
                         </a>
                       <?php endif; ?>
                     </div>
-                  </td> -->
+                  </td>
                   <!-- <td><?php echo $student->gender ?></td> -->
                   <td><?php echo $student->zone ?></td>
                   <td><?php echo $student->address ?></td>
@@ -105,7 +109,7 @@
               <tr class="">
                 <th>#</th>
                 <th>Name</th>
-                <!-- <th>Photo</th> -->
+                <th>Photo</th>
                 <!-- <th>Gender</th> -->
                 <th>Zone</th>
                 <th>Address</th>
