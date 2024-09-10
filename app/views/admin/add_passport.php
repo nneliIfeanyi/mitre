@@ -29,7 +29,7 @@
                             <div class="form-group mb-3">
                                 <input type="hidden" name="zone" value="<?= $data['student']->zone; ?>">
                                 <input type="hidden" name="set" value="<?= $data['student']->mitre_set; ?>">
-                                <input type="file" name="photo" required class="form-control form-control-lg">
+                                <input type="file" accept="image/*" capture name="photo" required class="form-control form-control-lg">
                             </div>
 
                             <div class="row mt-5">
