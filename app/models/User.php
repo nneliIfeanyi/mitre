@@ -258,9 +258,7 @@ class User
   {
     $this->db->query("SELECT * FROM mitre_students WHERE id = :id");
     $this->db->bind(':id', $id);
-
     $row = $this->db->single();
-
     return $row;
   }
 

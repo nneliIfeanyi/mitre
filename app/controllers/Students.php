@@ -532,8 +532,8 @@ class Students extends Controller
         if ($image_type == IMAGETYPE_JPEG) {
           $image_resource_id = imagecreatefromjpeg($file);
           $target_layer = fn_resize($image_resource_id, $source_properties[0], $source_properties[1]);
-          imagejpeg($target_layer, "pics/" . $_FILES['photo']['name'] . ".jpg");
-          $db_image_file =  "pics/" . $_FILES['photo']['name'] . ".jpg";
+          imagejpeg($target_layer, "pics/" . $_FILES['photo']['name']);
+          $db_image_file =  "pics/" . $_FILES['photo']['name'];
           $data = [
             'id' => $_COOKIE['student-id'],
             'image' => $db_image_file
@@ -549,8 +549,8 @@ class Students extends Controller
         } elseif ($image_type == IMAGETYPE_PNG) {
           $image_resource_id = imagecreatefrompng($file);
           $target_layer = fn_resize($image_resource_id, $source_properties[0], $source_properties[1]);
-          imagepng($target_layer, "pics/" . $_FILES['photo']['name'] . ".png");
-          $db_image_file =  "pics/" . $_FILES['photo']['name'] . ".png";
+          imagepng($target_layer, "pics/" . $_FILES['photo']['name']);
+          $db_image_file =  "pics/" . $_FILES['photo']['name'];
           $data = [
             'id' => $_COOKIE['student-id'],
             'image' => $db_image_file

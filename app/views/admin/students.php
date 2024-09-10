@@ -243,11 +243,11 @@
 
                   <td>
                     <?php if (empty($student->passport)) : ?>
-                      <a href="<?php echo URLROOT; ?>/students/update_photo">
+                      <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
                         <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
                       </a>
                     <?php else : ?>
-                      <a href="<?php echo URLROOT; ?>/students/update_photo">
+                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
                         <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
                       </a>
                     <?php endif; ?>

@@ -241,6 +241,64 @@
       $this->view('admin/instructors', $data);
     }
 
+    public function add_passport($id)
+    {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $set = $_POST['set'];
+        $zone = $_POST['zone'];
+        if (is_array($_FILES)) {
+          $file = $_FILES['photo']['tmp_name'];
+          $source_properties = getimagesize($file);
+          $image_type = $source_properties[2];
+          if ($image_type == IMAGETYPE_JPEG) {
+            $image_resource_id = imagecreatefromjpeg($file);
+            $target_layer = fn_resize($image_resource_id, $source_properties[0], $source_properties[1]);
+            imagejpeg($target_layer, "pics/" . $_FILES['photo']['name']);
+            $db_image_file =  "pics/" . $_FILES['photo']['name'];
+            $data = [
+              'id' => $id,
+              'image' => $db_image_file
+            ];
+            $upload = $this->userModel->edit_pic($data);
+            if ($upload) {
+              setcookie('photo-now', $db_image_file, time() + (40), '/');
+              flash('msg', 'Your Photo is Uploaded Successfully.. Remain Blessed');
+              redirect('admin/' . $zone . '/' . $set);
+            } else {
+              die('Something went wrong..');
+            }
+          } elseif ($image_type == IMAGETYPE_PNG) {
+            $image_resource_id = imagecreatefrompng($file);
+            $target_layer = fn_resize($image_resource_id, $source_properties[0], $source_properties[1]);
+            imagepng($target_layer, "pics/" . $_FILES['photo']['name']);
+            $db_image_file =  "pics/" . $_FILES['photo']['name'];
+            $data = [
+              'id' => $id,
+              'image' => $db_image_file
+            ];
+            $upload = $this->userModel->edit_pic($data);
+            if ($upload) {
+              setcookie('photo-now', $db_image_file, time() + (40), '/');
+              flash('msg', 'Your Photo is Uploaded Successfully.. Remain Blessed');
+              redirect('admin/' . $zone . '/' . $set);
+            } else {
+              die('Something went wrong..');
+            }
+          }
+        }
+      } else {
+        // Load homepage/all_ufuma view
+        $student = $this->userModel->getUserById($id);
+        //Set Data
+        $data = [
+          'id' => $id,
+          'student' => $student
+        ];
+        $this->view('admin/add_passport', $data);
+      }
+    }
+
+
     public function more_details($id)
     {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
