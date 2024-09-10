@@ -66,15 +66,23 @@
                 foreach ($data['students'] as $student) : ?>
                   <tr>
                     <td><?php echo $numbering; ?></td>
-                    <td><?php echo $student->fullname ?></td>
-                    <td><?php echo $student->admsn_no ?></td>
+                    <td>
+                      <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
+                        <?php echo $student->fullname ?>
+                      </a>
+                    </td>
+                    <td>
+
+                      <?php echo $student->admsn_no ?>
+
+                    </td>
                     <td>
                       <?php if (empty($student->passport)) : ?>
                         <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
                           <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
                         </a>
                       <?php else : ?>
-                        <a href="<?php echo URLROOT . '/' . $student->passport ?>">
+                        <a href="<?php echo URLROOT . '/' . $student->passport ?>" download="<?php echo $student->fullname ?>">
                           <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
                         </a>
                       <?php endif; ?>
@@ -176,15 +184,23 @@
                 foreach ($data['students'] as $student) : ?>
                   <tr>
                     <td><?php echo $numbering; ?></td>
-                    <td><?php echo $student->fullname ?></td>
-                    <td><?php echo $student->admsn_no ?></td>
+                    <td>
+                      <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
+                        <?php echo $student->fullname ?>
+                      </a>
+                    </td>
+                    <td>
+                      <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
+                        <?php echo $student->admsn_no ?>
+                      </a>
+                    </td>
                     <td>
                       <?php if (empty($student->passport)) : ?>
                         <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
                           <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
                         </a>
                       <?php else : ?>
-                        <a href="<?php echo URLROOT . '/' . $student->passport ?>">
+                        <a href="<?php echo URLROOT . '/' . $student->passport ?>" download="<?php echo $student->fullname ?>">
                           <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
                         </a>
                       <?php endif; ?>
