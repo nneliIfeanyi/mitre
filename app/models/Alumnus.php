@@ -165,6 +165,7 @@ class Alumnus
     }
   }
 
+
   //Get All rowCount
   public function total_instructors()
   {

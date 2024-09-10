@@ -126,7 +126,7 @@
       } else {
         redirect('admin/media');
       }
-
+      $data = '';
       // Load homepage/index view
       $this->view('admin/del_media', $data);
     }
