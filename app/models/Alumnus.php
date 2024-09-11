@@ -178,17 +178,8 @@ class Alumnus
   }
 
 
-  //Get first 5 
-  public function instructors_total()
-  {
-    $this->db->query("SELECT * FROM instructors ORDER BY name ASC LIMIT 10");
 
-    $results = $this->db->resultset();
-
-    return $results;
-  }
-
-  //Get first 5 
+  //Get All
   public function instructors_total2()
   {
     $this->db->query("SELECT * FROM instructors ORDER BY name ASC");
@@ -198,30 +189,15 @@ class Alumnus
     return $results;
   }
 
-  //Get first 5 
-  public function instructors_total3()
-  {
-    $this->db->query("SELECT * FROM instructors ORDER BY name ASC LIMIT 10 OFFSET 20");
+  // //Get first 5 
+  // public function instructors_total3()
+  // {
+  //   $this->db->query("SELECT * FROM instructors ORDER BY name ASC LIMIT 10 OFFSET 20");
 
-    $results = $this->db->resultset();
+  //   $results = $this->db->resultset();
 
-    return $results;
-  }
-
-  //Get first 5 
-  public function instructors_total4()
-  {
-    $this->db->query("SELECT * FROM instructors ORDER BY name ASC LIMIT 10 OFFSET 30");
-
-    $results = $this->db->resultset();
-
-    return $results;
-  }
-
-
-
-
-
+  //   return $results;
+  // }
 
 
 

@@ -88,10 +88,10 @@
 
           <tbody>
           <?php $numbering = 1; foreach($data['scores'] as $student) : 
-          $resolve1 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper1']);
-          $resolve2 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper2']);
-          $resolve3 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper3']);
-          $summary = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper4']);
+          $resolve1 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper1'], $data['set'], $data['conclave']);
+          $resolve2 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper2'], $data['set'], $data['conclave']);
+          $resolve3 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper3'], $data['set'], $data['conclave']);
+          $summary = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper4'], $data['set'], $data['conclave']);
           $names = $this->attendanceModel->getNames($student->std_id);
           $punctual = $this->attendanceModel->getAttendance($student->std_id, $data['set'], $data['conclave']);
             if ($punctual >= 6) {
@@ -121,9 +121,9 @@
               <p class="text-center"><?php echo $mark?></p> 
             </td>
 
-            <td class="text-center">
+            <td class="text-center"><!-- DISPLAYING SUMMARY SCORES -->
               <?php 
-                if (!$summary->score) {
+                if (empty($summary->score)) {
                   ?>
                     <p class=""><?php echo '--';?></p>
                   <?php
@@ -140,11 +140,11 @@
                 
               }?>
               
-            </td>
+            </td><!-- DISPLAYING SUMMARY SCORES ENDS -->
 
             <td class="text-center">
               <?php 
-                if (!$resolve1->score) {
+                if (empty($resolve1->score)) {
                   echo '--';
                 }else{
                  if (strlen($resolve1->score) == 1) {
@@ -161,7 +161,7 @@
             </td>
             <td class="text-center">
               <?php 
-                if (!$resolve2->score) {
+                if (empty($resolve2->score)) {
                   echo '--';
                 }else{
                  if (strlen($resolve2->score) == 1) {
@@ -177,7 +177,7 @@
             </td>
             <td class="text-center">
               <?php 
-                if (!$resolve3->score) {
+                if (empty($resolve3->score)) {
                   echo '--';
                 }else{
                  if (strlen($resolve3->score) == 1) {

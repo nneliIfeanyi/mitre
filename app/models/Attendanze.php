@@ -247,10 +247,12 @@
     }
 
 
-     public function getIndividualScore($id,$paper){
-      $this->db->query("SELECT score FROM marks WHERE std_id = :id AND paper = :paper");
+     public function getIndividualScore($id,$paper,$set,$conclave){
+      $this->db->query("SELECT score FROM marks WHERE std_id = :id AND paper = :paper AND mitre_set = :mitre_set AND conclave = :conclave");
       $this->db->bind(':id', $id);
       $this->db->bind(':paper', $paper);
+      $this->db->bind(':mitre_set', $set);
+      $this->db->bind(':conclave', $conclave);
 
       $row = $this->db->single();
 
@@ -261,7 +263,7 @@
         return false;
       }
     }
-
+ 
      public function getNames($id){
       $this->db->query("SELECT name FROM marks WHERE std_id = :id");
       $this->db->bind(':id', $id);
