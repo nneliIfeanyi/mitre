@@ -289,59 +289,7 @@ class Portal extends Controller
   public function add_mark()
   {
 
-    if (isset($_POST['submit_result'])) {
-      $name = $_POST['fullname'];
-      $score = $_POST['score'];
-      $set = $_POST['mitre_set'];
-      $std_id = $_POST['std_id'];
-      $conclave = $_POST['conclave'];
-      $paper = $_POST['paper'];
-      $zone = $_POST['zone'];
-
-      foreach ($name as $index => $details) {
-        $data = [
-          'name' => $name[$index],
-          'score' => $score[$index],
-          'std_id' => $std_id[$index],
-          'conclave' => $conclave[$index],
-          'paper' => $paper[$index],
-          'mitre_set' => $set[$index],
-          'zone' => $zone[$index]
-        ];
-
-
-        $this->attendanceModel->recordPaper($data);
-        flash('msg', 'Added scores is successfull..');
-        redirect('portal/add_mark');
-      } //end foreach loop
-
-    } elseif (isset($_POST['submit_update'])) {
-      // echo "Tis an update string";
-      $name = $_POST['fullname'];
-      $score = $_POST['score'];
-      $set = $_POST['mitre_set'];
-      $std_id = $_POST['std_id'];
-      $conclave = $_POST['conclave'];
-      $paper = $_POST['paper'];
-      $zone = $_POST['zone'];
-
-      foreach ($name as $index => $details) {
-        $data = [
-          'name' => $name[$index],
-          'score' => $score[$index],
-          'std_id' => $std_id[$index],
-          'conclave' => $conclave[$index],
-          'paper' => $paper[$index],
-          'mitre_set' => $set[$index],
-          'zone' => $zone[$index]
-        ];
-
-
-        $this->attendanceModel->updatePaper($data);
-        flash('msg', 'Updated scores is successfull..');
-        redirect('portal/add_mark');
-      } //end foreach loop
-    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $data = [
         'name' => $_POST['fullname'],
         'score' => $_POST['score'],
@@ -355,7 +303,7 @@ class Portal extends Controller
       if ($input) {
         echo "
                   <div class='flash-msg alert alert-success'>
-                    Attendance Marked Successfully.. </span>
+                    Score recorded Successfully.. </span>
                 </div>
                 
             ";
@@ -368,11 +316,10 @@ class Portal extends Controller
             ";
       }
     } //post submit ends
-    // else {
-    //   $data = '';
-    //   // Load about view
-    //   $this->view('portal/add_mark', $data);
-    // }
+
+    else {
+      die('Something went wrong..');
+    }
   }
 
   public function settings()
