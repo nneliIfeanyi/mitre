@@ -129,6 +129,60 @@
       }
     }
 
+    public function record($set){
+
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_POST['morning'] == 'morning') {
+
+        $data = [
+          'std_id' => $_POST['std_id'],
+          'name' => $_POST['fullname'],
+          'day' => $_POST['day'],
+          'mitre_set' => $_POST['mitre_set'],
+          'conclave' => $_POST['conclave'],
+          'zone' => $_POST['zone']
+        ];
+
+        $mark = $this->attendanceModel->recordAttendance1($data);
+        if ($mark) {
+          flash('msg', $data['name'].' Attendance marked Successfully..');
+          redirect('attendance/'.$data['zone'].'/'.$set);
+          
+        }else{
+
+          flash('msg', 'Something went wrong');
+          redirect('attendance/'.$data['zone'].'/'.$set);
+          
+        }
+        
+      }elseif($_POST['morning'] !== 'morning') {
+
+        $data = [
+          'std_id' => $_POST['std_id'],
+          'name' => $_POST['fullname'], 
+          'day' => $_POST['day'],
+          'mitre_set' => $_POST['mitre_set'],
+          'conclave' => $_POST['conclave'],
+          'zone' => $_POST['zone']
+        ];
+
+        $mark = $this->attendanceModel->recordAttendance2($data);
+        if ($mark) {
+          flash('msg', $data['name'].' Attendance marked Successfully..');
+          redirect('attendance/'.$data['zone'].'/'.$set);
+          
+        }else{
+
+          flash('msg', 'Something went wrong');
+          redirect('attendance/'.$data['zone'].'/'.$set);
+          
+        }
+        
+      }
+      }
+
+    }
+
 
 /***
     Attendance ufuma veiw
