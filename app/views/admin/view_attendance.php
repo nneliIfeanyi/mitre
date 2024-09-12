@@ -70,20 +70,34 @@
       <div class="card-body">
         <p class="h4 p-2 shadow-sm">A total of <span class="font-weight-bold"><?= $data['count'];?></span> students attended this conclave.</p>
         <div class="table-responsive">
-        <table class="table table-striped table-bordered" id="eg">
+        <table class="table table-striped " id="eg">
           <div class="row"><div class="col-lg-6"><?php flash('msg');?></div></div>
           <thead>
             <tr class="text-primary">
               <th>#</th>
+              <th>Photo</th>
               <th>Name</th>
+              
               <th><?php echo $data['day']?></th>
             </tr>
           </thead>
 
           <tbody>
-          <?php $numbering = 1; foreach($data['scores'] as $student) : ?>
+          <?php $numbering = 1; foreach($data['scores'] as $student) : 
+            $photo = $this->attendanceModel->getPhoto($student->std_id);
+          ?>
           <tr>
-            <td><?php echo $numbering;?></td>
+            <td><?php echo $numbering;?><?= $photo->passport;?></td>
+            
+            <td class="font-weight-bold">
+              <?php if (empty($photo)) : ?>
+                  <p class=""><i class="fa fa-user fa-3x"></i></p>
+              <?php else : ?>
+                  <div class="">
+                      <img src="<?= URLROOT; ?>/<?= $photo->passport;?>" alt="image" width="90" height="90">
+                  </div>
+              <?php endif; ?>
+            </td>
             <td class="font-weight-bold"><?php echo $student->name?></td>
             <td class="font-weight-bold text-success">Present</td>
           </tr>
@@ -105,6 +119,7 @@
   new DataTable('#eg', {
     caption:"Recorded Attendance for <?php echo $data['zone']?> Set <?php echo $data['set']?> Conclave <?php echo $data['conclave']?>",
     paging:false,
+    ordering:false,
     layout: {
         topStart: {
             buttons: ['copy', 'csv', 'excel',

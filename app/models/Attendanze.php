@@ -26,7 +26,7 @@
       }
     }
 
-
+ 
      // 
      /////////
      //
@@ -298,6 +298,16 @@
       $this->db->bind(':zone', $zone);
       
       $results = $this->db->resultset();
+       //Check Rows
+      return $results;
+    }
+
+    // Get Photo
+    public function getPhoto($id){
+      $this->db->query("SELECT passport FROM mitre_students WHERE id = :id;");
+      $this->db->bind(':id', $id);
+      
+      $results = $this->db->single();
        //Check Rows
       return $results;
     }
