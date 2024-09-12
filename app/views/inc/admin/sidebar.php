@@ -106,12 +106,7 @@
                 <p>Set <?php echo SENIOR; ?></p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo URLROOT; ?>/attendance/reverse/<?php echo $set?>" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Reverse Attendance</p>
-              </a>
-            </li>
+            
             <li class="nav-item">
               <a href="<?php echo URLROOT; ?>/admin/sorting" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
