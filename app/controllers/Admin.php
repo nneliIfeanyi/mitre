@@ -261,8 +261,8 @@
             ];
             $upload = $this->userModel->edit_pic($data);
             if ($upload) {
-              setcookie('photo-now', $db_image_file, time() + (40), '/');
-              flash('msg', 'Your Photo is Uploaded Successfully.. Remain Blessed');
+              setcookie('photo-now', $db_image_file, time() + (10), '/');
+              flash('msg', 'Photo is Uploaded Successfully..');
               redirect('admin/' . $zone . '/' . $set);
             } else {
               die('Something went wrong..');
@@ -278,7 +278,7 @@
             ];
             $upload = $this->userModel->edit_pic($data);
             if ($upload) {
-              setcookie('photo-now', $db_image_file, time() + (40), '/');
+              setcookie('photo-now', $db_image_file, time() + (10), '/');
               flash('msg', 'Your Photo is Uploaded Successfully.. Remain Blessed');
               redirect('admin/' . $zone . '/' . $set);
             } else {
