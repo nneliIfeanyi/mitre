@@ -127,7 +127,7 @@
   </div>
   
   </div>
-  </div>
+  </div> 
 <?php else:?>
   <div class="row">
   <div class="col-md-6 mx-auto">
@@ -137,7 +137,7 @@
       <p class="p-2 text-center" style="width: 50%;"><i class="fa fa-user fa-5x"></i></p>
       <form action="<?php echo URLROOT; ?>/portal/profile_pic" method="post" enctype="multipart/form-data">
         <div class="form-group mb-3">
-            <input type="file" name="photo"  class="form-control form-control-lg">
+            <input type="file" accept="image*/" name="photo"  class="form-control form-control-lg">
         </div>    
         
       <div class="row mt-5">
