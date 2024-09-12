@@ -82,7 +82,7 @@ $full_day3 = FULLDAY3;
               <form id="morning<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -123,7 +123,7 @@ $full_day3 = FULLDAY3;
               <form id="evening<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -170,7 +170,7 @@ $full_day3 = FULLDAY3;
               <form id="morning2<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -211,7 +211,7 @@ $full_day3 = FULLDAY3;
               <form id="evening2<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -434,7 +434,7 @@ $full_day3 = FULLDAY3;
               <form id="morning<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -475,7 +475,7 @@ $full_day3 = FULLDAY3;
               <form id="evening<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day1;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -522,7 +522,7 @@ $full_day3 = FULLDAY3;
               <form id="morning2<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
@@ -563,7 +563,7 @@ $full_day3 = FULLDAY3;
               <form id="evening2<?= $student->id; ?>">
                 <input type="hidden" name="std_id" value="<?php echo $student->id?>">
                 <input type="hidden" name="fullname" value="<?php echo $student->fullname?>">
-                <input type="hidden" name="day" value="<?php echo $full_day3;?>">
+                <input type="hidden" name="day" value="<?php echo $full_day2;?>">
                 <input type="hidden" name="mitre_set" value="<?php echo $set?>">
                 <input type="hidden" name="conclave" value="<?php echo $conclave;?>">
                 <input type="hidden" name="zone" value="<?php echo $student->zone?>">
