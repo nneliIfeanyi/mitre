@@ -40,28 +40,17 @@
         
       }
       else{
-      //Set Data
-      $all_students = $this->databaseModel->allStudents($set);
-      $total_students = $this->databaseModel->totals($set);
-      
-      //Set Data
-      $data = [
-        'set' => $set,
-        'students' => $all_students,
-        'total' => $total_students
-    
-      ];
-
-      // Load index view
-      $this->view('attendance/index', $data);
+      redirect('attendance/kaduna/'.$set);
     }
+      
   }
 
  /***
     Attendance kaduna veiw
  ***/
     public function kaduna($set){
-      if(isset($_POST['morning'])) {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if($_POST['morning'] == 'morning') {
 
         $data = [
           'std_id' => $_POST['std_id'],
@@ -74,19 +63,31 @@
 
         $mark = $this->attendanceModel->recordAttendance1($data);
         if ($mark) {
-          flash('msg', $data['name'].' Attendance marked Successfully..');
-          redirect('attendance/'.$data['zone'].'/'.$set);
+          // flash('msg', $data['name'].' Attendance marked Successfully..');
+          // redirect('attendance/'.$data['zone'].'/'.$set);
+          echo "
+                  <div class='flash-msg alert alert-success'>
+                    Attendance marked Successfully.. </span>
+                </div>
+                
+            ";
         }else{
 
-          flash('msg', 'Something went wrong');
-          redirect('attendance/'.$data['zone'].'/'.$set);
+          // flash('msg', 'Something went wrong');
+          // redirect('attendance/'.$data['zone'].'/'.$set);
+          echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Something went wrong.. </span>
+                </div>
+
+            ";
         }
         
-      }elseif(isset($_POST['evening'])) {
+      }elseif($_POST['morning'] !== 'morning') {
 
         $data = [
           'std_id' => $_POST['std_id'],
-          'name' => $_POST['fullname'],
+          'name' => $_POST['fullname'], 
           'day' => $_POST['day'],
           'mitre_set' => $_POST['mitre_set'],
           'conclave' => $_POST['conclave'],
@@ -95,15 +96,24 @@
 
         $mark = $this->attendanceModel->recordAttendance2($data);
         if ($mark) {
-          flash('msg', $data['name'].' Attendance marked Successfully..');
-          redirect('attendance/'.$data['zone'].'/'.$set);
+           echo "
+                  <div class='flash-msg alert alert-success'>
+                    Attendance marked Successfully.. </span>
+                </div>
+                
+            ";
         }else{
 
-          flash('msg', 'Something went wrong');
-          redirect('attendance/'.$data['zone'].'/'.$set);
+          echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Something went wrong.. </span>
+                </div>
+
+            ";
         }
         
-      }else{
+      }
+      } else{ // NOT A POST REQUEST
 
       $all = $this->databaseModel->allKaduna($set);
       $total = $this->databaseModel->totalKaduna($set);
@@ -115,8 +125,6 @@
         'total' => $total
     
       ];
-
-      // Load homepage/index view
       $this->view('attendance/kaduna', $data);
       }
     }
@@ -126,28 +134,7 @@
     Attendance ufuma veiw
  ***/
 public function ufuma($set){
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $data = [
-      'std_id' => $_POST['std_id'],
-      'name' => $_POST['fullname'],
-      'day' => $_POST['day'],
-      'mitre_set' => $_POST['mitre_set'],
-      'conclave' => $_POST['conclave'],
-      'zone' => 'Ufuma'
-    ];
-
-    $mark = $this->attendanceModel->recordAttendance($data);
-    if ($mark) {
-      flash('msg', $data['name'].' Attendance marked Successfully..');
-      redirect('attendance/ufuma/'.$set);
-    }else{
-
-      flash('msg', 'Something went wrong');
-      redirect('attendance/ufuma/'.$set);
-    }
-    
-  }else{
+  
 
   $all = $this->databaseModel->allUfuma($set);
   $total = $this->databaseModel->totalUfuma($set);
@@ -162,35 +149,13 @@ public function ufuma($set){
 
   // Load homepage/index view
   $this->view('attendance/ufuma', $data);
-  }
+ 
 }
 
 /***
     Attendance minna veiw
  ***/
 public function minna($set){
-  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-    $data = [
-      'std_id' => $_POST['std_id'],
-      'name' => $_POST['fullname'],
-      'day' => $_POST['day'],
-      'mitre_set' => $_POST['mitre_set'],
-      'conclave' => $_POST['conclave'],
-      'zone' => 'Minna'
-    ];
-
-    $mark = $this->attendanceModel->recordAttendance($data);
-    if ($mark) {
-     flash('msg', $data['name'].' Attendance marked Successfully..');
-      redirect('attendance/minna/'.$set);
-    }else{
-
-      flash('msg', 'Something went wrong');
-      redirect('attendance/minna/'.$set);
-    }
-    
-  }else{
 
   $all = $this->databaseModel->allMinna($set);
   $total = $this->databaseModel->totalMinna($set);
@@ -206,7 +171,7 @@ public function minna($set){
   // Load homepage/index view
   $this->view('attendance/minna', $data);
   }
-}
+
 
 
 
@@ -280,7 +245,7 @@ public function reverse_kaduna(){
 }
 
 //Reverse Attendance
- public function reverse(){
+ public function reverse($set){
   if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $data = [
     'std_id' => $_POST['std_id'],
@@ -292,14 +257,27 @@ public function reverse_kaduna(){
     //Execute
     if($this->attendanceModel->reverse_attendance($data)){
       flash('msg', $data['name'].' Attendance Unmarked Successfully..','alert alert-danger');
-      redirect('attendance/'.$data['mitre_set']);
+      redirect('attendance/reverse/'.$data['mitre_set']);
     } else {
     flash('msg', 'Something went wrong..','alert alert-danger');
-    redirect('attendance/'.$data['mitre_set']);
+    redirect('attendance/reverse/'.$data['mitre_set']);
     }
-  } else {
-    redirect('attendance');
-  }
+  } else{
+      //Set Data
+      $all_students = $this->databaseModel->allStudents($set);
+      $total_students = $this->databaseModel->totals($set);
+      
+      //Set Data
+      $data = [
+        'set' => $set,
+        'students' => $all_students,
+        'total' => $total_students
+    
+      ];
+
+      // Load index view
+      $this->view('attendance/index', $data);
+    }
 }
 
 

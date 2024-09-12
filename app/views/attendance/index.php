@@ -53,7 +53,7 @@ $full_day3 = FULLDAY3;
                 id="nav-minna-tab" 
                 type="button" role="tab" >Minna Zone
             </a>
-            <a href="<?php echo URLROOT?>/attendance/<?php echo $set?>" class="active nav-link" 
+            <a href="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" class="active nav-link" 
                 id="nav-minna-tab" 
                 type="button" role="tab" >Reverse Attendance
             </a>
@@ -97,7 +97,7 @@ $full_day3 = FULLDAY3;
                             <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i> Present</a>
 
                             <!-- REVERSE  ATTENDANCE-->
-                            <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
+                            <form action="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" method="post" 
                               data-toggle="tooltip" data-placement="right"
                               title="Click to reverse or unmark attendance">
                               <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -121,7 +121,7 @@ $full_day3 = FULLDAY3;
                             <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                             <!-- REVERSE  ATTENDANCE-->
-                            <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
+                            <form action="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" method="post" 
                               data-toggle="tooltip" data-placement="right"
                               title="Click to reverse or unmark attendance">
                               <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -145,7 +145,7 @@ $full_day3 = FULLDAY3;
                             <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                             <!-- REVERSE  ATTENDANCE-->
-                            <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
+                            <form action="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" method="post" 
                               data-toggle="tooltip" data-placement="right"
                               title="Click to reverse or unmark attendance">
                               <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -228,7 +228,7 @@ $full_day3 = FULLDAY3;
                     id="nav-minna-tab" 
                     type="button" role="tab" >Minna Zone
                 </a>
-                <a href="<?php echo URLROOT?>/attendance/<?php echo $set?>" class="active nav-link" 
+                <a href="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" class="active nav-link" 
                   id="nav-minna-tab" 
                   type="button" role="tab" >Reverse Attendance
                 </a>
@@ -272,7 +272,7 @@ $full_day3 = FULLDAY3;
                                 <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                                 <!-- REVERSE  ATTENDANCE-->
-                                <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
+                                <form action="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" method="post" 
                                   data-toggle="tooltip" data-placement="right"
                                   title="Click to reverse or unmark attendance">
                                   <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -296,7 +296,7 @@ $full_day3 = FULLDAY3;
                                 <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                                 <!-- REVERSE  ATTENDANCE-->
-                                <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
+                                <form action="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" method="post" 
                                   data-toggle="tooltip" data-placement="right"
                                   title="Click to reverse or unmark attendance">
                                   <input type="hidden" name="std_id" value="<?php echo $student->id?>">
@@ -320,7 +320,7 @@ $full_day3 = FULLDAY3;
                                 <a class="btn btn-sm btn-success" style="cursor: text;"><i class="fas fa-check"></i></a>
 
                                 <!-- REVERSE  ATTENDANCE-->
-                                <form action="<?php echo URLROOT?>/attendance/reverse" method="post" 
+                                <form action="<?php echo URLROOT?>/attendance/reverse/<?php echo $set?>" method="post" 
                                   data-toggle="tooltip" data-placement="right"
                                   title="Click to reverse or unmark attendance">
                                   <input type="hidden" name="std_id" value="<?php echo $student->id?>">
