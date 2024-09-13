@@ -292,7 +292,7 @@
 
      
      public function get_attendance($set,$conclave,$zone){
-      $this->db->query("SELECT DISTINCT name FROM attendance WHERE conclave = :conclave AND mitre_set = :mitre_set AND zone = :zone");
+      $this->db->query("SELECT DISTINCT std_id FROM attendance WHERE conclave = :conclave AND mitre_set = :mitre_set AND zone = :zone");
       $this->db->bind(':mitre_set', $set);
       $this->db->bind(':conclave', $conclave);
       $this->db->bind(':zone', $zone);

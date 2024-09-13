@@ -92,9 +92,6 @@
           <div class="col-md-4 mb-2">
           <input type="submit" name="submit" class="btn btn-primary" value="Update Details">
           </div>
-        <div class="col-md-4 mb-2">
-          <a href="https://wa.me/<?= $data['student']->whatsApp_num;?>" class="btn btn-success btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send WhatsApp Message</a>
-          </div>
 
           <div class="col-4 mb-2">
           <a href="<?php echo URLROOT;?>/admin/<?= $data['student']->zone;?>/<?= $data['student']->mitre_set;?>" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>

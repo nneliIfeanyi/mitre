@@ -262,6 +262,14 @@ class User
     return $row;
   }
 
+  public function getUserByName($name)
+  {
+    $this->db->query("SELECT * FROM mitre_students WHERE fullname = :name");
+    $this->db->bind(':name', $name);
+    $row = $this->db->single();
+    return $row;
+  }
+
   //Edit Student
   public function edit_profile($data)
   {

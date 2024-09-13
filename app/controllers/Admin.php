@@ -1,8 +1,8 @@
   <?php
   class Admin extends Controller
   {
-    private $userModel;
-    private $alumniModel;
+    public $userModel;
+    public $alumniModel;
     public $databaseModel;
     public $attendanceModel;
     public function __construct()

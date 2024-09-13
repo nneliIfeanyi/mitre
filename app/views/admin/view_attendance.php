@@ -77,29 +77,34 @@
               <th>#</th>
               <th>Photo</th>
               <th>Name</th>
-              
-              <th><?php echo $data['day']?></th>
+              <th>Reg_no</th>
+              <th>Phone</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
 
           <tbody>
           <?php $numbering = 1; foreach($data['scores'] as $student) : 
-            $photo = $this->attendanceModel->getPhoto($student->std_id);
+            $info = $this->userModel->getUserById($student->std_id);
           ?>
           <tr>
-            <td><?php echo $numbering;?><?= $photo->passport;?></td>
+            <td><?php echo $numbering;?></td>
             
             <td class="font-weight-bold">
-              <?php if (empty($photo)) : ?>
-                  <p class=""><i class="fa fa-user fa-3x"></i></p>
-              <?php else : ?>
-                  <div class="">
-                      <img src="<?= URLROOT; ?>/<?= $photo->passport;?>" alt="image" width="90" height="90">
-                  </div>
-              <?php endif; ?>
+               <?php if(empty($info->passport)):?>
+                <img src="<?= URLROOT; ?>/pics/user.jpg" alt="image" class="rounded-circle" width="90" height="90">
+               <?php else:?>
+                <img src="<?= URLROOT; ?>/<?php echo $info->passport;?>" class="rounded-circle" alt="image" width="90" height="90">
+               <?php endif;?>
             </td>
-            <td class="font-weight-bold"><?php echo $student->name?></td>
+            <td class="font-weight-bold"><?php echo $info->fullname;?></td>
+            <td class="font-weight-bold"><?php echo $info->admsn_no;?></td>
+            <td class="font-weight-bold"><?php echo $info->mobile_num;?></td>
             <td class="font-weight-bold text-success">Present</td>
+            <td class="d-flex">
+              <a href="<?= URLROOT;?>/admin/more_details/<?= $info->id;?>">Edit</a>
+            </td>
           </tr>
           <?php $numbering++; endforeach; ?>
           </tbody>
