@@ -27,101 +27,81 @@
     <div class="card card-body">
     <form action="" method="POST" id="details">
         <div class="row">
-            <!-- <div class="col-12">
-                <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-circle" style="height: 350px;width:100%;">
-            </div> -->
+            <div class="col-12 col-md-8 col-lg-6 p-5">
+              <a href="<?php echo URLROOT;?>/<?php echo $data['student']->passport;?>" download="<?php echo $data['student']->fullname?>">
+                <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-circle" style="height: 250px;width:100%;">
+                </a>
+            </div>
        
           
-            <div class="col-md-6 mb-3 shadow p-2">
-                <p class="bg-light badge text-dark">Full Name</p>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-12 shadow p-2">
+                  <p class="bg-light badge text-dark">Full Name</p>
                 <input type="text" name="fullname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['student']->fullname?>">
                 <span class="invalid-feedback"></span> 
-            </div>
+                </div>
 
-            <div class="col-md-3 mb-3 shadow p-2">
-                <p class="bg-light badge text-dark">mitre set</p>
-                <input disabled type="text" name="mitre_set" class="form-control form-control-lg" value="<?php echo $data['student']->mitre_set ;?>"> 
-            </div>
-            <div class="col-md-3 mb-3 shadow p-2">
-                <p class="bg-light badge text-dark">mitre zone</p>
-                <input disabled type="text" name="zone" class="form-control form-control-lg" value="<?php echo $data['student']->zone ;?>"> 
-            </div>
-          
-      
-          <div class="col-md-6 mb-3 shadow p-2">
-            <p class="bg-light badge text-dark">Mobile number</p>
-            <input type="number"  name="mobile_num" class="form-control form-control-lg " value="<?php echo $data['student']->mobile_num; ?>">
-        
-          </div> 
+                <div class="col-md-2 col-6 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">mitre set</p>
+                  <input disabled type="text" name="mitre_set" class="form-control form-control-lg" value="<?php echo $data['student']->mitre_set ;?>"> 
+                </div>
+                <div class="col-md-3 col-6 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">mitre zone</p>
+                  <input disabled type="text" name="zone" class="form-control form-control-lg" value="<?php echo $data['student']->zone ;?>"> 
+                </div>
+                <div class="col-md-7 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">Mobile number</p>
+                  <input type="number"  name="mobile_num" class="form-control form-control-lg " value="<?php echo $data['student']->mobile_num; ?>">
+                </div> 
 
-          <div class="col-md-6 mb-3 shadow p-2">
-            <p class="bg-light badge text-dark">WhatsApp number</p>
-            <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
-          </div> 
-    
+                <div class="col-md-6 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">WhatsApp number</p>
+                  <input type="number" name="whatsapp_num" class="form-control form-control-lg" value="<?php echo $data['student']->whatsApp_num; ?>">
+                </div>
+                <div class="col-md-6 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">Working experience (ocupation)</p>
+                  <input  type="text" name="occupation" class="form-control form-control-lg" value="<?php echo $data['student']->occupation; ?>">
+                </div>
 
-          <div class="col-md-5 mb-3 shadow p-2">
-            <p class="bg-light badge text-dark">Working experience (ocupation)</p>
-            <input  type="text" name="occupation" class="form-control form-control-lg" value="<?php echo $data['student']->occupation; ?>">
-          </div>
-          <div class="col-md-7 mb-3 shadow p-2">
-            <p class="bg-light badge text-dark">Contact Address</p>
-            <input type="text" name="address" class="form-control form-control-lg" value="<?php echo $data['student']->address ;?>">
-          </div> 
-        
-       <!--  <div class="row shadow border mx-1 pt-2 pb-4">
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Referals name</p>
-            <input disabled type="text" name="ref_name" class="form-control form-control-lg" value="<?php echo $data['student']->refered_by; ?>">
-          </div>
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Referals phone number</p>
-            <input disabled type="number" name="ref_phone" class="form-control form-control-lg" value="<?php echo $data['student']->phone; ?>">
-          </div>
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Referals address</p>
-            <input disabled type="text" name="ref_address" class="form-control form-control-lg" value="<?php echo $data['student']->address_2; ?>">
-          </div>
-          <div class="col-md-6 mb-3">
-            <p class="bg-light badge text-dark">Contact duration : specific info</p>
-            <input disabled type="text" name="ref_duration" class="form-control form-control-lg" value="<?php echo $data['student']->relationship; ?>">
-          </div>
-        </div> -->
+                <div class="col-12 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">Local Assembly</p>
+                  <input name="church" class="form-control form-control-lg" value="<?php echo $data['student']->church; ?>">
+                </div>
+
+                
+                <div class="col-12 mb-3 shadow p-2">
+                  <p class="bg-light badge text-dark">Contact Address</p>
+                  <input type="text" name="address" class="form-control form-control-lg" value="<?php echo $data['student']->address ;?>">
+                </div> 
+              </div>
+            </div>
       </div>
-        <div class="row my-3">
-          <div class="col-md-4 mb-2">
-          <input type="submit" name="submit" class="btn btn-primary" value="Update Details">
+        <div class="d-flex justify-content-between flex-wrap">
+          <div class="">
+            <p class="px-2"><input type="submit" name="submit" class="btn btn-primary" value="Update Details"></p>
           </div>
 
-          <div class="col-4 mb-2">
-          <a href="<?php echo URLROOT;?>/admin/<?= $data['student']->zone;?>/<?= $data['student']->mitre_set;?>" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+          
+          <div class="">
+            <button class="btn btn-danger" 
+              data-toggle="modal" data-target="#deleteModal">
+              <i class="fas fa-trash"></i> 
+              Delete this candidate
+            </button>
+          </div>
+
+          <div class="">
+            <p class="px-2"><a href="<?php echo URLROOT;?>/admin/<?= $data['student']->zone;?>/<?= $data['student']->mitre_set;?>" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a></p>
           </div>
         </div> 
       </form>
       <hr>
-      <div class="row mt-5">
-        <div class="col-md-6 border border-light">
-          <p class="h5 py-2 fw-bold">Danger Zone</p>
-              <button class="btn btn-danger" 
-                data-toggle="modal" data-target="#deleteModal">
-                <i class="fas fa-trash"></i> 
-                Delete this candidate
-              </button>
-          <p class="fs-6">This action cannot be reversed...</p>
-        </div>
-      
-        </div>
 
         <!--Delete post Modal -->
 <div class="modal fade" id="deleteModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-trash text-danger"></i> This Action cannot be reveresed..</h5>
-       <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div> -->
       <div class="modal-body">
         This Action cannot be reveresed..
         <p class="lead">Do you wish to Continue?</p>

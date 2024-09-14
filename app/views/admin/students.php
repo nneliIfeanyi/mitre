@@ -42,116 +42,113 @@
             </div>
           </nav>
           <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
+          <div class="table-responsive">
           <table class="table table-striped" id="eg">
             <thead>
               <tr class="">
-                <th>S/N</th>
+                <th>S|N</th>
+                <th><b>Image</b></th>
                 <th><b>Name</b></th>
                 <th><b>Phone</b></th>
-                <th><b>WhatsApp_num</b></th>
-                <th><b>Image</b></th>
-                <th><b>Region</b></th>
                 <th><b>Zone</b></th>
                 <th><b>Address</b></th>
-                <th><b>Email</b></th>
                 <th><b>Church</b></th>
-                <th><b>B.A:H_baptism</b></th>
-                <th><b>Calling</b></th>
-                <th><b>Into_call:When</b></th>
-                <th><b>Prior:Reason</b></th>
-                <th><b>Occupation</b></th>
-                <th><b>lang_speak</b></th>
-                <th><b>lang_write</b></th>
-                <th><b>Litracy</b></th>
-                <th><b>Academics</b></th>
-                <th><b>Oversight</b></th>
-                <th><b>Referal</b></th>
-                <th><b>Ref_address</b></th>
-                <th><b>Ref_phone</b></th>
-                <th><b>relationship</b></th>
-                <th><b>Reg_dateTime</b></th>
                 <th><b>Action</b></th>
               </tr>
             </thead>
 
             <tbody>
               <?php $numbering = 1;
-              foreach ($data['students'] as $student) : ?>
-                <tr>
+              foreach ($data['students'] as $student) : 
+                $trash = $this->attendanceModel->get_unreported2($student->id);
+                ?>
+                <?php if($trash > 0 && $trash < 7):?>
+                <tr style="background: rgba(205, 255, 0, 0.6);" data-toggle="tooltip" data-title="This candidate is under probation having missed a full MITRE conclave">
                   <td><?php echo $numbering; ?></td>
-                  <td><?php echo $student->fullname ?></td>
-                  <td><?php echo $student->mobile_num ?></td>
-                  <td><a href="https://wa.me/<?= $student->whatsApp_num; ?>" class="btn btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> <?php echo $student->whatsApp_num ?></a></td>
-
                   <td>
                     <?php if (!empty($student->passport)) : ?>
-                      <a href="">
                         <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
-                      </a>
                     <?php else : ?>
-                      <a href="">
+                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
                         <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
                       </a>
                     <?php endif; ?>
                   </td>
-                  <td><?php echo $student->s_o_r ?></td>
-                  <td><?php echo $student->zone ?></td>
+                  <td><?php echo $student->fullname; ?></td>
+                  <td><?php echo $student->mobile_num ?></td>
+                  <td><?php echo $student->zone;?></td>
                   <td><?php echo $student->address ?></td>
-                  <td><?php echo $student->email ?></td>
                   <td><?php echo $student->church ?></td>
-
-                  <td><?php echo $student->spiritual ?></td>
-                  <td><?php echo $student->calling ?></td>
-                  <td><?php echo $student->into_call ?></td>
-                  <td><?php echo $student->prior_attended ?></td>
-                  <td><?php echo $student->occupation ?></td>
-                  <td><?php echo $student->lang_speak ?></td>
-                  <td><?php echo $student->lang_write ?></td>
-                  <td><?php echo $student->litracy ?></td>
-                  <td><?php echo $student->academics ?></td>
-                  <td><?php echo $student->discipler ?></td>
-                  <td><?php echo $student->refered_by ?></td>
-                  <td><?php echo $student->address_2 ?></td>
-                  <td><?php echo $student->phone ?></td>
-                  <td><?php echo $student->relationship ?></td>
-                  <td><?php echo $student->created_at ?></td>
-                  <td><a class="" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a></td>
-
+                  <td class="d-flex justify-content-around">
+                    <a class="btn btn-sm text-success" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a>
+                  </td>
                 </tr>
+              <?php elseif($trash == 0):?>
+                <tr style="background: rgba(250, 20, 0, 0.6);" data-toggle="tooltip" data-title="This candidate never reported to MITRE at all after registeration.">
+                  <td><?php echo $numbering; ?></td>
+                  <td>
+                    <?php if (!empty($student->passport)) : ?>
+                        <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
+                    <?php else : ?>
+                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
+                        <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
+                      </a>
+                    <?php endif; ?>
+                  </td>
+                  <td><?php echo $student->fullname; ?></td>
+                  <td><?php echo $student->mobile_num ?></td>
+                  <td><?php echo $student->zone;?></td>
+                  <td><?php echo $student->address ?></td>
+                  <td><?php echo $student->church ?></td>
+                  <td class="d-flex justify-content-around">
+                    <form action="<?php echo URLROOT; ?>/admin/delete/<?php echo $student->id; ?>" method="post">
+                      <input type="hidden" name="zone" value="<?php echo $student->zone; ?>">
+                      <input type="hidden" name="mitre_set" value="<?php echo $student->mitre_set; ?>">
+                      <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Trash</button>
+                    </form>
+                  </td>
+                </tr>
+              
+              <?php elseif($trash >= 7):?>
+                <tr class="bg-light" data-toggle="tooltip" data-title="">
+                  <td><?php echo $numbering; ?></td>
+                  <td>
+                    <?php if (!empty($student->passport)) : ?>
+                        <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
+                      </a>
+                    <?php else : ?>
+                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
+                        <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
+                      </a>
+                    <?php endif; ?>
+                  </td>
+                  <td><?php echo $student->fullname; ?></td>
+                  <td><?php echo $student->mobile_num ?></td>
+                  <td><?php echo $student->zone;?></td>
+                  <td><?php echo $student->address ?></td>
+                  <td><?php echo $student->church ?></td>
+                  <td class="d-flex justify-content-around">
+                    <a class="btn btn-sm text-success" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a>
+                  </td>
+                </tr>
+            <?php endif;?>
               <?php $numbering++;
               endforeach; ?>
             </tbody>
             <tfoot>
               <tr class="">
                 <th>S/N</th>
+                <th><b>Image</b></th>
                 <th><b>Name</b></th>
                 <th><b>Phone</b></th>
-                <th><b>WhatsApp_num</b></th>
-                <th><b>Image</b></th>
-                <th><b>Region</b></th>
                 <th><b>Zone</b></th>
                 <th><b>Address</b></th>
-                <th><b>Email</b></th>
                 <th><b>Church</b></th>
-                <th><b>B.A:H_baptism</b></th>
-                <th><b>Calling</b></th>
-                <th><b>Into_call:When</b></th>
-                <th><b>Prior:Reason</b></th>
-                <th><b>Occupation</b></th>
-                <th><b>lang_speak</b></th>
-                <th><b>lang_write</b></th>
-                <th><b>Litracy</b></th>
-                <th><b>Academics</b></th>
-                <th><b>Oversight</b></th>
-                <th><b>Referal</b></th>
-                <th><b>Ref_address</b></th>
-                <th><b>Ref_phone</b></th>
-                <th><b>relationship</b></th>
-                <th><b>Reg_dateTime</b></th>
                 <th><b>Action</b></th>
               </tr>
             </tfoot>
           </table>
+        </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -204,30 +201,13 @@
             <thead>
               <tr class="">
                 <th>S/N</th>
+                <th><b>Image</b></th>
                 <th><b>Name</b></th>
                 <th><b>Phone</b></th>
                 <th><b>WhatsApp_num</b></th>
-                <th><b>Image</b></th>
-                <th><b>Region</b></th>
                 <th><b>Zone</b></th>
                 <th><b>Address</b></th>
-                <th><b>Email</b></th>
                 <th><b>Church</b></th>
-                <th><b>B.A:H_baptism</b></th>
-                <th><b>Calling</b></th>
-                <th><b>Into_call:When</b></th>
-                <th><b>Prior:Reason</b></th>
-                <th><b>Occupation</b></th>
-                <th><b>lang_speak</b></th>
-                <th><b>lang_write</b></th>
-                <th><b>Litracy</b></th>
-                <th><b>Academics</b></th>
-                <th><b>Oversight</b></th>
-                <th><b>Referal</b></th>
-                <th><b>Ref_address</b></th>
-                <th><b>Ref_phone</b></th>
-                <th><b>relationship</b></th>
-                <th><b>Reg_dateTime</b></th>
                 <th><b>Action</b></th>
               </tr>
             </thead>
@@ -237,10 +217,6 @@
               foreach ($data['students'] as $student) : ?>
                 <tr>
                   <td><?php echo $numbering; ?></td>
-                  <td><?php echo $student->fullname ?></td>
-                  <td><?php echo $student->mobile_num ?></td>
-                  <td><a href="https://wa.me/<?= $student->whatsApp_num; ?>" class="btn btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> <?php echo $student->whatsApp_num ?></a></td>
-
                   <td>
                     <?php if (empty($student->passport)) : ?>
                       <a href="<?php echo URLROOT; ?>/admin/add_passport/<?= $student->id; ?>">
@@ -252,27 +228,11 @@
                       </a>
                     <?php endif; ?>
                   </td>
-                  <td><?php echo $student->s_o_r ?></td>
+                  <td><?php echo $student->fullname ?></td>
+                  <td><?php echo $student->mobile_num ?></td>
                   <td><?php echo $student->zone ?></td>
                   <td><?php echo $student->address ?></td>
-                  <td><?php echo $student->email ?></td>
                   <td><?php echo $student->church ?></td>
-
-                  <td><?php echo $student->spiritual ?></td>
-                  <td><?php echo $student->calling ?></td>
-                  <td><?php echo $student->into_call ?></td>
-                  <td><?php echo $student->prior_attended ?></td>
-                  <td><?php echo $student->occupation ?></td>
-                  <td><?php echo $student->lang_speak ?></td>
-                  <td><?php echo $student->lang_write ?></td>
-                  <td><?php echo $student->litracy ?></td>
-                  <td><?php echo $student->academics ?></td>
-                  <td><?php echo $student->discipler ?></td>
-                  <td><?php echo $student->refered_by ?></td>
-                  <td><?php echo $student->address_2 ?></td>
-                  <td><?php echo $student->phone ?></td>
-                  <td><?php echo $student->relationship ?></td>
-                  <td><?php echo $student->created_at ?></td>
                   <td><a class="" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a></td>
 
                 </tr>
@@ -282,30 +242,12 @@
             <tfoot>
               <tr class="">
                 <th>S/N</th>
+                <th><b>Image</b></th>
                 <th><b>Name</b></th>
                 <th><b>Phone</b></th>
-                <th><b>WhatsApp_num</b></th>
-                <th><b>Image</b></th>
-                <th><b>Region</b></th>
                 <th><b>Zone</b></th>
                 <th><b>Address</b></th>
-                <th><b>Email</b></th>
                 <th><b>Church</b></th>
-                <th><b>B.A:H_baptism</b></th>
-                <th><b>Calling</b></th>
-                <th><b>Into_call:When</b></th>
-                <th><b>Prior:Reason</b></th>
-                <th><b>Occupation</b></th>
-                <th><b>lang_speak</b></th>
-                <th><b>lang_write</b></th>
-                <th><b>Litracy</b></th>
-                <th><b>Academics</b></th>
-                <th><b>Oversight</b></th>
-                <th><b>Referal</b></th>
-                <th><b>Ref_address</b></th>
-                <th><b>Ref_phone</b></th>
-                <th><b>relationship</b></th>
-                <th><b>Reg_dateTime</b></th>
                 <th><b>Action</b></th>
               </tr>
             </tfoot>
@@ -320,16 +262,6 @@
 
 <?php endif ?>
 <?php require APPROOT . '/views/inc/admin/footer.php'; ?>
-<!-- <script type="text/javascript">
-  new DataTable('#eg', {
-    scrollX: true,
-    //scrollY: '60vh',
-    scrollCollapse: true,
-    paging: false,
-    searching: true,
-    info: true,
-  });
-</script> -->
 
 <script>
   new DataTable('#eg', {

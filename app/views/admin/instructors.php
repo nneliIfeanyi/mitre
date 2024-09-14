@@ -49,19 +49,13 @@
           <table class="table table-striped" id="example">
             <thead>
               <tr class="">
-                <th>#</th>
+                <th>S|N</th>
                 <th>Name</th>
                 <th>Photo</th>
-                <!-- <th>Gender</th> -->
                 <th>Zone</th>
                 <th>Address</th>
                 <th>Phone</th>
-                <!-- <th>Whatsapp</th>
-                <th>Telegram</th> -->
-                <th>Email</th>
                 <th>Ministry</th>
-                <!-- <th>Occupation</th> -->
-                <th>Assembly</th>
                 <th>Action</th>
 
               </tr>
@@ -88,18 +82,10 @@
                       <?php endif; ?>
                     </div>
                   </td>
-                  <!-- <td><?php echo $student->gender ?></td> -->
                   <td><?php echo $student->zone ?></td>
                   <td><?php echo $student->address ?></td>
                   <td><?php echo $student->phone ?></td>
-                  <!-- <td><a href="https://wa.me/<?= $student->whatsapp; ?>" class="btn btn-sm"><i class="fab fa-whatsapp" aria-hidden="true"></i> <?php echo $student->whatsapp ?></a></td>
-                  <td><?php echo $student->telegram ?></td> -->
-                  <td><?php echo $student->email ?></td>
-
-
                   <td><?php echo $student->ministry ?></td>
-                  <!-- <td><?php echo $student->occupation ?></td> -->
-                  <td><?php echo $student->assembly ?></td>
                   <td><a href="<?php echo URLROOT ?>/instructors/edit/<?= $student->id; ?>" class="btn btn-sm btn-success">More</a></td>
                 </tr>
               <?php $numbering++;
@@ -107,19 +93,13 @@
             </tbody>
             <tfoot>
               <tr class="">
-                <th>#</th>
+                <th>S|N</th>
                 <th>Name</th>
                 <th>Photo</th>
-                <!-- <th>Gender</th> -->
                 <th>Zone</th>
                 <th>Address</th>
                 <th>Phone</th>
-                <!-- <th>Whatsapp</th>
-                <th>Telegram</th> -->
-                <th>Email</th>
                 <th>Ministry</th>
-                <!-- <th>Occupation</th> -->
-                <th>Assembly</th>
                 <th>Action</th>
               </tr>
             </tfoot>

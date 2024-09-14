@@ -121,3 +121,4 @@
 
         <!-- Response message div -->
         <div id="msg"></div>
+        <?php flash('msg');?>

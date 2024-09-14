@@ -42,7 +42,7 @@
             <div class="col-lg-6">
               <div class="form-group mb-3 shadow p-3">
                 <label>Gender:</label>
-                <select name="gender" data-parsley-trigger="change" class="form-control">
+                <select name="gender" data-parsley-trigger="change" disabled class="form-control">
                   <option value="<?= $data['student']->gender; ?>"><?= $data['student']->gender; ?></option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -113,13 +113,13 @@
             </div>
           </div>
         </form>
-        <div class="d-flex justify-content-around">
+        <div class="d-flex justify-content-between flex-wrap">
           <div class="my-3">
-            <input type="submit" form="editInstructor" id="submit" disabled class="btn btn-primary btn-block rounded-5 fw-bold" value="Save Changes">
+            <input type="submit" form="editInstructor" id="submit" class="btn btn-primary btn-block rounded-5 fw-bold" value="Save Changes">
           </div>
 
           <div class="my-3">
-            <a href="javascript:void()" class="btn btn-dark">Update Photo</a>
+            <a href="<?php echo URLROOT;?>/instructors/update_photo/<?= $data['student']->id;?>" class="btn btn-dark">Update Photo</a>
           </div>
           <div class="my-3">
             <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">

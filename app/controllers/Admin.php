@@ -309,6 +309,7 @@
           'address' => trim($_POST['address']),
           'whatsapp' => trim($_POST['whatsapp_num']),
           'occupation' => trim($_POST['occupation']),
+          'church' => trim($_POST['church']),
           'error' => ''
         ];
         $edit = $this->userModel->edit_profile($data);
@@ -607,13 +608,14 @@
     public function delete($id)
     {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $this->userModel->trash_student($id);
         $set = $_POST['mitre_set'];
         $zone = $_POST['zone'];
         //Execute
         if ($this->userModel->delete_reg($id)) {
           // Redirect to login
-          flash('msg', 'Candidate Removed..', 'alert alert-danger');
-          redirect('admin/' . $zone . '/' . $set);
+          flash('msg', 'Candidate Removed..', 'flash-msg alert alert-danger');
+          redirect('admin/students/' . $set);
         } else {
           die('Something went wrong');
         }

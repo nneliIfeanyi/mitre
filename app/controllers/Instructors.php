@@ -24,13 +24,37 @@ class Instructors extends Controller
 
   public function edit($id)
   {
-    $student = $this->alumniModel->getUserById($id);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $data = [
+          'fullname' => trim($_POST['fullname']),
+          'id' => $id,
+          'phone' => trim($_POST['phone']),
+          'address' => trim($_POST['address']),
+          'whatsapp' => trim($_POST['whatsapp']),
+          'occupation' => trim($_POST['occupation']),
+          'church' => trim($_POST['assembly']),
+          'email' => trim($_POST['email']),
+          'ministry' => trim($_POST['ministry']),
+          'telegram' => trim($_POST['telegram']),
+          'zone' => trim($_POST['zone']),
+        ];
+        $edit = $this->userModel->edit_instructor($data);
+        if ($edit) {
+          flash('msg', 'Changes Saved Successfully..');
+          redirect('instructors/edit/' . $id);
+        } else {
+          die('Something went wrong..');
+        }
+    }
+    else{
+      $student = $this->alumniModel->getUserById($id);
     //Set Data
     $data = [
       'student' => $student
     ];
 
     $this->view('instructors/edit', $data);
+    }
   }
 
   public function add_passport($id)

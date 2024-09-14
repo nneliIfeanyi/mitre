@@ -302,6 +302,31 @@
       return $results;
     }
 
+
+     public function get_unreported1($id){
+      $this->db->query("SELECT std_id FROM attendance WHERE std_id = :id");
+      $this->db->bind(':id', $id);
+      $results = $this->db->single();
+      if ($this->db->rowCount() > 0) {
+        return $results;
+      }else{
+        return false;
+      }
+    }
+
+    public function get_unreported2($id){
+      $this->db->query("SELECT * FROM attendance WHERE std_id = :id");
+      $this->db->bind(':id', $id);
+      $this->db->resultset();
+      if ($this->db->rowCount() > 0) {
+        return $this->db->rowCount();
+      }else{
+        return false;
+      }
+    }
+
+
+
     // Get Photo
     public function getPhoto($id){
       $this->db->query("SELECT passport FROM mitre_students WHERE id = :id;");

@@ -94,6 +94,23 @@ class User
   }
 
 
+public function trash_student($id)
+  {
+    // Prepare Query
+    $this->db->query('INSERT INTO trash (mitre_set, fullname,address,zone,email,mobile_num,whatsapp_num,church,occupation,discipler,refered_by,address_2,phone,relationship) 
+      SELECT mitre_set, fullname, address, zone, email, mobile_num, whatsapp_num, church, occupation, discipler,  refered_by, address_2, phone, relationship FROM mitre_students WHERE id = :id');
+
+    // Bind Values
+    $this->db->bind(':id', $id);
+    //Execute
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
   // REGISTRATION 
   public function register_by_admin($data)
   {
@@ -274,7 +291,7 @@ class User
   public function edit_profile($data)
   {
     // Prepare Query
-    $this->db->query('UPDATE mitre_students SET fullname = :fullname, mobile_num = :phone, address = :address, whatsApp_num = :whatsapp, occupation = :occupation WHERE id = :id');
+    $this->db->query('UPDATE mitre_students SET fullname = :fullname, mobile_num = :phone, address = :address, whatsApp_num = :whatsapp, occupation = :occupation, church = :church WHERE id = :id');
 
     // Bind Values
     $this->db->bind(':id', $data['id']);
@@ -283,6 +300,7 @@ class User
     $this->db->bind(':address', $data['address']);
     $this->db->bind(':whatsapp', $data['whatsapp']);
     $this->db->bind(':occupation', $data['occupation']);
+    $this->db->bind(':church', $data['church']);
 
     //Execute
     if ($this->db->execute()) {
@@ -291,6 +309,37 @@ class User
       return false;
     }
   }
+
+
+  //Edit Student
+  public function edit_instructor($data)
+  {
+    // Prepare Query
+    $this->db->query('UPDATE instructors SET name = :fullname, zone = :zone,  address = :address, phone = :phone, whatsapp = :whatsapp, telegram = :telegram, email = :e_mail,  ministry = :ministry, occupation = :occupation, assembly = :church WHERE id = :id');
+
+    // Bind Values
+    $this->db->bind(':id', $data['id']);
+    $this->db->bind(':fullname', $data['fullname']);
+    $this->db->bind(':phone', $data['phone']);
+    $this->db->bind(':address', $data['address']);
+    $this->db->bind(':whatsapp', $data['whatsapp']);
+    $this->db->bind(':occupation', $data['occupation']);
+    $this->db->bind(':zone', $data['zone']);
+    $this->db->bind(':ministry', $data['ministry']);
+    $this->db->bind(':e_mail', $data['email']);
+    $this->db->bind(':church', $data['church']);
+    $this->db->bind(':telegram', $data['telegram']);
+
+    //Execute
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
 
   public function trac_upload($data)
   {
