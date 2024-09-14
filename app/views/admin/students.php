@@ -200,11 +200,10 @@
           <table class="table table-striped" id="eg">
             <thead>
               <tr class="">
-                <th>S/N</th>
+                <th>S|N</th>
                 <th><b>Image</b></th>
                 <th><b>Name</b></th>
                 <th><b>Phone</b></th>
-                <th><b>WhatsApp_num</b></th>
                 <th><b>Zone</b></th>
                 <th><b>Address</b></th>
                 <th><b>Church</b></th>
@@ -241,7 +240,7 @@
             </tbody>
             <tfoot>
               <tr class="">
-                <th>S/N</th>
+                <th>S|N</th>
                 <th><b>Image</b></th>
                 <th><b>Name</b></th>
                 <th><b>Phone</b></th>
@@ -266,6 +265,7 @@
 <script>
   new DataTable('#eg', {
     scrollX: true,
+    paging:false,
     layout: {
       topStart: {
         buttons: [{
