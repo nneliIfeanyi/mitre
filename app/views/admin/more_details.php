@@ -92,7 +92,7 @@
           </div>
 
           <div class="">
-            <p class="px-2"><a href="<?php echo URLROOT;?>/admin/<?= $data['student']->zone;?>/<?= $data['student']->mitre_set;?>" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a></p>
+            <p class="px-2"><a href="javascript:void" onclick="history.back()" class="btn btn-light"><i class="fa fa-backward" aria-hidden="true"></i> Back</a></p>
           </div>
         </div> 
       </form>
