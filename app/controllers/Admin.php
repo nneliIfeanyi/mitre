@@ -623,4 +623,34 @@
         redirect('admin/all_registered');
       }
     }
+
+    // Ajax Delete
+    public function deleteAjax($id)
+    {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $this->userModel->trash_student($id);
+        $set = $_POST['mitre_set'];
+        $zone = $_POST['zone'];
+        //Execute
+        if ($this->userModel->delete_reg($id)) {
+          echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Candidate Removed.. Changes will be effected on page refresh
+                </div>
+                
+            ";
+          //flash('msg', 'Candidate Removed..', 'flash-msg alert alert-danger');
+          //redirect('admin/students/' . $set);
+        } else {
+           echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Something went wrong..
+                </div>
+
+            ";
+        }
+      } else {
+        redirect('admin');
+      }
+    }
   }

@@ -101,12 +101,36 @@
                   <td><?php echo $student->address ?></td>
                   <td><?php echo $student->church ?></td>
                   <td class="d-flex justify-content-around">
-                    <form action="<?php echo URLROOT; ?>/admin/delete/<?php echo $student->id; ?>" method="post">
+                    <form id="delete<?= $student->id;?>">
                       <input type="hidden" name="zone" value="<?php echo $student->zone; ?>">
                       <input type="hidden" name="mitre_set" value="<?php echo $student->mitre_set; ?>">
-                      <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Trash</button>
+                      <input type="submit" id="submit<?= $student->id;?>" value="Trash" class="btn btn-sm btn-outline-danger">
                     </form>
                   </td>
+
+                  <script>
+                    $('#delete<?= $student->id; ?>').on('submit', function(event) {
+                      event.preventDefault();
+                      let formData = $(this).serialize();
+                      $.ajax({
+                        url: "<?php echo URLROOT; ?>/admin/deleteAjax/<?php echo $student->id; ?>",
+                        method: "POST",
+                        data: formData,
+
+                        beforeSend: function() {
+                          $('#submit<?= $student->id; ?>').attr('disabled', 'disabled');
+                          $('#submit<?= $student->id; ?>').val('Pls wait..');
+
+                        },
+                        success: function(response) {
+                          $('#submit<?= $student->id; ?>').val('Deleted');
+                          $('#submit<?= $student->id; ?>').removeClass('btn-outline-danger');
+                          $('#submit<?= $student->id; ?>').addClass('btn-success');
+                          $('#msg').append(response);
+                        }
+                      });
+                    });
+                  </script>
                 </tr>
               
               <?php elseif($trash >= 7):?>
