@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-12 col-md-8 col-lg-6 p-5">
               <a href="<?php echo URLROOT;?>/<?php echo $data['student']->passport;?>" download="<?php echo $data['student']->fullname?>">
-                <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-circle" style="height: 250px;width:100%;">
+                <img src="<?php echo URLROOT .'/'. $data['student']->passport?>" alt="profile-pic" class="rounded-2" style="height: 350px;width:100%;">
                 </a>
             </div>
        
