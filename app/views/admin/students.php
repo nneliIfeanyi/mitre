@@ -66,7 +66,7 @@
                 <tr style="background: rgba(205, 255, 0, 0.6);" data-toggle="tooltip" data-title="This candidate is under probation having missed a full MITRE conclave">
                   <td><?php echo $numbering; ?></td>
                   <td>
-                    <?php if (!empty($student->passport)) : ?>
+                    <?php if (empty($student->passport)) : ?>
                         <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
                     <?php else : ?>
                       <a href="<?php echo URLROOT . '/' . $student->passport ?>">
@@ -87,7 +87,7 @@
                 <tr style="background: rgba(250, 20, 0, 0.6);" data-toggle="tooltip" data-title="This candidate never reported to MITRE at all after registeration.">
                   <td><?php echo $numbering; ?></td>
                   <td>
-                    <?php if (!empty($student->passport)) : ?>
+                    <?php if (empty($student->passport)) : ?>
                         <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
                     <?php else : ?>
                       <a href="<?php echo URLROOT . '/' . $student->passport ?>">
@@ -113,7 +113,7 @@
                 <tr class="bg-light" data-toggle="tooltip" data-title="">
                   <td><?php echo $numbering; ?></td>
                   <td>
-                    <?php if (!empty($student->passport)) : ?>
+                    <?php if (empty($student->passport)) : ?>
                         <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
                       </a>
                     <?php else : ?>
