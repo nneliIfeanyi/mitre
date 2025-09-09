@@ -46,8 +46,8 @@
             z-index: 5;
             width: 200px;
             animation-name: fade;
-            animation-duration: 3s;
-            animation-delay: 6s;
+            animation-duration: 2s;
+            animation-delay: 1s;
             animation-iteration-count: 1;
             animation-fill-mode: forwards;
         }
@@ -121,4 +121,4 @@
 
         <!-- Response message div -->
         <div id="msg"></div>
-        <?php flash('msg');?>
+        <?php flash('msg'); ?>

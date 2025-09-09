@@ -135,6 +135,9 @@
   $paper = 'term_paper';
   $zone = 'Kaduna';
   $added_count = $this->attendanceModel->count_added($set, $conclave, $paper, $zone);
+  if ($conclave == 6) {
+    redirect('papers/tm_6th_kaduna/' . $set);
+  }
 ?>
 
   <?php require APPROOT . '/views/inc/admin/header.php'; ?>
