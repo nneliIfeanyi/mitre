@@ -3,7 +3,7 @@ $conclave = S_CONCLAVE;
 $set = SENIOR;
 $paper1 = 'term_paper_1';
 $paper2 = 'term_paper_2';
-$zone = 'Kaduna';
+$zone = 'Ufuma';
 $added_count = $this->attendanceModel->count_added($set, $conclave, $paper1, $zone);
 $added_count2 = $this->attendanceModel->count_added2($set, $conclave, $paper2, $zone);
 ?>
@@ -18,7 +18,7 @@ $added_count2 = $this->attendanceModel->count_added2($set, $conclave, $paper2, $
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 h3">Add Term_Paper Set <?= $set ?> Kaduna Zone</h1>
+                    <h1 class="m-0 h3">Add Term_Paper Set <?= $set ?> Ufuma Zone</h1>
                     <p class="lead text-primary">Paper 1 Total Added <span class="font-weight-bold text-dark"><?= $added_count; ?></span></p>
                     <p class="lead text-primary">Paper 2 Total Added <span class="font-weight-bold text-dark"><?= $added_count2; ?></span></p>
                 </div><!-- /.col -->

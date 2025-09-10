@@ -81,15 +81,14 @@ class Portal extends Controller
       //   flash('msg', 'The phone number provided already exist, it means you have registered earlier before now and cannot register twice.', 'alert alert-danger');
       //   redirect('portal/instructors');
       // } else {
-        $success = $this->alumniModel->reg_instructor($data);
-        if ($success) {
-          setcookie('instructor-phone', $data['phone'], time() + (1800), '/');
-          flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
-          redirect('portal/instructors');
-        } else {
-          die('Something went wrong..');
-        }
-      
+      $success = $this->alumniModel->reg_instructor($data);
+      if ($success) {
+        setcookie('instructor-phone', $data['phone'], time() + (1800), '/');
+        flash('msg', 'Registration is Successfull.. Pls kindly upload your photo');
+        redirect('portal/instructors');
+      } else {
+        die('Something went wrong..');
+      }
     } else {
       // If NOT a POST
       // Init data
@@ -135,7 +134,7 @@ class Portal extends Controller
           ];
           $upload = $this->userModel->edit_pic3($data);
           if ($upload) {
-             setcookie('instructor-phone', $data['phone'], time() - (900), '/');
+            setcookie('instructor-phone', $data['phone'], time() - (900), '/');
             flash('msg', 'Registration Completed Successfully.. ');
             redirect('portal/instructors');
           } else {
@@ -152,7 +151,7 @@ class Portal extends Controller
           ];
           $upload = $this->userModel->edit_pic3($data);
           if ($upload) {
-           setcookie('instructor-phone', $data['phone'], time() - (900), '/');
+            setcookie('instructor-phone', $data['phone'], time() - (900), '/');
             flash('msg', 'Registration Completed Successfully.. ');
             redirect('portal/instructors');
           } else {
@@ -160,12 +159,11 @@ class Portal extends Controller
           }
         }
       }
-    }
-   elseif (isset($_POST['later'])) {
+    } elseif (isset($_POST['later'])) {
       flash('msg', 'Pls.. spare some time, its compulsory you upload your photo..', 'alert alert-warning');
       redirect('portal/instructors');
     } else {
-      redirect('portal/instructors'); 
+      redirect('portal/instructors');
     }
   }
 
@@ -310,6 +308,17 @@ class Portal extends Controller
         'paper' => $_POST['paper'],
         'zone' => $_POST['zone']
       ];
+      $added = $this->attendanceModel->check_mark($data['mitre_set'], $data['conclave'], $data['paper'], $data['std_id']);
+      if ($added) {
+        echo "
+                  <div class='flash-msg alert alert-danger'>
+                    Score already recorded for " . $data['name'] . " in " . $data['paper'] . " paper.. </span>
+                </div>
+                
+            ";
+        exit();
+      }
+
       $input = $this->attendanceModel->recordPaper($data);
       if ($input) {
         echo "
