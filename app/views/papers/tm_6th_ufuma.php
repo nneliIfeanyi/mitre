@@ -38,9 +38,9 @@ $added_count2 = $this->attendanceModel->count_added2($set, $conclave, $paper2, $
             <div class="card card-body">
                 <nav>
                     <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
-                        <a href="<?php echo URLROOT ?>/papers/term_paper_kaduna/<?php echo $set ?>" class="active nav-link" id="nav-kaduna-tab" type="button" role="tab">Kaduna Zone
+                        <a href="<?php echo URLROOT ?>/papers/term_paper_kaduna/<?php echo $set ?>" class="nav-link" id="nav-kaduna-tab" type="button" role="tab">Kaduna Zone
                         </a>
-                        <a href="<?php echo URLROOT ?>/papers/term_paper_ufuma/<?php echo $set ?>" class="nav-link" id="nav-ufuma-tab" type="button" role="tab">Ufuma Zone
+                        <a href="<?php echo URLROOT ?>/papers/term_paper_ufuma/<?php echo $set ?>" class="active nav-link" id="nav-ufuma-tab" type="button" role="tab">Ufuma Zone
                         </a>
                         <a href="<?php echo URLROOT ?>/papers/term_paper_minna/<?php echo $set ?>" class="nav-link" id="nav-minna-tab" type="button" role="tab">Minna Zone
                         </a>
