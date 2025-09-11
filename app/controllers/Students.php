@@ -44,15 +44,15 @@ class Students extends Controller
       if ($punctual >= 6) {
         $mark = 45;
       } elseif ($punctual == 5) {
-        $mark = 37.5;
+        $mark = 45;
       } elseif ($punctual == 4) {
-        $mark = 30;
+        $mark = 36;
       } elseif ($punctual == 3) {
-        $mark = 22.5;
+        $mark = 27;
       } elseif ($punctual == 2) {
-        $mark = 15;
+        $mark = 18;
       } elseif ($punctual == 1) {
-        $mark = 7.5;
+        $mark = 9;
       } else {
         $mark = '--';
       }
@@ -83,7 +83,7 @@ class Students extends Controller
 
   public function registration()
   {
-    redirect('portal');
+    //redirect('portal');
 
     // Check if POST
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
