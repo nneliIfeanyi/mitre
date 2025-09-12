@@ -93,7 +93,7 @@
                 foreach ($data['scores'] as $student) :
                   $resolve1 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper1'], $data['set'], $data['conclave']);
                   $resolve2 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper2'], $data['set'], $data['conclave']);
-                  if ($data['conlave'] == 6) {
+                  if ($data['conclave'] == "6") {
                     $solve1 = $this->attendanceModel->getIndividualScore($student->std_id, 'term_paper_1', $data['set'], $data['conclave']);
                     $solve2 = $this->attendanceModel->getIndividualScore($student->std_id, 'term_paper_2', $data['set'], $data['conclave']);
                     $resolve3 = $solve1->score + $solve2->score;
@@ -201,7 +201,7 @@
                         }
                       } ?>
                     </td>
-                    <td class="font-weight-bold text-center"><?php echo $mark + $summary->score + $resolve1->score + $resolve2->score + $resolve3->score ?></td>
+                    <td class="font-weight-bold text-center"><?php echo $mark + $summary->score + $resolve1->score + $resolve2->score + $resolve3 ?></td>
                   </tr>
                 <?php $numbering++;
                 endforeach; ?>
