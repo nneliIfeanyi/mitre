@@ -93,7 +93,14 @@
                 foreach ($data['scores'] as $student) :
                   $resolve1 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper1'], $data['set'], $data['conclave']);
                   $resolve2 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper2'], $data['set'], $data['conclave']);
-                  $resolve3 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper3'], $data['set'], $data['conclave']);
+                  if ($data['conlave'] == 6) {
+                    $solve1 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper3'], $data['set'], $data['conclave']);
+                    $solve2 = $this->attendanceModel->getIndividualScore($student->std_id, 'term_paper_2', $data['set'], $data['conclave']);
+                    $resolve3 = $solve1 + $solve2;
+                  } else {
+                    $resolve3 = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper3'], $data['set'], $data['conclave']);
+                  }
+
                   $summary = $this->attendanceModel->getIndividualScore($student->std_id, $data['paper4'], $data['set'], $data['conclave']);
                   $names = $this->attendanceModel->getNames($student->std_id);
                   $punctual = $this->attendanceModel->getAttendance($student->std_id, $data['set'], $data['conclave']);

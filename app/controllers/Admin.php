@@ -454,6 +454,9 @@
           'paper3' => 'term_paper',
           'paper4' => 'Summary'
         ];
+        if ($conclave == 6) {
+          $data['paper3'] = 'term_paper_1';
+        }
         $this->view('admin/view_scores', $data);
       } else {
         $conclaves = $this->userModel->getConclaves();
@@ -642,7 +645,7 @@
           //flash('msg', 'Candidate Removed..', 'flash-msg alert alert-danger');
           //redirect('admin/students/' . $set);
         } else {
-           echo "
+          echo "
                   <div class='flash-msg alert alert-danger'>
                     Something went wrong..
                 </div>
