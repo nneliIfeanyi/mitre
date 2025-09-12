@@ -454,9 +454,6 @@
           'paper3' => 'term_paper',
           'paper4' => 'Summary'
         ];
-        if ($conclave == 6) {
-          $data['paper3'] = 'term_paper_1';
-        }
         $this->view('admin/view_scores', $data);
       } else {
         $conclaves = $this->userModel->getConclaves();
