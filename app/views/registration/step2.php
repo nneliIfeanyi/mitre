@@ -169,7 +169,10 @@
         <div class="container text-center">
             <p>&copy; <?= date('Y') . ' ' . SITENAME; ?>. All rights reserved.</p>
             <p id="contact">
-                Need help? <a href="mailto:support@myportal.com">Contact Support</a>
+                Need help?
+                <a href="https://api.whatsapp.com/send?phone=2348034530726&text=Hi,%20please%20i%20need%20help%20registering%20for%20MITRE!" target="_blank" rel="noopener">
+                    Contact Support
+                </a>
             </p>
         </div>
     </footer>
