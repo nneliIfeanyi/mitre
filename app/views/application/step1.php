@@ -1,10 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>MITRE Registration - Step 1</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/parsleyjs"></script> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,8 +13,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT; ?>/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT; ?>/img/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <title><?= SITENAME; ?> - Registration Portal</title>
+    <title><?= SITENAME; ?> - Application Portal</title>
     <style>
         footer {
             background: #212529;
@@ -46,9 +40,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/registration">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/registration#criteria">Admission Criteria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/registration#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/application">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#criteria">Admission Criteria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -71,7 +65,7 @@
             <h2 class="m-0">Personal Information</h2>
             <?php flash('msg'); ?>
             <p class="fst-italic text-primary fw-semibold">You are required to fill out all fields!</p>
-            <form method="POST" action="<?= URLROOT; ?>/registration/step1" data-parsley-validate>
+            <form method="POST" action="<?= URLROOT; ?>/application/step1" data-parsley-validate>
                 <input type="hidden" name="reg_id" value="<?= (empty($data['reg_id'])) ? '' : $data['reg_id']; ?>">
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -171,10 +165,10 @@
                 <div class="d-flex justify-content-center mt-4">
                     <?php if (isset($data['step1']->reg_id)) : ?>
                         <!-- <button type="submit" class="btn btn-primary">Save Progress</button> -->
-                        <a href="<?= URLROOT; ?>/registration/step2" class="btn btn-outline-dark">Next →</a>
+                        <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next →</a>
                     <?php else : ?>
                         <button type="submit" class="btn btn-primary">Save Progress</button>
-                        <a href="<?= URLROOT; ?>/registration/step2" class="btn btn-outline-dark">Next →</a>
+                        <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next →</a>
                     <?php endif; ?>
                 </div>
             </form>

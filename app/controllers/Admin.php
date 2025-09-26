@@ -279,7 +279,7 @@
             $upload = $this->userModel->edit_pic($data);
             if ($upload) {
               setcookie('photo-now', $db_image_file, time() + (10), '/');
-              flash('msg', 'Your Photo is Uploaded Successfully.. Remain Blessed');
+              flash('msg', 'Your Photo is Uploaded Successfully');
               redirect('admin/' . $zone . '/' . $set);
             } else {
               die('Something went wrong..');

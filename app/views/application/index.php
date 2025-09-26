@@ -15,8 +15,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT; ?>/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT; ?>/img/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <title><?= SITENAME; ?> - Registration Portal</title>
+  <title><?= SITENAME; ?> - Application Portal</title>
 
   <style>
     body {
@@ -90,10 +91,10 @@
       <h1 class="fw-bold display-4">
         Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span>
       </h1>
-      <p class="lead mb-4">Welcome to <span class="text-primary">MITRE</span> Registration Portal.</p>
+      <p class="lead mb-4">Welcome to <span class="text-primary">MITRE</span> Application Portal.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="<?= URLROOT; ?>/registration/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
-          Start Registration
+        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
+          Start Application
         </a>
         <a href="#criteria" class="btn btn-outline-light btn-lg px-5 rounded-pill">
           Read Admission Criteria
@@ -114,7 +115,7 @@
     <div class="container">
       <div class="text-center mb-5">
         <h2 class="fw-bold">Admission Criteria</h2>
-        <p class="text-muted">Please read carefully before starting your registration process.</p>
+        <p class="text-muted">Please read carefully before starting your application process.</p>
       </div>
       <div class="row g-4">
         <div class="col-md-6 col-lg-4">
@@ -164,14 +165,14 @@
 
       <!-- CTA -->
       <div class="text-center mt-5">
-        <a href="<?= URLROOT; ?>/registration/step1" class="btn btn-primary btn-lg rounded-pill px-5">
-          Proceed to Registration
+        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg rounded-pill px-5">
+          Proceed to application
         </a>
       </div>
 
       <!-- Progress Saving Notice -->
       <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
-        <strong>Note!</strong> Your registration progress is automatically saved. You can close your browser and return later to continue where you left off. Do not be in a hurry!
+        <strong>Note!</strong> Your application progress is automatically saved. You can close your browser and return later to continue where you left off. Do not be in a hurry!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>

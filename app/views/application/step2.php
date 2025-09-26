@@ -13,8 +13,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT; ?>/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT; ?>/img/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <title><?= SITENAME; ?> - Registration Portal</title>
+    <title><?= SITENAME; ?> - Application Portal</title>
     <style>
         footer {
             background: #212529;
@@ -39,9 +40,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/registration">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/registration#criteria">Admission Criteria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/registration#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/application">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#criteria">Admission Criteria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -63,7 +64,7 @@
         <div class="container my-5">
             <h2 class="mb-4">Spiritual & Church Information</h2>
             <?php flash('msg'); ?>
-            <form method="POST" action="<?= URLROOT; ?>/registration/step2" data-parsley-validate>
+            <form method="POST" action="<?= URLROOT; ?>/application/step2" data-parsley-validate>
                 <div class="mb-3">
                     <label class="text-bg-light badge">Church / Local Assembly</label>
                     <input type="text" value="<?= (empty($data['step2']->church)) ? '' : $data['step2']->church; ?>" name="church" class="form-control" required>
@@ -157,9 +158,9 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="<?= URLROOT; ?>/registration/step1" class="btn btn-outline-dark">Previous</a>
+                    <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark">Previous</a>
                     <button type="submit" class="btn btn-primary">Save Progress</button>
-                    <a href="<?= URLROOT; ?>/registration/step3" class="btn btn-outline-dark">Next →</a>
+                    <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next →</a>
                 </div>
             </form>
         </div>

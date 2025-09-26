@@ -124,6 +124,20 @@ class RegModel
         return $this->db->execute();
     }
 
+    public function addPassport($data)
+    {
+        $sql = "UPDATE registrations SET
+                photo = :photo
+            WHERE reg_id = :id";
+
+        $this->db->query($sql);
+
+        $this->db->bind(':photo', $data['photo']);
+        $this->db->bind(':id', $data['id']);
+
+        return $this->db->execute();
+    }
+
 
     // Update Step 1
     public function updateStep1($id, $data)

@@ -13,8 +13,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT; ?>/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT; ?>/img/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <title><?= SITENAME; ?> - Registration Portal</title>
+  <title><?= SITENAME; ?> - Application Portal</title>
   <style>
     footer {
       background: #212529;
@@ -39,9 +40,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/registration">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/registration#criteria">Admission Criteria</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/registration#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/application">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#criteria">Admission Criteria</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -61,13 +62,20 @@
   </section>
   <section>
     <div class="container my-5">
+
       <h2 class="mb-4">Passport Photograph</h2>
-      <form method="POST" action="<?= URLROOT; ?>/registration/passport" enctype="multipart/form-data" data-parsley-validate>
+      <!-- Progress Saving Notice -->
+      <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
+        <strong>Note!</strong> Passport photograph is required before final submission.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <?php flash('msg'); ?>
+      <form method="POST" action="<?= URLROOT; ?>/application/passport" enctype="multipart/form-data" data-parsley-validate>
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
               <label class="text-bg-light badge">Passport Photograph</label>
-              <input type="file" name="photo" class="form-control form-control-lg">
+              <input type="file" required accept="image/*" name="photo" class="form-control form-control-lg">
             </div>
           </div>
           <div class="col-md-6">
@@ -76,7 +84,20 @@
             </div>
           </div>
         </div>
-
+        <!-- Use cookie to display the image -->
+        <!-- Card with an image on top -->
+        <?php if (!empty($data['step3']->photo)) : ?>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <img src="<?= URLROOT . '/' . $data['step3']->photo ?>" width="320" height="300" class="card-img-top" alt="passport-photograph">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold" style="font-size: small;">You can re-upload to change the image before final submission.</h5>
+                </div>
+              </div><!-- End Card with an image on top -->
+            </div>
+          </div>
+        <?php endif; ?>
       </form>
       <br />
       <hr /><br />
@@ -84,7 +105,7 @@
       <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
         <strong>Note!</strong> Do not serve as a referee for someone you do not know very well!
       </div>
-      <form method="POST" action="<?= URLROOT; ?>/registration/step3" data-parsley-validate>
+      <form method="POST" action="<?= URLROOT; ?>/application/step3" data-parsley-validate>
         <div class="mb-3">
           <label class="text-bg-light badge">Referee's Name</label>
           <input type="text" value="<?= (empty($data['step3']->ref_name)) ? '' : $data['step3']->ref_name; ?>" name="ref_name" class="form-control" required data-parsley-trigger="keyup">
@@ -110,8 +131,8 @@
           <textarea name="ref_info" class="form-control"><?= (empty($data['step3']->ref_info)) ? '' : $data['step3']->ref_info; ?></textarea>
         </div>
         <div class="d-flex justify-content-center mt-4">
-          <a href="<?= URLROOT; ?>/registration/step2" class="btn btn-outline-dark">Previous</a>
-          <button type="submit" class="btn btn-primary">Submit Registration</button>
+          <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Previous</a>
+          <button type="submit" class="btn btn-primary">Submit Application</button>
         </div>
       </form>
     </div>

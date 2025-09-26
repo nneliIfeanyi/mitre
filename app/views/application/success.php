@@ -10,7 +10,7 @@
     <div class="alert alert-success p-5 rounded">
         <h2>🎉 Registration Successful!</h2>
         <p>Thank you for registering for MITRE. We will contact you via your email/phone.</p>
-        <a href="<?= URLROOT ?>/registration" class="btn btn-primary rounded p-2">Return</a>
+        <a href="<?= URLROOT ?>/application" class="btn btn-primary rounded p-2">Return</a>
     </div>
 </body>
 
