@@ -19,14 +19,21 @@ class Application extends Controller
 
   public function index()
   {
+    // Check if Session reg_id is not set
+    if (!isset($_SESSION['reg_id']) || empty($_SESSION['reg_id'])) {
+      redirect('application/index');
+    }
     $data = [];
     $this->view('application/index', $data);
   }
 
   public function step1()
   {
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      if (!isset($_SESSION['reg_id']) || empty($_SESSION['reg_id'])) {
+        redirect('application/step1');
+        exit();
+      }
       $data = [
         'reg_id' => $_POST['reg_id'],
         'surname' => $_POST['surname'],
@@ -46,7 +53,7 @@ class Application extends Controller
         'litracy' => $_POST['litracy']
       ];
       if ($this->regModel->step1($data)) {
-        flash('msg', 'Data Saved Successfully');
+        flash('msg', 'Data Saved Successfully, proceed to next step.');
         redirect('application/step1');
       } else {
         die("Something went wrong...");
@@ -65,9 +72,10 @@ class Application extends Controller
   public function step2()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Check if step1 is jumped
+      // Check if step1 is jumped! ie No DB record for current reg_id.
       if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
         redirect('application/step1');
+        exit();
       }
       $data = [
         'church' => $_POST['church'],
@@ -85,7 +93,7 @@ class Application extends Controller
         'institution' => $_POST['institution']
       ];
       if ($this->regModel->step2($_SESSION['reg_id'], $data)) {
-        flash('msg', 'Data Saved Successfully');
+        flash('msg', 'Data Saved Successfully, proceed to next step.');
         redirect('application/step2');
       } else {
         die("Something went wrong...");
@@ -103,9 +111,10 @@ class Application extends Controller
   public function step3()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Check if step1 is jumped
+      // Check if step1 is jumped! ie No DB record for current reg_id.
       if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
         redirect('application/step1');
+        exit();
       }
       $data = [
         'ref_name' => $_POST['ref_name'],
@@ -117,20 +126,16 @@ class Application extends Controller
       ];
       // check if passport empty and prevent continuation
       if (empty($this->regModel->findRegId($_SESSION['reg_id'])->photo)) {
-        flash('msg', 'Passport photograph is required before final submission.', 'alert alert-danger');
+        $this->regModel->step3($_SESSION['reg_id'], $data);
+        flash('msg', 'An error occurred! Passport photograph is required before final submission.', 'alert alert-danger');
         redirect('application/step3');
         exit();
       }
       // Update DB
       if ($this->regModel->step3($_SESSION['reg_id'], $data)) {
-        foreach ($_COOKIE as $name => $value) {
-          // Expire each cookie
-          setcookie($name, "", time() - 3600, "/");
-          unset($_COOKIE[$name]);
-        }
-        unset($_SESSION['reg_id']);
-        session_destroy();
-        $this->view('application/success');
+        // Final Submission
+        flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
+        redirect('application/step3');
       } else {
         die("Something went wrong...");
       } // End Update DB
@@ -186,6 +191,73 @@ class Application extends Controller
           }
         }
       }
+    }
+  }
+
+  public function submit()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      // Check if Session reg_id is not set
+      if (!isset($_SESSION['reg_id']) || empty($_SESSION['reg_id'])) {
+        redirect('application/step1');
+      }
+      $user_data = $this->regModel->findRegId($_SESSION['reg_id']);
+      // Check if step1 is jumped! ie No DB record for current reg_id.
+      if (!$user_data) {
+        redirect('application/step1');
+        exit();
+      }
+      // check if step 2 empty and prevent continuation
+      if (empty($user_data->church)) {
+        redirect('application/step2');
+        exit();
+      }
+      // check if passport empty and prevent continuation
+      if (empty($user_data->photo)) {
+        flash('msg', 'An error occurred! Passport photograph is required before final submission.', 'alert alert-danger');
+        redirect('application/step3');
+        exit();
+      }
+      foreach ($_COOKIE as $name => $value) {
+        // Expire each cookie
+        setcookie($name, "", time() - 3600, "/");
+        unset($_COOKIE[$name]);
+      }
+      unset($_SESSION['reg_id']);
+      session_destroy();
+      $this->view('application/success');
+    }
+  }
+
+  public function update_step1()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $data = [
+        'reg_id' => $_POST['reg_id'],
+        'surname' => $_POST['surname'],
+        'other_name' => $_POST['other_name'],
+        'age' => $_POST['age'],
+        'gender' => $_POST['gender'],
+        'marital_status' => $_POST['marital_status'],
+        'state' => $_POST['state'],
+        'zone' => $_POST['zone'],
+        'address' => $_POST['address'],
+        'mobile' => $_POST['mobile'],
+        'alt_no' => $_POST['alt_no'],
+        'email' => $_POST['email'],
+        'occupation' => $_POST['occupation'],
+        'lang_speak' => $_POST['lang_speak'],
+        'lang_write' => $_POST['lang_write'],
+        'litracy' => $_POST['litracy']
+      ];
+      if ($this->regModel->updateStep1($_SESSION['reg_id'], $data)) {
+        flash('msg', 'Changes Saved Successfully, proceed to next step.');
+        redirect('application/step1');
+      } else {
+        die("Something went wrong...");
+      }
+    } else {
+      die('Something went wrong!');
     }
   }
 }

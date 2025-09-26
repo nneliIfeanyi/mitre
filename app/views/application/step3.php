@@ -17,6 +17,47 @@
 
   <title><?= SITENAME; ?> - Application Portal</title>
   <style>
+    /* Parsley Validation Styling */
+    input.parsley-error,
+    select.parsley-error,
+    textarea.parsley-error {
+      border-color: #D43F3A;
+      box-shadow: none;
+    }
+
+    input.parsley-error:focus,
+    select.parsley-error:focus,
+    textarea.parsley-error:focus {
+      border-color: #D43F3A;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #FF8F8A;
+    }
+
+    input.parsley-success,
+    select.parsley-success,
+    textarea.parsley-success {
+      border-color: #398439;
+      box-shadow: none;
+    }
+
+    input.parsley-success:focus,
+    select.parsley-success:focus,
+    textarea.parsley-success:focus {
+      border-color: #398439;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #89D489
+    }
+
+    .parsley-errors-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .parsley-errors-list.filled {
+      color: #D43F3A;
+      opacity: 1;
+    }
+
     footer {
       background: #212529;
       color: #adb5bd;
@@ -116,7 +157,7 @@
         </div>
         <div class="mb-3">
           <label class="text-bg-light badge">Referee's Email</label>
-          <input type="email" value="<?= (empty($data['step3']->email)) ? '' : $data['step3']->email; ?>" name="ref_email" class="form-control" required data-parsley-type="email">
+          <input type="email" value="<?= (empty($data['step3']->ref_email)) ? '' : $data['step3']->ref_email; ?>" name="ref_email" class="form-control" required data-parsley-type="email">
         </div>
         <div class="mb-3">
           <label class="text-bg-light badge">Referee's Address</label>
@@ -131,10 +172,16 @@
           <textarea name="ref_info" class="form-control"><?= (empty($data['step3']->ref_info)) ? '' : $data['step3']->ref_info; ?></textarea>
         </div>
         <div class="d-flex justify-content-center mt-4">
-          <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Previous</a>
-          <button type="submit" class="btn btn-primary">Submit Application</button>
+          <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Previous</a>
+          <button type="submit" class="btn btn-primary">Save Progress</button>
         </div>
       </form>
+      <form action="<?php echo URLROOT ?>/application/submit" method="post">
+        <div class="d-flex justify-content-center mt-4">
+          <button type="submit" class="btn btn-outline-primary rounded-5 fw-bold">Submit Application <i class="bi bi-send fs-5"></i></button>
+        </div>
+      </form>
+
     </div>
   </section>
   <!-- Footer -->

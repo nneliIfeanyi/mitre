@@ -166,7 +166,7 @@
       <!-- CTA -->
       <div class="text-center mt-5">
         <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg rounded-pill px-5">
-          Proceed to application
+          Apply Now
         </a>
       </div>
 

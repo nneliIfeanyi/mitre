@@ -60,7 +60,12 @@ class RegModel
     {
         $this->db->query("SELECT * FROM registrations WHERE reg_id = :reg_id");
         $this->db->bind(':reg_id', $reg_id);
-        return $this->db->single();
+        $this->db->single();
+        if ($this->db->rowCount() > 0) {
+            return $this->db->single();
+        } else {
+            return false;
+        }
     }
     public function step2($id, $data)
     {
