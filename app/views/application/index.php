@@ -24,6 +24,20 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Fullscreen loader */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     .hero {
       /*background: linear-gradient(135deg, #6f42c1, #6610f2);*/
       color: #fff;
@@ -67,7 +81,11 @@
 </head>
 
 <body>
-
+  <div id="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -86,7 +104,7 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('<?php echo URLROOT; ?>/img/reg-img.jpeg') center/cover no-repeat;">
+  <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('<?php echo URLROOT; ?>/img/reg-img.jpeg') center/cover no-repeat;">
     <div class="container">
       <h1 class="fw-bold display-4">
         Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span>
@@ -192,6 +210,27 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Hide loader once DOM is ready
+      $("#loader").fadeOut("slow");
+
+      // Show loader again before unloading (e.g., navigating away)
+      $(window).on("beforeunload", function() {
+        $("#loader").show();
+      });
+
+      // Also catch internal link clicks for SPA-like behavior
+      $("a").on("click", function(e) {
+        var target = $(this).attr("target");
+        // avoid opening in new tab/window
+        if (!target || target === "_self") {
+          $("#loader").show();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

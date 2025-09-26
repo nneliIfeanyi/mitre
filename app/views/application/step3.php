@@ -17,6 +17,20 @@
 
   <title><?= SITENAME; ?> - Application Portal</title>
   <style>
+    /* Fullscreen loader */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
     /* Parsley Validation Styling */
     input.parsley-error,
     select.parsley-error,
@@ -72,6 +86,11 @@
 </head>
 
 <body class="">
+  <div id="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -198,6 +217,26 @@
   </footer>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/parsleyjs"></script>
+  <script>
+    $(document).ready(function() {
+      // Hide loader once DOM is ready
+      $("#loader").fadeOut("slow");
+
+      // Show loader again before unloading (e.g., navigating away)
+      $(window).on("beforeunload", function() {
+        $("#loader").show();
+      });
+
+      // Also catch internal link clicks for SPA-like behavior
+      $("a").on("click", function(e) {
+        var target = $(this).attr("target");
+        // avoid opening in new tab/window
+        if (!target || target === "_self") {
+          $("#loader").show();
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
