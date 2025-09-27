@@ -192,7 +192,7 @@
         </div>
         <div class="d-flex justify-content-center mt-4">
           <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Previous</a>
-          <button type="submit" class="btn btn-primary">Save Progress</button>
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </form>
       <form action="<?php echo URLROOT ?>/application/submit" method="post">
@@ -216,6 +216,7 @@
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/parsleyjs"></script>
   <script>
     $(document).ready(function() {
