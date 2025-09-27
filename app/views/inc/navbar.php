@@ -19,12 +19,12 @@
             <a class="nav-link" href="<?php echo URLROOT; ?>/students/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
           </li>
         <?php else : ?>
-          <!-- <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/students/registration">Register</a>
-        </li> -->
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/students/login">Login</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/application">Register</a>
           </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/students/login">Login</a>
+          </li> -->
         <?php endif; ?>
       </ul>
     </div>

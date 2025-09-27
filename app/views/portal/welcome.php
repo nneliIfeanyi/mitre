@@ -46,14 +46,13 @@ if (isset($_COOKIE['student-id'])) {
 
     <div class="container">
         <div class="bg-light border">
-            <div class="lead"> <?php flash('success'); ?></div>
             <div class="px-2 py-5">
                 <h1 class="display-3">Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span></h1>
                 <!-- <p class="lead text-primary fs-3">Registration is closed.</p>  -->
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="<?php echo URLROOT; ?>/students/login" class="lead fw-bold btn btn-primary rounded-5">
-                            Click here to login
+                        <a href="<?php echo URLROOT; ?>/application" class="lead fw-bold btn btn-primary rounded-5">
+                            Click here to Register
                             <i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -169,8 +168,8 @@ if (isset($_COOKIE['student-id'])) {
             </p>
             <div class="row">
                 <div class="col-md-6">
-                    <a href="<?php echo URLROOT; ?>/students/login" class="lead fw-bold btn btn-primary rounded-5">
-                        Click here to Login
+                    <a href="<?php echo URLROOT; ?>/application" class="lead fw-bold btn btn-primary rounded-5">
+                        Click here to Register
                         <i class="fa fa-sign-in fa-1x" aria-hidden="true"></i>
                     </a>
                 </div>

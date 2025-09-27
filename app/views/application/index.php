@@ -41,7 +41,7 @@
     .hero {
       /*background: linear-gradient(135deg, #6f42c1, #6610f2);*/
       color: #fff;
-      padding: 160px 0;
+      padding: 100px 0;
       text-align: center;
     }
 
@@ -95,9 +95,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#criteria">Admission Criteria</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/application#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#criteria">Admission Criteria</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#contact">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -114,7 +114,7 @@
         <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
           Start Application
         </a>
-        <a href="#criteria" class="btn btn-outline-light btn-lg px-5 rounded-pill">
+        <a href="<?= URLROOT; ?>/application#criteria" class="btn btn-outline-light btn-lg px-5 rounded-pill">
           Read Admission Criteria
         </a>
       </div>
@@ -222,13 +222,13 @@
       });
 
       // Also catch internal link clicks for SPA-like behavior
-      $("a").on("click", function(e) {
-        var target = $(this).attr("target");
-        // avoid opening in new tab/window
-        if (!target || target === "_self") {
-          $("#loader").show();
-        }
-      });
+      // $("a").on("click", function(e) {
+      //   var target = $(this).attr("target");
+      //   // avoid opening in new tab/window
+      //   if (!target || target === "_self") {
+      //     $("#loader").show();
+      //   }
+      // });
     });
   </script>
 </body>
