@@ -125,8 +125,30 @@ class Application extends Controller
         'ref_info' => $_POST['ref_info']
       ];
       // check if passport empty and prevent continuation
-      if (empty($this->regModel->findRegId($_SESSION['reg_id'])->photo)) {
+      $check = $this->regModel->findRegId($_SESSION['reg_id']);
+      if (empty($check->photo)) {
         $this->regModel->step3($_SESSION['reg_id'], $data);
+        // Generate Reg No
+        if ($check->zone == 'Kaduna') {
+          $z = 'K';
+        } elseif ($check->zone == 'Minna') {
+          $z = 'N';
+        } elseif ($check->zone == 'Ufuma') {
+          $z = 'U';
+        }
+        if (strlen($check->id) == 1) {
+          $id = '00' . $check->id;
+        } elseif (strlen($check->id) == 2) {
+          $id = '0' . $check->id;
+        } elseif (strlen($check->id) == 3) {
+          $id = $check->id;
+        } else {
+          $id = $check->id;
+        }
+        $reg_no = '18-' . $z . $id;
+        $data['id'] = $_SESSION['reg_id'];
+        $data['reg_no'] = $reg_no;
+        $this->regModel->regNo($data);
         flash('msg', 'An error occurred! Passport photograph is required before final submission.', 'alert alert-danger');
         redirect('application/step3');
         exit();
@@ -134,6 +156,27 @@ class Application extends Controller
       // Update DB
       if ($this->regModel->step3($_SESSION['reg_id'], $data)) {
         // Final Submission
+        // Generate Reg No
+        if ($check->zone == 'Kaduna') {
+          $z = 'K';
+        } elseif ($check->zone == 'Minna') {
+          $z = 'N';
+        } elseif ($check->zone == 'Ufuma') {
+          $z = 'U';
+        }
+        if (strlen($check->id) == 1) {
+          $id = '00' . $check->id;
+        } elseif (strlen($check->id) == 2) {
+          $id = '0' . $check->id;
+        } elseif (strlen($check->id) == 3) {
+          $id = $check->id;
+        } else {
+          $id = $check->id;
+        }
+        $reg_no = '18-' . $z . $id;
+        $data['id'] = $_SESSION['reg_id'];
+        $data['reg_no'] = $reg_no;
+        $this->regModel->regNo($data);
         flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
         redirect('application/step3');
       } else {

@@ -143,6 +143,20 @@ class RegModel
         return $this->db->execute();
     }
 
+    public function regNo($data)
+    {
+        $sql = "UPDATE registrations SET
+                reg_no = :reg_no
+            WHERE reg_id = :id";
+
+        $this->db->query($sql);
+
+        $this->db->bind(':reg_no', $data['reg_no']);
+        $this->db->bind(':id', $data['id']);
+
+        return $this->db->execute();
+    }
+
 
     // Update Step 1
     public function updateStep1($id, $data)
