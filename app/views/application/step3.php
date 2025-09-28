@@ -167,11 +167,11 @@
       </div>
       <form method="POST" action="<?= URLROOT; ?>/application/step3" data-parsley-validate>
         <div class="mb-3">
-          <label class="text-bg-light badge">Referee's Name</label>
+          <label class="text-bg-light badge">Referee's Full Name</label>
           <input type="text" value="<?= (empty($data['step3']->ref_name)) ? '' : $data['step3']->ref_name; ?>" name="ref_name" class="form-control" required data-parsley-trigger="keyup">
         </div>
         <div class="mb-3">
-          <label class="text-bg-light badge">Referee's Phone</label>
+          <label class="text-bg-light badge">Referee's <span class="fst-italic">Whatsapp</span> Phone</label>
           <input type="number" value="<?= (empty($data['step3']->ref_phone)) ? '' : $data['step3']->ref_phone; ?>" name="ref_phone" class="form-control" required data-parsley-type="digits" data-parsley-length="[11,11]" data-parsley-length-message="Phone number must be exactly 11 digits." data-parsley-trigger="keyup">
         </div>
         <div class="mb-3">
@@ -179,7 +179,7 @@
           <input type="email" value="<?= (empty($data['step3']->ref_email)) ? '' : $data['step3']->ref_email; ?>" name="ref_email" class="form-control" required data-parsley-type="email">
         </div>
         <div class="mb-3">
-          <label class="text-bg-light badge">Referee's Address</label>
+          <label class="text-bg-light badge">Referee's Residential Address <span class="fst-italic">(includes town and state)</span></label>
           <textarea name="ref_address" class="form-control" required><?= (empty($data['step3']->ref_address)) ? '' : $data['step3']->ref_address; ?></textarea>
         </div>
         <div class="mb-3">
@@ -191,8 +191,13 @@
           <textarea name="ref_info" class="form-control"><?= (empty($data['step3']->ref_info)) ? '' : $data['step3']->ref_info; ?></textarea>
         </div>
         <div class="d-flex justify-content-center mt-4">
-          <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Previous</a>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <?php if (!empty($data['step3']->ref_name)) : ?>
+            <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark me-3"><i class="bi bi-chevron-left"></i> Prev</a>
+            <button type="submit" class="btn btn-primary">Update</button>
+          <?php else : ?>
+            <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
+            <button type="submit" class="btn btn-primary">Save</button>
+          <?php endif; ?>
         </div>
       </form>
       <form action="<?php echo URLROOT ?>/application/submit" method="post">

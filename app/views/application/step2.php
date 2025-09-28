@@ -183,7 +183,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="text-bg-light badge">Why do you want to attend MITRE? </label>
-                    <textarea name="why_mitre" class="form-control"><?= (empty($data['step2']->why_mitre)) ? '' : $data['step2']->why_mitre; ?></textarea>
+                    <textarea name="why_mitre" class="form-control" required><?= (empty($data['step2']->why_mitre)) ? '' : $data['step2']->why_mitre; ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label class="text-bg-light badge">Who has / had spiritual oversight over you?</label>
@@ -218,9 +218,16 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Previous</a>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                    <?php if (!empty($data['step2']->church)) : ?>
+                        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                    <?php else : ?>
+                        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                    <?php endif; ?>
+
                 </div>
             </form>
         </div>

@@ -196,9 +196,21 @@ class Application extends Controller
   public function passport()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      // Check if step1 is jumped! ie No DB record for current reg_id.
+      if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
+        redirect('application/step1');
+        exit();
+      }
       if (is_array($_FILES)) {
         $file = $_FILES['photo']['tmp_name'];
         $source_properties = getimagesize($file);
+        // echo "Width : " . $source_properties[0] . "<br>Height : " . $source_properties[1] . "<br>";
+        // i like to get image size and limit the size to 2mb
+        if ($_FILES['photo']['size'] > 2000000) {
+          flash('msg', 'File size exceeds 2MB limit', 'alert alert-danger');
+          redirect('application/step3');
+          exit();
+        }
         $image_type = $source_properties[2];
         if ($image_type == IMAGETYPE_JPEG) {
           $image_resource_id = imagecreatefromjpeg($file);
@@ -269,6 +281,8 @@ class Application extends Controller
       unset($_SESSION['reg_id']);
       session_destroy();
       $this->view('application/success');
+    } else {
+      die("Something went wrong...");
     }
   }
 

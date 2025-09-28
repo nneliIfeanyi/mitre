@@ -134,11 +134,11 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="text-bg-light badge">Surname</label>
-                            <input type="text" value="<?= (empty($data['step1']->surname)) ? '' : $data['step1']->surname; ?>" name="surname" class="form-control" required>
+                            <input type="text" value="<?= (empty($data['step1']->surname)) ? '' : $data['step1']->surname; ?>" name="surname" class="form-control" required data-parsley-singleword data-parsley-trigger="keyup">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="text-bg-light badge">Other Name</label>
-                            <input type="text" value="<?= (empty($data['step1']->other_name)) ? '' : $data['step1']->other_name; ?>" name="other_name" class="form-control" required>
+                            <input type="text" value="<?= (empty($data['step1']->other_name)) ? '' : $data['step1']->other_name; ?>" name="other_name" class="form-control" required data-parsley-singleword data-parsley-trigger="keyup">
                         </div>
                     </div>
                     <div class="row">
@@ -228,10 +228,10 @@
                     </div>
                     <div class="d-flex justify-content-center mt-4">
                         <?php if (isset($data['step1']->reg_id)) : ?>
-                            <button type="submit" class="btn btn-primary">Update Changes</button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
                             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
                         <?php else : ?>
-                            <button type="submit" class="btn btn-primary">Save Progress</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
                         <?php endif; ?>
                     </div>
@@ -273,6 +273,15 @@
                 }
             });
         });
+        // Add custom validator
+    window.Parsley.addValidator('singleword', {
+      validateString: function(value) {
+        return /^\S+$/.test(value); // No whitespace allowed
+      },
+      messages: {
+        en: 'Only one word is allowed.'
+      }
+    });
     </script>
 </body>
 
