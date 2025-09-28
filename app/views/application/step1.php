@@ -17,23 +17,6 @@
 
     <title><?= SITENAME; ?> - Application Portal</title>
     <style>
-        #flash-message {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            min-width: 250px;
-            padding: 15px 20px;
-            border-radius: 6px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-            opacity: 1;
-            transition: opacity 0.8s ease;
-        }
-
-        #flash-message.fade-out {
-            opacity: 0;
-        }
-
         /* Fullscreen loader */
         #loader {
             position: fixed;
@@ -131,7 +114,9 @@
                 <h1 class="fw-bold display-4">
                     Ministers Improvement And Training Retreat <span class="text-primary">(MITRE)</span>
                 </h1>
-                <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
+                <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna. <br>
+                    08034530726, 08058455719
+                </p>
                 <div class="h2 text-primary">APPLICATION FORM</div>
                 <p class="fst-italic fw-bold">This form should be completed and submitted on or before 31 January, 2026</p>
             </div>
@@ -297,17 +282,18 @@
                 en: 'Only one word is allowed.'
             }
         });
-        // Flash message fade out
+    </script>
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
-            let flash = document.getElementById("flash-message");
-            if (flash) {
-                setTimeout(() => {
-                    flash.classList.add("fade-out");
-                    setTimeout(() => flash.remove(), 800); // remove from DOM after fade
-                }, 4000); // visible for 4s
+            var flashModal = document.getElementById("flashModal");
+            if (flashModal) {
+                var modal = new bootstrap.Modal(flashModal);
+                modal.show();
             }
         });
     </script>
+
+
 </body>
 
 </html>
