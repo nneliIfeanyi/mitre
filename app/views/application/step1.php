@@ -17,6 +17,23 @@
 
     <title><?= SITENAME; ?> - Application Portal</title>
     <style>
+        #flash-message {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            min-width: 250px;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        #flash-message.fade-out {
+            opacity: 0;
+        }
+
         /* Fullscreen loader */
         #loader {
             position: fixed;
@@ -116,7 +133,7 @@
                 </h1>
                 <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
                 <div class="h2 text-primary">APPLICATION FORM</div>
-                <p class="fst-italic fw-bold">This form should be completed and submitted on or before FEB. 2026</p>
+                <p class="fst-italic fw-bold">This form should be completed and submitted on or before 31 January, 2026</p>
             </div>
         </div>
     </section>
@@ -228,7 +245,7 @@
                     </div>
                     <div class="d-flex justify-content-center mt-4">
                         <?php if (isset($data['step1']->reg_id)) : ?>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
                         <?php else : ?>
                             <button type="submit" class="btn btn-primary">Save</button>
@@ -236,6 +253,13 @@
                         <?php endif; ?>
                     </div>
                     </form>
+                    <?php if (!empty($data['step1']->photo) && !empty($data['step1']->church) && !empty($data['step1']->ref_name)) : ?>
+                        <form action="<?php echo URLROOT ?>/application/submit" method="post">
+                            <div class="d-flex justify-content-center mt-4">
+                                <button type="submit" class="btn btn-outline-primary rounded-5 fw-bold">Submit Application <i class="bi bi-send fs-5"></i></button>
+                            </div>
+                        </form>
+                    <?php endif; ?>
         </div>
     </section>
     <!-- Footer -->
@@ -263,25 +287,26 @@
             $(window).on("beforeunload", function() {
                 $("#loader").show();
             });
-
-            // Also catch internal link clicks for SPA-like behavior
-            $("a").on("click", function(e) {
-                var target = $(this).attr("target");
-                // avoid opening in new tab/window
-                if (!target || target === "_self") {
-                    $("#loader").show();
-                }
-            });
         });
         // Add custom validator
-    window.Parsley.addValidator('singleword', {
-      validateString: function(value) {
-        return /^\S+$/.test(value); // No whitespace allowed
-      },
-      messages: {
-        en: 'Only one word is allowed.'
-      }
-    });
+        window.Parsley.addValidator('singleword', {
+            validateString: function(value) {
+                return /^\S+$/.test(value); // No whitespace allowed
+            },
+            messages: {
+                en: 'Only one word is allowed.'
+            }
+        });
+        // Flash message fade out
+        document.addEventListener("DOMContentLoaded", function() {
+            let flash = document.getElementById("flash-message");
+            if (flash) {
+                setTimeout(() => {
+                    flash.classList.add("fade-out");
+                    setTimeout(() => flash.remove(), 800); // remove from DOM after fade
+                }, 4000); // visible for 4s
+            }
+        });
     </script>
 </body>
 

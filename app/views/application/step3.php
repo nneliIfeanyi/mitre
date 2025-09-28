@@ -17,6 +17,23 @@
 
   <title><?= SITENAME; ?> - Application Portal</title>
   <style>
+    #flash-message {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      min-width: 250px;
+      padding: 15px 20px;
+      border-radius: 6px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+      opacity: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    #flash-message.fade-out {
+      opacity: 0;
+    }
+
     /* Fullscreen loader */
     #loader {
       position: fixed;
@@ -116,7 +133,7 @@
         </h1>
         <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
         <div class="h2 text-primary">APPLICATION FORM</div>
-        <p class="fst-italic fw-bold">This form should be completed and submitted on or before FEB. 2026</p>
+        <p class="fst-italic fw-bold">This form should be completed and submitted on or before 31 January, 2026</p>
       </div>
     </div>
   </section>
@@ -126,7 +143,8 @@
       <h2 class="mb-4">Passport Photograph</h2>
       <!-- Progress Saving Notice -->
       <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
-        <strong>Note!</strong> Passport photograph is required before final submission.
+        <strong>Note!</strong> Passport photograph is required before final submission. <br>
+        Accepted formats are: JPG, PNG, JPEG. Must not be more than 2MB. <br>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       <?php flash('msg'); ?>
@@ -200,12 +218,13 @@
           <?php endif; ?>
         </div>
       </form>
-      <form action="<?php echo URLROOT ?>/application/submit" method="post">
-        <div class="d-flex justify-content-center mt-4">
-          <button type="submit" class="btn btn-outline-primary rounded-5 fw-bold">Submit Application <i class="bi bi-send fs-5"></i></button>
-        </div>
-      </form>
-
+      <?php if (!empty($data['step3']->photo) && !empty($data['step3']->church) && !empty($data['step3']->ref_name)) : ?>
+        <form action="<?php echo URLROOT ?>/application/submit" method="post">
+          <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-outline-primary rounded-5 fw-bold">Submit Application <i class="bi bi-send fs-5"></i></button>
+          </div>
+        </form>
+      <?php endif; ?>
     </div>
   </section>
   <!-- Footer -->
@@ -232,16 +251,17 @@
       $(window).on("beforeunload", function() {
         $("#loader").show();
       });
-
-      // Also catch internal link clicks for SPA-like behavior
-      $("a").on("click", function(e) {
-        var target = $(this).attr("target");
-        // avoid opening in new tab/window
-        if (!target || target === "_self") {
-          $("#loader").show();
-        }
-      });
     });
+    // Auto-dismiss flash message after 5 seconds
+    setTimeout(function() {
+      var flashMessage = document.getElementById('flash-message');
+      if (flashMessage) {
+        flashMessage.classList.add('fade-out');
+        setTimeout(function() {
+          flashMessage.remove();
+        }, 800); // Match the CSS transition duration
+      }
+    }, 5000); // 5 seconds
   </script>
 </body>
 
