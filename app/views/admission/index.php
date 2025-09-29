@@ -18,40 +18,35 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3 class="mb-0">Registrations</h3>
             </div>
-
-            <div class="card shadow-sm">
-                <div class="card-body table-responsive">
-                    <table id="usersTable" class="table table-striped table-hover align-middle">
-                        <thead class="table-light">
+            <table id="usersTable" class="table table-striped table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Zone</th>
+                        <th>Phone</th>
+                        <th class="text-end">View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($data['registrations'])) : ?>
+                        <?php $i = 1;
+                        foreach ($data['registrations'] as $user) : ?>
                             <tr>
-                                <th>#</th>
-                                <th>Full Name</th>
-                                <th>Zone</th>
-                                <th>Phone</th>
-                                <th class="text-end">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (!empty($data['registrations'])) : ?>
-                                <?php $i = 1;
-                                foreach ($data['registrations'] as $user) : ?>
-                                    <tr>
-                                        <td><?php echo $i++; ?></td>
-                                        <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
-                                        <td><?php echo htmlspecialchars($user->zone); ?></td>
-                                        <td><?php echo htmlspecialchars($user->mobile); ?></td>
-                                        <td class="text-end">
-                                            <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
-                                            <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                <td><?php echo $i++; ?></td>
+                                <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
+                                <td><?php echo htmlspecialchars($user->zone); ?></td>
+                                <td><?php echo htmlspecialchars($user->mobile); ?></td>
+                                <td class="text-end">
+                                    <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
+                                    <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
                                     <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
         </div>
     </section>
 </main>
