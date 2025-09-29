@@ -30,7 +30,7 @@
                             <div class="mb-4">
                                 <?php
                                 $photo = !empty($data['user']->photo)
-                                    ? URLROOT . "/photos/" . $data['user']->photo
+                                    ? URLROOT . "/" . $data['user']->photo
                                     : "https://via.placeholder.com/150x150.png?text=No+Photo";
                                 ?>
                                 <img src="<?php echo $photo; ?>" alt="Profile Photo" class="rounded-circle shadow-sm" width="150" height="150">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-4 fw-bold">Marital Status:</div>
-                                    <div class="col-sm-8"><?php echo htmlspecialchars($data['user']->email); ?></div>
+                                    <div class="col-sm-8"><?php echo htmlspecialchars($data['user']->marital_status); ?></div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-4 fw-bold">State:</div>

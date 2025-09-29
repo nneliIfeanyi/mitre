@@ -26,10 +26,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Full Name</th>
-                                <th>Reg_no</th>
-                                <th>Email</th>
+                                <th>Zone</th>
                                 <th>Phone</th>
-                                <th>Date</th>
                                 <th class="text-end">Actions</th>
                             </tr>
                         </thead>
@@ -40,11 +38,8 @@
                                     <tr>
                                         <td><?php echo $i++; ?></td>
                                         <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
-                                        <td><?php echo htmlspecialchars($user->reg_no); ?></td>
-                                        <td><?php echo htmlspecialchars($user->email); ?></td>
+                                        <td><?php echo htmlspecialchars($user->zone); ?></td>
                                         <td><?php echo htmlspecialchars($user->mobile); ?></td>
-
-                                        <td><?php echo date("Y-m-d", strtotime($user->created_at)); ?></td>
                                         <td class="text-end">
                                             <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
                                             <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>

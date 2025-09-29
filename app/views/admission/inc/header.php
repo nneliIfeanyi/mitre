@@ -22,7 +22,7 @@
     <link href="<?php echo URLROOT; ?>/theme/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="<?php echo URLROOT; ?>/theme/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"> -->
 
     <!-- Template Main CSS File -->
     <link href="<?php echo URLROOT; ?>/theme/css/style.css" rel="stylesheet">
