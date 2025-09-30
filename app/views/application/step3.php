@@ -129,7 +129,7 @@
       <!-- Progress Saving Notice -->
       <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
         <strong>Note!</strong> Passport photograph is required before final submission. <br>
-        Accepted formats are: JPG, PNG, JPEG. Must not be more than 2MB. <br>
+        Accepted formats are: JPG, PNG, JPEG. Must not be more than 5MB. <br>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       <?php flash('msg'); ?>

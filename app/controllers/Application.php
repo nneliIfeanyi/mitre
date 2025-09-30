@@ -205,8 +205,8 @@ class Application extends Controller
         $file = $_FILES['photo']['tmp_name'];
         $source_properties = getimagesize($file);
         // echo "Width : " . $source_properties[0] . "<br>Height : " . $source_properties[1] . "<br>";
-        // i like to get image size and limit the size to 2mb
-        if ($_FILES['photo']['size'] > 2000000) {
+        // i like to get image size and limit the size to 5mb
+        if ($_FILES['photo']['size'] > 5000000) {
           flash('msg', 'File size exceeds 2MB limit', 'alert alert-danger');
           redirect('application/step3');
           exit();
