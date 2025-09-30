@@ -33,7 +33,9 @@
                                     ? URLROOT . "/" . $data['user']->photo
                                     : "https://via.placeholder.com/150x150.png?text=No+Photo";
                                 ?>
-                                <img src="<?php echo $photo; ?>" alt="Profile Photo" class="rounded-circle shadow-sm" width="150" height="150">
+                               <a href="<?php echo $photo; ?>" download>
+                                    <img src="<?php echo $photo; ?>" alt="Profile Photo" class="rounded-circle shadow-sm" width="150" height="150">
+                               </a>
                             </div>
 
                             <!-- User Details -->
