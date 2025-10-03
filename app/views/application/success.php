@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>MITRE Registration - Success</title>
-    <link rel="stylesheet" href="<?= URLROOT; ?>/css/bootstrap.css" />
-    <style>
-        /* Fullscreen loader */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #fff;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
-</head>
-
+<?php require APPROOT . '/views/application/inc/header.php'; ?>
 <body class="container mt-5 text-center">
     <div id="loader">
         <div class="spinner-border text-primary" role="status">
@@ -42,15 +20,6 @@
             // Show loader again before unloading (e.g., navigating away)
             $(window).on("beforeunload", function() {
                 $("#loader").show();
-            });
-
-            // Also catch internal link clicks for SPA-like behavior
-            $("a").on("click", function(e) {
-                var target = $(this).attr("target");
-                // avoid opening in new tab/window
-                if (!target || target === "_self") {
-                    $("#loader").show();
-                }
             });
         });
     </script>

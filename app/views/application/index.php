@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <meta name="keywords" content="Discipleship, discipleship works, discipleship labour, discipleship in kaduna state Nigeria, MITRE">
-  <meta name="description" content="Ministers Improvement And Training Retreat, MITRE, Place of Refuge, Kaduna">
-  <link rel="stylesheet" href="<?= URLROOT; ?>/css/font-awesome.css" />
-  <link rel="stylesheet" href="<?= URLROOT; ?>/css/bootstrap.css" />
-  <link rel="stylesheet" href="<?= URLROOT; ?>/css/styles.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="<?= URLROOT; ?>/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?= URLROOT; ?>/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?= URLROOT; ?>/img/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-  <title><?= SITENAME; ?> - Application Portal</title>
-
+<?php require APPROOT . '/views/application/inc/header.php'; ?>
+<body>
+  <!-- Page Loader -->
+  <div id="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    /* Fullscreen loader */
-    #loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
+    
     .hero {
       /*background: linear-gradient(135deg, #6f42c1, #6610f2);*/
       color: #fff;
@@ -67,25 +37,8 @@
       transform: translateY(-5px);
     }
 
-    footer {
-      background: #212529;
-      color: #adb5bd;
-      padding: 30px 0;
-    }
 
-    footer a {
-      color: #f8f9fa;
-      text-decoration: none;
-    }
   </style>
-</head>
-
-<body>
-  <div id="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
@@ -197,40 +150,4 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="container text-center">
-      <p>&copy; <?= date('Y') . ' ' . SITENAME; ?>. All rights reserved.</p>
-      <p id="contact">
-        Need help?
-        <a href="https://api.whatsapp.com/send?phone=2348034530726&text=Hi,%20please%20i%20need%20help%20registering%20for%20MITRE!" target="_blank" rel="noopener">
-          Contact Support
-        </a>
-      </p>
-    </div>
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    $(document).ready(function() {
-      // Hide loader once DOM is ready
-      $("#loader").fadeOut("slow");
-
-      // Show loader again before unloading (e.g., navigating away)
-      $(window).on("beforeunload", function() {
-        $("#loader").show();
-      });
-
-      // Also catch internal link clicks for SPA-like behavior
-      // $("a").on("click", function(e) {
-      //   var target = $(this).attr("target");
-      //   // avoid opening in new tab/window
-      //   if (!target || target === "_self") {
-      //     $("#loader").show();
-      //   }
-      // });
-    });
-  </script>
-</body>
-
-</html>
+   <?php require APPROOT . '/views/application/inc/footer.php'; ?>

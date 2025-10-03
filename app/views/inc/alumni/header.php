@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <meta name="keywords" content="Discipleship, discipleship works, Alumni, discipleship labour, discipleship in kaduna state Nigeria, MITRE">
-  <meta name="description" content="Ministers Improvement And Training Retreat, MITRE, Place of Refuge, Kaduna">
+  <meta name="description" content="Ministers Improvement And Training Retreat, MITRE, Threshers Team Ministry, Kaduna">
   <meta name="author" content="Nneli Ifeanyi Victor">
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/font-awesome.css" />
   <link rel="stylesheet" href="<?= URLROOT ;?>/css/bootstrap.css" />
