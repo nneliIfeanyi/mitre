@@ -27,6 +27,27 @@ class Application extends Controller
     $this->view('application/index', $data);
   }
 
+  public function referee($reg_id)
+  {
+    $details = $this->regModel->findRegId($reg_id);
+    if (!$details) {
+      flash('msg', 'Invalid Referee Link', 'alert alert-danger');
+      redirect('application/error_page');
+      exit();
+    }
+    $data = [
+      'reg_id' => $reg_id,
+      'details' => $details
+    ];
+    $this->view('application/referee', $data);
+  }
+public function error_page()
+  {
+    $data = [
+      'msg' => 'Invalid Referee Link - Please check the link or contact support.'
+    ];
+    $this->view('application/error_page', $data);
+  }
   public function step1()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -110,6 +131,7 @@ class Application extends Controller
   // Step 3 | Referee Section
   public function step3()
   {
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Check if step1 is jumped! ie No DB record for current reg_id.
       if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
@@ -126,33 +148,6 @@ class Application extends Controller
       ];
       // check if passport empty and prevent continuation
       $check = $this->regModel->findRegId($_SESSION['reg_id']);
-      if (empty($check->photo)) {
-        $this->regModel->step3($_SESSION['reg_id'], $data);
-        // Generate Reg No
-        if ($check->zone == 'Kaduna') {
-          $z = 'K';
-        } elseif ($check->zone == 'Minna') {
-          $z = 'N';
-        } elseif ($check->zone == 'Ufuma') {
-          $z = 'U';
-        }
-        if (strlen($check->id) == 1) {
-          $id = '00' . $check->id;
-        } elseif (strlen($check->id) == 2) {
-          $id = '0' . $check->id;
-        } elseif (strlen($check->id) == 3) {
-          $id = $check->id;
-        } else {
-          $id = $check->id;
-        }
-        $reg_no = '18-' . $z . $id;
-        $data['id'] = $_SESSION['reg_id'];
-        $data['reg_no'] = $reg_no;
-        $this->regModel->regNo($data);
-        flash('msg', 'An error occurred! Passport photograph is required before final submission.', 'alert alert-danger');
-        redirect('application/step3');
-        exit();
-      }
       // Update DB
       if ($this->regModel->step3($_SESSION['reg_id'], $data)) {
         // Final Submission
@@ -177,8 +172,11 @@ class Application extends Controller
         $data['id'] = $_SESSION['reg_id'];
         $data['reg_no'] = $reg_no;
         $this->regModel->regNo($data);
-        flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
-        redirect('application/step3');
+    
+      // Send SMS feedback to candidate here
+      send_sms($check->mobile);
+        //flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
+        redirect('application/success/1');
       } else {
         die("Something went wrong...");
       } // End Update DB
@@ -188,6 +186,10 @@ class Application extends Controller
       $data  = [
         'step3' => $step3
       ];
+      if (!empty($data['step3']->photo) && !empty($data['step3']->church) && !empty($data['step3']->ref_name)){
+         redirect('application/success/1');
+        exit();
+      }
       $this->view('application/step3', $data);
     }
   } // End Step 3 | Referee Section
@@ -249,30 +251,9 @@ class Application extends Controller
     }
   }
 
-  public function submit()
+  public function success($id)
   {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // Check if Session reg_id is not set
-      if (!isset($_SESSION['reg_id']) || empty($_SESSION['reg_id'])) {
-        redirect('application/step1');
-      }
-      $user_data = $this->regModel->findRegId($_SESSION['reg_id']);
-      // Check if step1 is jumped! ie No DB record for current reg_id.
-      if (!$user_data) {
-        redirect('application/step1');
-        exit();
-      }
-      // check if step 2 empty and prevent continuation
-      if (empty($user_data->church)) {
-        redirect('application/step2');
-        exit();
-      }
-      // check if passport empty and prevent continuation
-      if (empty($user_data->photo)) {
-        flash('msg', 'An error occurred! Passport photograph is required before final submission.', 'alert alert-danger');
-        redirect('application/step3');
-        exit();
-      }
+      // Expire each cookie
       foreach ($_COOKIE as $name => $value) {
         // Expire each cookie
         setcookie($name, "", time() - 3600, "/");
@@ -280,10 +261,13 @@ class Application extends Controller
       }
       unset($_SESSION['reg_id']);
       session_destroy();
-      $this->view('application/success');
-    } else {
-      die("Something went wrong...");
-    }
+      if ($id === 1) {
+        $this->view('application/success');
+      }else{
+        $this->view('application/success2');
+      }
+      
+   
   }
 
   public function update_step1()
@@ -317,4 +301,60 @@ class Application extends Controller
       die('Something went wrong!');
     }
   }
+
+  public function ref_link_submit()
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $data = [
+        'ref_name' => $_POST['ref_name'],
+        'ref_phone' => $_POST['ref_phone'],
+        'ref_address' => $_POST['ref_address'],
+        'ref_email' => $_POST['ref_email'],
+        'ref_duration' => $_POST['ref_duration'],
+        'ref_info' => $_POST['ref_info']
+      ];
+      // Update DB
+      if ($this->regModel->step3($_POST['reg_id'], $data)) {
+        $check = $this->regModel->findRegId($_POST['reg_id']);
+        // Final Submission
+        // Generate Reg No
+        if ($check->zone == 'Kaduna') {
+          $z = 'K';
+        } elseif ($check->zone == 'Minna') {
+          $z = 'N';
+        } elseif ($check->zone == 'Ufuma') {
+          $z = 'U';
+        }
+        if (strlen($check->id) == 1) {
+          $id = '00' . $check->id;
+        } elseif (strlen($check->id) == 2) {
+          $id = '0' . $check->id;
+        } elseif (strlen($check->id) == 3) {
+          $id = $check->id;
+        } else {
+          $id = $check->id;
+        }
+        $reg_no = '18-' . $z . $id;
+        $data['id'] = $_POST['reg_id'];
+        $data['reg_no'] = $reg_no;
+        $this->regModel->regNo($data);
+        // Expire each cookie
+        foreach ($_COOKIE as $name => $value) {
+        setcookie($name, "", time() - 3600, "/");
+        unset($_COOKIE[$name]);
+      }
+        unset($_SESSION['reg_id']);
+        session_destroy();
+        // Send Sms feedback to candidate here
+        send_sms($check->mobile);
+        redirect('application/success/2');
+      } else {
+        die("Something went wrong...");
+      } // End Update DB
+    } else { // Not Post Request
+     
+        die("Something went wrong...");
+
+    }
+  } // End Referee link Section
 }

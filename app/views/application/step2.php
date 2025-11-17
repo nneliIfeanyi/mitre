@@ -133,26 +133,23 @@
                         <input type="text" value="<?= (empty($data['step2']->institution)) ? '' : $data['step2']->institution; ?>" name="institution" class="form-control" required>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center mt-4">
+                
                     <?php if (!empty($data['step2']->church)) : ?>
+                    <p class="lead fst-italic">You can  make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
+                    <div class="d-flex justify-content-center mt-2">
                         <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
                         <button type="submit" class="btn btn-primary">Update</button>
                         <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                    </div>
                     <?php else : ?>
+                    <p class="lead fst-italic">Ensure to <span class="fw-bold">Save</span> before proceeding to <span class="fw-bold">Next</span></p>
+                    <div class="d-flex justify-content-center mt-4">
                         <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
-                    <?php endif; ?>
-
-                </div>
-            </form>
-            <?php if (!empty($data['step2']->photo) && !empty($data['step2']->church) && !empty($data['step2']->ref_name)) : ?>
-                <form action="<?php echo URLROOT ?>/application/submit" method="post">
-                    <div class="d-flex justify-content-center mt-4">
-                        <button type="submit" class="btn btn-outline-primary rounded-5 fw-bold">Submit Application <i class="bi bi-send fs-5"></i></button>
                     </div>
-                </form>
-            <?php endif; ?>
+                    <?php endif; ?>
+            </form>
         </div>
     </section>
     <!-- Footer -->

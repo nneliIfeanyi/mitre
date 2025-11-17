@@ -142,23 +142,20 @@
                             <option value="No">No</option>
                         </select>
                     </div>
-                    <div class="d-flex justify-content-center mt-4">
-                        <?php if (isset($data['step1']->reg_id)) : ?>
+                    <?php if (isset($data['step1']->reg_id)) : ?>
+                        <p class="lead fst-italic">You can  make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
+                        <div class="d-flex justify-content-center mt-2">
                             <button type="submit" class="btn btn-primary">Update</button>
                             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
-                        <?php else : ?>
+                        </div>
+                    <?php else : ?>
+                        <p class="lead fst-italic">Ensure to <span class="fw-bold">Save</span> before proceeding to <span class="fw-bold">Next</span></p>
+                        <div class="d-flex justify-content-center mt-2">
                             <button type="submit" class="btn btn-primary">Save</button>
                             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
-                        <?php endif; ?>
-                    </div>
-                    </form>
-                    <?php if (!empty($data['step1']->photo) && !empty($data['step1']->church) && !empty($data['step1']->ref_name)) : ?>
-                        <form action="<?php echo URLROOT ?>/application/submit" method="post">
-                            <div class="d-flex justify-content-center mt-4">
-                                <button type="submit" class="btn btn-outline-primary rounded-5 fw-bold">Submit Application <i class="bi bi-send fs-5"></i></button>
-                            </div>
-                        </form>
+                        </div>
                     <?php endif; ?>
-        </div>
+                    </form>
+                </div>
     </section>
    <?php require APPROOT . '/views/application/inc/footer.php'; ?>

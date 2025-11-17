@@ -41,9 +41,9 @@ function flash($name = '', $message = '', $class = 'alert alert-success')
 function send_sms($phone_number)
 {
   $phone_number = ltrim($phone_number, '\0');
-  $email = "";
-  $password = "";
-  $message = "New Student Registration on MITRE Portal. Please check the admin dashboard for details.";
+  $email = "stanvicbest@gmail.com";
+  $password = "824NXJ46mYhmSY$";
+  $message = "Your MITRE application was recieved successfully. You will be contacted for further information. More of God's blessings.";
   $sender_name = "MITRE";
   $recipients = '234' . $phone_number;
 
