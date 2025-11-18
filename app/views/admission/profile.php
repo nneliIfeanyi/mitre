@@ -186,10 +186,10 @@
                         </div>
 
                         <div class="card-footer text-end">
-                            <a href="javascript:void" class="btn btn-warning">
+                            <a href="javascript:void " class="btn btn-warning">
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
-                            <a href="javascript:void" class="btn btn-danger">
+                            <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#class<?php echo $data['user']->id; ?>" class="btn btn-danger">
                                 <i class="bi bi-trash"></i> Delete
                             </a>
                         </div>
@@ -198,6 +198,30 @@
             </div>
         </div>
     </section>
+        <!-- Delete Modal -->
+        <div class="modal fade" id="class<?php echo $data['user']->id; ?>" tabindex="-1">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Are you sure to delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <p class="lead fw-bold fst-italic">This action cannot be reversed.</p>
+        </div>
+        <div class="modal-footer">
+        <div class="d-flex gap-4">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+        <form method="POST" action="<?php echo URLROOT; ?>/admission/delete/<?php echo $data['user']->id; ?>">
+        <input class="btn btn-danger" type="submit" value="Yes Continue">
+        </form>
+        </div>
+        </div>
+
+        </div>
+        </div>
+        </div>
+        <!-- End Delete Modal -->
 </main>
 
 <?php require APPROOT . '/views/admission/inc/footer.php'; ?>

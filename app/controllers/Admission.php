@@ -30,4 +30,20 @@ class Admission extends Controller {
     $this->view('admission/profile', $data);
 }
 
+  public function delete($id)
+  {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      //Execute
+      if ($this->regModel->delete($id)) {
+        // Redirect
+        flash('msg', 'Delete Successfull..');
+        redirect('admission');
+      } else {
+        die('Something went wrong');
+      }
+    } else {
+      redirect('admission');
+    }
+  }
+
 }

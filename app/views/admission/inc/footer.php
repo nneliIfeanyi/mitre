@@ -15,3 +15,12 @@
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script> -->
 <!-- Template Main JS File -->
 <script src="<?php echo URLROOT; ?>/theme/js/main.js"></script>
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var flashModal = document.getElementById("flashModal");
+            if (flashModal) {
+                var modal = new bootstrap.Modal(flashModal);
+                modal.show();
+            }
+        });
+    </script>

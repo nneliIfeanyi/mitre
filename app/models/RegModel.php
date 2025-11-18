@@ -139,7 +139,6 @@ class RegModel
 
         $this->db->bind(':photo', $data['photo']);
         $this->db->bind(':id', $data['id']);
-
         return $this->db->execute();
     }
 
@@ -209,5 +208,23 @@ class RegModel
     $this->db->bind(':id', $id);
     return $this->db->single(); // fetch one row
 }
+
+// DELETE
+
+ public function delete($id)
+  {
+    // Prepare Query
+    $this->db->query('DELETE FROM registrations WHERE id = :id');
+
+    // Bind Values
+    $this->db->bind(':id', $id);
+
+    //Execute
+    if ($this->db->execute()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }
