@@ -151,6 +151,11 @@
                     <?php endif; ?>
             </form>
         </div>
+        <?php if(isset($_SESSION['admin'])):?>
+        <div class="d-flex justify-content-center m-4">
+        <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step2']->id;?>" class="btn btn-primary rounded-3">Return</a>
+      </div>
+        <?php endif;?>
     </section>
     <!-- Footer -->
  <?php require APPROOT . '/views/application/inc/footer.php'; ?>

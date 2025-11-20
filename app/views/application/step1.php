@@ -111,13 +111,13 @@
                             <input type="number" value="<?= (empty($data['step1']->mobile)) ? '' : $data['step1']->mobile; ?>" name="mobile" class="form-control" required data-parsley-type="digits" data-parsley-length="[11,11]" data-parsley-length-message="Phone number must be exactly 11 digits." data-parsley-trigger="keyup">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="text-bg-light badge">Alternative Mobile Number</label>
-                            <input type="number" value="<?= (empty($data['step1']->alt_no)) ? '' : $data['step1']->alt_no; ?>" name="alt_no" class="form-control" data-parsley-length="[11,11]" data-parsley-length-message="Phone number must be exactly 11 digits." data-parsley-trigger="keyup" required data-parsley-type="digits">
+                            <label class="text-bg-light badge">Alternative Mobile Number</label><span style="font-size:xsmall">(optional)</span>
+                            <input type="number" value="<?= (empty($data['step1']->alt_no)) ? '' : $data['step1']->alt_no; ?>" name="alt_no" class="form-control" data-parsley-length="[11,11]" data-parsley-length-message="Phone number must be exactly 11 digits." data-parsley-trigger="keyup" data-parsley-type="digits">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="text-bg-light badge">Email</label>
-                        <input type="email" value="<?= (empty($data['step1']->email)) ? '' : $data['step1']->email; ?>" name="email" class="form-control" required data-parsley-type="email">
+                        <label class="text-bg-light badge">Email</label><span style="font-size:xsmall">(optional)</span>
+                        <input type="email" value="<?= (empty($data['step1']->email)) ? '' : $data['step1']->email; ?>" name="email" class="form-control" data-parsley-type="email">
                     </div>
                     <div class="mb-3">
                         <label class="text-bg-light badge">Working Experience / Occupation</label>
@@ -156,6 +156,11 @@
                         </div>
                     <?php endif; ?>
                     </form>
+                    <?php if(isset($_SESSION['admin'])):?>
+        <div class="d-flex justify-content-center m-4">
+        <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step1']->id;?>" class="btn btn-primary rounded-3">Return</a>
+      </div>
+        <?php endif;?>
                 </div>
     </section>
    <?php require APPROOT . '/views/application/inc/footer.php'; ?>

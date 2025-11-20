@@ -23,4 +23,4 @@
                 modal.show();
             }
         });
-    </script>
+</script>

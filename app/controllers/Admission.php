@@ -3,7 +3,7 @@ class Admission extends Controller {
     private $regModel;
 
     public function __construct() {
-        $this->regModel = $this->model('RegModel');
+    $this->regModel = $this->model('RegModel');
     }
 
     // Admin dashboard view
@@ -28,6 +28,26 @@ class Admission extends Controller {
     ];
 
     $this->view('admission/profile', $data);
+}
+
+public function edit($id) {
+  $user = $this->regModel->getRegistrationById($id);
+    setcookie("reg_id", $user->reg_id, time() + (86400 * 7), "/");
+    $_SESSION['reg_id'] = $_COOKIE['reg_id'];
+    $fullname = $user->surname.' '.$user->other_name;
+    $data = [
+        'user' => $user,
+        'name' => $fullname
+    ];
+
+    $this->view('admission/edit', $data);
+}
+
+public function admit($id) {
+  $user = $this->regModel->getRegistrationById($id);
+  send_admit_sms($user->mobile);
+  flash('msg', 'SMS Sent Successfully!');
+  redirect('admission/profile/'.$id);
 }
 
   public function delete($id)

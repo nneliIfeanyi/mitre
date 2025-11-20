@@ -153,8 +153,8 @@
           <input type="number" value="<?= (empty($data['step3']->ref_phone)) ? '' : $data['step3']->ref_phone; ?>" name="ref_phone" class="form-control" required data-parsley-type="digits" data-parsley-length="[11,11]" data-parsley-length-message="Phone number must be exactly 11 digits." data-parsley-trigger="keyup">
         </div>
         <div class="mb-3">
-          <label class="text-bg-light badge">Referee's Email</label>
-          <input type="email" value="<?= (empty($data['step3']->ref_email)) ? '' : $data['step3']->ref_email; ?>" name="ref_email" class="form-control" required data-parsley-type="email">
+          <label class="text-bg-light badge">Referee's Email</label><span style="font-size:xsmall">(optional)</span>
+          <input type="email" value="<?= (empty($data['step3']->ref_email)) ? '' : $data['step3']->ref_email; ?>" name="ref_email" class="form-control" data-parsley-type="email">
         </div>
         <div class="mb-3">
           <label class="text-bg-light badge">Referee's Residential Address <span class="fst-italic">(includes town and state)</span></label>
@@ -174,10 +174,23 @@
             <button type="submit" class="btn btn-primary">Update</button>
           <?php else : ?>
             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
-            <button type="submit" class="btn btn-primary">Submit Application</button>
+            <button type="submit" class="btn btn-primary">Submit Details</button>
           <?php endif; ?>
         </div>
       </form>
+      <?php if (!empty($data['step3']->photo) && !empty($data['step3']->church) && !empty($data['step3']->ref_name) && !isset($_SESSION['admin'])):?>
+        <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
+        <strong>Note!</strong> You can now submit your application!
+      </div>
+      <div class="d-flex justify-content-center m-4">
+        <a href="<?= URLROOT; ?>/application/success/1" class="btn btn-primary rounded-3">Submit Application</a>
+      </div>
+      <?php endif;?>
+      <?php if(isset($_SESSION['admin'])):?>
+        <div class="d-flex justify-content-center m-4">
+        <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step3']->id;?>" class="btn btn-primary rounded-3">Return</a>
+      </div>
+        <?php endif;?>
     </div>
   </section>
   <!-- Footer -->

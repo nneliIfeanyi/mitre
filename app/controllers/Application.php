@@ -48,6 +48,8 @@ public function error_page()
     ];
     $this->view('application/error_page', $data);
   }
+
+
   public function step1()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -174,9 +176,9 @@ public function error_page()
         $this->regModel->regNo($data);
     
       // Send SMS feedback to candidate here
-      send_sms($check->mobile);
-        //flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
-        redirect('application/success/1');
+      //send_sms($check->mobile);
+        flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
+        redirect('application/step3');
       } else {
         die("Something went wrong...");
       } // End Update DB
@@ -186,10 +188,6 @@ public function error_page()
       $data  = [
         'step3' => $step3
       ];
-      if (!empty($data['step3']->photo) && !empty($data['step3']->church) && !empty($data['step3']->ref_name)){
-         redirect('application/success/1');
-        exit();
-      }
       $this->view('application/step3', $data);
     }
   } // End Step 3 | Referee Section

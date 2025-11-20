@@ -186,7 +186,10 @@
                         </div>
 
                         <div class="card-footer text-end">
-                            <a href="javascript:void " class="btn btn-warning">
+                            <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#admit<?php echo $data['user']->id; ?>" class="btn btn-primary">
+                             Admit
+                            </a>
+                            <a href="<?php echo URLROOT; ?>/admission/edit/<?php echo $data['user']->id; ?>" class="btn btn-warning">
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
                             <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#class<?php echo $data['user']->id; ?>" class="btn btn-danger">
@@ -222,6 +225,31 @@
         </div>
         </div>
         <!-- End Delete Modal -->
+
+          <!-- Admit Modal -->
+        <div class="modal fade" id="admit<?php echo $data['user']->id; ?>" tabindex="-1">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Are you sure to Admit <span class="text-primary fw-semibold">
+            <?php echo $data['user']->surname.' '.$data['user']->other_name; ?>
+        </span> </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <p class="lead fw-bold fst-italic">This action would trigger and send SMS to the candidate.</p>
+        </div>
+        <div class="modal-footer">
+        <div class="d-flex gap-4">
+        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+        <a href="<?php echo URLROOT;?>/admission/admit/<?php echo $data['user']->id; ?>" class="btn btn-success">Yes Continue</a>
+        </div>
+        </div>
+
+        </div>
+        </div>
+        </div>
+        <!-- End Admit Modal -->
 </main>
 
 <?php require APPROOT . '/views/admission/inc/footer.php'; ?>
