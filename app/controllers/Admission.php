@@ -4,6 +4,7 @@ class Admission extends Controller {
 
     public function __construct() {
     $this->regModel = $this->model('RegModel');
+    $_SESSION['admin'] = true;
     }
 
     // Admin dashboard view
