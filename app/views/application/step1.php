@@ -146,7 +146,9 @@
                         <p class="lead fst-italic">You can  make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
                         <div class="d-flex justify-content-center mt-2">
                             <button type="submit" class="btn btn-primary">Update</button>
+                             <?php if(!isset($_SESSION['admin'])):?>
                             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                             <?php endif;?>
                         </div>
                     <?php else : ?>
                         <p class="lead fst-italic">Ensure to <span class="fw-bold">Save</span> before proceeding to <span class="fw-bold">Next</span></p>

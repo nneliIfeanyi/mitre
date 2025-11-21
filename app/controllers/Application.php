@@ -41,7 +41,7 @@ class Application extends Controller
     ];
     $this->view('application/referee', $data);
   }
-public function error_page()
+  public function error_page()
   {
     $data = [
       'msg' => 'Invalid Referee Link - Please check the link or contact support.'
@@ -76,13 +76,16 @@ public function error_page()
         'litracy' => $_POST['litracy']
       ];
       if ($this->regModel->step1($data)) {
-        flash('msg', 'Data Saved Successfully, proceed to next step.');
-        redirect('application/step1');
+        flash('msg', 'Data Saved Successfully, continue with next step.');
+        redirect('application/step2');
       } else {
         die("Something went wrong...");
       }
     } else {
       //Pull from database
+      if ($_GET['reg_id'] && isset($_SESSION['admin'])) {
+        $_SESSION['reg_id'] = $_GET['reg_id'];
+      }
       $step1 = $this->regModel->findRegId($_SESSION['reg_id']);
       $data  = [
         'reg_id' => $_SESSION['reg_id'],
@@ -96,11 +99,12 @@ public function error_page()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Check if step1 is jumped! ie No DB record for current reg_id.
-      if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
-        redirect('application/step1');
-        exit();
-      }
+      // if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
+      //   redirect('application/step1');
+      //   exit();
+      // }
       $data = [
+        'reg_id' => $_POST['reg_id'],
         'church' => $_POST['church'],
         'post' => $_POST['post'],
         'born_again' => $_POST['born_again'],
@@ -115,17 +119,25 @@ public function error_page()
         'cert_year' => $_POST['cert_year'],
         'institution' => $_POST['institution']
       ];
-      if ($this->regModel->step2($_SESSION['reg_id'], $data)) {
-        flash('msg', 'Data Saved Successfully, proceed to next step.');
-        redirect('application/step2');
+      if ($this->regModel->step2($data['reg_id'], $data)) {
+        flash('msg', 'Data Saved Successfully, proceed with next step.');
+        if (isset($_SESSION['admin'])) {
+          redirect('application/step2?reg_id=' . $_POST['reg_id']);
+        } else {
+          redirect('application/step3');
+        }
       } else {
         die("Something went wrong...");
       }
     } else {
       //Pull from database
+      if ($_GET['reg_id'] && isset($_SESSION['admin'])) {
+        $_SESSION['reg_id'] = $_GET['reg_id'];
+      }
       $step2 = $this->regModel->findRegId($_SESSION['reg_id']);
       $data  = [
-        'step2' => $step2
+        'step2' => $step2,
+        'reg_id' => $_SESSION['reg_id'],
       ];
       $this->view('application/step2', $data);
     }
@@ -133,14 +145,15 @@ public function error_page()
   // Step 3 | Referee Section
   public function step3()
   {
-    
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Check if step1 is jumped! ie No DB record for current reg_id.
-      if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
-        redirect('application/step1');
-        exit();
-      }
+      // if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
+      //   redirect('application/step1');
+      //   exit();
+      // }
       $data = [
+        'reg_id' => $_POST['reg_id'],
         'ref_name' => $_POST['ref_name'],
         'ref_phone' => $_POST['ref_phone'],
         'ref_address' => $_POST['ref_address'],
@@ -148,10 +161,9 @@ public function error_page()
         'ref_duration' => $_POST['ref_duration'],
         'ref_info' => $_POST['ref_info']
       ];
-      // check if passport empty and prevent continuation
-      $check = $this->regModel->findRegId($_SESSION['reg_id']);
+      $check = $this->regModel->findRegId($data['reg_id']);
       // Update DB
-      if ($this->regModel->step3($_SESSION['reg_id'], $data)) {
+      if ($this->regModel->step3($data['reg_id'], $data)) {
         // Final Submission
         // Generate Reg No
         if ($check->zone == 'Kaduna') {
@@ -174,18 +186,23 @@ public function error_page()
         $data['id'] = $_SESSION['reg_id'];
         $data['reg_no'] = $reg_no;
         $this->regModel->regNo($data);
-    
-      // Send SMS feedback to candidate here
-      //send_sms($check->mobile);
         flash('msg', 'Referee Data Saved Successfully. You can now submit your application.');
-        redirect('application/step3');
+        if (isset($_SESSION['admin'])) {
+          redirect('application/step3?reg_id=' . $_POST['reg_id']);
+        } else {
+          redirect('application/step3');
+        }
       } else {
         die("Something went wrong...");
       } // End Update DB
     } else { // Not Post Request
       //Pull from database
+      if ($_GET['reg_id'] && isset($_SESSION['admin'])) {
+        $_SESSION['reg_id'] = $_GET['reg_id'];
+      }
       $step3 = $this->regModel->findRegId($_SESSION['reg_id']);
       $data  = [
+        'reg_id' => $_SESSION['reg_id'],
         'step3' => $step3
       ];
       $this->view('application/step3', $data);
@@ -197,10 +214,10 @@ public function error_page()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Check if step1 is jumped! ie No DB record for current reg_id.
-      if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
-        redirect('application/step1');
-        exit();
-      }
+      // if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
+      //   redirect('application/step1');
+      //   exit();
+      // }
       if (is_array($_FILES)) {
         $file = $_FILES['photo']['tmp_name'];
         $source_properties = getimagesize($file);
@@ -208,7 +225,11 @@ public function error_page()
         // i like to get image size and limit the size to 5mb
         if ($_FILES['photo']['size'] > 5000000) {
           flash('msg', 'File size exceeds 5MB limit', 'alert alert-danger');
-          redirect('application/step3');
+          if (isset($_SESSION['admin'])) {
+            redirect('application/step3?reg_id=' . $_POST['reg_id']);
+          } else {
+            redirect('application/step3');
+          }
           exit();
         }
         $image_type = $source_properties[2];
@@ -218,13 +239,17 @@ public function error_page()
           imagejpeg($target_layer, "photos/" . $_FILES['photo']['name']);
           $db_image_file =  "photos/" . $_FILES['photo']['name'];
           $data = [
-            'id' => $_SESSION['reg_id'],
+            'id' => isset($_SESSION['admin']) ? $_POST['reg_id'] : $_SESSION['reg_id'],
             'photo' => $db_image_file
           ];
           $upload = $this->regModel->addPassport($data);
           if ($upload) {
             flash('msg', 'Photo is Uploaded Successfully..');
-            redirect('application/step3');
+            if (isset($_SESSION['admin'])) {
+              redirect('application/step3?reg_id=' . $_POST['reg_id']);
+            } else {
+              redirect('application/step3');
+            }
           } else {
             die('Something went wrong..');
           }
@@ -234,13 +259,17 @@ public function error_page()
           imagepng($target_layer, "photos/" . $_FILES['photo']['name']);
           $db_image_file =  "photos/" . $_FILES['photo']['name'];
           $data = [
-            'id' => $_SESSION['reg_id'],
+            'id' => isset($_SESSION['admin']) ? $_POST['reg_id'] : $_SESSION['reg_id'],
             'photo' => $db_image_file
           ];
           $upload = $this->regModel->addPassport($data);
           if ($upload) {
             flash('msg', 'Your Photo is Uploaded Successfully');
-            redirect('application/step3');
+            if (isset($_SESSION['admin'])) {
+              redirect('application/step3?reg_id=' . $_POST['reg_id']);
+            } else {
+              redirect('application/step3');
+            }
           } else {
             die('Something went wrong..');
           }
@@ -251,21 +280,22 @@ public function error_page()
 
   public function success($id)
   {
+    $check = $this->regModel->findRegId($_SESSION['reg_id']);
+    // Expire each cookie
+    foreach ($_COOKIE as $name => $value) {
       // Expire each cookie
-      foreach ($_COOKIE as $name => $value) {
-        // Expire each cookie
-        setcookie($name, "", time() - 3600, "/");
-        unset($_COOKIE[$name]);
-      }
-      unset($_SESSION['reg_id']);
-      session_destroy();
-      if ($id === 1) {
-        $this->view('application/success');
-      }else{
-        $this->view('application/success2');
-      }
-      
-   
+      setcookie($name, "", time() - 3600, "/");
+      unset($_COOKIE[$name]);
+    }
+    unset($_SESSION['reg_id']);
+    session_destroy();
+    //Send SMS feedback to candidate here
+    send_sms($check->mobile);
+    if ($id === 1) {
+      $this->view('application/success');
+    } else {
+      $this->view('application/success2');
+    }
   }
 
   public function update_step1()
@@ -289,9 +319,13 @@ public function error_page()
         'lang_write' => $_POST['lang_write'],
         'litracy' => $_POST['litracy']
       ];
-      if ($this->regModel->updateStep1($_SESSION['reg_id'], $data)) {
+      if ($this->regModel->updateStep1($data['reg_id'], $data)) {
         flash('msg', 'Changes Saved Successfully, proceed to next step.');
-        redirect('application/step1');
+        if (isset($_SESSION['admin'])) {
+          redirect('application/step1?reg_id=' . $_POST['reg_id']);
+        } else {
+          redirect('application/step1');
+        }
       } else {
         die("Something went wrong...");
       }
@@ -338,9 +372,9 @@ public function error_page()
         $this->regModel->regNo($data);
         // Expire each cookie
         foreach ($_COOKIE as $name => $value) {
-        setcookie($name, "", time() - 3600, "/");
-        unset($_COOKIE[$name]);
-      }
+          setcookie($name, "", time() - 3600, "/");
+          unset($_COOKIE[$name]);
+        }
         unset($_SESSION['reg_id']);
         session_destroy();
         // Send Sms feedback to candidate here
@@ -350,9 +384,8 @@ public function error_page()
         die("Something went wrong...");
       } // End Update DB
     } else { // Not Post Request
-     
-        die("Something went wrong...");
 
+      die("Something went wrong...");
     }
   } // End Referee link Section
 }

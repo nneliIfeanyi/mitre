@@ -41,6 +41,7 @@
             <h2 class="mb-4">Spiritual & Church Information</h2>
             <?php flash('msg'); ?>
             <form method="POST" action="<?= URLROOT; ?>/application/step2" data-parsley-validate>
+                <input type="hidden" name="reg_id" value="<?= (empty($data['reg_id'])) ? '' : $data['reg_id']; ?>">
                 <div class="mb-3">
                     <label class="text-bg-light badge">Church / Local Assembly</label>
                     <input type="text" value="<?= (empty($data['step2']->church)) ? '' : $data['step2']->church; ?>" name="church" class="form-control" required>
@@ -137,9 +138,13 @@
                     <?php if (!empty($data['step2']->church)) : ?>
                     <p class="lead fst-italic">You can  make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
                     <div class="d-flex justify-content-center mt-2">
+                        <?php if(!isset($_SESSION['admin'])):?>
                         <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
+                         <?php endif;?>
                         <button type="submit" class="btn btn-primary">Update</button>
+                         <?php if(!isset($_SESSION['admin'])):?>
                         <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                         <?php endif;?>
                     </div>
                     <?php else : ?>
                     <p class="lead fst-italic">Ensure to <span class="fw-bold">Save</span> before proceeding to <span class="fw-bold">Next</span></p>

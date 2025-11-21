@@ -22,7 +22,10 @@
                         <?php echo $data['name'];?>
                     </span>
                  </p>
-                 <a href="<?php echo URLROOT; ?>/application/step1" class="btn btn-warning"> Continue</a>
+                 <a href="<?php echo URLROOT; ?>/application/step1?reg_id=<?= $data['reg_id']?>" class="btn btn-warning"> Step1</a>
+                 <a href="<?php echo URLROOT; ?>/application/step2?reg_id=<?= $data['reg_id']?>" class="btn btn-warning"> Step2</a>
+                 <a href="<?php echo URLROOT; ?>/application/step3?reg_id=<?= $data['reg_id']?>" class="btn btn-warning"> Passport</a>
+                 <a href="<?php echo URLROOT; ?>/application/step3?reg_id=<?= $data['reg_id']?>" class="btn btn-warning"> Referal</a>
                  <a href="<?php echo URLROOT;?>/admission/profile/<?= $data['user']->id;?>" class="btn btn-dark" >Return</a>
             </div>
         </div>

@@ -49,6 +49,7 @@
       </div>
       <?php flash('msg'); ?>
       <form method="POST" action="<?= URLROOT; ?>/application/passport" enctype="multipart/form-data" data-parsley-validate>
+        <input type="hidden" name="reg_id" value="<?= (empty($data['reg_id'])) ? '' : $data['reg_id']; ?>">
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
@@ -144,6 +145,7 @@
         <strong>Note!</strong> Do not serve as a referee for someone you do not know very well!
       </div>
       <form method="POST" action="<?= URLROOT; ?>/application/step3" data-parsley-validate>
+        <input type="hidden" name="reg_id" value="<?= (empty($data['reg_id'])) ? '' : $data['reg_id']; ?>">
         <div class="mb-3">
           <label class="text-bg-light badge">Referee's Full Name</label>
           <input type="text" value="<?= (empty($data['step3']->ref_name)) ? '' : $data['step3']->ref_name; ?>" name="ref_name" class="form-control" required data-parsley-trigger="keyup">
@@ -170,7 +172,9 @@
         </div>
         <div class="d-flex justify-content-center mt-4">
           <?php if (!empty($data['step3']->ref_name)) : ?>
+            <?php if(!isset($_SESSION['admin'])):?>
             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark me-3"><i class="bi bi-chevron-left"></i> Prev</a>
+            <?php endif;?>
             <button type="submit" class="btn btn-primary">Update</button>
           <?php else : ?>
             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>

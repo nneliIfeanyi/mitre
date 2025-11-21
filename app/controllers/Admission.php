@@ -33,10 +33,9 @@ class Admission extends Controller {
 
 public function edit($id) {
   $user = $this->regModel->getRegistrationById($id);
-    setcookie("reg_id", $user->reg_id, time() + (86400 * 7), "/");
-    $_SESSION['reg_id'] = $_COOKIE['reg_id'];
     $fullname = $user->surname.' '.$user->other_name;
     $data = [
+      'reg_id' => $user->reg_id,
         'user' => $user,
         'name' => $fullname
     ];
