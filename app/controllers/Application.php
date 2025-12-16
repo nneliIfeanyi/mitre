@@ -3,10 +3,13 @@ class Application extends Controller
 {
 
   private $regModel;
+  private $ebulk;
 
   public function __construct()
   {
     $this->regModel = $this->model('RegModel');
+    $this->ebulk = $this->model('Ebulk');
+    // Set reg_id cookie if not set
     if (!isset($_COOKIE['reg_id'])) {
       $_SESSION['reg_id'] = '';
       $token = bin2hex(random_bytes(7));
@@ -290,7 +293,20 @@ class Application extends Controller
     unset($_SESSION['reg_id']);
     session_destroy();
     //Send SMS feedback to candidate here
-    send_sms($check->mobile);
+    $this->ebulk->sendSMS(
+      "MITRE",
+      "Your MITRE application was recieved successfully. You will be contacted for further information. More of God's blessings.",
+      $check->mobile
+    );
+
+    // Send Whatsapp notification to Admin
+    $response = $this->ebulk->sendWhatsApp(
+      "Application Update",
+      "Nofiication of new application received from " . $check->surname . " " . $check->other_name . ". Phone:" . $check->mobile,
+      "2348122321931"
+    );
+
+    // Redirect to success page
     if ($id === 1) {
       $this->view('application/success');
     } else {
@@ -378,7 +394,20 @@ class Application extends Controller
         unset($_SESSION['reg_id']);
         session_destroy();
         // Send Sms feedback to candidate here
-        send_sms($check->mobile);
+        $this->ebulk->sendSMS(
+          "MITRE",
+          "Your MITRE application was recieved successfully. You will be contacted for further information. More of God's blessings.",
+          $check->mobile
+        );
+        // Send Whatsapp notification to Admin
+        $response = $this->ebulk->sendWhatsApp(
+          "Application Update",
+          "Nofiication of new application received from " . $check->surname . " " . $check->other_name . ". Phone:" . $check->mobile,
+          "2348122321931"
+        );
+        // 
+        //print_r($response);
+        // Redirect to success page
         redirect('application/success/2');
       } else {
         die("Something went wrong...");

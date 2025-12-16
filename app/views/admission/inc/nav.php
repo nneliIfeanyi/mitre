@@ -21,7 +21,7 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                     <li class="dropdown-header">
-                        Notifications 
+                        Notifications
                         <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
                     </li>
 
@@ -41,7 +41,7 @@
                     <!-- <li>
                         <hr class="dropdown-divider">
                     </li> -->
-                   <!--  <li class="dropdown-footer">
+                    <!--  <li class="dropdown-footer">
                         <a href="#">Show all notifications</a>
                     </li> -->
 
@@ -82,7 +82,13 @@
                             <span>Site Settings</span>
                         </a>
                     </li>
-                   <!--  <li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" href="<?php echo URLROOT; ?>/admission/export">
+                            <i class="bi bi-download"></i>
+                            <span>Export Registrations</span>
+                        </a>
+                    </li>
+                    <!--  <li>
                         <hr class="dropdown-divider">
                     </li>
 
@@ -96,7 +102,7 @@
                         <hr class="dropdown-divider">
                     </li>
  -->
-                   <!--  <li>
+                    <!--  <li>
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Sign Out</span>

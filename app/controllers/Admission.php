@@ -1,54 +1,60 @@
 <?php
-class Admission extends Controller {
-    private $regModel;
+class Admission extends Controller
+{
+  private $regModel;
 
-    public function __construct() {
+  public function __construct()
+  {
     $this->regModel = $this->model('RegModel');
     $_SESSION['admin'] = true;
-    }
+  }
 
-    // Admin dashboard view
-    public function index() {
-        $data = [
-            'registrations' => $this->regModel->getAllRegistrations()
-        ];
+  // Admin dashboard view
+  public function index()
+  {
+    $data = [
+      'registrations' => $this->regModel->getAllRegistrations()
+    ];
 
-        $this->view('admission/index', $data);
-    }
+    $this->view('admission/index', $data);
+  }
 
-    public function profile($id) {
+  public function profile($id)
+  {
     $user = $this->regModel->getRegistrationById($id);
 
     if (!$user) {
-        flash('msg', 'User not found');
-        redirect('admission');
+      flash('msg', 'User not found');
+      redirect('admission');
     }
 
     $data = [
-        'user' => $user
+      'user' => $user
     ];
 
     $this->view('admission/profile', $data);
-}
+  }
 
-public function edit($id) {
-  $user = $this->regModel->getRegistrationById($id);
-    $fullname = $user->surname.' '.$user->other_name;
+  public function edit($id)
+  {
+    $user = $this->regModel->getRegistrationById($id);
+    $fullname = $user->surname . ' ' . $user->other_name;
     $data = [
       'reg_id' => $user->reg_id,
-        'user' => $user,
-        'name' => $fullname
+      'user' => $user,
+      'name' => $fullname
     ];
 
     $this->view('admission/edit', $data);
-}
+  }
 
-public function admit($id) {
-  $user = $this->regModel->getRegistrationById($id);
-  send_admit_sms($user->mobile);
-  flash('msg', 'SMS Sent Successfully!');
-  redirect('admission/profile/'.$id);
-}
+  public function admit($id)
+  {
+    $user = $this->regModel->getRegistrationById($id);
+    send_admit_sms($user->mobile);
+    flash('msg', 'SMS Sent Successfully!');
+    redirect('admission/profile/' . $id);
+  }
 
   public function delete($id)
   {
@@ -66,4 +72,13 @@ public function admit($id) {
     }
   }
 
+  // Export view
+  public function export()
+  {
+    $data = [
+      'registrations' => $this->regModel->getAllRegistrations()
+    ];
+
+    $this->view('admission/export', $data);
+  }
 }
