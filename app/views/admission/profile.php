@@ -33,9 +33,9 @@
                                     ? URLROOT . "/" . $data['user']->photo
                                     : "https://via.placeholder.com/150x150.png?text=No+Photo";
                                 ?>
-                               <a href="<?php echo $photo; ?>" download>
+                                <a href="<?php echo $photo; ?>" download>
                                     <img src="<?php echo $photo; ?>" alt="Profile Photo" class="rounded-circle shadow-sm" width="150" height="150">
-                               </a>
+                                </a>
                             </div>
 
                             <!-- User Details -->
@@ -186,9 +186,9 @@
                         </div>
 
                         <div class="card-footer text-end">
-                            <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#admit<?php echo $data['user']->id; ?>" class="btn btn-primary">
+                            <!-- <a href="javascript:void" data-bs-toggle="modal" data-bs-target="#admit<?php echo $data['user']->id; ?>" class="btn btn-primary">
                              Admit
-                            </a>
+                            </a> -->
                             <a href="<?php echo URLROOT; ?>/admission/edit/<?php echo $data['user']->id; ?>" class="btn btn-warning">
                                 <i class="bi bi-pencil"></i> Edit
                             </a>
@@ -201,55 +201,55 @@
             </div>
         </div>
     </section>
-        <!-- Delete Modal -->
-        <div class="modal fade" id="class<?php echo $data['user']->id; ?>" tabindex="-1">
+    <!-- Delete Modal -->
+    <div class="modal fade" id="class<?php echo $data['user']->id; ?>" tabindex="-1">
         <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">Are you sure to delete</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <p class="lead fw-bold fst-italic">This action cannot be reversed.</p>
-        </div>
-        <div class="modal-footer">
-        <div class="d-flex gap-4">
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-        <form method="POST" action="<?php echo URLROOT; ?>/admission/delete/<?php echo $data['user']->id; ?>">
-        <input class="btn btn-danger" type="submit" value="Yes Continue">
-        </form>
-        </div>
-        </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure to delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead fw-bold fst-italic">This action cannot be reversed.</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex gap-4">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                        <form method="POST" action="<?php echo URLROOT; ?>/admission/delete/<?php echo $data['user']->id; ?>">
+                            <input class="btn btn-danger" type="submit" value="Yes Continue">
+                        </form>
+                    </div>
+                </div>
 
+            </div>
         </div>
-        </div>
-        </div>
-        <!-- End Delete Modal -->
+    </div>
+    <!-- End Delete Modal -->
 
-          <!-- Admit Modal -->
-        <div class="modal fade" id="admit<?php echo $data['user']->id; ?>" tabindex="-1">
+    <!-- Admit Modal -->
+    <div class="modal fade" id="admit<?php echo $data['user']->id; ?>" tabindex="-1">
         <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">Are you sure to Admit <span class="text-primary fw-semibold">
-            <?php echo $data['user']->surname.' '.$data['user']->other_name; ?>
-        </span> </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <p class="lead fw-bold fst-italic">This action would trigger and send SMS to the candidate.</p>
-        </div>
-        <div class="modal-footer">
-        <div class="d-flex gap-4">
-        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-        <a href="<?php echo URLROOT;?>/admission/admit/<?php echo $data['user']->id; ?>" class="btn btn-success">Yes Continue</a>
-        </div>
-        </div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure to Admit <span class="text-primary fw-semibold">
+                            <?php echo $data['user']->surname . ' ' . $data['user']->other_name; ?>
+                        </span> </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead fw-bold fst-italic">This action would trigger and send SMS to the candidate.</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex gap-4">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                        <a href="<?php echo URLROOT; ?>/admission/admit/<?php echo $data['user']->id; ?>" class="btn btn-success">Yes Continue</a>
+                    </div>
+                </div>
 
+            </div>
         </div>
-        </div>
-        </div>
-        <!-- End Admit Modal -->
+    </div>
+    <!-- End Admit Modal -->
 </main>
 
 <?php require APPROOT . '/views/admission/inc/footer.php'; ?>

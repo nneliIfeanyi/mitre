@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/application/inc/header.php'; ?>
+
 <body class="">
     <div id="loader">
         <div class="spinner-border text-primary" role="status">
@@ -32,7 +33,7 @@
                     08034530726, 08058455719
                 </p>
                 <div class="h2 text-primary">APPLICATION FORM</div>
-                <p class="fst-italic fw-bold">This form should be completed and submitted on or before 31 January, 2026</p>
+                <p class="fst-italic fw-bold">This form should be completed and submitted on or before 28 February, 2026</p>
             </div>
         </div>
     </section>
@@ -143,12 +144,12 @@
                         </select>
                     </div>
                     <?php if (isset($data['step1']->reg_id)) : ?>
-                        <p class="lead fst-italic">You can  make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
+                        <p class="lead fst-italic">You can make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
                         <div class="d-flex justify-content-center mt-2">
                             <button type="submit" class="btn btn-primary">Update</button>
-                             <?php if(!isset($_SESSION['admin'])):?>
-                            <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
-                             <?php endif;?>
+                            <?php if (!isset($_SESSION['admin'])): ?>
+                                <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                            <?php endif; ?>
                         </div>
                     <?php else : ?>
                         <p class="lead fst-italic">Ensure to <span class="fw-bold">Save</span> before proceeding to <span class="fw-bold">Next</span></p>
@@ -158,11 +159,11 @@
                         </div>
                     <?php endif; ?>
                     </form>
-                    <?php if(isset($_SESSION['admin'])):?>
-        <div class="d-flex justify-content-center m-4">
-        <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step1']->id;?>" class="btn btn-primary rounded-3">Return</a>
-      </div>
-        <?php endif;?>
-                </div>
+                    <?php if (isset($_SESSION['admin'])): ?>
+                        <div class="d-flex justify-content-center m-4">
+                            <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step1']->id; ?>" class="btn btn-primary rounded-3">Return</a>
+                        </div>
+                    <?php endif; ?>
+        </div>
     </section>
-   <?php require APPROOT . '/views/application/inc/footer.php'; ?>
+    <?php require APPROOT . '/views/application/inc/footer.php'; ?>

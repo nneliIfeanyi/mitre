@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/application/inc/header.php'; ?>
+
 <body class="">
     <div id="loader">
         <div class="spinner-border text-primary" role="status">
@@ -32,7 +33,7 @@
                     08034530726, 08058455719
                 </p>
                 <div class="h2 text-primary">APPLICATION FORM</div>
-                <p class="fst-italic fw-bold">This form should be completed and submitted on or before 31 January, 2026</p>
+                <p class="fst-italic fw-bold">This form should be completed and submitted on or before 28 February, 2026</p>
             </div>
         </div>
     </section>
@@ -134,33 +135,33 @@
                         <input type="text" value="<?= (empty($data['step2']->institution)) ? '' : $data['step2']->institution; ?>" name="institution" class="form-control" required>
                     </div>
                 </div>
-                
-                    <?php if (!empty($data['step2']->church)) : ?>
-                    <p class="lead fst-italic">You can  make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
+
+                <?php if (!empty($data['step2']->church)) : ?>
+                    <p class="lead fst-italic">You can make changes and <span class="fw-bold">Update</span> or proceed to <span class="fw-bold">Next</span></p>
                     <div class="d-flex justify-content-center mt-2">
-                        <?php if(!isset($_SESSION['admin'])):?>
-                        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
-                         <?php endif;?>
+                        <?php if (!isset($_SESSION['admin'])): ?>
+                            <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
+                        <?php endif; ?>
                         <button type="submit" class="btn btn-primary">Update</button>
-                         <?php if(!isset($_SESSION['admin'])):?>
-                        <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
-                         <?php endif;?>
+                        <?php if (!isset($_SESSION['admin'])): ?>
+                            <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
+                        <?php endif; ?>
                     </div>
-                    <?php else : ?>
+                <?php else : ?>
                     <p class="lead fst-italic">Ensure to <span class="fw-bold">Save</span> before proceeding to <span class="fw-bold">Next</span></p>
                     <div class="d-flex justify-content-center mt-4">
                         <a href="<?= URLROOT; ?>/application/step1" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="<?= URLROOT; ?>/application/step3" class="btn btn-outline-dark">Next <i class="bi bi-chevron-right"></i></a>
                     </div>
-                    <?php endif; ?>
+                <?php endif; ?>
             </form>
         </div>
-        <?php if(isset($_SESSION['admin'])):?>
-        <div class="d-flex justify-content-center m-4">
-        <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step2']->id;?>" class="btn btn-primary rounded-3">Return</a>
-      </div>
-        <?php endif;?>
+        <?php if (isset($_SESSION['admin'])): ?>
+            <div class="d-flex justify-content-center m-4">
+                <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step2']->id; ?>" class="btn btn-primary rounded-3">Return</a>
+            </div>
+        <?php endif; ?>
     </section>
     <!-- Footer -->
- <?php require APPROOT . '/views/application/inc/footer.php'; ?>
+    <?php require APPROOT . '/views/application/inc/footer.php'; ?>

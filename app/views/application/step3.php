@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/application/inc/header.php'; ?>
+
 <body class="">
   <!-- Page Loader -->
   <div id="loader">
@@ -33,7 +34,7 @@
           08034530726, 08058455719
         </p>
         <div class="h2 text-primary">APPLICATION FORM</div>
-        <p class="fst-italic fw-bold">This form should be completed and submitted on or before 31 January, 2026</p>
+        <p class="fst-italic fw-bold">This form should be completed and submitted on or before 28 February, 2026</p>
       </div>
     </div>
   </section>
@@ -66,38 +67,38 @@
         <!-- Use cookie to display the image -->
         <!-- Card with an image on top -->
         <?php if (!empty($data['step3']->photo)) : ?>
-        <style>
-    .copy-btn {
-      cursor: pointer;
-      color: #2563eb;
-      text-decoration: underline;
-    }
+          <style>
+            .copy-btn {
+              cursor: pointer;
+              color: #2563eb;
+              text-decoration: underline;
+            }
 
-    /* Toast styling */
-    .toast {
-      visibility: hidden;
-      min-width: 200px;
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      border-radius: 8px;
-      padding: 12px;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
-    }
+            /* Toast styling */
+            .toast {
+              visibility: hidden;
+              min-width: 200px;
+              background-color: #333;
+              color: #fff;
+              text-align: center;
+              border-radius: 8px;
+              padding: 12px;
+              position: fixed;
+              bottom: 30px;
+              right: 30px;
+              z-index: 1000;
+              opacity: 0;
+              transform: translateY(20px);
+              transition: all 0.3s ease;
+            }
 
-    .toast.show {
-      visibility: visible;
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>  
-  <div id="toast" class="toast">Link copied!</div>
+            .toast.show {
+              visibility: visible;
+              opacity: 1;
+              transform: translateY(0);
+            }
+          </style>
+          <div id="toast" class="toast">Link copied!</div>
           <div class="row">
             <div class="col-md-6">
               <div class="card">
@@ -109,33 +110,33 @@
               <p class="mt-3">
                 <span class="fw-bold fst-italic">
                   At this stage, if your referee is miles away you can forward link below to your referee, else you should go to him/her to fill in the details personally in the next section(Referee's Column).:
-                </span> 
+                </span>
                 <span class="fst-italic">
                   (Click the link to Copy)
                 </span> <br />
                 <!-- Display the link -->
-                <span class="copy-btn" id="copyLink"><?= URLROOT; ?>/application/referee/<?= $data['step3']->reg_id;?></span>
+                <span class="copy-btn" id="copyLink"><?= URLROOT; ?>/application/referee/<?= $data['step3']->reg_id; ?></span>
               </p>
             </div>
           </div>
           <script>
-              const copyLink = document.getElementById('copyLink');
-              const toast = document.getElementById('toast');
+            const copyLink = document.getElementById('copyLink');
+            const toast = document.getElementById('toast');
 
-              copyLink.addEventListener('click', () => {
-                const textToCopy = copyLink.textContent;
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                  // Show toast
-                  toast.classList.add('show');
-                  setTimeout(() => toast.classList.remove('show'), 2000);
-                });
+            copyLink.addEventListener('click', () => {
+              const textToCopy = copyLink.textContent;
+              navigator.clipboard.writeText(textToCopy).then(() => {
+                // Show toast
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
               });
+            });
           </script>
           <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
-        <strong>Note!</strong> That link above is unique to your application. You can send it to your referee via WhatsApp, Email, SMS, or any other means.
-        Only use this method if your referee is miles away. Your registration is incomplete until your referee fills in their details. <br>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+            <strong>Note!</strong> That link above is unique to your application. You can send it to your referee via WhatsApp, Email, SMS, or any other means.
+            Only use this method if your referee is miles away. Your registration is incomplete until your referee fills in their details. <br>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
         <?php endif; ?>
       </form>
       <br />
@@ -172,9 +173,9 @@
         </div>
         <div class="d-flex justify-content-center mt-4">
           <?php if (!empty($data['step3']->ref_name)) : ?>
-            <?php if(!isset($_SESSION['admin'])):?>
-            <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark me-3"><i class="bi bi-chevron-left"></i> Prev</a>
-            <?php endif;?>
+            <?php if (!isset($_SESSION['admin'])): ?>
+              <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark me-3"><i class="bi bi-chevron-left"></i> Prev</a>
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary">Update</button>
           <?php else : ?>
             <a href="<?= URLROOT; ?>/application/step2" class="btn btn-outline-dark"><i class="bi bi-chevron-left"></i> Prev</a>
@@ -182,20 +183,20 @@
           <?php endif; ?>
         </div>
       </form>
-      <?php if (!empty($data['step3']->photo) && !empty($data['step3']->church) && !empty($data['step3']->ref_name) && !isset($_SESSION['admin'])):?>
+      <?php if (!empty($data['step3']->photo) && !empty($data['step3']->church) && !empty($data['step3']->ref_name) && !isset($_SESSION['admin'])): ?>
         <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
-        <strong>Note!</strong> You can now submit your application!
-      </div>
-      <div class="d-flex justify-content-center m-4">
-        <a href="<?= URLROOT; ?>/application/success/1" class="btn btn-primary rounded-3">Submit Application</a>
-      </div>
-      <?php endif;?>
-      <?php if(isset($_SESSION['admin'])):?>
+          <strong>Note!</strong> You can now submit your application!
+        </div>
         <div class="d-flex justify-content-center m-4">
-        <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step3']->id;?>" class="btn btn-primary rounded-3">Return</a>
-      </div>
-        <?php endif;?>
+          <a href="<?= URLROOT; ?>/application/success/1" class="btn btn-primary rounded-3">Submit Application</a>
+        </div>
+      <?php endif; ?>
+      <?php if (isset($_SESSION['admin'])): ?>
+        <div class="d-flex justify-content-center m-4">
+          <a href="<?= URLROOT; ?>/admission/profile/<?php echo $data['step3']->id; ?>" class="btn btn-primary rounded-3">Return</a>
+        </div>
+      <?php endif; ?>
     </div>
   </section>
   <!-- Footer -->
-   <?php require APPROOT . '/views/application/inc/footer.php'; ?>
+  <?php require APPROOT . '/views/application/inc/footer.php'; ?>

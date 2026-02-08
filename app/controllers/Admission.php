@@ -2,10 +2,12 @@
 class Admission extends Controller
 {
   private $regModel;
+  private $smsModel;
 
   public function __construct()
   {
     $this->regModel = $this->model('RegModel');
+    $this->smsModel = $this->model('Ebulk');
     $_SESSION['admin'] = true;
   }
 
@@ -51,7 +53,12 @@ class Admission extends Controller
   public function admit($id)
   {
     $user = $this->regModel->getRegistrationById($id);
-    send_admit_sms($user->mobile);
+    // SMS SENDING...//
+    $this->smsModel->sendSMS(
+      "MITRE",
+      "",
+      $user->mobile
+    );
     flash('msg', 'SMS Sent Successfully!');
     redirect('admission/profile/' . $id);
   }
