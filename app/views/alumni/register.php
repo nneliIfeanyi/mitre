@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      
+
       <div class="text-center border py-3">
         <h2>Ministers Improvement And Training Retreat<span class="text-primary"> (MITRE)</span></h2>
         <p class="lead fs-6">Thresher's Team P.O. Box 7332, Kaduna 062245471</p>
-          <div class="h2 text-primary">MARCH 2024 ALUMNI REGISTRATION</div>
+        <div class="h2 text-primary">MARCH 2026 ALUMNI REGISTRATION</div>
         <!-- <p>This form should be completed and submitted on or before 13 FEB. 2024</p> -->
       </div>
 
@@ -31,7 +31,7 @@
               <select name="gender" data-parsley-trigger="change" class="form-select">
                 <option value="">----</option>
                 <option value="male">Male</option>
-                <option value="female">Female</option> 
+                <option value="female">Female</option>
               </select>
             </div>
           </div>
@@ -61,10 +61,10 @@
               <label>State of Residence:</label>
               <select name="state" data-parsley-trigger="change" class="form-select">
                 <option value="">----</option>
-                 <?php foreach ($data['states'] as $states):?>
-                  <option value="<?php echo $states->state;?>"><?php echo $states->state;?></option>
-                 <?php endforeach;?>
-            </select>
+                <?php foreach ($data['states'] as $states): ?>
+                  <option value="<?php echo $states->state; ?>"><?php echo $states->state; ?></option>
+                <?php endforeach; ?>
+              </select>
             </div>
           </div>
           <div class="col-lg-6">
@@ -125,23 +125,24 @@
 <div class="bg-dark  px-2 py-3 mt-1">
   <div class="row">
     <div class="col-md-6 shadow">
-        <h2 class="h4 text-light">Inquiries</h2>
-        <ul class="list-unstyled text-light footer-link-list">
-            <li>
-            <i class="fa fa-envelope fa-fw"></i>
-            <a style="text-decoration:none;color:antiquewhite;" href="mailto:mitreaffairs@gmail.com">mitreaffairs@gmail.com</a>
-            </li>
-        </ul>
+      <h2 class="h4 text-light">Inquiries</h2>
+      <ul class="list-unstyled text-light footer-link-list">
+        <li>
+          <i class="fa fa-envelope fa-fw"></i>
+          <a style="text-decoration:none;color:antiquewhite;" href="mailto:mitreaffairs@gmail.com">mitreaffairs@gmail.com</a>
+        </li>
+      </ul>
     </div>
 
     <div class="col-md-6 pt-3 ">
       <div class="text-center">
-        <p class="lead fs-6 text-light">Copyright &copy; <?php echo date('Y');?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
-        <br>
-        <span class=""> All Rights Reserved</span></p>
-      </div>  
+        <p class="lead fs-6 text-light">Copyright &copy; <?php echo date('Y'); ?> <span class="text-white fst-italic fw-semibold">Threshers Team</span>
+          <br>
+          <span class=""> All Rights Reserved</span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
-  
+
 <?php require APPROOT . '/views/inc/alumni/footer.php'; ?>
