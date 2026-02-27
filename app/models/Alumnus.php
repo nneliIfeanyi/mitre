@@ -71,7 +71,7 @@ class Alumnus
   //Get All rowCount
   public function total_alumni()
   {
-    $this->db->query("SELECT * FROM alumni");
+    $this->db->query("SELECT * FROM alumni WHERE year = 2026");
 
     $this->db->resultset();
     $total = $this->db->rowCount();
@@ -83,12 +83,27 @@ class Alumnus
   //Get All 
   public function alumni_total()
   {
-    $this->db->query("SELECT * FROM alumni ORDER BY name ASC");
+    $this->db->query("SELECT * FROM alumni WHERE year = 2026 ORDER BY name ASC");
 
     $results = $this->db->resultset();
 
     return $results;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   public function reg_instructor($data)
   {
