@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/application/inc/header.php'; ?>
+
 <body>
   <!-- Page Loader -->
   <div id="loader">
@@ -7,7 +8,6 @@
     </div>
   </div>
   <style>
-    
     .hero {
       /*background: linear-gradient(135deg, #6f42c1, #6610f2);*/
       color: #fff;
@@ -36,8 +36,6 @@
     .steps .card:hover {
       transform: translateY(-5px);
     }
-
-
   </style>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,8 +62,11 @@
       </h1>
       <p class="lead mb-4">Welcome to <span class="text-primary">MITRE</span> Application Portal.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
+        <!-- <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
           Start Application
+        </a> -->
+        <a href="javascript:void(0)" class="btn btn-primary btn-lg px-5 rounded-pill">
+          Application closed
         </a>
         <a href="<?= URLROOT; ?>/application#criteria" class="btn btn-outline-light btn-lg px-5 rounded-pill">
           Read Admission Criteria
@@ -136,18 +137,21 @@
 
       <!-- CTA -->
       <div class="text-center mt-5">
-        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg rounded-pill px-5">
+        <!-- <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg rounded-pill px-5">
           Apply Now
+        </a> -->
+        <a href="javascript:void(0)" class="btn btn-primary btn-lg rounded-pill px-5">
+          Application closed
         </a>
       </div>
 
       <!-- Progress Saving Notice -->
       <div class="alert alert-info alert-dismissible fade show mt-4 shadow-sm" role="alert">
-        <strong>Note!</strong> Your application progress is automatically saved. You can close your browser and return later to continue where you left off. Do not be in a hurry!
+        Mitre application is officially closed for 2026 intake.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-   <?php require APPROOT . '/views/application/inc/footer.php'; ?>
+  <?php require APPROOT . '/views/application/inc/footer.php'; ?>
