@@ -199,32 +199,40 @@ class RegModel
         return $this->db->execute();
     }
     // Fetch all registered users
-    public function getAllRegistrations() {
+    public function getAllRegistrations()
+    {
         $this->db->query("SELECT * FROM registrations ORDER BY created_at DESC");
         return $this->db->resultSet(); // fetch multiple rows
     }
-    public function getRegistrationById($id) {
-    $this->db->query("SELECT * FROM registrations WHERE id = :id");
-    $this->db->bind(':id', $id);
-    return $this->db->single(); // fetch one row
-}
-
-// DELETE
-
- public function delete($id)
-  {
-    // Prepare Query
-    $this->db->query('DELETE FROM registrations WHERE id = :id');
-
-    // Bind Values
-    $this->db->bind(':id', $id);
-
-    //Execute
-    if ($this->db->execute()) {
-      return true;
-    } else {
-      return false;
+    public function getRegistrationById($id)
+    {
+        $this->db->query("SELECT * FROM registrations WHERE id = :id");
+        $this->db->bind(':id', $id);
+        return $this->db->single(); // fetch one row
     }
-  }
 
+    public function getRegistrationsByZone($zone)
+    {
+        $this->db->query("SELECT * FROM registrations WHERE zone = :zone");
+        $this->db->bind(':zone', $zone);
+        return $this->db->resultSet(); // fetch multiple rows
+    }
+
+    // DELETE
+
+    public function delete($id)
+    {
+        // Prepare Query
+        $this->db->query('DELETE FROM registrations WHERE id = :id');
+
+        // Bind Values
+        $this->db->bind(':id', $id);
+
+        //Execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

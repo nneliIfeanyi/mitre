@@ -8,14 +8,22 @@ class Admission extends Controller
   {
     $this->regModel = $this->model('RegModel');
     $this->smsModel = $this->model('Ebulk');
+
     $_SESSION['admin'] = true;
   }
 
   // Admin dashboard view
-  public function index()
+  public function index($zone = null)
   {
+    $kaduna_zone = $this->regModel->getRegistrationsByZone('Kaduna');
+    $minna_zone = $this->regModel->getRegistrationsByZone('Minna');
+    $ufuma_zone = $this->regModel->getRegistrationsByZone('Ufuma');
     $data = [
-      'registrations' => $this->regModel->getAllRegistrations()
+      'registrations' => $this->regModel->getAllRegistrations(),
+      'kaduna_zone' => $kaduna_zone,
+      'minna_zone' => $minna_zone,
+      'ufuma_zone' => $ufuma_zone,
+      'zone' => $zone
     ];
 
     $this->view('admission/index', $data);
@@ -23,15 +31,15 @@ class Admission extends Controller
 
   public function profile($id)
   {
-    $user = $this->regModel->getRegistrationById($id);
+    $student = $this->regModel->getRegistrationById($id);
 
-    if (!$user) {
+    if (!$student) {
       flash('msg', 'User not found');
       redirect('admission');
     }
 
     $data = [
-      'user' => $user
+      'user' => $student
     ];
 
     $this->view('admission/profile', $data);
@@ -39,11 +47,11 @@ class Admission extends Controller
 
   public function edit($id)
   {
-    $user = $this->regModel->getRegistrationById($id);
-    $fullname = $user->surname . ' ' . $user->other_name;
+    $student = $this->regModel->getRegistrationById($id);
+    $fullname = $student->surname . ' ' . $student->other_name;
     $data = [
-      'reg_id' => $user->reg_id,
-      'user' => $user,
+      'reg_id' => $student->reg_id,
+      'user' => $student,
       'name' => $fullname
     ];
 
@@ -52,12 +60,12 @@ class Admission extends Controller
 
   public function admit($id)
   {
-    $user = $this->regModel->getRegistrationById($id);
+    $student = $this->regModel->getRegistrationById($id);
     // SMS SENDING...//
     $this->smsModel->sendSMS(
       "MITRE",
       "",
-      $user->mobile
+      $student->mobile
     );
     flash('msg', 'SMS Sent Successfully!');
     redirect('admission/profile/' . $id);
@@ -80,12 +88,18 @@ class Admission extends Controller
   }
 
   // Export view
-  public function export()
+  public function export($zone = null)
   {
+    $kaduna_zone = $this->regModel->getRegistrationsByZone('Kaduna');
+    $minna_zone = $this->regModel->getRegistrationsByZone('Minna');
+    $ufuma_zone = $this->regModel->getRegistrationsByZone('Ufuma');
     $data = [
-      'registrations' => $this->regModel->getAllRegistrations()
+      'registrations' => $this->regModel->getAllRegistrations(),
+      'kaduna_zone' => $kaduna_zone,
+      'minna_zone' => $minna_zone,
+      'ufuma_zone' => $ufuma_zone,
+      'zone' => $zone
     ];
-
     $this->view('admission/export', $data);
   }
 }
