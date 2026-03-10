@@ -162,6 +162,9 @@
                         </div>
                     <?php endif; ?>
                     </form>
+                    <div class="d-flex justify-content-center m-4">
+                        <a href="<?= URLROOT; ?>/application/success/1" class="btn btn-primary rounded-3">Submit Application</a>
+                    </div>
         </div>
     </section>
     <?php require APPROOT . '/views/application/inc/footer.php'; ?>
