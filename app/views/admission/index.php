@@ -12,6 +12,24 @@
                 <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/Minna">Minna Applications</a></li>
             </ul>
         </nav>
+        <style>
+            /* Bold and shadowed nav links inside pagetitle */
+            .pagetitle {
+                color: rgba(0, 0, 0, 0.85);
+                /* slightly faded overall text */
+            }
+
+            .pagetitle .nav-tabs .nav-link {
+                font-weight: 700;
+                color: rgba(0, 0, 0, 0.85);
+                text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            }
+
+            .pagetitle .nav-tabs .nav-link:hover,
+            .pagetitle .nav-tabs .nav-link.active {
+                box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            }
+        </style>
     </div><!-- End Page Title -->
     <?php if ($data['zone'] == null): ?>
         <section class="section dashboard">
@@ -25,8 +43,9 @@
                             <th>#</th>
                             <th>Full Name</th>
                             <th>Zone</th>
+                            <th>Status</th>
                             <th>Phone</th>
-                            <th class="text-end">View</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,9 +56,19 @@
                                     <td><?php echo $i++; ?></td>
                                     <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
                                     <td><?php echo htmlspecialchars($user->zone); ?></td>
+                                    <td><?php if ($user->status): ?>
+                                            <span class="badge bg-success">admitted</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-danger">pending</span>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
-                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
+                                        <?php if (!$user->status): ?>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                        <?php else: ?>
+                                            <span class="badge bg-success">Admitted</span>
+                                        <?php endif; ?>
                                         <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
                                     <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
                                     </td>
@@ -63,8 +92,9 @@
                             <th>#</th>
                             <th>Full Name</th>
                             <th>Zone</th>
+                            <th>Status</th>
                             <th>Phone</th>
-                            <th class="text-end">View</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,9 +105,19 @@
                                     <td><?php echo $i++; ?></td>
                                     <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
                                     <td><?php echo htmlspecialchars($user->zone); ?></td>
+                                    <td><?php if ($user->status): ?>
+                                            <span class="badge bg-success">admitted</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-danger">pending</span>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
-                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
+                                        <?php if (!$user->status): ?>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                        <?php else: ?>
+                                            <span class="badge bg-success">Admitted</span>
+                                        <?php endif; ?>
                                         <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
                                     <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
                                     </td>
@@ -101,8 +141,9 @@
                             <th>#</th>
                             <th>Full Name</th>
                             <th>Zone</th>
+                            <th>Status</th>
                             <th>Phone</th>
-                            <th class="text-end">View</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,9 +154,19 @@
                                     <td><?php echo $i++; ?></td>
                                     <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
                                     <td><?php echo htmlspecialchars($user->zone); ?></td>
+                                    <td><?php if ($user->status): ?>
+                                            <span class="badge bg-success">admitted</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-danger">pending</span>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
-                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
+                                        <?php if (!$user->status): ?>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                        <?php else: ?>
+                                            <span class="badge bg-success">Admitted</span>
+                                        <?php endif; ?>
                                         <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
                                     <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
                                     </td>
@@ -139,8 +190,9 @@
                             <th>#</th>
                             <th>Full Name</th>
                             <th>Zone</th>
+                            <th>Status</th>
                             <th>Phone</th>
-                            <th class="text-end">View</th>
+                            <th class="text-end">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,9 +203,19 @@
                                     <td><?php echo $i++; ?></td>
                                     <td><?php echo htmlspecialchars($user->surname . ' ' . $user->other_name); ?></td>
                                     <td><?php echo htmlspecialchars($user->zone); ?></td>
+                                    <td><?php if ($user->status): ?>
+                                            <span class="badge bg-success">admitted</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-danger">pending</span>
+                                        <?php endif; ?>
+                                    </td>
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
-                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-info"><i class="bi bi-eye"></i></a>
+                                        <?php if (!$user->status): ?>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                        <?php else: ?>
+                                            <span class="badge bg-success">Admitted</span>
+                                        <?php endif; ?>
                                         <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
                                     <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
                                     </td>

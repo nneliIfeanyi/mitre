@@ -101,12 +101,7 @@ class Application extends Controller
   public function step2()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // only administrators may submit data
-      if (!isset($_SESSION['admin'])) {
-        flash('msg', 'Only administrators may submit applications', 'alert alert-danger');
-        redirect('application/step2');
-        exit();
-      }
+
       // Check if step1 is jumped! ie No DB record for current reg_id.
       // if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
       //   redirect('application/step1');
@@ -156,16 +151,7 @@ class Application extends Controller
   {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // only administrators may submit data
-      if (!isset($_SESSION['admin'])) {
-        flash('msg', 'Only administrators may submit applications', 'alert alert-danger');
-        if (isset($_SESSION['reg_id'])) {
-          redirect('application/step3?reg_id=' . $_SESSION['reg_id']);
-        } else {
-          redirect('application/step3');
-        }
-        exit();
-      }
+
       // Check if step1 is jumped! ie No DB record for current reg_id.
       // if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
       //   redirect('application/step1');
@@ -232,16 +218,7 @@ class Application extends Controller
   public function passport()
   {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      // only administrators may submit data
-      if (!isset($_SESSION['admin'])) {
-        flash('msg', 'Only administrators may submit applications', 'alert alert-danger');
-        if (isset($_SESSION['reg_id'])) {
-          redirect('application/step3?reg_id=' . $_SESSION['reg_id']);
-        } else {
-          redirect('application/step3');
-        }
-        exit();
-      }
+
       // Check if step1 is jumped! ie No DB record for current reg_id.
       // if (!$this->regModel->findRegId($_SESSION['reg_id'])) {
       //   redirect('application/step1');

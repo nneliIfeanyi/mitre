@@ -60,6 +60,9 @@ class Admission extends Controller
 
   public function admit($id)
   {
+    // Update status first
+    $this->regModel->updateStatus($id);
+
     $student = $this->regModel->getRegistrationById($id);
     // SMS SENDING...//
     $this->smsModel->sendSMS(
@@ -67,7 +70,7 @@ class Admission extends Controller
       "",
       $student->mobile
     );
-    flash('msg', 'SMS Sent Successfully!');
+    flash('msg', 'Applicant admitted and SMS sent.');
     redirect('admission/profile/' . $id);
   }
 

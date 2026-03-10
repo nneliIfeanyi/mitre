@@ -156,6 +156,18 @@ class RegModel
         return $this->db->execute();
     }
 
+    /**
+     * Mark a registration as admitted by setting the status field.
+     * Could be a boolean, timestamp, or any non-null value.
+     */
+    public function updateStatus($id)
+    {
+        $sql = "UPDATE registrations SET status = 1 WHERE reg_id = :id";
+        $this->db->query($sql);
+        $this->db->bind(':id', $id);
+        return $this->db->execute();
+    }
+
 
     // Update Step 1
     public function updateStep1($id, $data)

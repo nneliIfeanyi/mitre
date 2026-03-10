@@ -6,19 +6,37 @@
     <div class="pagetitle">
         <nav>
             <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export">All Registrations</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export/Kaduna">Kaduna Registrations</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export/Ufuma">Ufuma Registrations</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export/Minna">Minna Registrations</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export">All Applications</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export/Kaduna">Kaduna Applications</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export/Ufuma">Ufuma Applications</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo URLROOT; ?>/admission/export/Minna">Minna Applications</a></li>
             </ul>
         </nav>
+        <style>
+            /* Bold and shadowed nav links inside pagetitle */
+            .pagetitle {
+                color: rgba(0, 0, 0, 0.85);
+                /* slightly faded overall text */
+            }
+
+            .pagetitle .nav-tabs .nav-link {
+                font-weight: 700;
+                color: rgba(0, 0, 0, 0.85);
+                text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            }
+
+            .pagetitle .nav-tabs .nav-link:hover,
+            .pagetitle .nav-tabs .nav-link.active {
+                box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            }
+        </style>
     </div><!-- End Page Title -->
-    <!-- Display All Registrations -->
+    <!-- Display All Applications -->
     <?php if ($data['zone'] == null): ?>
         <section class="section">
             <div class="container-fluid py-1">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="mb-0">Export All Registrants</h3>
+                    <h3 class="mb-0">Export All Applications</h3>
                 </div>
 
                 <!-- DataTables CSS (local) -->
@@ -193,12 +211,12 @@
             </div>
         </section>
     <?php endif; ?>
-    <!-- Display Kaduna Zone Registrations -->
+    <!-- Display Kaduna Zone Applications -->
     <?php if ($data['zone'] == 'Kaduna') : ?>
         <section class="section">
             <div class="container-fluid py-1">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="mb-0">Kaduna Registrants</h3>
+                    <h3 class="mb-0">Kaduna Applications</h3>
                 </div>
 
                 <!-- DataTables CSS (local) -->
@@ -373,12 +391,12 @@
             </div>
         </section>
     <?php endif; ?>
-    <!-- Display Ufuma Zone Registrations -->
+    <!-- Display Ufuma Zone Applications -->
     <?php if ($data['zone'] == 'Ufuma') : ?>
         <section class="section">
             <div class="container-fluid py-1">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="mb-0">Ufuma Registrants</h3>
+                    <h3 class="mb-0">Ufuma Applications</h3>
                 </div>
 
                 <!-- DataTables CSS (local) -->
@@ -553,12 +571,12 @@
             </div>
         </section>
     <?php endif; ?>
-    <!-- Display Minna Zone Registrations -->
+    <!-- Display Minna Zone Applications -->
     <?php if ($data['zone'] == 'Minna') : ?>
         <section class="section">
             <div class="container-fluid py-1">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="mb-0">Minna Registrants</h3>
+                    <h3 class="mb-0">Minna Applications</h3>
                 </div>
 
                 <!-- DataTables CSS (local) -->

@@ -62,12 +62,12 @@
       </h1>
       <p class="lead mb-4">Welcome to <span class="text-primary">MITRE</span> Application Portal.</p>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <!-- <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
+        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg px-5 rounded-pill">
           Start Application
-        </a> -->
-        <a href="javascript:void(0)" class="btn btn-primary btn-lg px-5 rounded-pill">
-          Application closed
         </a>
+        <!-- <a href="javascript:void(0)" class="btn btn-primary btn-lg px-5 rounded-pill">
+          Application closed
+        </a> -->
         <a href="<?= URLROOT; ?>/application#criteria" class="btn btn-outline-light btn-lg px-5 rounded-pill">
           Read Admission Criteria
         </a>
@@ -137,12 +137,12 @@
 
       <!-- CTA -->
       <div class="text-center mt-5">
-        <!-- <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg rounded-pill px-5">
+        <a href="<?= URLROOT; ?>/application/step1" class="btn btn-primary btn-lg rounded-pill px-5">
           Apply Now
-        </a> -->
-        <a href="javascript:void(0)" class="btn btn-primary btn-lg rounded-pill px-5">
-          Application closed
         </a>
+        <!-- <a href="javascript:void(0)" class="btn btn-primary btn-lg rounded-pill px-5">
+          Application closed
+        </a> -->
       </div>
 
       <!-- Progress Saving Notice -->
