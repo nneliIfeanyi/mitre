@@ -28,6 +28,7 @@
 
       <div class="container-fluid">
         <div class="card-body">
+          <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
           <table class="table table-striped" id="eg">
             <thead>
               <tr class="">
@@ -44,6 +45,7 @@
                 <th><b>Ministry</b></th>
                 <th><b>Occupation</b></th>
                 <th><b>Assembly</b></th>
+                <th><b>Action</b></th>
 
               </tr>
             </thead>
@@ -69,7 +71,11 @@
                   <td><?php echo $student->ministry ?></td>
                   <td><?php echo $student->occupation ?></td>
                   <td><?php echo $student->assembly ?></td>
-
+                  <td>
+                    <form action="<?= URLROOT; ?>/admin/deleteAlumni/<?= $student->id; ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                  </td>
                 </tr>
               <?php $numbering++;
               endforeach; ?>
@@ -89,6 +95,7 @@
                 <th><b>Ministry</b></th>
                 <th><b>Occupation</b></th>
                 <th><b>Assembly</b></th>
+                <th><b>Action</b></th>
 
               </tr>
             </tfoot>

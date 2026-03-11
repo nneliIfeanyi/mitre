@@ -79,6 +79,18 @@ class Alumnus
     return $total;
   }
 
+  // Delete an alumni record by id
+  public function delete($id)
+  {
+    $this->db->query('DELETE FROM alumni WHERE id = :id');
+    $this->db->bind(':id', $id);
+
+    if ($this->db->execute()) {
+      return true;
+    }
+    return false;
+  }
+
 
   //Get All 
   public function alumni_total()

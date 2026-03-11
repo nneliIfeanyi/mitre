@@ -94,7 +94,7 @@ class User
   }
 
 
-public function trash_student($id)
+  public function trash_student($id)
   {
     // Prepare Query
     $this->db->query('INSERT INTO trash (mitre_set, fullname,address,zone,email,mobile_num,whatsapp_num,church,occupation,discipler,refered_by,address_2,phone,relationship) 
@@ -124,17 +124,12 @@ public function trash_student($id)
     $this->db->bind(':gender', $data['gender']);
     $this->db->bind(':zone', $data['zone']);
     $this->db->bind(':address', $data['address']);
-    //$this->db->bind(':state', $data['state']);
     $this->db->bind(':phone', $data['phone']);
     $this->db->bind(':whatsapp', $data['whatsapp']);
-    //$this->db->bind(':telegram', $data['telegram']);
     $this->db->bind(':email', $data['email']);
     $this->db->bind(':ministry', $data['ministry']);
     $this->db->bind(':occupation', $data['occupation']);
     $this->db->bind(':assembly', $data['assembly']);
-    //$this->db->bind(':year', $data['year']);
-
-
     //Execute
     if ($this->db->execute()) {
       return true;

@@ -10,7 +10,7 @@ class RegModel
 
     public function register($data)
     {
-        $this->db->query("INSERT INTO registrations 
+        $this->db->query("INSERT INTO mitre_students_v2 
             (surname, other_name, age, gender, marital_status, state, zone, address, mobile, alt_no, email, 
              church, post, born_again, baptism, calling, in_calling, entered_calling, attended_mitre, why_mitre, 
              occupation, lang_speak, lang_write, litracy, certificate, cert_year, institution, oversight, 
@@ -162,8 +162,9 @@ class RegModel
      */
     public function updateStatus($id)
     {
-        $sql = "UPDATE registrations SET status = 1 WHERE reg_id = :id";
+        $sql = "UPDATE registrations SET status = :status WHERE id = :id";
         $this->db->query($sql);
+        $this->db->bind(':status', 'admitted');
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }

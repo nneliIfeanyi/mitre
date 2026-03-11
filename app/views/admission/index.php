@@ -65,7 +65,7 @@
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
                                         <?php if (!$user->status): ?>
-                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-warning">Admit</a>
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
@@ -114,7 +114,7 @@
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
                                         <?php if (!$user->status): ?>
-                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-warning">Admit</a>
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
@@ -163,7 +163,7 @@
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
                                         <?php if (!$user->status): ?>
-                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-warning">Admit</a>
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
@@ -212,12 +212,12 @@
                                     <td><?php echo htmlspecialchars($user->mobile); ?></td>
                                     <td class="text-end">
                                         <?php if (!$user->status): ?>
-                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-success">Admit</a>
+                                            <a href="<?php echo URLROOT; ?>/admission/admit/<?= $user->id ?>" class="btn btn-sm btn-warning">Admit</a>
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
-                                        <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
-                                    <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
+                                        <a href="<?php echo URLROOT; ?>/admission/edit/<?= $user->id ?>" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

@@ -226,6 +226,22 @@
       $this->view('admin/alumni_2024', $data);
     }
 
+    // Delete alumni entry (called from view)
+    public function deleteAlumni($id)
+    {
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Execute deletion using alumni model
+        if ($this->alumniModel->delete($id)) {
+          flash('del_msg', 'Alumni record deleted', 'alert alert-danger');
+          redirect('admin/alumni_2024');
+        } else {
+          die('Something went wrong');
+        }
+      } else {
+        redirect('admin/alumni_2024');
+      }
+    }
+
     //Load All Alumni
     public function instructors()
     {
