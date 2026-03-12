@@ -69,8 +69,8 @@
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
-                                        <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
-                                    <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
+                                        <a href="<?php echo URLROOT; ?>/admission/edit/<?= $user->id ?>" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -118,8 +118,8 @@
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
-                                        <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
-                                    <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
+                                        <a href="<?php echo URLROOT; ?>/admission/edit/<?= $user->id ?>" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -167,8 +167,8 @@
                                         <?php else: ?>
                                             <span class="badge bg-success">Admitted</span>
                                         <?php endif; ?>
-                                        <!--  <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
-                                    <a href="<?php echo URLROOT; ?>/" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></a> -->
+                                        <a href="<?php echo URLROOT; ?>/admission/edit/<?= $user->id ?>" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil"></i></a>
+                                        <a href="<?php echo URLROOT; ?>/admission/profile/<?= $user->id ?>" class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
