@@ -214,7 +214,7 @@ class RegModel
     // Fetch all registered users
     public function getAllRegistrations()
     {
-        $this->db->query("SELECT * FROM registrations ORDER BY created_at DESC");
+        $this->db->query("SELECT * FROM registrations ORDER BY surname ASC");
         return $this->db->resultSet(); // fetch multiple rows
     }
     public function getRegistrationById($id)
@@ -226,7 +226,7 @@ class RegModel
 
     public function getRegistrationsByZone($zone)
     {
-        $this->db->query("SELECT * FROM registrations WHERE zone = :zone");
+        $this->db->query("SELECT * FROM registrations WHERE zone = :zone ORDER BY surname ASC");
         $this->db->bind(':zone', $zone);
         return $this->db->resultSet(); // fetch multiple rows
     }
