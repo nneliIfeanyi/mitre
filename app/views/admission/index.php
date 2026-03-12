@@ -37,6 +37,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3 class="mb-0">All Applications</h3>
                 </div>
+                <div class="mb-2">
+                    <input type="text" id="tableSearch" class="form-control" placeholder="Search applications...">
+                </div>
                 <table id="usersTable" class="table table-striped table-hover align-middle">
                     <thead class="table-light">
                         <tr>
@@ -85,6 +88,9 @@
             <div class="container-fluid py-1">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3 class="mb-0">Kaduna Applications</h3>
+                </div>
+                <div class="mb-2">
+                    <input type="text" id="tableSearch" class="form-control" placeholder="Search applications...">
                 </div>
                 <table id="usersTable" class="table table-striped table-hover align-middle">
                     <thead class="table-light">
@@ -135,6 +141,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3 class="mb-0">Ufuma Applications</h3>
                 </div>
+                <div class="mb-2">
+                    <input type="text" id="tableSearch" class="form-control" placeholder="Search applications...">
+                </div>
                 <table id="usersTable" class="table table-striped table-hover align-middle">
                     <thead class="table-light">
                         <tr>
@@ -184,6 +193,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3 class="mb-0">Minna Applications</h3>
                 </div>
+                <div class="mb-2">
+                    <input type="text" id="tableSearch" class="form-control" placeholder="Search applications...">
+                </div>
                 <table id="usersTable" class="table table-striped table-hover align-middle">
                     <thead class="table-light">
                         <tr>
@@ -227,6 +239,21 @@
             </div>
         </section>
     <?php endif; ?>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchInput = document.getElementById('tableSearch');
+            if (searchInput) {
+                searchInput.addEventListener('keyup', function() {
+                    var filter = this.value.toLowerCase();
+                    var rows = document.querySelectorAll('#usersTable tbody tr');
+                    rows.forEach(function(row) {
+                        row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
+                    });
+                });
+            }
+        });
+    </script>
 </main>
 
 <?php require APPROOT . '/views/admission/inc/footer.php'; ?>
