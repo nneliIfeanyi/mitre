@@ -43,136 +43,64 @@
           </nav>
           <h3 class="text-primary"><?php flash('del_msg'); ?></h3>
           <div class="table-responsive">
-          <table class="table table-striped" id="eg">
-            <thead>
-              <tr class="">
-                <th>S|N</th>
-                <th><b>Image</b></th>
-                <th><b>Name</b></th>
-                <th><b>Phone</b></th>
-                <th><b>Zone</b></th>
-                <th><b>Address</b></th>
-                <th><b>Church</b></th>
-                <th><b>Action</b></th>
-              </tr>
-            </thead>
+            <table class="table table-striped" id="eg">
+              <thead>
+                <tr class="">
+                  <th>S|N</th>
+                  <th><b>Image</b></th>
+                  <th><b>Name</b></th>
+                  <th><b>Phone</b></th>
+                  <th><b>Zone</b></th>
+                  <th><b>Address</b></th>
+                  <th><b>Church</b></th>
+                  <th><b>Action</b></th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <?php $numbering = 1;
-              foreach ($data['students'] as $student) : 
-                $trash = $this->attendanceModel->get_unreported2($student->id);
+              <tbody>
+                <?php $numbering = 1;
+                foreach ($data['students'] as $student) :
+                  //$trash = $this->attendanceModel->get_unreported2($student->id);
                 ?>
-                <?php if($trash > 0 && $trash < 7):?>
-                <tr style="background: rgba(205, 255, 0, 0.6);" data-toggle="tooltip" data-title="This candidate is under probation having missed a full MITRE conclave">
-                  <td><?php echo $numbering; ?></td>
-                  <td>
-                    <?php if (empty($student->passport)) : ?>
-                        <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
-                    <?php else : ?>
-                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
-                        <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
-                      </a>
-                    <?php endif; ?>
-                  </td>
-                  <td><?php echo $student->fullname; ?></td>
-                  <td><?php echo $student->mobile_num ?></td>
-                  <td><?php echo $student->zone;?></td>
-                  <td><?php echo $student->address ?></td>
-                  <td><?php echo $student->church ?></td>
-                  <td class="d-flex justify-content-around">
-                    <a class="btn btn-sm text-success" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a>
-                  </td>
-                </tr>
-              <?php elseif($trash == 0):?>
-                <tr style="background: rgba(250, 20, 0, 0.6);" data-toggle="tooltip" data-title="This candidate never reported to MITRE at all after registeration.">
-                  <td><?php echo $numbering; ?></td>
-                  <td>
-                    <?php if (empty($student->passport)) : ?>
-                        <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
-                    <?php else : ?>
-                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
-                        <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
-                      </a>
-                    <?php endif; ?>
-                  </td>
-                  <td><?php echo $student->fullname; ?></td>
-                  <td><?php echo $student->mobile_num ?></td>
-                  <td><?php echo $student->zone;?></td>
-                  <td><?php echo $student->address ?></td>
-                  <td><?php echo $student->church ?></td>
-                  <td class="d-flex justify-content-around">
-                    <form id="delete<?= $student->id;?>">
-                      <input type="hidden" name="zone" value="<?php echo $student->zone; ?>">
-                      <input type="hidden" name="mitre_set" value="<?php echo $student->mitre_set; ?>">
-                      <input type="submit" id="submit<?= $student->id;?>" value="Trash" class="btn btn-sm btn-outline-danger">
-                    </form>
-                  </td>
 
-                  <script>
-                    $('#delete<?= $student->id; ?>').on('submit', function(event) {
-                      event.preventDefault();
-                      let formData = $(this).serialize();
-                      $.ajax({
-                        url: "<?php echo URLROOT; ?>/admin/deleteAjax/<?php echo $student->id; ?>",
-                        method: "POST",
-                        data: formData,
-
-                        beforeSend: function() {
-                          $('#submit<?= $student->id; ?>').attr('disabled', 'disabled');
-                          $('#submit<?= $student->id; ?>').val('Pls wait..');
-
-                        },
-                        success: function(response) {
-                          $('#submit<?= $student->id; ?>').val('Deleted');
-                          $('#submit<?= $student->id; ?>').removeClass('btn-outline-danger');
-                          $('#submit<?= $student->id; ?>').addClass('btn-success');
-                          $('#msg').append(response);
-                        }
-                      });
-                    });
-                  </script>
-                </tr>
-              
-              <?php elseif($trash >= 7):?>
-                <tr class="bg-light" data-toggle="tooltip" data-title="">
-                  <td><?php echo $numbering; ?></td>
-                  <td>
-                    <?php if (empty($student->passport)) : ?>
+                  <tr class="bg-light" data-toggle="tooltip" data-title="">
+                    <td><?php echo $numbering; ?></td>
+                    <td>
+                      <?php if (empty($student->passport)) : ?>
                         <img src="<?php echo URLROOT . '/uploaded/user.jpg'; ?>" alt="pic" class="rounded-circle" style="height: 80px;width:90px;">
-                      </a>
-                    <?php else : ?>
-                      <a href="<?php echo URLROOT . '/' . $student->passport ?>">
-                        <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
-                      </a>
-                    <?php endif; ?>
-                  </td>
-                  <td><?php echo $student->fullname; ?></td>
-                  <td><?php echo $student->mobile_num ?></td>
-                  <td><?php echo $student->zone;?></td>
-                  <td><?php echo $student->address ?></td>
-                  <td><?php echo $student->church ?></td>
-                  <td class="d-flex justify-content-around">
-                    <a class="btn btn-sm text-success" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a>
-                  </td>
+                        </a>
+                      <?php else : ?>
+                        <a href="<?php echo URLROOT . '/' . $student->passport ?>">
+                          <img src="<?php echo URLROOT . '/' . $student->passport ?>" alt="profile-pic" class="rounded-circle" style="height: 80px;width:90px;">
+                        </a>
+                      <?php endif; ?>
+                    </td>
+                    <td><?php echo $student->fullname; ?></td>
+                    <td><?php echo $student->mobile_num ?></td>
+                    <td><?php echo $student->zone; ?></td>
+                    <td><?php echo $student->address ?></td>
+                    <td><?php echo $student->church ?></td>
+                    <td class="d-flex justify-content-around">
+                      <a class="btn btn-sm text-success" href="<?php echo URLROOT; ?>/admin/more_details/<?php echo $student->id; ?>">More</a>
+                    </td>
+                  </tr>
+                <?php $numbering++;
+                endforeach; ?>
+              </tbody>
+              <tfoot>
+                <tr class="">
+                  <th>S/N</th>
+                  <th><b>Image</b></th>
+                  <th><b>Name</b></th>
+                  <th><b>Phone</b></th>
+                  <th><b>Zone</b></th>
+                  <th><b>Address</b></th>
+                  <th><b>Church</b></th>
+                  <th><b>Action</b></th>
                 </tr>
-            <?php endif;?>
-              <?php $numbering++;
-              endforeach; ?>
-            </tbody>
-            <tfoot>
-              <tr class="">
-                <th>S/N</th>
-                <th><b>Image</b></th>
-                <th><b>Name</b></th>
-                <th><b>Phone</b></th>
-                <th><b>Zone</b></th>
-                <th><b>Address</b></th>
-                <th><b>Church</b></th>
-                <th><b>Action</b></th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+              </tfoot>
+            </table>
+          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -289,7 +217,7 @@
 <script>
   new DataTable('#eg', {
     scrollX: true,
-    paging:false,
+    paging: false,
     layout: {
       topStart: {
         buttons: [{
