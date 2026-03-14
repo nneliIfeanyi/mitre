@@ -231,6 +231,14 @@ class RegModel
         return $this->db->resultSet(); // fetch multiple rows
     }
 
+    // get registrations by zone row count
+    public function getRegistrationCountByZone($zone)
+    {
+        $this->db->query("SELECT COUNT(*) as count FROM registrations WHERE zone = :zone");
+        $this->db->bind(':zone', $zone);
+        return $this->db->single();
+    }
+
     // DELETE
 
     public function delete($id)

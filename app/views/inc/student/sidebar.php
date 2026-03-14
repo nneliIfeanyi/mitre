@@ -45,14 +45,14 @@
               </li>
             </ul>
           </li> -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="<?= URLROOT; ?>/students/update_photo" class="nav-link">
             <i class="nav-icon fas fa-user"></i>
             <p>
               Update Photo
             </p>
           </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a href="<?= URLROOT; ?>/students/scores" class="nav-link">
@@ -64,14 +64,14 @@
           </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tasks"></i>
             <p>
               Assignments
             </p>
           </a>
-        </li>
+        </li> -->
 
         <li class="nav-item">
           <a href="<?= URLROOT ?>/students/logout" class="nav-link">
