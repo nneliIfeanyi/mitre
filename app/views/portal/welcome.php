@@ -91,9 +91,9 @@ if (isset($_COOKIE['student-id'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/application#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#criteria">Admission Criteria</a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/application#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="<?= URLROOT; ?>/portal/welcome#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/portal/welcome#criteria">Admission Criteria</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= URLROOT; ?>/portal/welcome#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
