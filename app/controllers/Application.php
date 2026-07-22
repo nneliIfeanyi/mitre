@@ -170,24 +170,7 @@ class Application extends Controller
       // Update DB
       if ($this->regModel->step3($data['reg_id'], $data)) {
         // Final Submission
-        // Generate Reg No
-        if ($check->zone == 'Kaduna') {
-          $z = 'K';
-        } elseif ($check->zone == 'Minna') {
-          $z = 'N';
-        } elseif ($check->zone == 'Ufuma') {
-          $z = 'U';
-        }
-        if (strlen($check->id) == 1) {
-          $id = '00' . $check->id;
-        } elseif (strlen($check->id) == 2) {
-          $id = '0' . $check->id;
-        } elseif (strlen($check->id) == 3) {
-          $id = $check->id;
-        } else {
-          $id = $check->id;
-        }
-        $reg_no = '18-' . $z . $id;
+        $reg_no = generate_reg_no($check->zone, $check->id);
         $data['id'] = $_SESSION['reg_id'];
         $data['reg_no'] = $reg_no;
         $this->regModel->regNo($data);
@@ -368,24 +351,7 @@ class Application extends Controller
       if ($this->regModel->step3($_POST['reg_id'], $data)) {
         $check = $this->regModel->findRegId($_POST['reg_id']);
         // Final Submission
-        // Generate Reg No
-        if ($check->zone == 'Kaduna') {
-          $z = 'K';
-        } elseif ($check->zone == 'Minna') {
-          $z = 'N';
-        } elseif ($check->zone == 'Ufuma') {
-          $z = 'U';
-        }
-        if (strlen($check->id) == 1) {
-          $id = '00' . $check->id;
-        } elseif (strlen($check->id) == 2) {
-          $id = '0' . $check->id;
-        } elseif (strlen($check->id) == 3) {
-          $id = $check->id;
-        } else {
-          $id = $check->id;
-        }
-        $reg_no = '18-' . $z . $id;
+        $reg_no = generate_reg_no($check->zone, $check->id);
         $data['id'] = $_POST['reg_id'];
         $data['reg_no'] = $reg_no;
         $this->regModel->regNo($data);

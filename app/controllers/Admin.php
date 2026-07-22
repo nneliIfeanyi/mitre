@@ -517,17 +517,20 @@
         // }
 
         $data = [
-          'std_id' => $_POST['std_id'],
-          'reg_no' => $_POST['reg_no'],
+          'id' => $_POST['id'],
+          'zone' => $_POST['zone'],
+          'prefix' => !empty($_POST['prefix']) ? $_POST['prefix'] : $set,
           'name' => $_POST['fullname']
         ];
+
+        $data['reg_no'] = generate_reg_no($data['zone'], $data['id'], $data['prefix']);
 
         if ($this->userModel->check_reg_no($data['reg_no'])) {
           flash('msg', 'Failed... reg_no already in use by another student..', 'alert alert-danger');
           redirect('admin/reg_no/' . $set);
         } else {
 
-          $output = $this->userModel->regNo($data['reg_no'], $data['std_id']);
+          $output = $this->userModel->regNo($data['reg_no'], $data['id']);
           if ($output) {
             flash('msg', 'You have successfully generated for ' . $data['name']);
             redirect('admin/reg_no/' . $set);
@@ -545,7 +548,8 @@
           'students' => $no_reg,
           'yes_reg' => $yes_reg,
           'yes_reg_count' => $yes_reg_count,
-          'no_reg_count' => $no_reg_count
+          'no_reg_count' => $no_reg_count,
+          'set' => $set
         ];
 
         // Load about view
