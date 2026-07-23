@@ -488,6 +488,7 @@
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (isset($_POST['generate_all'])) {
           $ordered_no_reg = $this->databaseModel->no_reg($set);
+          $next_sequence = $this->databaseModel->max_reg_sequence($set) + 1;
 
           if (empty($ordered_no_reg)) {
             flash('msg', 'No ungenerated students found.');
@@ -497,9 +498,9 @@
           $generated = 0;
           $skipped = 0;
 
-          foreach ($ordered_no_reg as $index => $student) {
-            $sequence = $index + 1;
-            $reg_no = generate_reg_no($student->zone, $sequence, $set);
+          foreach ($ordered_no_reg as $student) {
+            $reg_no = generate_reg_no($student->zone, $next_sequence, $set);
+            $next_sequence++;
 
             if ($this->userModel->check_reg_no($reg_no)) {
               $skipped++;
@@ -525,9 +526,11 @@
         $no_reg = $this->databaseModel->no_reg($set);
         $yes_reg_count = $this->databaseModel->yes_reg_count($set);
         $no_reg_count = $this->databaseModel->no_reg_count($set);
+        $next_sequence = $this->databaseModel->max_reg_sequence($set) + 1;
         $no_reg_sequence = [];
-        foreach ($no_reg as $index => $student) {
-          $no_reg_sequence[$student->id] = $index + 1;
+        foreach ($no_reg as $student) {
+          $no_reg_sequence[$student->id] = $next_sequence;
+          $next_sequence++;
         }
         //Set Data 
         $data = [
