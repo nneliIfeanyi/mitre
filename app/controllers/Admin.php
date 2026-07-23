@@ -487,35 +487,6 @@
     {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        // if (strlen($_POST['std_id']) == 1) {
-
-        //   if ($_POST['zone'] == 'Kaduna') {
-        //     $reg = $set.'00'.$_POST['std_id'].'K';
-        //   }elseif ($_POST['zone'] == 'Ufuma') {
-        //     $reg = $set.'00'.$_POST['std_id'].'E';
-        //   }else{
-        //     $reg = $set.'00'.$_POST['std_id'].'N';
-        //   }
-
-
-        // }elseif (strlen($_POST['std_id']) == 2) {
-        //   if ($_POST['zone'] == 'Kaduna') {
-        //     $reg = $set.'0'.$_POST['std_id'].'K';
-        //   }elseif ($_POST['zone'] == 'Ufuma') {
-        //     $reg = $set.'0'.$_POST['std_id'].'E';
-        //   }else{
-        //     $reg = $set.'0'.$_POST['std_id'].'N';
-        //   }
-        // }else{
-        //    if ($_POST['zone'] == 'Kaduna') {
-        //     $reg = $set.$_POST['std_id'].'K';
-        //   }elseif ($_POST['zone'] == 'Ufuma') {
-        //     $reg = $set.$_POST['std_id'].'E';
-        //   }else{
-        //     $reg = $set.$_POST['std_id'].'N';
-        //   }
-        // }
-
         $data = [
           'id' => $_POST['id'],
           'zone' => $_POST['zone'],
@@ -523,7 +494,21 @@
           'name' => $_POST['fullname']
         ];
 
-        $data['reg_no'] = generate_reg_no($data['zone'], $data['id'], $data['prefix']);
+        $ordered_no_reg = $this->databaseModel->no_reg($set);
+        $sequence = null;
+        foreach ($ordered_no_reg as $index => $student) {
+          if ((string)$student->id === (string)$data['id']) {
+            $sequence = $index + 1;
+            break;
+          }
+        }
+
+        if ($sequence === null) {
+          flash('msg', 'Failed... student is no longer in ungenerated list.', 'alert alert-danger');
+          redirect('admin/reg_no/' . $set);
+        }
+
+        $data['reg_no'] = generate_reg_no($data['zone'], $sequence, $data['prefix']);
 
         if ($this->userModel->check_reg_no($data['reg_no'])) {
           flash('msg', 'Failed... reg_no already in use by another student..', 'alert alert-danger');
@@ -543,13 +528,18 @@
         $no_reg = $this->databaseModel->no_reg($set);
         $yes_reg_count = $this->databaseModel->yes_reg_count($set);
         $no_reg_count = $this->databaseModel->no_reg_count($set);
-        //Set Data
+        $no_reg_sequence = [];
+        foreach ($no_reg as $index => $student) {
+          $no_reg_sequence[$student->id] = $index + 1;
+        }
+        //Set Data 
         $data = [
           'students' => $no_reg,
           'yes_reg' => $yes_reg,
           'yes_reg_count' => $yes_reg_count,
           'no_reg_count' => $no_reg_count,
-          'set' => $set
+          'set' => $set,
+          'no_reg_sequence' => $no_reg_sequence
         ];
 
         // Load about view

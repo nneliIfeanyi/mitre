@@ -53,7 +53,8 @@
                   <td><?php echo $student->fullname ?></td>
                   <td><?php echo $student->mitre_set ?></td>
                   <td><?php echo $student->zone ?></td>
-                  <td><?php echo generate_reg_no($student->zone, $student->id, $data['set']); ?></td>
+                  <td><?php $seq = $data['no_reg_sequence'][$student->id] ?? $numbering;
+                      echo generate_reg_no($student->zone, $seq, $data['set']); ?></td>
                   <td>
                     <form method="post" action="">
                       <input type="hidden" name="id" value="<?= $student->id ?>">
