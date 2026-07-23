@@ -41,7 +41,6 @@
                 <th>Set</th>
                 <th>Zone</th>
                 <th>Reg-no</th>
-                <th>Action</th>
               </tr>
             </thead>
 
@@ -55,15 +54,6 @@
                   <td><?php echo $student->zone ?></td>
                   <td><?php $seq = $data['no_reg_sequence'][$student->id] ?? $numbering;
                       echo generate_reg_no($student->zone, $seq, $data['set']); ?></td>
-                  <td>
-                    <form method="post" action="">
-                      <input type="hidden" name="id" value="<?= $student->id ?>">
-                      <input type="hidden" name="zone" value="<?= $student->zone ?>">
-                      <input type="hidden" name="prefix" value="<?= $data['set'] ?>">
-                      <input type="hidden" name="fullname" value="<?= $student->fullname ?>">
-                      <input type="submit" name="submit" value="Generate" class="btn btn-sm btn-success">
-                    </form>
-                  </td>
                 </tr>
               <?php $numbering++;
               endforeach; ?>
@@ -75,10 +65,15 @@
                 <th><b>Set</b></th>
                 <th><b>Zone</b></th>
                 <th><b>Reg-no</b></th>
-                <th><b>Action</b></th>
               </tr>
             </tfoot>
           </table>
+
+          <?php if (!empty($data['students'])) : ?>
+            <form method="post" action="" class="mt-2">
+              <input type="submit" name="generate_all" value="Auto Generate All" class="btn btn-success">
+            </form>
+          <?php endif; ?>
         </div>
 
         <div class="col-lg-6 card card-body table-responsive">

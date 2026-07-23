@@ -486,43 +486,40 @@
     public function reg_no($set)
     {
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['generate_all'])) {
+          $ordered_no_reg = $this->databaseModel->no_reg($set);
 
-        $data = [
-          'id' => $_POST['id'],
-          'zone' => $_POST['zone'],
-          'prefix' => !empty($_POST['prefix']) ? $_POST['prefix'] : $set,
-          'name' => $_POST['fullname']
-        ];
-
-        $ordered_no_reg = $this->databaseModel->no_reg($set);
-        $sequence = null;
-        foreach ($ordered_no_reg as $index => $student) {
-          if ((string)$student->id === (string)$data['id']) {
-            $sequence = $index + 1;
-            break;
-          }
-        }
-
-        if ($sequence === null) {
-          flash('msg', 'Failed... student is no longer in ungenerated list.', 'alert alert-danger');
-          redirect('admin/reg_no/' . $set);
-        }
-
-        $data['reg_no'] = generate_reg_no($data['zone'], $sequence, $data['prefix']);
-
-        if ($this->userModel->check_reg_no($data['reg_no'])) {
-          flash('msg', 'Failed... reg_no already in use by another student..', 'alert alert-danger');
-          redirect('admin/reg_no/' . $set);
-        } else {
-
-          $output = $this->userModel->regNo($data['reg_no'], $data['id']);
-          if ($output) {
-            flash('msg', 'You have successfully generated for ' . $data['name']);
+          if (empty($ordered_no_reg)) {
+            flash('msg', 'No ungenerated students found.');
             redirect('admin/reg_no/' . $set);
-          } else {
-            die('Something went wrong');
           }
+
+          $generated = 0;
+          $skipped = 0;
+
+          foreach ($ordered_no_reg as $index => $student) {
+            $sequence = $index + 1;
+            $reg_no = generate_reg_no($student->zone, $sequence, $set);
+
+            if ($this->userModel->check_reg_no($reg_no)) {
+              $skipped++;
+              continue;
+            }
+
+            if ($this->userModel->regNo($reg_no, $student->id)) {
+              $generated++;
+            } else {
+              $skipped++;
+            }
+          }
+
+          $msg_class = $skipped > 0 ? 'alert alert-warning' : 'alert alert-success';
+          flash('msg', 'Auto generation completed. Generated: ' . $generated . ', Skipped: ' . $skipped . '.', $msg_class);
+          redirect('admin/reg_no/' . $set);
         }
+
+        flash('msg', 'Invalid request.', 'alert alert-danger');
+        redirect('admin/reg_no/' . $set);
       } else {
         $yes_reg = $this->databaseModel->yes_reg($set);
         $no_reg = $this->databaseModel->no_reg($set);
